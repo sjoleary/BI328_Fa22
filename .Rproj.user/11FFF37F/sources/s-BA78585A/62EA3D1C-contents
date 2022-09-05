@@ -1,0 +1,70 @@
+---
+title: "BI 328 Conservation Biology"
+author: "Labmanual Fall 2022"
+date: "`r Sys.Date()`"
+knit: "bookdown::preview_chapter"
+output:
+  msmbstyle::msmb_html_book:
+    highlight: tango
+    toc: TRUE
+    toc_depth: 1
+    split_by: chapter
+    margin_references: FALSE
+    css: msmb.css
+bibliography: labmanual.bib
+link-citations: yes
+---
+
+```{r include=FALSE}
+
+library(msmbstyle)
+
+# invalidate cache when the tufte version changes
+knitr::opts_chunk$set(tidy = FALSE, cache.extra = packageVersion('msmbstyle'))
+
+
+options(htmltools.dir.version = FALSE)
+
+library(conflicted)
+conflict_prefer("select", "dplyr")
+conflict_prefer("filter", "dplyr")
+
+```
+
+# Overview {-}
+
+This is the lab manual for Conservation Biology (BI328) for Fall 2022.
+
+
+For the most part an electronic copy (on a laptop or tablet) is sufficient, at times you may be instructed to print a data or worksheet for lab.
+
+## The Basics {-}
+
+**Lab times**
+
+Wednesday 1:30 - 4:20pm (GOUL1328)  
+*Be on time, arriving > 5 minutes late will be considered an unexcused absence.*
+
+<br>
+
+
+**BYOD: Bring your own device (to lab)**
+
+You are required to bring your laptop for use during lab; a tablet will not be sufficient to participate though you are welcome to bring an additional device to have an extra screen to follow along an electronic version of the lab manual. Make sure to have a power cable and/or fully charged battery!
+
+<br>
+
+
+
+## Lab homework/reports {-}
+
+You will be receiving lab homework in some format most every lab, part of the assignments will be completed in lab, other parts your will finish on your own time. Make sure you start early enough to get help if necessary.  
+
+**Due by the following Wednesday 12pm** unless otherwise specified.  
+*No late or incomplete homework will be accepted or receive credit.*
+
+
+### Due Wednesday, xx, 12pm {-}
+
+
+
