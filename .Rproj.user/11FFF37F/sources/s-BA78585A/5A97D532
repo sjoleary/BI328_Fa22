@@ -3,9 +3,9 @@
     "path": "C:/Users/shann/Box/Backup_2022-02-11/Documents/RESEARCH/06 Websites/BI328_Fa22/98_Reading-Assignments.Rmd",
     "project_path": "98_Reading-Assignments.Rmd",
     "type": "r_markdown",
-    "hash": "899308418",
+    "hash": "0",
     "contents": "",
-    "dirty": false,
+    "dirty": true,
     "created": 1662413131546.0,
     "source_on_save": false,
     "relative_order": 3,
@@ -20,7 +20,7 @@
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1662414169876,
+    "last_content_update": 1662415331583,
     "read_only": false,
     "read_only_alternatives": []
 }
