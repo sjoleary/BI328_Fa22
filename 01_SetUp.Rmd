@@ -18,8 +18,14 @@ link-citations: yes
 ```{r include=FALSE}
 
 library(msmbstyle)
+
 # invalidate cache when the tufte version changes
-knitr::opts_chunk$set(tidy = FALSE, cache.extra = packageVersion('msmbstyle'))
+knitr::opts_chunk$set(tidy = FALSE,
+                      message = FALSE,
+                      warning = FALSE,
+                      error = FALSE,
+                      cache.extra = packageVersion('msmbstyle'))
+
 options(htmltools.dir.version = FALSE)
 
 ```
@@ -27,7 +33,7 @@ options(htmltools.dir.version = FALSE)
 
 # Installing R/Rstudio
 
-**Date**: 9/7/2022
+**Date**: 9/14/2022
 
 **Learning Objectives**
 
@@ -45,7 +51,7 @@ After completing this tutorial you should
 
 **Install R**
 
-* Download most recent version of R for Windows [here](https://cran.r-project.org/bin/windows/base/release.htm).
+* Download most recent version of R for Windows [here](https://cran.r-project.org/bin/windows/base/release.htm); this should be 4.0 or higher.
 * Run the `.exe` file that was downloaded and follow instructions in the set-up wizard.
 
 
@@ -57,12 +63,14 @@ After completing this tutorial you should
 
 **Install Rstudio**
 
-* Go to Rstudio download (page)[http://www.rstudio.com/ide/download/desktop].
+* Go to Rstudio download [page](http://www.rstudio.com/ide/download/desktop).
 * Scroll down to select the `Rstudio` current version for Windows XP/Vista/7/8/10.
 * Run the `.exe` file that was downloaded and follow instructions in the set-up wizard.
 
 
 **Finish setting up Rtools**
+
+*Currently, we should not need Rtools, so you do not yet need to complete this step.*
 
 * Open `Rstudio` to make sure you aren't getting any error messages.
 * Put `Rtools` in your path by typing `writeLines('PATH="${RTOOLS40_HOME}\\usr\\bin;${PATH}"', con = "~/.Renviron")` in the console window.
@@ -73,7 +81,7 @@ After completing this tutorial you should
 
 **Download & install R**
 
-* Go to (CRAN)[http://cran.r-project.org/], select `Download R for (Mac) OS X`.
+* Go to (CRAN)[http://cran.r-project.org/], select `Download R for (Mac) OS X`. You should be installing a version of 4.0 or higher.
 * Download the `.pkg` file for your OS X version.
 * Run the downloaded file to install `R`.
 
@@ -117,9 +125,10 @@ By contrast, writing your code in the script editor either as a standard script 
 Executing an entire script, a code chunk, or individual functions from a script will run them in the console.
 
 * `Ctrl` + `Enter` will execute commands directly from the script editor. You can use this to run the line of code your cursor is currently in in the script editor or you can highlight a series of lines to execute.
-* If you are using an Rmarkdown file you can execute an entire code chunk by pressing the green arrow in the top right corner.
+* If you are using an `Rmarkdown` file you can execute an entire code chunk by pressing the green arrow in the top right corner.
 
 If the console is ready for you to execute commands you should see a `>` prompt. If you e.g. forget a `)` you will see a `+` prompt - `R` is telling you that it is expecting further code. When this happens and you don't know what you are missing (usually it is an unmatched quotation or parenthesis), make sure your cursor is in the console and hit the `Esc` key.
+
 
 ### Customize Rstudio
 
@@ -151,11 +160,33 @@ install.packages("rmarkdown")
 # install central packages in the tidyverse
 install.packages("tidyverse")
 
-# install plyr
-install.packages("plyr")
+# install central packages in the tidyverse
+install.packages("tidyverse")
 
-# install ggthemes
-install.packages("ggthemes")
+# install additional packages
+install.packages("plyr", "janitor", "ggthemes", "patchwork", "glue")
 
 ```
+
+Let's check if you were able to successfully install those packages.
+
+```{r eval=FALSE, echo=TRUE}
+
+# load library
+library(tidyverse)
+
+```
+
+If you don't see any error messages in the console along the lines of `there is no package called ...` you are all set. If you look in the `packages` tab in the lower right panel you should also see that packages such as `dplyr` and `tidyr` (two of the central `tidyverse` packages) now have a little check box next to them.
+
+
+### Updating R packages
+
+```{marginfigure}
+
+Be aware that updating packages might break some code you have previously written. For most of what we will be doing this should not be the case. If you used `R` for a previous course, make sure to update you packages at the beginning of this course and we should be set for the semester.
+
+```
+
+You should generally make sure to keep your `R` packages up to date as new versions include important bugfixes and additional improvements. The easiest way to update packages is to use the `Update` button in the `Packages` tab in the bottom right panel.
 

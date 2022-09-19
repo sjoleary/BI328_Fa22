@@ -8,6 +8,7 @@ interacting-with-r-in-rstudio
 customize-rstudio
 installing-and-using-packages-in-r
 install-a-package
+updating-r-packages
 project-management-and-rmarkdown-basics
 project-organization-101
 organizing-your-files-and-directories
