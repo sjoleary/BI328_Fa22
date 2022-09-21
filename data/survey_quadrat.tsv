@@ -1,0 +1,63 @@
+Plot	quadrat/observer	species	n_occurence	percent_cover
+1	A1	Red Fescue	0	0
+1	A1	Black eyed Susan 	9	
+1	A1	Partridge Pea	0	
+1	A1	Fireweed	0	
+1	A1	Red Clover	1	
+1	A1	Wild carrot	0	
+1	A1	Plant D	1	
+1	A1	Yellowed Wool Sorrel	0	
+1	A1	Grass		20
+1	A2	Red Fescue	0	
+1	A2	Black eyed Susan 	0	
+1	A2	Partridge Pea	0	
+1	A2	Fireweed	0	
+1	A2	Red Clover	1	
+1	A2	Wild carrot	0	
+1	A2	Plant D	0	
+1	A2	Yellowed Wool Sorrel	0	
+1	A2	Grass		27
+3	A1	Black eyed Susan 	8	
+3	A1	Red Fescue	2	
+3	A1	Indian Grass	1	
+3	A1	Wild carrot	0	
+3	A1	Common ragweed	0	
+3	A1	Plant A	0	
+3	A1	Plant B 	36	
+3	A1	Plant C	4	
+3	A1	Grass		80
+3	A2	Black eyed Susan 	50	
+3	A2	Red Fescue	0	
+3	A2	Indian Grass	0	
+3	A2	Wild carrot	0	
+3	A2	Common ragweed	0	
+3	A2	Plant A	4	
+3	A2	Plant B 	0	
+3	A2	Plant C	0	
+3	A2	Grass		72
+1	B1	kentucky grass		85
+1	B1	Plant C	3	
+1	B1	Virginia Wild Rye	8	
+1	B1	Red Fescue		
+1	B2	Black eyed Susan 	22	15
+1	B2	kentucky grass		15
+1	B2	Partridge Pea	3	10
+3	B1	black eyed susan	21	60
+3	B2	black eyed susan	29	
+1	C1	Leaf litter	21	30
+1	C1	bare ground		20
+1	C1	black eyed susan	2	0.50
+1	C1	clover		2
+1	C1	grass		45
+1	C1	partridge pea	1	0.50
+1	C2	leaf litter	4	1
+1	C2	bare ground		30
+1	C2	black eyed susan	7	45
+1	C2	grass	3	40
+3	C1	black eyed susan	58	50
+3	C1	wild carrot	1	0.20
+3	C1	grass		50
+3	C2	leaf litter	2	1
+3	C2	black eyed susan	16	30
+3	C2	wild carrot	3	10
+3	C2	grasses		50

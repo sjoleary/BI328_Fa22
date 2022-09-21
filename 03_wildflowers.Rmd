@@ -1,0 +1,376 @@
+---
+title: "BI 328 Conservation Biology"
+author: "Labmanual Fall 2022"
+date: "`r Sys.Date()`"
+knit: "bookdown::preview_chapter"
+output:
+  msmbstyle::msmb_html_book:
+    highlight: tango
+    toc: TRUE
+    toc_depth: 1
+    split_by: chapter
+    margin_references: FALSE
+    css: msmb.css
+bibliography: labmanual.bib
+link-citations: yes
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r include=FALSE}
+
+
+library(msmbstyle)
+
+# invalidate cache when the tufte version changes
+knitr::opts_chunk$set(tidy = FALSE, 
+                      message = FALSE,
+                      error = FALSE,
+                      warning = FALSE,
+                      cache.extra = packageVersion('msmbstyle'))
+
+
+options(htmltools.dir.version = FALSE)
+
+
+```
+
+
+# Restoration Ecology of Temperature Grasslands
+
+**Learning Objectives**
+
+After completing this activity you should be able to
+
+-   Describe the central goals of Restoration Ecology.
+-   Discuss the importance of maintaining grasslands for wildlife.
+-   Discuss how biological communities are shaped by differences in local conditions of abiotic conditions.
+-   Use a quadrat to estimate frequency of occurrence and estimated over of plant species and discuss considerations for experimental design.
+-   Distinguish between species richness and diversity.
+
+For each of our modules we will have a project-folder with an `Rproject`, `*.Rmd`-files, and sub-directories for data, scripts, and results as described in our `Rproject` Tutorial. You should create a directory on your Desktop or Documents folder on your laptop (name it something like `BI328`) as a home directory for all of our project folders this semester.
+
+Download the [wildflowers](https://drive.google.com/drive/folders/1cTRIbAPuFviYtf4mSnPkqzU_v2LFIQtq?usp=sharing) project folder. Once you have downloaded it, unzip the project directory into your `BI449` directory. You can open the `Rproj` for this module either by double clicking on it which will launch `Rstudio` or by opening `Rstudio` and then using `File > Open Project` or by clicking on the `Rproject` icon in the top right of your program window and selecting `Open Project`.
+
+Once you have opened a project you should see the project name in the top right corner[^1].
+
+[^1]: Pro tip: If you run into issues where an Rmarkdown won't render or file paths aren't working (especially if things were working previously) one of your first steps should be to double check that the correct `Rproj` is loaded.
+
+You should have a `analysis.Rmd` in your project directory. Use that file to work through this tutorial - you will hand in your rendered ("knitted") `html`-file as your homework assignment. So, first thing in the `YAML` header, change the author to your name. You will use this `Rmarkdown` file to record your answers.
+
+Before we get started load the `R packags` we will need to run our analysis (your `Rmarkdown` has instructions on how to install `R packages` but this only needs to occur once).
+
+```{r}
+
+library(tidyverse)
+library(janitor)
+library(knitr)
+
+```
+
+## Temperate Grasslands
+
+Before lab you should have used this description of [North American Prairie Species of New England](https://www.ecolandscaping.org/10/designing-ecological-landscapes/north-american-prairie-species-of-new-england/) to get a broad overview of wildflowers and grasses typically found in New Engladn Grasslands along with familiarizing yourself with New Hampshire Grasslands specifically by reading the [Habitat Stewardship Series: Grasslands](https://www.wildlife.state.nh.us/nongame/documents/habitat-grasslands.pdf) brochure.
+
+`r msmbstyle::question(label = "ques:w-1", text = "Briefly outline the main driver(s) of loss of grasslands and describe how this impacts wildlife.")`
+
+
+`r msmbstyle::question(label = "ques:w-2", text = "Create a list of abiotic factors that influence what species are found in grasslands at a local scale. Organize them into larger categories of individual factors, and include metrics or how you might measure them.")`
+
+
+## Study Design
+
+### Plot locations
+
+-   Plot 1: Parking lot behind stadium/hockey arena
+-   Plot 2: Tennis courts
+-   Plot 3: Rundlett Hill Rd.
+
+`r msmbstyle::question(label = "ques:w-3", text = "Use your notes from our survey day to briefly describe each of the plots and the surrounding location. Be as specific as possible.")`
+
+### Plot preparation
+
+-   each plot was covered in cardboard secured with lawn staples mid-June 2021
+-   cardboard removed mid-November 2021
+-   seeds were mixed with sand for easier dispersal & evenly hand-sown on each plot (Plot 1 different mix from Plot 2 & 3)
+-   there was no additional plot maintenance (watering, weeding)
+-   plot 2 was accidentally mowed in early August
+
+### Seed mixes
+
+**Plot 1**
+
+*The New England Showy Wildflower mix includes a selection of native wildflowers and grasses that will mature into a colorful and vibrant native meadow. It is appropriate seed mix for roadsides, commercial landscaping, parks, golf courses, and industrial sites.*
+
+-   Little Bluestem (Schizachyrium scoparium)
+-   Red Fescue (Festuca rubra)
+-   Indian Grass (Sorghastrum nutans)
+-   Partridge Pea (Chamaecrista fasciculata)
+-   Canada Wild Rye (Elymus canadensis)
+-   Riverbank Wild Rye (Elymus riparius)
+-   Butterfly Milkweed (Asclepias tuberosa)
+-   Black Eyed Susan (Rudbeckia hirta)
+-   Lance Leaved Coreopsis (Coreopsis lanceolata)
+-   Ox Eye Sunflower (Heliopsis helianthoides)
+-   Common Sneezeweed (Helenium autumnale)
+-   Marsh Blazing Star (Liatris spicata)
+-   Blue Vervain (Verbena hastata)
+-   New England Aster (Aster novae-angliae)
+-   Wild Blue False Indigo (Baptisia australis)
+-   HollowStem Joe Pye Weed (Eupatorium fistulosum/ Eutrochium fistulosum)
+-   Early Goldenrod (Solidago juncea)
+
+**Plots 2 & 3**
+
+*The New England Wildflower mix provides a selection of native wildflowers and grasses to insure that a variety of species will survive in conditions from dry to moist. It is an appropriate seed mix for roadsides, commercial landscaping, parks, golf courses, industrial sites and areas undergoing ecological restoration.*
+
+-   Little Bluestem (Schizachyrium scoparium)
+-   Red Fescue (Festuca rubra)
+-   Indian Grass (Sorghastrum nutans)
+-   Partridge Pea (Chamaecrista fasciculata)
+-   Canada Wild Rye (Elymus canadensis)
+-   Virginia Wild Rye (Elymus virginicus)
+-   Blue Vervain (Verbena hastata)
+-   Butterfly Milkweed (Asclepias tuberosa)
+-   Narrowleafed Blue Eyed Grass (Sisyrinchium angustifolium)
+-   Black Eyed Susan (Rudbeckia hirta)
+-   New England Aster (Symphyotrichum novae-angliae)
+-   Spiked Gayfeather/ Marsh Blazing Star (Liatris spicata)
+-   Starved/Calico Aster (Aster lateriflorus/Symphyotrichum lateriflorum)
+-   Early Goldenrod (Solidago juncea)
+-   Hollow-Stem Joe Pye Weed (Eupatorium fistulosum/Eutrochium fistulosum)
+
+`r msmbstyle::question(label = "ques:w-4", text = "Briefly compare and contrast the two commercially available wildflower mixes used for this project. Consider which species overlap among the two, differences in composition of grasses vs. flowers etc. Work with a partner or two to briefly look up each species to get an idea of what a landscape with these mixes might look like.")`
+
+## Assessment of soil conditions
+
+### Soil compaction
+
+We measured the soil compaction at each plot using a Dickey-John Soil Compaction Tester to measure the depth to 300 psi at each of the four midpoints of plot edges.
+
+`r msmbstyle::question(label = "ques:w-5", text = "Consider why we measured four points instead of e.g. just picking the middle of the plot.")`
+
+
+Let's take a look at our data. First, let's read in a tab-delimited text file containing the results for each plot to create an object that holds a dataframe.
+
+```{r}
+
+compaction <- read_delim("data/soil_compaction.tsv", delim = "\t") %>%
+  clean_names()
+
+```
+
+You should now see an object named `compaction` in your `Environment` (top right panel). Clicking on it will open it as a tab in the main Viewer panel (top left).
+
+`r msmbstyle::question(label = "ques:w-6", text = "Take a quick look at it and describe what data it contains. Use the prompt below as a standardized, formulaic way to describe a table/dataframe.")`
+
+The data frame consists of xxx columns [list each column and what information it contains.]. Each row is a data point [describe what information each data point contains].
+
+`r msmbstyle::question(label = "ques:w-7", text = "You will notice that the number of decimals recorded for the measurements differs among groups. Consider the method and tool(s) you used to measure the depth and then argue what you think an appropriate level of precision would be.")`
+
+Let's use R to calculate the mean and standard deviation of the soil compaction for each plot.
+
+```{r}
+
+
+compaction %>%
+  group_by(plot) %>%
+  summarize(mean = mean(depth_300psi_cm),
+            std = sd(depth_300psi_cm))
+
+```
+
+`r msmbstyle::question(label = "ques:w-8", text = "Briefly describe your results. A good what to do this is to start with the overall trend/general pattern and then to highlight notable details.")`
+
+`r msmbstyle::question(label = "ques:w-9", text = "Now, interpret and discuss your results, consider what might cause differences among plots and what effect this might have on your grassland restoration efforts.")`
+
+### Soil water holding capacity
+
+For each plot we collected three to four soil samples at each corner of the plot and pooled them into a single sample to test the water holding capacity. We then took the samples back to the lab and set up two tins per plot. We poked tiny holes in the bottom and then covered that with a coffee filter and recorded the weight without the lid. Next, we filled each sample tin about 3/4 and recorded the weight. We soaked each tin in a water bath overnight and recorded the wet weight before drying each sample for 72 hours and recording the dry weight.
+
+`r msmbstyle::question(label = "ques:w-10", text = "Argue why we sampled soil from each corner instead of just taking a single sample e.g. from the middle of the plot.")`
+
+Let's pull in our data, we will create a second object consisting of a dataframe in our environment.
+
+```{r}
+
+water_holding <- read_delim("data/soil_water_retention.tsv", delim = "\t") %>%
+  clean_names()
+
+```
+
+`r msmbstyle::question(label = "ques:w-11", text = "Briefly describe what your data frame looks like (consider what data is in each column and what each row represents).")`
+
+`r msmbstyle::question(label = "ques:w-12", text = "Briefly outline how we can use these measurements to calculate the amount of water that the soil can hold. List each step of the calculation. Keep in mind that thanks to the metric system one gram of water is equivalent to one milliliter.")`
+
+We can use R to use the data in the existing columns to go through exactly the steps you outlined above.
+
+For example, we could compare if we added approximately the same amount of soil to each sample tin.
+
+```{r}
+
+
+water_holding %>%
+  mutate(soil_added = tinsoil_g - tinfilter_g)
+
+```
+
+`r msmbstyle::question(label = "ques:w-13", text = "See if you can use the function mutate to calculate the amount of water per gram of soil for each replicate.")`
+
+`r msmbstyle::solution_begin()`
+
+```{r}
+
+water_holding %>%
+  mutate(soil_added = tinsoil_g - tinfilter_g,
+         water_held_ml = soil_wet_g-soil_dried_g,
+         dry_soil = soil_dried_g-tinfilter_g,
+         water_per_dry_g = water_held_ml/dry_soil)
+
+```
+
+
+```{r echo=FALSE}
+
+kable(
+  water_holding %>%
+  mutate(soil_added = tinsoil_g - tinfilter_g,
+         water_held_ml = soil_wet_g-soil_dried_g,
+         dry_soil = soil_dried_g-tinfilter_g,
+         water_per_dry_g = water_held_ml/dry_soil),
+  caption = "Water holding capacity per gram of dry soil for each plot"
+)
+
+```
+
+
+
+`r msmbstyle::solution_end()`
+
+`r msmbstyle::question(label = "ques:w-14", text = "See if you can use the functions group_by and summarize to calculate the mean and standard deviation of the amount of water per gram of soil for each plot.")`
+
+`r msmbstyle::solution_begin()`
+
+```{r}
+
+water_holding %>%
+  mutate(soil_added = tinsoil_g - tinfilter_g,
+         water_held_ml = soil_wet_g-soil_dried_g,
+         dry_soil = soil_dried_g-tinfilter_g,
+         water_per_dry_g = water_held_ml/dry_soil) %>%
+  group_by(plot) %>%
+  summarize(mean = mean(water_per_dry_g),
+            std = sd(water_per_dry_g))
+
+```
+
+
+```{r echo=FALSE}
+
+kable(
+water_holding %>%
+  mutate(soil_added = tinsoil_g - tinfilter_g,
+         water_held_ml = soil_wet_g-soil_dried_g,
+         dry_soil = soil_dried_g-tinfilter_g,
+         water_per_dry_g = water_held_ml/dry_soil) %>%
+  group_by(plot) %>%
+  summarize(mean = mean(water_per_dry_g),
+            std = sd(water_per_dry_g)),
+  caption = "Mean and standard deviation of water holding capacity per gram of dry soil for each plot"
+)
+
+```
+
+
+`r msmbstyle::solution_end()`
+
+`r msmbstyle::question(label = "ques:w-15", text = "Briefly describe your results.")`
+
+`r msmbstyle::question(label = "ques:w-16", text = "Briefly evaluate what you think these results might mean for differences among plots for our restoration ecology experiment.")`
+
+## Plant survey
+
+### Walk-through
+
+Each group did a systematic walkthrough of plots 1 and 3 to record all the species present.
+
+`r msmbstyle::question(label = "ques:w-17", text = "Describe the difference between species richness and species diversity to determine if this is an assessment of species richness or diversity.*")`
+
+Let's pull in our list of species recorded by each group.
+
+```{r}
+
+survey <- read_delim("data/species_survey.tsv", delim = "\t") %>%
+  clean_names()
+
+```
+
+`r msmbstyle::question(label = "ques:w-18", text = "Take a quick look at the dataframe and describe the contents.")`
+
+Let's start by looking at plot 1.
+
+`r msmbstyle::question(label = "ques:w-19", text = "Give a brief description of your overall impression of plot 1 in terms of the vegetation. Consider things like distribution of plants, grasses vs flowers etc.")`
+
+We'll assume that multiple sets of eyes are better than one and just collapse the lists from individual groups into a single one, we will also remove the unknown plants.
+
+```{r}
+
+survey %>%
+  filter(plot == 1) %>%
+  distinct(species, .keep_all = TRUE) %>%
+  select(plot, species) %>%
+  filter(!species %in% c("plant A", "plant B", "Plant C", "Plant D")) %>%
+  arrange(species)
+
+
+```
+
+`r msmbstyle::question(label = "ques:w-20", text = "Compare the list of observed species to the list of species that were in the seed mix. Take note of things like the proportion of seeded species that you actually observed, the proportion of species that should be there based on what was planted and which ones are not.")`
+
+Let's do the same thing for plot 3.
+
+`r msmbstyle::question(label = "ques:w-21", text = "Give a brief description of your overall impression of plot 1 in terms of the vegetation. Consider things like distribution of plants, grasses vs flowers etc.")`
+
+Now, let's generate our species list.
+
+```{r}
+
+survey %>%
+  filter(plot == 3) %>%
+  distinct(species, .keep_all = TRUE) %>%
+  select(plot, species) %>%
+  filter(!species %in% c("plant A", "plant B", "Plant C", "Plant D")) %>%
+  arrange(species)
+
+```
+
+`r msmbstyle::question(label = "ques:w-22", text = "Compare the list of observed species to the list of species that were in the seed mix. Take note of things like the proportion of seeded species that you actually observed, the proportion of species that should be there based on what was planted and which ones are not.")`
+
+`r msmbstyle::question(label = "ques:w-23", text = "Compare and contrast your results for plots 1 and 3. Take note of patterns that they share in common vs distinct differences. Base this on both your general observations and your results of the walk-through surey.")`
+
+### Quadrat survey
+
+Our second method to survey the vegetation was using 0.5 x 0.5m quadrats. For all wildflowers on the species list we recorded the number of occurrences within the quadrat. For all species and ground cover we also estimated the %-cover.
+
+`r msmbstyle::question(label = "ques:w-24", text = "Compare and contrast the methods of using a walk-through versus quadrats, consider pros and cons of both of them, what metrics can be calculated, along with implicit assumptions that are made.")`
+
+`r msmbstyle::question(label = "ques:w-25", text = "Argue for which plot you woul expect to see a higher degree of variability among quadrats.")`
+
+Let's pull in those results.
+
+```{r}
+
+quadrat <- read_delim("data/survey_quadrat.tsv", delim = "\t") %>%
+  clean_names()
+
+```
+
+`r msmbstyle::question(label = "ques:w-26", text = "Take a look at the dataframe and describe the information it contains. This data set has not been cleaned up the same way that the other dataframes were. Consider what could cause problems for analysis.")`
+
+`r msmbstyle::question(label = "ques:w-27", text = "Generate a few questions we can answer using this data set and the specific steps we would need to take to analyze them.")`
+
+`r msmbstyle::solution_begin()`
+
+
+
+`r msmbstyle::solution_end()`

@@ -1,0 +1,15 @@
+Little Bluestem,Schizachyrium scoparium
+Red Fescue,Festuca rubra
+Indian Grass,Sorghastrum nutans
+Partridge Pea,Chamaecrista fasciculata
+Canada Wild Rye,Elymus canadensis
+Virginia Wild Rye,Elymus virginicus
+Blue Vervain,Verbena hastata
+Butterfly Milkweed,Asclepias tuberosa
+Narrowleafed Blue Eyed Grass,Sisyrinchium angustifolium
+Black Eyed Susan,Rudbeckia hirta
+New England Aster,Symphyotrichum novae-angliae
+Spiked Gayfeather/ Marsh Blazing Star,Liatris spicata
+Starved/Calico Aster,Aster lateriflorus/Symphyotrichum lateriflorum
+Early Goldenrod,Solidago juncea
+Hollow-Stem Joe Pye Weed,Eupatorium fistulosum/Eutrochium fistulosum 

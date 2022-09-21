@@ -1,3 +1,5 @@
+tab:unnamed-chunk-22
+tab:unnamed-chunk-24
 installing-rrstudio
 install-set-up-r-and-rstudio-on-your-computer
 windows
@@ -21,3 +23,15 @@ markdown-sections
 code-chunks
 render-your-document-using-knitr
 some-advanced-options
+restoration-ecology-of-temperature-grasslands
+temperate-grasslands
+study-design
+plot-locations
+plot-preparation
+seed-mixes
+assessment-of-soil-conditions
+soil-compaction
+soil-water-holding-capacity
+plant-survey
+walk-through
+quadrat-survey

@@ -1,0 +1,936 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta property="og:title" content="3 Restoration Ecology of Temperature Grasslands | BI 328 Conservation Biology" />
+<meta property="og:type" content="book" />
+
+
+
+
+<meta name="author" content="Labmanual Fall 2022" />
+
+<meta name="date" content="2022-09-21" />
+
+
+<meta name="description" content="3 Restoration Ecology of Temperature Grasslands | BI 328 Conservation Biology">
+
+<title>3 Restoration Ecology of Temperature Grasslands | BI 328 Conservation Biology</title>
+
+<link href="libs/tufte-css/tufte.css" rel="stylesheet" />
+<link href="libs/tufte-css/envisioned.css" rel="stylesheet" />
+<link href="libs/msmb-css/msmb.css" rel="stylesheet" />
+
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  background-color: #f8f8f8; }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ef2929; } /* Alert */
+code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #c4a000; } /* Attribute */
+code span.bn { color: #0000cf; } /* BaseN */
+code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4e9a06; } /* Char */
+code span.cn { color: #000000; } /* Constant */
+code span.co { color: #8f5902; font-style: italic; } /* Comment */
+code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code span.dt { color: #204a87; } /* DataType */
+code span.dv { color: #0000cf; } /* DecVal */
+code span.er { color: #a40000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #0000cf; } /* Float */
+code span.fu { color: #000000; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code span.ot { color: #8f5902; } /* Other */
+code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code span.sc { color: #000000; } /* SpecialChar */
+code span.ss { color: #4e9a06; } /* SpecialString */
+code span.st { color: #4e9a06; } /* String */
+code span.va { color: #000000; } /* Variable */
+code span.vs { color: #4e9a06; } /* VerbatimString */
+code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+
+<link rel="stylesheet" href="msmb.css" type="text/css" />
+<script>
+function toggle_visibility(id1, id2) {
+var e = document.getElementById(id1);
+var f = document.getElementById(id2);
+
+e.style.display = ((e.style.display!='none') ? 'none' : 'block');
+
+if(f.classList.contains('fa-plus-square')) {
+    f.classList.add('fa-minus-square')
+    f.classList.remove('fa-plus-square')
+} else {
+    f.classList.add('fa-plus-square')
+    f.classList.remove('fa-minus-square')
+}
+
+}
+</script>
+<script>
+function copy_link(id) {
+  var dummy = document.createElement('input'),
+  text = window.location.href.split(/[?#]/)[0] + '#' + id;
+  document.body.appendChild(dummy);
+  dummy.value = text;
+  dummy.select();
+  document.execCommand('copy');
+  document.body.removeChild(dummy);
+  
+  var tooltip = document.getElementById(id + '-tooltip');
+  tooltip.innerHTML = 'Copied!';
+}
+
+function reset_tooltip(id) {
+  var tooltip = document.getElementById(id);
+  tooltip.innerHTML = 'Copy link';
+}
+</script>
+
+</head>
+
+<body>
+
+
+
+<div class="row">
+<div class="col-sm-12">
+<div id="TOC">
+<ul class="navbar">
+<li class="msmb"><p class="title">BI 328 Conservation Biology<p><p class="author">Labmanual Fall 2022</p>
+<li class="dropdown" style="float:right">
+<a href="javascript:void(0)" class="dropbtn">&#x25BE; Chapters</a>
+<div class="dropdown-content">
+<a href="index.html" id="toc-overview">Overview</a>
+<a href="installing-rrstudio.html" id="toc-installing-rrstudio"><span class="toc-section-number">1</span> Installing R/Rstudio</a>
+<a href="project-management-and-rmarkdown-basics.html" id="toc-project-management-and-rmarkdown-basics"><span class="toc-section-number">2</span> Project management and Rmarkdown Basics</a>
+<a id="active-page" href="restoration-ecology-of-temperature-grasslands.html" id="toc-restoration-ecology-of-temperature-grasslands"><span class="toc-section-number">3</span> Restoration Ecology of Temperature Grasslands</a><ul class="toc-sections">
+<li class="toc"><a href="#temperate-grasslands"> Temperate Grasslands</a></li>
+<li class="toc"><a href="#study-design"> Study Design</a></li>
+<li class="toc"><a href="#assessment-of-soil-conditions"> Assessment of soil conditions</a></li>
+<li class="toc"><a href="#plant-survey"> Plant survey</a></li>
+</ul>
+<a href="references.html" id="toc-references">References</a>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="row">
+<div class="col-sm-12">
+<div id="restoration-ecology-of-temperature-grasslands" class="section level1" number="3">
+<h1>
+<span class="header-section-number">3</span> Restoration Ecology of Temperature Grasslands</h1>
+<p><strong>Learning Objectives</strong></p>
+<p>After completing this activity you should be able to</p>
+<ul>
+<li>Describe the central goals of Restoration Ecology.</li>
+<li>Discuss the importance of maintaining grasslands for wildlife.</li>
+<li>Discuss how biological communities are shaped by differences in local conditions of abiotic conditions.</li>
+<li>Use a quadrat to estimate frequency of occurrence and estimated over of plant species and discuss considerations for experimental design.</li>
+<li>Distinguish between species richness and diversity.</li>
+</ul>
+<p>For each of our modules we will have a project-folder with an <code>Rproject</code>, <code>*.Rmd</code>-files, and sub-directories for data, scripts, and results as described in our <code>Rproject</code> Tutorial. You should create a directory on your Desktop or Documents folder on your laptop (name it something like <code>BI328</code>) as a home directory for all of our project folders this semester.</p>
+<p>Download the <a href="https://drive.google.com/drive/folders/1cTRIbAPuFviYtf4mSnPkqzU_v2LFIQtq?usp=sharing">wildflowers</a> project folder. Once you have downloaded it, unzip the project directory into your <code>BI449</code> directory. You can open the <code>Rproj</code> for this module either by double clicking on it which will launch <code>Rstudio</code> or by opening <code>Rstudio</code> and then using <code>File &gt; Open Project</code> or by clicking on the <code>Rproject</code> icon in the top right of your program window and selecting <code>Open Project</code>.</p>
+<p>Once you have opened a project you should see the project name in the top right corner<label for="tufte-sn-13" class="margin-toggle sidenote-number">13</label><input type="checkbox" id="tufte-sn-13" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">13</span> Pro tip: If you run into issues where an Rmarkdown won’t render or file paths aren’t working (especially if things were working previously) one of your first steps should be to double check that the correct <code>Rproj</code> is loaded.</span>.</p>
+<p>You should have a <code>analysis.Rmd</code> in your project directory. Use that file to work through this tutorial - you will hand in your rendered (“knitted”) <code>html</code>-file as your homework assignment. So, first thing in the <code>YAML</code> header, change the author to your name. You will use this <code>Rmarkdown</code> file to record your answers.</p>
+<p>Before we get started load the <code>R packags</code> we will need to run our analysis (your <code>Rmarkdown</code> has instructions on how to install <code>R packages</code> but this only needs to occur once).</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="restoration-ecology-of-temperature-grasslands.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb7-2"><a href="restoration-ecology-of-temperature-grasslands.html#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(janitor)</span>
+<span id="cb7-3"><a href="restoration-ecology-of-temperature-grasslands.html#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)</span></code></pre></div>
+<div id="temperate-grasslands" class="section level2" number="3.1">
+<h2>
+<span class="header-section-number">3.1</span> Temperate Grasslands<div class="tooltip"><button class="internal-link-btn" onclick="copy_link('temperate-grasslands')" onmouseout="reset_tooltip('temperate-grasslands-tooltip')"><span class="tooltiptext" id="temperate-grasslands-tooltip">Copy link</span><i class="fa fa-link"></i></button></div>
+</h2>
+<p>Before lab you should have used this description of <a href="https://www.ecolandscaping.org/10/designing-ecological-landscapes/north-american-prairie-species-of-new-england/">North American Prairie Species of New England</a> to get a broad overview of wildflowers and grasses typically found in New Engladn Grasslands along with familiarizing yourself with New Hampshire Grasslands specifically by reading the <a href="https://www.wildlife.state.nh.us/nongame/documents/habitat-grasslands.pdf">Habitat Stewardship Series: Grasslands</a> brochure.</p>
+<div id="ques:w-1" class="question">
+<p class="question-begin">
+► Question 1
+</p>
+<div class="question-body">
+<p>
+Briefly outline the main driver(s) of loss of grasslands and describe how this impacts wildlife.
+</p>
+<p class="question-end">
+<span class="fa fa-square-o solution-icon"></span>
+</p>
+</div>
+</div>
+<div id="ques:w-2" class="question">
+<p class="question-begin">
+► Question 2
+</p>
+<div class="question-body">
+<p>
+Create a list of abiotic factors that influence what species are found in grasslands at a local scale. Organize them into larger categories of individual factors, and include metrics or how you might measure them.
+</p>
+<p class="question-end">
+<span class="fa fa-square-o solution-icon"></span>
+</p>
+</div>
+</div>
+</div>
+<div id="study-design" class="section level2" number="3.2">
+<h2>
+<span class="header-section-number">3.2</span> Study Design<div class="tooltip"><button class="internal-link-btn" onclick="copy_link('study-design')" onmouseout="reset_tooltip('study-design-tooltip')"><span class="tooltiptext" id="study-design-tooltip">Copy link</span><i class="fa fa-link"></i></button></div>
+</h2>
+<div id="plot-locations" class="section level3" number="3.2.1">
+<h3>
+<span class="header-section-number">3.2.1</span> Plot locations<div class="tooltip"><button class="internal-link-btn" onclick="copy_link('plot-locations')" onmouseout="reset_tooltip('plot-locations-tooltip')"><span class="tooltiptext" id="plot-locations-tooltip">Copy link</span><i class="fa fa-link"></i></button></div>
+</h3>
+<ul>
+<li>Plot 1: Parking lot behind stadium/hockey arena</li>
+<li>Plot 2: Tennis courts</li>
+<li>Plot 3: Rundlett Hill Rd.</li>
+</ul>
+<div id="ques:w-3" class="question">
+<p class="question-begin">
+► Question 3
+</p>
+<div class="question-body">
+<p>
+Use your notes from our survey day to briefly describe each of the plots and the surrounding location. Be as specific as possible.
+</p>
+<p class="question-end">
+<span class="fa fa-square-o solution-icon"></span>
+</p>
+</div>
+</div>
+</div>
+<div id="plot-preparation" class="section level3" number="3.2.2">
+<h3>
+<span class="header-section-number">3.2.2</span> Plot preparation<div class="tooltip"><button class="internal-link-btn" onclick="copy_link('plot-preparation')" onmouseout="reset_tooltip('plot-preparation-tooltip')"><span class="tooltiptext" id="plot-preparation-tooltip">Copy link</span><i class="fa fa-link"></i></button></div>
+</h3>
+<ul>
+<li>each plot was covered in cardboard secured with lawn staples mid-June 2021</li>
+<li>cardboard removed mid-November 2021</li>
+<li>seeds were mixed with sand for easier dispersal &amp; evenly hand-sown on each plot (Plot 1 different mix from Plot 2 &amp; 3)</li>
+<li>there was no additional plot maintenance (watering, weeding)</li>
+<li>plot 2 was accidentally mowed in early August</li>
+</ul>
+</div>
+<div id="seed-mixes" class="section level3" number="3.2.3">
+<h3>
+<span class="header-section-number">3.2.3</span> Seed mixes<div class="tooltip"><button class="internal-link-btn" onclick="copy_link('seed-mixes')" onmouseout="reset_tooltip('seed-mixes-tooltip')"><span class="tooltiptext" id="seed-mixes-tooltip">Copy link</span><i class="fa fa-link"></i></button></div>
+</h3>
+<p><strong>Plot 1</strong></p>
+<p><em>The New England Showy Wildflower mix includes a selection of native wildflowers and grasses that will mature into a colorful and vibrant native meadow. It is appropriate seed mix for roadsides, commercial landscaping, parks, golf courses, and industrial sites.</em></p>
+<ul>
+<li>Little Bluestem (Schizachyrium scoparium)</li>
+<li>Red Fescue (Festuca rubra)</li>
+<li>Indian Grass (Sorghastrum nutans)</li>
+<li>Partridge Pea (Chamaecrista fasciculata)</li>
+<li>Canada Wild Rye (Elymus canadensis)</li>
+<li>Riverbank Wild Rye (Elymus riparius)</li>
+<li>Butterfly Milkweed (Asclepias tuberosa)</li>
+<li>Black Eyed Susan (Rudbeckia hirta)</li>
+<li>Lance Leaved Coreopsis (Coreopsis lanceolata)</li>
+<li>Ox Eye Sunflower (Heliopsis helianthoides)</li>
+<li>Common Sneezeweed (Helenium autumnale)</li>
+<li>Marsh Blazing Star (Liatris spicata)</li>
+<li>Blue Vervain (Verbena hastata)</li>
+<li>New England Aster (Aster novae-angliae)</li>
+<li>Wild Blue False Indigo (Baptisia australis)</li>
+<li>HollowStem Joe Pye Weed (Eupatorium fistulosum/ Eutrochium fistulosum)</li>
+<li>Early Goldenrod (Solidago juncea)</li>
+</ul>
+<p><strong>Plots 2 &amp; 3</strong></p>
+<p><em>The New England Wildflower mix provides a selection of native wildflowers and grasses to insure that a variety of species will survive in conditions from dry to moist. It is an appropriate seed mix for roadsides, commercial landscaping, parks, golf courses, industrial sites and areas undergoing ecological restoration.</em></p>
+<ul>
+<li>Little Bluestem (Schizachyrium scoparium)</li>
+<li>Red Fescue (Festuca rubra)</li>
+<li>Indian Grass (Sorghastrum nutans)</li>
+<li>Partridge Pea (Chamaecrista fasciculata)</li>
+<li>Canada Wild Rye (Elymus canadensis)</li>
+<li>Virginia Wild Rye (Elymus virginicus)</li>
+<li>Blue Vervain (Verbena hastata)</li>
+<li>Butterfly Milkweed (Asclepias tuberosa)</li>
+<li>Narrowleafed Blue Eyed Grass (Sisyrinchium angustifolium)</li>
+<li>Black Eyed Susan (Rudbeckia hirta)</li>
+<li>New England Aster (Symphyotrichum novae-angliae)</li>
+<li>Spiked Gayfeather/ Marsh Blazing Star (Liatris spicata)</li>
+<li>Starved/Calico Aster (Aster lateriflorus/Symphyotrichum lateriflorum)</li>
+<li>Early Goldenrod (Solidago juncea)</li>
+<li>Hollow-Stem Joe Pye Weed (Eupatorium fistulosum/Eutrochium fistulosum)</li>
+</ul>
+<div id="ques:w-4" class="question">
+<p class="question-begin">
+► Question 4
+</p>
+<div class="question-body">
+<p>
+Briefly compare and contrast the two commercially available wildflower mixes used for this project. Consider which species overlap among the two, differences in composition of grasses vs. flowers etc. Work with a partner or two to briefly look up each species to get an idea of what a landscape with these mixes might look like.
+</p>
+<p class="question-end">
+<span class="fa fa-square-o solution-icon"></span>
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="assessment-of-soil-conditions" class="section level2" number="3.3">
+<h2>
+<span class="header-section-number">3.3</span> Assessment of soil conditions<div class="tooltip"><button class="internal-link-btn" onclick="copy_link('assessment-of-soil-conditions')" onmouseout="reset_tooltip('assessment-of-soil-conditions-tooltip')"><span class="tooltiptext" id="assessment-of-soil-conditions-tooltip">Copy link</span><i class="fa fa-link"></i></button></div>
+</h2>
+<div id="soil-compaction" class="section level3" number="3.3.1">
+<h3>
+<span class="header-section-number">3.3.1</span> Soil compaction<div class="tooltip"><button class="internal-link-btn" onclick="copy_link('soil-compaction')" onmouseout="reset_tooltip('soil-compaction-tooltip')"><span class="tooltiptext" id="soil-compaction-tooltip">Copy link</span><i class="fa fa-link"></i></button></div>
+</h3>
+<p>We measured the soil compaction at each plot using a Dickey-John Soil Compaction Tester to measure the depth to 300 psi at each of the four midpoints of plot edges.</p>
+<div id="ques:w-5" class="question">
+<p class="question-begin">
+► Question 5
+</p>
+<div class="question-body">
+<p>
+Consider why we measured four points instead of e.g. just picking the middle of the plot.
+</p>
+<p class="question-end">
+<span class="fa fa-square-o solution-icon"></span>
+</p>
+</div>
+</div>
+<p>Let’s take a look at our data. First, let’s read in a tab-delimited text file containing the results for each plot to create an object that holds a dataframe.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="restoration-ecology-of-temperature-grasslands.html#cb8-1" aria-hidden="true" tabindex="-1"></a>compaction <span class="ot">&lt;-</span> <span class="fu">read_delim</span>(<span class="st">"data/soil_compaction.tsv"</span>, <span class="at">delim =</span> <span class="st">"</span><span class="sc">\t</span><span class="st">"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb8-2"><a href="restoration-ecology-of-temperature-grasslands.html#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">clean_names</span>()</span></code></pre></div>
+<p>You should now see an object named <code>compaction</code> in your <code>Environment</code> (top right panel). Clicking on it will open it as a tab in the main Viewer panel (top left).</p>
+<div id="ques:w-6" class="question">
+<p class="question-begin">
+► Question 6
+</p>
+<div class="question-body">
+<p>
+Take a quick look at it and describe what data it contains. Use the prompt below as a standardized, formulaic way to describe a table/dataframe.
+</p>
+<p class="question-end">
+<span class="fa fa-square-o solution-icon"></span>
+</p>
+</div>
+</div>
+<p>The data frame consists of xxx columns [list each column and what information it contains.]. Each row is a data point [describe what information each data point contains].</p>
+<div id="ques:w-7" class="question">
+<p class="question-begin">
+► Question 7
+</p>
+<div class="question-body">
+<p>
+You will notice that the number of decimals recorded for the measurements differs among groups. Consider the method and tool(s) you used to measure the depth and then argue what you think an appropriate level of precision would be.
+</p>
+<p class="question-end">
+<span class="fa fa-square-o solution-icon"></span>
+</p>
+</div>
+</div>
+<p>Let’s use R to calculate the mean and standard deviation of the soil compaction for each plot.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="restoration-ecology-of-temperature-grasslands.html#cb9-1" aria-hidden="true" tabindex="-1"></a>compaction <span class="sc">%&gt;%</span></span>
+<span id="cb9-2"><a href="restoration-ecology-of-temperature-grasslands.html#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(plot) <span class="sc">%&gt;%</span></span>
+<span id="cb9-3"><a href="restoration-ecology-of-temperature-grasslands.html#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">mean =</span> <span class="fu">mean</span>(depth_300psi_cm),</span>
+<span id="cb9-4"><a href="restoration-ecology-of-temperature-grasslands.html#cb9-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">std =</span> <span class="fu">sd</span>(depth_300psi_cm))</span></code></pre></div>
+<pre><code>## # A tibble: 3 x 3
+##    plot  mean   std
+##   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+## 1     1 11.9  0.802
+## 2     2  4    0.816
+## 3     3  7.65 4.63</code></pre>
+<div id="ques:w-8" class="question">
+<p class="question-begin">
+► Question 8
+</p>
+<div class="question-body">
+<p>
+Briefly describe your results. A good what to do this is to start with the overall trend/general pattern and then to highlight notable details.
+</p>
+<p class="question-end">
+<span class="fa fa-square-o solution-icon"></span>
+</p>
+</div>
+</div>
+<div id="ques:w-9" class="question">
+<p class="question-begin">
+► Question 9
+</p>
+<div class="question-body">
+<p>
+Now, interpret and discuss your results, consider what might cause differences among plots and what effect this might have on your grassland restoration efforts.
+</p>
+<p class="question-end">
+<span class="fa fa-square-o solution-icon"></span>
+</p>
+</div>
+</div>
+</div>
+<div id="soil-water-holding-capacity" class="section level3" number="3.3.2">
+<h3>
+<span class="header-section-number">3.3.2</span> Soil water holding capacity<div class="tooltip"><button class="internal-link-btn" onclick="copy_link('soil-water-holding-capacity')" onmouseout="reset_tooltip('soil-water-holding-capacity-tooltip')"><span class="tooltiptext" id="soil-water-holding-capacity-tooltip">Copy link</span><i class="fa fa-link"></i></button></div>
+</h3>
+<p>For each plot we collected three to four soil samples at each corner of the plot and pooled them into a single sample to test the water holding capacity. We then took the samples back to the lab and set up two tins per plot. We poked tiny holes in the bottom and then covered that with a coffee filter and recorded the weight without the lid. Next, we filled each sample tin about 3/4 and recorded the weight. We soaked each tin in a water bath overnight and recorded the wet weight before drying each sample for 72 hours and recording the dry weight.</p>
+<div id="ques:w-10" class="question">
+<p class="question-begin">
+► Question 10
+</p>
+<div class="question-body">
+<p>
+Argue why we sampled soil from each corner instead of just taking a single sample e.g. from the middle of the plot.
+</p>
+<p class="question-end">
+<span class="fa fa-square-o solution-icon"></span>
+</p>
+</div>
+</div>
+<p>Let’s pull in our data, we will create a second object consisting of a dataframe in our environment.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="restoration-ecology-of-temperature-grasslands.html#cb11-1" aria-hidden="true" tabindex="-1"></a>water_holding <span class="ot">&lt;-</span> <span class="fu">read_delim</span>(<span class="st">"data/soil_water_retention.tsv"</span>, <span class="at">delim =</span> <span class="st">"</span><span class="sc">\t</span><span class="st">"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb11-2"><a href="restoration-ecology-of-temperature-grasslands.html#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">clean_names</span>()</span></code></pre></div>
+<div id="ques:w-11" class="question">
+<p class="question-begin">
+► Question 11
+</p>
+<div class="question-body">
+<p>
+Briefly describe what your data frame looks like (consider what data is in each column and what each row represents).
+</p>
+<p class="question-end">
+<span class="fa fa-square-o solution-icon"></span>
+</p>
+</div>
+</div>
+<div id="ques:w-12" class="question">
+<p class="question-begin">
+► Question 12
+</p>
+<div class="question-body">
+<p>
+Briefly outline how we can use these measurements to calculate the amount of water that the soil can hold. List each step of the calculation. Keep in mind that thanks to the metric system one gram of water is equivalent to one milliliter.
+</p>
+<p class="question-end">
+<span class="fa fa-square-o solution-icon"></span>
+</p>
+</div>
+</div>
+<p>We can use R to use the data in the existing columns to go through exactly the steps you outlined above.</p>
+<p>For example, we could compare if we added approximately the same amount of soil to each sample tin.</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="restoration-ecology-of-temperature-grasslands.html#cb12-1" aria-hidden="true" tabindex="-1"></a>water_holding <span class="sc">%&gt;%</span></span>
+<span id="cb12-2"><a href="restoration-ecology-of-temperature-grasslands.html#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">soil_added =</span> tinsoil_g <span class="sc">-</span> tinfilter_g)</span></code></pre></div>
+<pre><code>## # A tibble: 6 x 7
+##    plot replicate tinfilter_g tinsoil_g soil_wet_g soil_dried_g soil_added
+##   &lt;dbl&gt; &lt;chr&gt;           &lt;dbl&gt;     &lt;dbl&gt;      &lt;dbl&gt;        &lt;dbl&gt;      &lt;dbl&gt;
+## 1     1 A                26.1     107.        139.         94.2       80.5
+## 2     1 B                26.2     101.        134.         88.4       75.1
+## 3     2 A                26.0     116.        149.        105.        90.2
+## 4     2 B                26.1      96.3       127.         86.3       70.2
+## 5     3 A                26.1     114.        157.         93.9       87.6
+## 6     3 B                26.0     110.        141.         86.5       84.0</code></pre>
+<div id="ques:w-13" class="question">
+<p class="question-begin">
+► Question 13
+</p>
+<div class="question-body">
+<p>
+See if you can use the function mutate to calculate the amount of water per gram of soil for each replicate.
+</p>
+<p class="question-end">
+<span class="fa fa-square-o solution-icon"></span>
+</p>
+</div>
+</div>
+<div class="msmb-solution">
+<p class="solution-begin">
+► Solution<span id="sol-start-1" class="fa fa-plus-square solution-icon clickable" onclick="toggle_visibility('sol-body-1', 'sol-start-1')"></span>
+</p>
+<div id="sol-body-1" class="solution-body" style="display: none;">
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="restoration-ecology-of-temperature-grasslands.html#cb14-1" aria-hidden="true" tabindex="-1"></a>water_holding <span class="sc">%&gt;%</span></span>
+<span id="cb14-2"><a href="restoration-ecology-of-temperature-grasslands.html#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">soil_added =</span> tinsoil_g <span class="sc">-</span> tinfilter_g,</span>
+<span id="cb14-3"><a href="restoration-ecology-of-temperature-grasslands.html#cb14-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">water_held_ml =</span> soil_wet_g<span class="sc">-</span>soil_dried_g,</span>
+<span id="cb14-4"><a href="restoration-ecology-of-temperature-grasslands.html#cb14-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">dry_soil =</span> soil_dried_g<span class="sc">-</span>tinfilter_g,</span>
+<span id="cb14-5"><a href="restoration-ecology-of-temperature-grasslands.html#cb14-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">water_per_dry_g =</span> water_held_ml<span class="sc">/</span>dry_soil)</span></code></pre></div>
+<pre><code>## # A tibble: 6 x 10
+##    plot replicate tinfilter_g tinsoil_g soil_wet_g soil_dried_g soil_added water_held_ml dry_soil water_per_dry_g
+##   &lt;dbl&gt; &lt;chr&gt;           &lt;dbl&gt;     &lt;dbl&gt;      &lt;dbl&gt;        &lt;dbl&gt;      &lt;dbl&gt;         &lt;dbl&gt;    &lt;dbl&gt;           &lt;dbl&gt;
+## 1     1 A                26.1     107.        139.         94.2       80.5          44.7     68.1           0.656
+## 2     1 B                26.2     101.        134.         88.4       75.1          46.0     62.2           0.740
+## 3     2 A                26.0     116.        149.        105.        90.2          43.3     79.2           0.547
+## 4     2 B                26.1      96.3       127.         86.3       70.2          40.6     60.2           0.673
+## 5     3 A                26.1     114.        157.         93.9       87.6          63.1     67.8           0.931
+## 6     3 B                26.0     110.        141.         86.5       84.0          54.1     60.5           0.895</code></pre>
+<table style="width:100%;">
+<caption>
+<span id="tab:unnamed-chunk-22">Table 3.1: </span>Water holding capacity per gram of dry soil for each plot</caption>
+<colgroup>
+<col width="4%">
+<col width="9%">
+<col width="10%">
+<col width="9%">
+<col width="9%">
+<col width="11%">
+<col width="9%">
+<col width="12%">
+<col width="8%">
+<col width="14%">
+</colgroup>
+<thead><tr class="header">
+<th align="right">plot</th>
+<th align="left">replicate</th>
+<th align="right">tinfilter_g</th>
+<th align="right">tinsoil_g</th>
+<th align="right">soil_wet_g</th>
+<th align="right">soil_dried_g</th>
+<th align="right">soil_added</th>
+<th align="right">water_held_ml</th>
+<th align="right">dry_soil</th>
+<th align="right">water_per_dry_g</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="right">1</td>
+<td align="left">A</td>
+<td align="right">26.11</td>
+<td align="right">106.60</td>
+<td align="right">138.91</td>
+<td align="right">94.21</td>
+<td align="right">80.49</td>
+<td align="right">44.70</td>
+<td align="right">68.10</td>
+<td align="right">0.6563877</td>
+</tr>
+<tr class="even">
+<td align="right">1</td>
+<td align="left">B</td>
+<td align="right">26.20</td>
+<td align="right">101.27</td>
+<td align="right">134.47</td>
+<td align="right">88.42</td>
+<td align="right">75.07</td>
+<td align="right">46.05</td>
+<td align="right">62.22</td>
+<td align="right">0.7401157</td>
+</tr>
+<tr class="odd">
+<td align="right">2</td>
+<td align="left">A</td>
+<td align="right">26.04</td>
+<td align="right">116.19</td>
+<td align="right">148.60</td>
+<td align="right">105.27</td>
+<td align="right">90.15</td>
+<td align="right">43.33</td>
+<td align="right">79.23</td>
+<td align="right">0.5468888</td>
+</tr>
+<tr class="even">
+<td align="right">2</td>
+<td align="left">B</td>
+<td align="right">26.08</td>
+<td align="right">96.30</td>
+<td align="right">126.84</td>
+<td align="right">86.29</td>
+<td align="right">70.22</td>
+<td align="right">40.55</td>
+<td align="right">60.21</td>
+<td align="right">0.6734762</td>
+</tr>
+<tr class="odd">
+<td align="right">3</td>
+<td align="left">A</td>
+<td align="right">26.10</td>
+<td align="right">113.65</td>
+<td align="right">156.97</td>
+<td align="right">93.89</td>
+<td align="right">87.55</td>
+<td align="right">63.08</td>
+<td align="right">67.79</td>
+<td align="right">0.9305207</td>
+</tr>
+<tr class="even">
+<td align="right">3</td>
+<td align="left">B</td>
+<td align="right">26.03</td>
+<td align="right">109.99</td>
+<td align="right">140.61</td>
+<td align="right">86.50</td>
+<td align="right">83.96</td>
+<td align="right">54.11</td>
+<td align="right">60.47</td>
+<td align="right">0.8948239</td>
+</tr>
+</tbody>
+</table>
+<p class="solution-end">
+<span class="fa fa-square-o solution-icon"></span>
+</p>
+</div>
+</div>
+<div id="ques:w-14" class="question">
+<p class="question-begin">
+► Question 14
+</p>
+<div class="question-body">
+<p>
+See if you can use the functions group_by and summarize to calculate the mean and standard deviation of the amount of water per gram of soil for each plot.
+</p>
+<p class="question-end">
+<span class="fa fa-square-o solution-icon"></span>
+</p>
+</div>
+</div>
+<div class="msmb-solution">
+<p class="solution-begin">
+► Solution<span id="sol-start-2" class="fa fa-plus-square solution-icon clickable" onclick="toggle_visibility('sol-body-2', 'sol-start-2')"></span>
+</p>
+<div id="sol-body-2" class="solution-body" style="display: none;">
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="restoration-ecology-of-temperature-grasslands.html#cb16-1" aria-hidden="true" tabindex="-1"></a>water_holding <span class="sc">%&gt;%</span></span>
+<span id="cb16-2"><a href="restoration-ecology-of-temperature-grasslands.html#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">soil_added =</span> tinsoil_g <span class="sc">-</span> tinfilter_g,</span>
+<span id="cb16-3"><a href="restoration-ecology-of-temperature-grasslands.html#cb16-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">water_held_ml =</span> soil_wet_g<span class="sc">-</span>soil_dried_g,</span>
+<span id="cb16-4"><a href="restoration-ecology-of-temperature-grasslands.html#cb16-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">dry_soil =</span> soil_dried_g<span class="sc">-</span>tinfilter_g,</span>
+<span id="cb16-5"><a href="restoration-ecology-of-temperature-grasslands.html#cb16-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">water_per_dry_g =</span> water_held_ml<span class="sc">/</span>dry_soil) <span class="sc">%&gt;%</span></span>
+<span id="cb16-6"><a href="restoration-ecology-of-temperature-grasslands.html#cb16-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(plot) <span class="sc">%&gt;%</span></span>
+<span id="cb16-7"><a href="restoration-ecology-of-temperature-grasslands.html#cb16-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">mean =</span> <span class="fu">mean</span>(water_per_dry_g),</span>
+<span id="cb16-8"><a href="restoration-ecology-of-temperature-grasslands.html#cb16-8" aria-hidden="true" tabindex="-1"></a>            <span class="at">std =</span> <span class="fu">sd</span>(water_per_dry_g))</span></code></pre></div>
+<pre><code>## # A tibble: 3 x 3
+##    plot  mean    std
+##   &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;
+## 1     1 0.698 0.0592
+## 2     2 0.610 0.0895
+## 3     3 0.913 0.0252</code></pre>
+<p><!--
+<caption>--><span class="marginnote shownote"><span id="tab:unnamed-chunk-24">Table 3.2: </span>Mean and standard deviation of water holding capacity per gram of dry soil for each plot</span><!--</caption>--></p>
+<table>
+<thead><tr class="header">
+<th align="right">plot</th>
+<th align="right">mean</th>
+<th align="right">std</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="right">1</td>
+<td align="right">0.6982517</td>
+<td align="right">0.0592047</td>
+</tr>
+<tr class="even">
+<td align="right">2</td>
+<td align="right">0.6101825</td>
+<td align="right">0.0895108</td>
+</tr>
+<tr class="odd">
+<td align="right">3</td>
+<td align="right">0.9126723</td>
+<td align="right">0.0252415</td>
+</tr>
+</tbody>
+</table>
+<p class="solution-end">
+<span class="fa fa-square-o solution-icon"></span>
+</p>
+</div>
+</div>
+<div id="ques:w-15" class="question">
+<p class="question-begin">
+► Question 15
+</p>
+<div class="question-body">
+<p>
+Briefly describe your results.
+</p>
+<p class="question-end">
+<span class="fa fa-square-o solution-icon"></span>
+</p>
+</div>
+</div>
+<div id="ques:w-16" class="question">
+<p class="question-begin">
+► Question 16
+</p>
+<div class="question-body">
+<p>
+Briefly evaluate what you think these results might mean for differences among plots for our restoration ecology experiment.
+</p>
+<p class="question-end">
+<span class="fa fa-square-o solution-icon"></span>
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="plant-survey" class="section level2" number="3.4">
+<h2>
+<span class="header-section-number">3.4</span> Plant survey<div class="tooltip"><button class="internal-link-btn" onclick="copy_link('plant-survey')" onmouseout="reset_tooltip('plant-survey-tooltip')"><span class="tooltiptext" id="plant-survey-tooltip">Copy link</span><i class="fa fa-link"></i></button></div>
+</h2>
+<div id="walk-through" class="section level3" number="3.4.1">
+<h3>
+<span class="header-section-number">3.4.1</span> Walk-through<div class="tooltip"><button class="internal-link-btn" onclick="copy_link('walk-through')" onmouseout="reset_tooltip('walk-through-tooltip')"><span class="tooltiptext" id="walk-through-tooltip">Copy link</span><i class="fa fa-link"></i></button></div>
+</h3>
+<p>Each group did a systematic walkthrough of plots 1 and 3 to record all the species present.</p>
+<div id="ques:w-17" class="question">
+<p class="question-begin">
+► Question 17
+</p>
+<div class="question-body">
+<p>
+Describe the difference between species richness and species diversity to determine if this is an assessment of species richness or diversity.*
+</p>
+<p class="question-end">
+<span class="fa fa-square-o solution-icon"></span>
+</p>
+</div>
+</div>
+<p>Let’s pull in our list of species recorded by each group.</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="restoration-ecology-of-temperature-grasslands.html#cb18-1" aria-hidden="true" tabindex="-1"></a>survey <span class="ot">&lt;-</span> <span class="fu">read_delim</span>(<span class="st">"data/species_survey.tsv"</span>, <span class="at">delim =</span> <span class="st">"</span><span class="sc">\t</span><span class="st">"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb18-2"><a href="restoration-ecology-of-temperature-grasslands.html#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">clean_names</span>()</span></code></pre></div>
+<div id="ques:w-18" class="question">
+<p class="question-begin">
+► Question 18
+</p>
+<div class="question-body">
+<p>
+Take a quick look at the dataframe and describe the contents.
+</p>
+<p class="question-end">
+<span class="fa fa-square-o solution-icon"></span>
+</p>
+</div>
+</div>
+<p>Let’s start by looking at plot 1.</p>
+<div id="ques:w-19" class="question">
+<p class="question-begin">
+► Question 19
+</p>
+<div class="question-body">
+<p>
+Give a brief description of your overall impression of plot 1 in terms of the vegetation. Consider things like distribution of plants, grasses vs flowers etc.
+</p>
+<p class="question-end">
+<span class="fa fa-square-o solution-icon"></span>
+</p>
+</div>
+</div>
+<p>We’ll assume that multiple sets of eyes are better than one and just collapse the lists from individual groups into a single one, we will also remove the unknown plants.</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="restoration-ecology-of-temperature-grasslands.html#cb19-1" aria-hidden="true" tabindex="-1"></a>survey <span class="sc">%&gt;%</span></span>
+<span id="cb19-2"><a href="restoration-ecology-of-temperature-grasslands.html#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(plot <span class="sc">==</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb19-3"><a href="restoration-ecology-of-temperature-grasslands.html#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>(species, <span class="at">.keep_all =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb19-4"><a href="restoration-ecology-of-temperature-grasslands.html#cb19-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(plot, species) <span class="sc">%&gt;%</span></span>
+<span id="cb19-5"><a href="restoration-ecology-of-temperature-grasslands.html#cb19-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span>species <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"plant A"</span>, <span class="st">"plant B"</span>, <span class="st">"Plant C"</span>, <span class="st">"Plant D"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb19-6"><a href="restoration-ecology-of-temperature-grasslands.html#cb19-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(species)</span></code></pre></div>
+<pre><code>## # A tibble: 12 x 2
+##     plot species           
+##    &lt;dbl&gt; &lt;chr&gt;             
+##  1     1 Alsike Clover     
+##  2     1 Black Eyed Susan  
+##  3     1 Fireweed          
+##  4     1 Grass             
+##  5     1 Horseweed         
+##  6     1 Kentucky Bluegrass
+##  7     1 Partridge Pea     
+##  8     1 Red Clover        
+##  9     1 Red Fescue        
+## 10     1 Virginia Wild rye 
+## 11     1 Wild Carrot       
+## 12     1 Yellow Wood Sworl</code></pre>
+<div id="ques:w-20" class="question">
+<p class="question-begin">
+► Question 20
+</p>
+<div class="question-body">
+<p>
+Compare the list of observed species to the list of species that were in the seed mix. Take note of things like the proportion of seeded species that you actually observed, the proportion of species that should be there based on what was planted and which ones are not.
+</p>
+<p class="question-end">
+<span class="fa fa-square-o solution-icon"></span>
+</p>
+</div>
+</div>
+<p>Let’s do the same thing for plot 3.</p>
+<div id="ques:w-21" class="question">
+<p class="question-begin">
+► Question 21
+</p>
+<div class="question-body">
+<p>
+Give a brief description of your overall impression of plot 1 in terms of the vegetation. Consider things like distribution of plants, grasses vs flowers etc.
+</p>
+<p class="question-end">
+<span class="fa fa-square-o solution-icon"></span>
+</p>
+</div>
+</div>
+<p>Now, let’s generate our species list.</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="restoration-ecology-of-temperature-grasslands.html#cb21-1" aria-hidden="true" tabindex="-1"></a>survey <span class="sc">%&gt;%</span></span>
+<span id="cb21-2"><a href="restoration-ecology-of-temperature-grasslands.html#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(plot <span class="sc">==</span> <span class="dv">3</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb21-3"><a href="restoration-ecology-of-temperature-grasslands.html#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>(species, <span class="at">.keep_all =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb21-4"><a href="restoration-ecology-of-temperature-grasslands.html#cb21-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(plot, species) <span class="sc">%&gt;%</span></span>
+<span id="cb21-5"><a href="restoration-ecology-of-temperature-grasslands.html#cb21-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span>species <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"plant A"</span>, <span class="st">"plant B"</span>, <span class="st">"Plant C"</span>, <span class="st">"Plant D"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb21-6"><a href="restoration-ecology-of-temperature-grasslands.html#cb21-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(species)</span></code></pre></div>
+<pre><code>## # A tibble: 12 x 2
+##     plot species          
+##    &lt;dbl&gt; &lt;chr&gt;            
+##  1     3 Alsike Clover    
+##  2     3 Black Eyed Susan 
+##  3     3 Common Ragweed   
+##  4     3 Grass            
+##  5     3 Hedge Parsley    
+##  6     3 Horseweed        
+##  7     3 Indian Grass     
+##  8     3 Partridge Pea    
+##  9     3 Red Fescue       
+## 10     3 Trifolium sp.    
+## 11     3 Virginia Wild rye
+## 12     3 Wild Carrot</code></pre>
+<div id="ques:w-22" class="question">
+<p class="question-begin">
+► Question 22
+</p>
+<div class="question-body">
+<p>
+Compare the list of observed species to the list of species that were in the seed mix. Take note of things like the proportion of seeded species that you actually observed, the proportion of species that should be there based on what was planted and which ones are not.
+</p>
+<p class="question-end">
+<span class="fa fa-square-o solution-icon"></span>
+</p>
+</div>
+</div>
+<div id="ques:w-23" class="question">
+<p class="question-begin">
+► Question 23
+</p>
+<div class="question-body">
+<p>
+Compare and contrast your results for plots 1 and 3. Take note of patterns that they share in common vs distinct differences. Base this on both your general observations and your results of the walk-through surey.
+</p>
+<p class="question-end">
+<span class="fa fa-square-o solution-icon"></span>
+</p>
+</div>
+</div>
+</div>
+<div id="quadrat-survey" class="section level3" number="3.4.2">
+<h3>
+<span class="header-section-number">3.4.2</span> Quadrat survey<div class="tooltip"><button class="internal-link-btn" onclick="copy_link('quadrat-survey')" onmouseout="reset_tooltip('quadrat-survey-tooltip')"><span class="tooltiptext" id="quadrat-survey-tooltip">Copy link</span><i class="fa fa-link"></i></button></div>
+</h3>
+<p>Our second method to survey the vegetation was using 0.5 x 0.5m quadrats. For all wildflowers on the species list we recorded the number of occurrences within the quadrat. For all species and ground cover we also estimated the %-cover.</p>
+<div id="ques:w-24" class="question">
+<p class="question-begin">
+► Question 24
+</p>
+<div class="question-body">
+<p>
+Compare and contrast the methods of using a walk-through versus quadrats, consider pros and cons of both of them, what metrics can be calculated, along with implicit assumptions that are made.
+</p>
+<p class="question-end">
+<span class="fa fa-square-o solution-icon"></span>
+</p>
+</div>
+</div>
+<div id="ques:w-25" class="question">
+<p class="question-begin">
+► Question 25
+</p>
+<div class="question-body">
+<p>
+Argue for which plot you woul expect to see a higher degree of variability among quadrats.
+</p>
+<p class="question-end">
+<span class="fa fa-square-o solution-icon"></span>
+</p>
+</div>
+</div>
+<p>Let’s pull in those results.</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="restoration-ecology-of-temperature-grasslands.html#cb23-1" aria-hidden="true" tabindex="-1"></a>quadrat <span class="ot">&lt;-</span> <span class="fu">read_delim</span>(<span class="st">"data/survey_quadrat.tsv"</span>, <span class="at">delim =</span> <span class="st">"</span><span class="sc">\t</span><span class="st">"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb23-2"><a href="restoration-ecology-of-temperature-grasslands.html#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">clean_names</span>()</span></code></pre></div>
+<div id="ques:w-26" class="question">
+<p class="question-begin">
+► Question 26
+</p>
+<div class="question-body">
+<p>
+Take a look at the dataframe and describe the information it contains. This data set has not been cleaned up the same way that the other dataframes were. Consider what could cause problems for analysis.
+</p>
+<p class="question-end">
+<span class="fa fa-square-o solution-icon"></span>
+</p>
+</div>
+</div>
+<div id="ques:w-27" class="question">
+<p class="question-begin">
+► Question 27
+</p>
+<div class="question-body">
+<p>
+Generate a few questions we can answer using this data set and the specific steps we would need to take to analyze them.
+</p>
+<p class="question-end">
+<span class="fa fa-square-o solution-icon"></span>
+</p>
+</div>
+</div>
+<div class="msmb-solution">
+<p class="solution-begin">
+► Solution<span id="sol-start-3" class="fa fa-plus-square solution-icon clickable" onclick="toggle_visibility('sol-body-3', 'sol-start-3')"></span>
+</p>
+<div id="sol-body-3" class="solution-body" style="display: none;">
+<p class="solution-end">
+<span class="fa fa-square-o solution-icon"></span>
+</p>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+<p style="text-align: center;">
+<a href="project-management-and-rmarkdown-basics.html"><button class="btn btn-default">Previous</button></a>
+<a href="references.html"><button class="btn btn-default">Next</button></a>
+</p>
+<p class="build-date">Page built: 
+2022-09-21
+ using 
+R version 4.1.2 (2021-11-01)
+</p>
+</div>
+</div>
+
+
+
+</body>
+</html>
