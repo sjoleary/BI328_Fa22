@@ -1,5 +1,5 @@
-tab:unnamed-chunk-22
-tab:unnamed-chunk-24
+tab:unnamed-chunk-15
+tab:unnamed-chunk-17
 installing-rrstudio
 install-set-up-r-and-rstudio-on-your-computer
 windows
@@ -35,5 +35,3 @@ soil-water-holding-capacity
 plant-survey
 walk-through
 quadrat-survey
-tab:unnamed-chunk-8
-tab:unnamed-chunk-10

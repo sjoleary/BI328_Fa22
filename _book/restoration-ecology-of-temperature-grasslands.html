@@ -177,12 +177,12 @@ function reset_tooltip(id) {
 </ul>
 <p>For each of our modules we will have a project-folder with an <code>Rproject</code>, <code>*.Rmd</code>-files, and sub-directories for data, scripts, and results as described in our <code>Rproject</code> Tutorial. You should create a directory on your Desktop or Documents folder on your laptop (name it something like <code>BI328</code>) as a home directory for all of our project folders this semester.</p>
 <p>Download the <a href="https://drive.google.com/drive/folders/1cTRIbAPuFviYtf4mSnPkqzU_v2LFIQtq?usp=sharing">wildflowers</a> project folder. Once you have downloaded it, unzip the project directory into your <code>BI449</code> directory. You can open the <code>Rproj</code> for this module either by double clicking on it which will launch <code>Rstudio</code> or by opening <code>Rstudio</code> and then using <code>File &gt; Open Project</code> or by clicking on the <code>Rproject</code> icon in the top right of your program window and selecting <code>Open Project</code>.</p>
-<p>Once you have opened a project you should see the project name in the top right corner<label for="tufte-sn-1" class="margin-toggle sidenote-number">1</label><input type="checkbox" id="tufte-sn-1" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">1</span> Pro tip: If you run into issues where an Rmarkdown won’t render or file paths aren’t working (especially if things were working previously) one of your first steps should be to double check that the correct <code>Rproj</code> is loaded.</span>.</p>
+<p>Once you have opened a project you should see the project name in the top right corner<label for="tufte-sn-13" class="margin-toggle sidenote-number">13</label><input type="checkbox" id="tufte-sn-13" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">13</span> Pro tip: If you run into issues where an Rmarkdown won’t render or file paths aren’t working (especially if things were working previously) one of your first steps should be to double check that the correct <code>Rproj</code> is loaded.</span>.</p>
 <p>You should have a <code>analysis.Rmd</code> in your project directory. Use that file to work through this tutorial - you will hand in your rendered (“knitted”) <code>html</code>-file as your homework assignment. So, first thing in the <code>YAML</code> header, change the author to your name. You will use this <code>Rmarkdown</code> file to record your answers.</p>
 <p>Before we get started load the <code>R packags</code> we will need to run our analysis (your <code>Rmarkdown</code> has instructions on how to install <code>R packages</code> but this only needs to occur once).</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="restoration-ecology-of-temperature-grasslands.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-2"><a href="restoration-ecology-of-temperature-grasslands.html#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(janitor)</span>
-<span id="cb1-3"><a href="restoration-ecology-of-temperature-grasslands.html#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="restoration-ecology-of-temperature-grasslands.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb7-2"><a href="restoration-ecology-of-temperature-grasslands.html#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(janitor)</span>
+<span id="cb7-3"><a href="restoration-ecology-of-temperature-grasslands.html#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)</span></code></pre></div>
 <div id="temperate-grasslands" class="section level2" number="3.1">
 <h2>
 <span class="header-section-number">3.1</span> Temperate Grasslands<div class="tooltip"><button class="internal-link-btn" onclick="copy_link('temperate-grasslands')" onmouseout="reset_tooltip('temperate-grasslands-tooltip')"><span class="tooltiptext" id="temperate-grasslands-tooltip">Copy link</span><i class="fa fa-link"></i></button></div>
@@ -336,8 +336,8 @@ Consider why we measured four points instead of e.g. just picking the middle of
 </div>
 </div>
 <p>Let’s take a look at our data. First, let’s read in a tab-delimited text file containing the results for each plot to create an object that holds a dataframe.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="restoration-ecology-of-temperature-grasslands.html#cb2-1" aria-hidden="true" tabindex="-1"></a>compaction <span class="ot">&lt;-</span> <span class="fu">read_delim</span>(<span class="st">"data/soil_compaction.tsv"</span>, <span class="at">delim =</span> <span class="st">"</span><span class="sc">\t</span><span class="st">"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb2-2"><a href="restoration-ecology-of-temperature-grasslands.html#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">clean_names</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="restoration-ecology-of-temperature-grasslands.html#cb8-1" aria-hidden="true" tabindex="-1"></a>compaction <span class="ot">&lt;-</span> <span class="fu">read_delim</span>(<span class="st">"data/soil_compaction.tsv"</span>, <span class="at">delim =</span> <span class="st">"</span><span class="sc">\t</span><span class="st">"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb8-2"><a href="restoration-ecology-of-temperature-grasslands.html#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">clean_names</span>()</span></code></pre></div>
 <p>You should now see an object named <code>compaction</code> in your <code>Environment</code> (top right panel). Clicking on it will open it as a tab in the main Viewer panel (top left).</p>
 <div id="ques:w-6" class="question">
 <p class="question-begin">
@@ -367,10 +367,10 @@ You will notice that the number of decimals recorded for the measurements differ
 </div>
 </div>
 <p>Let’s use R to calculate the mean and standard deviation of the soil compaction for each plot.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="restoration-ecology-of-temperature-grasslands.html#cb3-1" aria-hidden="true" tabindex="-1"></a>compaction <span class="sc">%&gt;%</span></span>
-<span id="cb3-2"><a href="restoration-ecology-of-temperature-grasslands.html#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(plot) <span class="sc">%&gt;%</span></span>
-<span id="cb3-3"><a href="restoration-ecology-of-temperature-grasslands.html#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">mean =</span> <span class="fu">mean</span>(depth_300psi_cm),</span>
-<span id="cb3-4"><a href="restoration-ecology-of-temperature-grasslands.html#cb3-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">std =</span> <span class="fu">sd</span>(depth_300psi_cm))</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="restoration-ecology-of-temperature-grasslands.html#cb9-1" aria-hidden="true" tabindex="-1"></a>compaction <span class="sc">%&gt;%</span></span>
+<span id="cb9-2"><a href="restoration-ecology-of-temperature-grasslands.html#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(plot) <span class="sc">%&gt;%</span></span>
+<span id="cb9-3"><a href="restoration-ecology-of-temperature-grasslands.html#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">mean =</span> <span class="fu">mean</span>(depth_300psi_cm),</span>
+<span id="cb9-4"><a href="restoration-ecology-of-temperature-grasslands.html#cb9-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">std =</span> <span class="fu">sd</span>(depth_300psi_cm))</span></code></pre></div>
 <pre><code>## # A tibble: 3 x 3
 ##    plot  mean   std
 ##   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
@@ -423,8 +423,8 @@ Argue why we sampled soil from each corner instead of just taking a single sampl
 </div>
 </div>
 <p>Let’s pull in our data, we will create a second object consisting of a dataframe in our environment.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="restoration-ecology-of-temperature-grasslands.html#cb5-1" aria-hidden="true" tabindex="-1"></a>water_holding <span class="ot">&lt;-</span> <span class="fu">read_delim</span>(<span class="st">"data/soil_water_retention.tsv"</span>, <span class="at">delim =</span> <span class="st">"</span><span class="sc">\t</span><span class="st">"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb5-2"><a href="restoration-ecology-of-temperature-grasslands.html#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">clean_names</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="restoration-ecology-of-temperature-grasslands.html#cb11-1" aria-hidden="true" tabindex="-1"></a>water_holding <span class="ot">&lt;-</span> <span class="fu">read_delim</span>(<span class="st">"data/soil_water_retention.tsv"</span>, <span class="at">delim =</span> <span class="st">"</span><span class="sc">\t</span><span class="st">"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb11-2"><a href="restoration-ecology-of-temperature-grasslands.html#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">clean_names</span>()</span></code></pre></div>
 <div id="ques:w-11" class="question">
 <p class="question-begin">
 ► Question 11
@@ -453,8 +453,8 @@ Briefly outline how we can use these measurements to calculate the amount of wat
 </div>
 <p>We can use R to use the data in the existing columns to go through exactly the steps you outlined above.</p>
 <p>For example, we could compare if we added approximately the same amount of soil to each sample tin.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="restoration-ecology-of-temperature-grasslands.html#cb6-1" aria-hidden="true" tabindex="-1"></a>water_holding <span class="sc">%&gt;%</span></span>
-<span id="cb6-2"><a href="restoration-ecology-of-temperature-grasslands.html#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">soil_added =</span> tinsoil_g <span class="sc">-</span> tinfilter_g)</span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="restoration-ecology-of-temperature-grasslands.html#cb12-1" aria-hidden="true" tabindex="-1"></a>water_holding <span class="sc">%&gt;%</span></span>
+<span id="cb12-2"><a href="restoration-ecology-of-temperature-grasslands.html#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">soil_added =</span> tinsoil_g <span class="sc">-</span> tinfilter_g)</span></code></pre></div>
 <pre><code>## # A tibble: 6 x 7
 ##    plot replicate tinfilter_g tinsoil_g soil_wet_g soil_dried_g soil_added
 ##   &lt;dbl&gt; &lt;chr&gt;           &lt;dbl&gt;     &lt;dbl&gt;      &lt;dbl&gt;        &lt;dbl&gt;      &lt;dbl&gt;
@@ -482,25 +482,23 @@ See if you can use the function mutate to calculate the amount of water per gram
 ► Solution<span id="sol-start-1" class="fa fa-plus-square solution-icon clickable" onclick="toggle_visibility('sol-body-1', 'sol-start-1')"></span>
 </p>
 <div id="sol-body-1" class="solution-body" style="display: none;">
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="restoration-ecology-of-temperature-grasslands.html#cb8-1" aria-hidden="true" tabindex="-1"></a>water_holding <span class="sc">%&gt;%</span></span>
-<span id="cb8-2"><a href="restoration-ecology-of-temperature-grasslands.html#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">soil_added =</span> tinsoil_g <span class="sc">-</span> tinfilter_g,</span>
-<span id="cb8-3"><a href="restoration-ecology-of-temperature-grasslands.html#cb8-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">water_held_ml =</span> soil_wet_g<span class="sc">-</span>soil_dried_g,</span>
-<span id="cb8-4"><a href="restoration-ecology-of-temperature-grasslands.html#cb8-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">dry_soil =</span> soil_dried_g<span class="sc">-</span>tinfilter_g,</span>
-<span id="cb8-5"><a href="restoration-ecology-of-temperature-grasslands.html#cb8-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">water_per_dry_g =</span> water_held_ml<span class="sc">/</span>dry_soil)</span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="restoration-ecology-of-temperature-grasslands.html#cb14-1" aria-hidden="true" tabindex="-1"></a>water_holding <span class="sc">%&gt;%</span></span>
+<span id="cb14-2"><a href="restoration-ecology-of-temperature-grasslands.html#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">soil_added =</span> tinsoil_g <span class="sc">-</span> tinfilter_g,</span>
+<span id="cb14-3"><a href="restoration-ecology-of-temperature-grasslands.html#cb14-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">water_held_ml =</span> soil_wet_g<span class="sc">-</span>soil_dried_g,</span>
+<span id="cb14-4"><a href="restoration-ecology-of-temperature-grasslands.html#cb14-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">dry_soil =</span> soil_dried_g<span class="sc">-</span>tinfilter_g,</span>
+<span id="cb14-5"><a href="restoration-ecology-of-temperature-grasslands.html#cb14-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">water_per_dry_g =</span> water_held_ml<span class="sc">/</span>dry_soil)</span></code></pre></div>
 <pre><code>## # A tibble: 6 x 10
-##    plot replicate tinfilter_g tinsoil_g soil_wet_g soil_dried_g soil_added
-##   &lt;dbl&gt; &lt;chr&gt;           &lt;dbl&gt;     &lt;dbl&gt;      &lt;dbl&gt;        &lt;dbl&gt;      &lt;dbl&gt;
-## 1     1 A                26.1     107.        139.         94.2       80.5
-## 2     1 B                26.2     101.        134.         88.4       75.1
-## 3     2 A                26.0     116.        149.        105.        90.2
-## 4     2 B                26.1      96.3       127.         86.3       70.2
-## 5     3 A                26.1     114.        157.         93.9       87.6
-## 6     3 B                26.0     110.        141.         86.5       84.0
-## # ... with 3 more variables: water_held_ml &lt;dbl&gt;, dry_soil &lt;dbl&gt;,
-## #   water_per_dry_g &lt;dbl&gt;</code></pre>
+##    plot replicate tinfilter_g tinsoil_g soil_wet_g soil_dried_g soil_added water_held_ml dry_soil water_per_dry_g
+##   &lt;dbl&gt; &lt;chr&gt;           &lt;dbl&gt;     &lt;dbl&gt;      &lt;dbl&gt;        &lt;dbl&gt;      &lt;dbl&gt;         &lt;dbl&gt;    &lt;dbl&gt;           &lt;dbl&gt;
+## 1     1 A                26.1     107.        139.         94.2       80.5          44.7     68.1           0.656
+## 2     1 B                26.2     101.        134.         88.4       75.1          46.0     62.2           0.740
+## 3     2 A                26.0     116.        149.        105.        90.2          43.3     79.2           0.547
+## 4     2 B                26.1      96.3       127.         86.3       70.2          40.6     60.2           0.673
+## 5     3 A                26.1     114.        157.         93.9       87.6          63.1     67.8           0.931
+## 6     3 B                26.0     110.        141.         86.5       84.0          54.1     60.5           0.895</code></pre>
 <table style="width:100%;">
 <caption>
-<span id="tab:unnamed-chunk-8">Table 3.1: </span>Water holding capacity per gram of dry soil for each plot</caption>
+<span id="tab:unnamed-chunk-15">Table 3.1: </span>Water holding capacity per gram of dry soil for each plot</caption>
 <colgroup>
 <col width="4%">
 <col width="9%">
@@ -623,14 +621,14 @@ See if you can use the functions group_by and summarize to calculate the mean an
 ► Solution<span id="sol-start-2" class="fa fa-plus-square solution-icon clickable" onclick="toggle_visibility('sol-body-2', 'sol-start-2')"></span>
 </p>
 <div id="sol-body-2" class="solution-body" style="display: none;">
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="restoration-ecology-of-temperature-grasslands.html#cb10-1" aria-hidden="true" tabindex="-1"></a>water_holding <span class="sc">%&gt;%</span></span>
-<span id="cb10-2"><a href="restoration-ecology-of-temperature-grasslands.html#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">soil_added =</span> tinsoil_g <span class="sc">-</span> tinfilter_g,</span>
-<span id="cb10-3"><a href="restoration-ecology-of-temperature-grasslands.html#cb10-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">water_held_ml =</span> soil_wet_g<span class="sc">-</span>soil_dried_g,</span>
-<span id="cb10-4"><a href="restoration-ecology-of-temperature-grasslands.html#cb10-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">dry_soil =</span> soil_dried_g<span class="sc">-</span>tinfilter_g,</span>
-<span id="cb10-5"><a href="restoration-ecology-of-temperature-grasslands.html#cb10-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">water_per_dry_g =</span> water_held_ml<span class="sc">/</span>dry_soil) <span class="sc">%&gt;%</span></span>
-<span id="cb10-6"><a href="restoration-ecology-of-temperature-grasslands.html#cb10-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(plot) <span class="sc">%&gt;%</span></span>
-<span id="cb10-7"><a href="restoration-ecology-of-temperature-grasslands.html#cb10-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">mean =</span> <span class="fu">mean</span>(water_per_dry_g),</span>
-<span id="cb10-8"><a href="restoration-ecology-of-temperature-grasslands.html#cb10-8" aria-hidden="true" tabindex="-1"></a>            <span class="at">std =</span> <span class="fu">sd</span>(water_per_dry_g))</span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="restoration-ecology-of-temperature-grasslands.html#cb16-1" aria-hidden="true" tabindex="-1"></a>water_holding <span class="sc">%&gt;%</span></span>
+<span id="cb16-2"><a href="restoration-ecology-of-temperature-grasslands.html#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">soil_added =</span> tinsoil_g <span class="sc">-</span> tinfilter_g,</span>
+<span id="cb16-3"><a href="restoration-ecology-of-temperature-grasslands.html#cb16-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">water_held_ml =</span> soil_wet_g<span class="sc">-</span>soil_dried_g,</span>
+<span id="cb16-4"><a href="restoration-ecology-of-temperature-grasslands.html#cb16-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">dry_soil =</span> soil_dried_g<span class="sc">-</span>tinfilter_g,</span>
+<span id="cb16-5"><a href="restoration-ecology-of-temperature-grasslands.html#cb16-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">water_per_dry_g =</span> water_held_ml<span class="sc">/</span>dry_soil) <span class="sc">%&gt;%</span></span>
+<span id="cb16-6"><a href="restoration-ecology-of-temperature-grasslands.html#cb16-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(plot) <span class="sc">%&gt;%</span></span>
+<span id="cb16-7"><a href="restoration-ecology-of-temperature-grasslands.html#cb16-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">mean =</span> <span class="fu">mean</span>(water_per_dry_g),</span>
+<span id="cb16-8"><a href="restoration-ecology-of-temperature-grasslands.html#cb16-8" aria-hidden="true" tabindex="-1"></a>            <span class="at">std =</span> <span class="fu">sd</span>(water_per_dry_g))</span></code></pre></div>
 <pre><code>## # A tibble: 3 x 3
 ##    plot  mean    std
 ##   &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;
@@ -638,7 +636,7 @@ See if you can use the functions group_by and summarize to calculate the mean an
 ## 2     2 0.610 0.0895
 ## 3     3 0.913 0.0252</code></pre>
 <p><!--
-<caption>--><span class="marginnote shownote"><span id="tab:unnamed-chunk-10">Table 3.2: </span>Mean and standard deviation of water holding capacity per gram of dry soil for each plot</span><!--</caption>--></p>
+<caption>--><span class="marginnote shownote"><span id="tab:unnamed-chunk-17">Table 3.2: </span>Mean and standard deviation of water holding capacity per gram of dry soil for each plot</span><!--</caption>--></p>
 <table>
 <thead><tr class="header">
 <th align="right">plot</th>
@@ -719,8 +717,8 @@ Describe the difference between species richness and species diversity to determ
 </div>
 </div>
 <p>Let’s pull in our list of species recorded by each group.</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="restoration-ecology-of-temperature-grasslands.html#cb12-1" aria-hidden="true" tabindex="-1"></a>survey <span class="ot">&lt;-</span> <span class="fu">read_delim</span>(<span class="st">"data/species_survey.tsv"</span>, <span class="at">delim =</span> <span class="st">"</span><span class="sc">\t</span><span class="st">"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb12-2"><a href="restoration-ecology-of-temperature-grasslands.html#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">clean_names</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="restoration-ecology-of-temperature-grasslands.html#cb18-1" aria-hidden="true" tabindex="-1"></a>survey <span class="ot">&lt;-</span> <span class="fu">read_delim</span>(<span class="st">"data/species_survey.tsv"</span>, <span class="at">delim =</span> <span class="st">"</span><span class="sc">\t</span><span class="st">"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb18-2"><a href="restoration-ecology-of-temperature-grasslands.html#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">clean_names</span>()</span></code></pre></div>
 <div id="ques:w-18" class="question">
 <p class="question-begin">
 ► Question 18
@@ -749,12 +747,12 @@ Give a brief description of your overall impression of plot 1 in terms of the ve
 </div>
 </div>
 <p>We’ll assume that multiple sets of eyes are better than one and just collapse the lists from individual groups into a single one, we will also remove the unknown plants.</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="restoration-ecology-of-temperature-grasslands.html#cb13-1" aria-hidden="true" tabindex="-1"></a>survey <span class="sc">%&gt;%</span></span>
-<span id="cb13-2"><a href="restoration-ecology-of-temperature-grasslands.html#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(plot <span class="sc">==</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb13-3"><a href="restoration-ecology-of-temperature-grasslands.html#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>(species, <span class="at">.keep_all =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb13-4"><a href="restoration-ecology-of-temperature-grasslands.html#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(plot, species) <span class="sc">%&gt;%</span></span>
-<span id="cb13-5"><a href="restoration-ecology-of-temperature-grasslands.html#cb13-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span>species <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"plant A"</span>, <span class="st">"plant B"</span>, <span class="st">"Plant C"</span>, <span class="st">"Plant D"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb13-6"><a href="restoration-ecology-of-temperature-grasslands.html#cb13-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(species)</span></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="restoration-ecology-of-temperature-grasslands.html#cb19-1" aria-hidden="true" tabindex="-1"></a>survey <span class="sc">%&gt;%</span></span>
+<span id="cb19-2"><a href="restoration-ecology-of-temperature-grasslands.html#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(plot <span class="sc">==</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb19-3"><a href="restoration-ecology-of-temperature-grasslands.html#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>(species, <span class="at">.keep_all =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb19-4"><a href="restoration-ecology-of-temperature-grasslands.html#cb19-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(plot, species) <span class="sc">%&gt;%</span></span>
+<span id="cb19-5"><a href="restoration-ecology-of-temperature-grasslands.html#cb19-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span>species <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"plant A"</span>, <span class="st">"plant B"</span>, <span class="st">"Plant C"</span>, <span class="st">"Plant D"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb19-6"><a href="restoration-ecology-of-temperature-grasslands.html#cb19-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(species)</span></code></pre></div>
 <pre><code>## # A tibble: 12 x 2
 ##     plot species           
 ##    &lt;dbl&gt; &lt;chr&gt;             
@@ -798,12 +796,12 @@ Give a brief description of your overall impression of plot 1 in terms of the ve
 </div>
 </div>
 <p>Now, let’s generate our species list.</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="restoration-ecology-of-temperature-grasslands.html#cb15-1" aria-hidden="true" tabindex="-1"></a>survey <span class="sc">%&gt;%</span></span>
-<span id="cb15-2"><a href="restoration-ecology-of-temperature-grasslands.html#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(plot <span class="sc">==</span> <span class="dv">3</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb15-3"><a href="restoration-ecology-of-temperature-grasslands.html#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>(species, <span class="at">.keep_all =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb15-4"><a href="restoration-ecology-of-temperature-grasslands.html#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(plot, species) <span class="sc">%&gt;%</span></span>
-<span id="cb15-5"><a href="restoration-ecology-of-temperature-grasslands.html#cb15-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span>species <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"plant A"</span>, <span class="st">"plant B"</span>, <span class="st">"Plant C"</span>, <span class="st">"Plant D"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb15-6"><a href="restoration-ecology-of-temperature-grasslands.html#cb15-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(species)</span></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="restoration-ecology-of-temperature-grasslands.html#cb21-1" aria-hidden="true" tabindex="-1"></a>survey <span class="sc">%&gt;%</span></span>
+<span id="cb21-2"><a href="restoration-ecology-of-temperature-grasslands.html#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(plot <span class="sc">==</span> <span class="dv">3</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb21-3"><a href="restoration-ecology-of-temperature-grasslands.html#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>(species, <span class="at">.keep_all =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb21-4"><a href="restoration-ecology-of-temperature-grasslands.html#cb21-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(plot, species) <span class="sc">%&gt;%</span></span>
+<span id="cb21-5"><a href="restoration-ecology-of-temperature-grasslands.html#cb21-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span>species <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"plant A"</span>, <span class="st">"plant B"</span>, <span class="st">"Plant C"</span>, <span class="st">"Plant D"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb21-6"><a href="restoration-ecology-of-temperature-grasslands.html#cb21-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(species)</span></code></pre></div>
 <pre><code>## # A tibble: 12 x 2
 ##     plot species          
 ##    &lt;dbl&gt; &lt;chr&gt;            
@@ -878,8 +876,8 @@ Argue for which plot you would expect to see a higher degree of variability amon
 </div>
 </div>
 <p>Let’s pull in those results.</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="restoration-ecology-of-temperature-grasslands.html#cb17-1" aria-hidden="true" tabindex="-1"></a>quadrat <span class="ot">&lt;-</span> <span class="fu">read_delim</span>(<span class="st">"data/survey_quadrat.tsv"</span>, <span class="at">delim =</span> <span class="st">"</span><span class="sc">\t</span><span class="st">"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb17-2"><a href="restoration-ecology-of-temperature-grasslands.html#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">clean_names</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="restoration-ecology-of-temperature-grasslands.html#cb23-1" aria-hidden="true" tabindex="-1"></a>quadrat <span class="ot">&lt;-</span> <span class="fu">read_delim</span>(<span class="st">"data/survey_quadrat.tsv"</span>, <span class="at">delim =</span> <span class="st">"</span><span class="sc">\t</span><span class="st">"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb23-2"><a href="restoration-ecology-of-temperature-grasslands.html#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">clean_names</span>()</span></code></pre></div>
 <div id="ques:w-26" class="question">
 <p class="question-begin">
 ► Question 26
@@ -912,38 +910,38 @@ Generate a few questions we can answer using this data set and the specific step
 </p>
 <div id="sol-body-3" class="solution-body" style="display: none;">
 <p><strong>Calculate species richness of each quadrat, compare mean per plot</strong></p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="restoration-ecology-of-temperature-grasslands.html#cb18-1" aria-hidden="true" tabindex="-1"></a>quadrat <span class="sc">%&gt;%</span></span>
-<span id="cb18-2"><a href="restoration-ecology-of-temperature-grasslands.html#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(n_occurence <span class="sc">&gt;</span> <span class="dv">0</span> <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(n_occurence)) <span class="sc">%&gt;%</span> <span class="co"># keep only species that were observed in quadrat</span></span>
-<span id="cb18-3"><a href="restoration-ecology-of-temperature-grasslands.html#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(plot, quadrat_observer) <span class="sc">%&gt;%</span>           <span class="co"># split into groups for each quadrat/plot</span></span>
-<span id="cb18-4"><a href="restoration-ecology-of-temperature-grasslands.html#cb18-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">richness =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span>                  <span class="co"># count species observed</span></span>
-<span id="cb18-5"><a href="restoration-ecology-of-temperature-grasslands.html#cb18-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb18-6"><a href="restoration-ecology-of-temperature-grasslands.html#cb18-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(plot) <span class="sc">%&gt;%</span>                             <span class="co"># split into groups for each plot</span></span>
-<span id="cb18-7"><a href="restoration-ecology-of-temperature-grasslands.html#cb18-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">mean_richness_plot =</span> <span class="fu">mean</span>(richness), <span class="co"># calculate mean richness</span></span>
-<span id="cb18-8"><a href="restoration-ecology-of-temperature-grasslands.html#cb18-8" aria-hidden="true" tabindex="-1"></a>            <span class="at">std_richness_plot =</span> <span class="fu">sd</span>(richness))    <span class="co"># calculate standard deviation</span></span></code></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="restoration-ecology-of-temperature-grasslands.html#cb24-1" aria-hidden="true" tabindex="-1"></a>quadrat <span class="sc">%&gt;%</span></span>
+<span id="cb24-2"><a href="restoration-ecology-of-temperature-grasslands.html#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(n_occurence <span class="sc">&gt;</span> <span class="dv">0</span> <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(n_occurence)) <span class="sc">%&gt;%</span> <span class="co"># keep only species that were observed in quadrat</span></span>
+<span id="cb24-3"><a href="restoration-ecology-of-temperature-grasslands.html#cb24-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(plot, quadrat_observer) <span class="sc">%&gt;%</span>           <span class="co"># split into groups for each quadrat/plot</span></span>
+<span id="cb24-4"><a href="restoration-ecology-of-temperature-grasslands.html#cb24-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">richness =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span>                  <span class="co"># count species observed</span></span>
+<span id="cb24-5"><a href="restoration-ecology-of-temperature-grasslands.html#cb24-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb24-6"><a href="restoration-ecology-of-temperature-grasslands.html#cb24-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(plot) <span class="sc">%&gt;%</span>                             <span class="co"># split into groups for each plot</span></span>
+<span id="cb24-7"><a href="restoration-ecology-of-temperature-grasslands.html#cb24-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">mean_richness_plot =</span> <span class="fu">mean</span>(richness), <span class="co"># calculate mean richness</span></span>
+<span id="cb24-8"><a href="restoration-ecology-of-temperature-grasslands.html#cb24-8" aria-hidden="true" tabindex="-1"></a>            <span class="at">std_richness_plot =</span> <span class="fu">sd</span>(richness))    <span class="co"># calculate standard deviation</span></span></code></pre></div>
 <pre><code>## # A tibble: 2 x 3
 ##    plot mean_richness_plot std_richness_plot
 ##   &lt;dbl&gt;              &lt;dbl&gt;             &lt;dbl&gt;
 ## 1     1               2.33             0.816
 ## 2     3               2.33             1.51</code></pre>
 <p><strong>Total abundance of individuals in each quadrat, mean per plot</strong></p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="restoration-ecology-of-temperature-grasslands.html#cb20-1" aria-hidden="true" tabindex="-1"></a>quadrat <span class="sc">%&gt;%</span></span>
-<span id="cb20-2"><a href="restoration-ecology-of-temperature-grasslands.html#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(n_occurence <span class="sc">&gt;</span> <span class="dv">0</span> <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(n_occurence)) <span class="sc">%&gt;%</span> <span class="co"># keep only species that were observed in quadrat</span></span>
-<span id="cb20-3"><a href="restoration-ecology-of-temperature-grasslands.html#cb20-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(plot, quadrat_observer) <span class="sc">%&gt;%</span>              <span class="co"># split into groups for each quadrat/plot</span></span>
-<span id="cb20-4"><a href="restoration-ecology-of-temperature-grasslands.html#cb20-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">total_indv_obs =</span> <span class="fu">sum</span>(n_occurence)) <span class="sc">%&gt;%</span>  <span class="co"># count species observed</span></span>
-<span id="cb20-5"><a href="restoration-ecology-of-temperature-grasslands.html#cb20-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb20-6"><a href="restoration-ecology-of-temperature-grasslands.html#cb20-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(plot) <span class="sc">%&gt;%</span>                                <span class="co"># split into groups for each plot</span></span>
-<span id="cb20-7"><a href="restoration-ecology-of-temperature-grasslands.html#cb20-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">mean_abund_plot =</span> <span class="fu">mean</span>(total_indv_obs), <span class="co"># calculate mean richness</span></span>
-<span id="cb20-8"><a href="restoration-ecology-of-temperature-grasslands.html#cb20-8" aria-hidden="true" tabindex="-1"></a>            <span class="at">std_abund_plot =</span> <span class="fu">sd</span>(total_indv_obs))    <span class="co"># calculate standard deviation</span></span></code></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="restoration-ecology-of-temperature-grasslands.html#cb26-1" aria-hidden="true" tabindex="-1"></a>quadrat <span class="sc">%&gt;%</span></span>
+<span id="cb26-2"><a href="restoration-ecology-of-temperature-grasslands.html#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(n_occurence <span class="sc">&gt;</span> <span class="dv">0</span> <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(n_occurence)) <span class="sc">%&gt;%</span> <span class="co"># keep only species that were observed in quadrat</span></span>
+<span id="cb26-3"><a href="restoration-ecology-of-temperature-grasslands.html#cb26-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(plot, quadrat_observer) <span class="sc">%&gt;%</span>              <span class="co"># split into groups for each quadrat/plot</span></span>
+<span id="cb26-4"><a href="restoration-ecology-of-temperature-grasslands.html#cb26-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">total_indv_obs =</span> <span class="fu">sum</span>(n_occurence)) <span class="sc">%&gt;%</span>  <span class="co"># count species observed</span></span>
+<span id="cb26-5"><a href="restoration-ecology-of-temperature-grasslands.html#cb26-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb26-6"><a href="restoration-ecology-of-temperature-grasslands.html#cb26-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(plot) <span class="sc">%&gt;%</span>                                <span class="co"># split into groups for each plot</span></span>
+<span id="cb26-7"><a href="restoration-ecology-of-temperature-grasslands.html#cb26-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">mean_abund_plot =</span> <span class="fu">mean</span>(total_indv_obs), <span class="co"># calculate mean richness</span></span>
+<span id="cb26-8"><a href="restoration-ecology-of-temperature-grasslands.html#cb26-8" aria-hidden="true" tabindex="-1"></a>            <span class="at">std_abund_plot =</span> <span class="fu">sd</span>(total_indv_obs))    <span class="co"># calculate standard deviation</span></span></code></pre></div>
 <pre><code>## # A tibble: 2 x 3
 ##    plot mean_abund_plot std_abund_plot
 ##   &lt;dbl&gt;           &lt;dbl&gt;          &lt;dbl&gt;
 ## 1     1            14.3           9.03
 ## 2     3            39.2          17.4</code></pre>
 <p><strong>Most common plant in each quadrat, number of individual per most common plant</strong></p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="restoration-ecology-of-temperature-grasslands.html#cb22-1" aria-hidden="true" tabindex="-1"></a>quadrat <span class="sc">%&gt;%</span></span>
-<span id="cb22-2"><a href="restoration-ecology-of-temperature-grasslands.html#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(n_occurence <span class="sc">&gt;</span> <span class="dv">0</span> <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(n_occurence)) <span class="sc">%&gt;%</span> <span class="co"># keep only species that were observed in quadrat</span></span>
-<span id="cb22-3"><a href="restoration-ecology-of-temperature-grasslands.html#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(plot, quadrat_observer) <span class="sc">%&gt;%</span>     <span class="co"># split into groups for each quadrat/plot </span></span>
-<span id="cb22-4"><a href="restoration-ecology-of-temperature-grasslands.html#cb22-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_max</span>(<span class="at">order_by =</span> n_occurence, <span class="at">n =</span> <span class="dv">1</span>) <span class="co"># keep only row with highest number of occurence</span></span></code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="restoration-ecology-of-temperature-grasslands.html#cb28-1" aria-hidden="true" tabindex="-1"></a>quadrat <span class="sc">%&gt;%</span></span>
+<span id="cb28-2"><a href="restoration-ecology-of-temperature-grasslands.html#cb28-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(n_occurence <span class="sc">&gt;</span> <span class="dv">0</span> <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(n_occurence)) <span class="sc">%&gt;%</span> <span class="co"># keep only species that were observed in quadrat</span></span>
+<span id="cb28-3"><a href="restoration-ecology-of-temperature-grasslands.html#cb28-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(plot, quadrat_observer) <span class="sc">%&gt;%</span>     <span class="co"># split into groups for each quadrat/plot </span></span>
+<span id="cb28-4"><a href="restoration-ecology-of-temperature-grasslands.html#cb28-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_max</span>(<span class="at">order_by =</span> n_occurence, <span class="at">n =</span> <span class="dv">1</span>) <span class="co"># keep only row with highest number of occurence</span></span></code></pre></div>
 <pre><code>## # A tibble: 12 x 5
 ## # Groups:   plot, quadrat_observer [12]
 ##     plot quadrat_observer species             n_occurence percent_cover
@@ -961,44 +959,44 @@ Generate a few questions we can answer using this data set and the specific step
 ## 11     3 C1               "black eyed susan"           58            50
 ## 12     3 C2               "black eyed susan"           16            30</code></pre>
 <p><strong>relative abundance per species per quadrat</strong></p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="restoration-ecology-of-temperature-grasslands.html#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Plot 1</span></span>
-<span id="cb24-2"><a href="restoration-ecology-of-temperature-grasslands.html#cb24-2" aria-hidden="true" tabindex="-1"></a>quadrat <span class="sc">%&gt;%</span></span>
-<span id="cb24-3"><a href="restoration-ecology-of-temperature-grasslands.html#cb24-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(n_occurence <span class="sc">&gt;</span> <span class="dv">0</span> <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(n_occurence)) <span class="sc">%&gt;%</span>     <span class="co"># keep only species that were observed in quadrat</span></span>
-<span id="cb24-4"><a href="restoration-ecology-of-temperature-grasslands.html#cb24-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(plot, quadrat_observer) <span class="sc">%&gt;%</span>                  <span class="co"># split into groups for each quadrat/plot </span></span>
-<span id="cb24-5"><a href="restoration-ecology-of-temperature-grasslands.html#cb24-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">rel_abund =</span> n_occurence<span class="sc">/</span><span class="fu">sum</span>(n_occurence)) <span class="sc">%&gt;%</span>  <span class="co"># calculate relative abundance for each species within group</span></span>
-<span id="cb24-6"><a href="restoration-ecology-of-temperature-grasslands.html#cb24-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>percent_cover) <span class="sc">%&gt;%</span>                            <span class="co"># get rid of unneeded column </span></span>
-<span id="cb24-7"><a href="restoration-ecology-of-temperature-grasslands.html#cb24-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(plot <span class="sc">==</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span>                                 <span class="co"># keep only plot</span></span>
-<span id="cb24-8"><a href="restoration-ecology-of-temperature-grasslands.html#cb24-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> quadrat_observer, <span class="at">values_from =</span> rel_abund) <span class="co"># pivot the table</span></span></code></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="restoration-ecology-of-temperature-grasslands.html#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Plot 1</span></span>
+<span id="cb30-2"><a href="restoration-ecology-of-temperature-grasslands.html#cb30-2" aria-hidden="true" tabindex="-1"></a>quadrat <span class="sc">%&gt;%</span></span>
+<span id="cb30-3"><a href="restoration-ecology-of-temperature-grasslands.html#cb30-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(n_occurence <span class="sc">&gt;</span> <span class="dv">0</span> <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(n_occurence)) <span class="sc">%&gt;%</span>     <span class="co"># keep only species that were observed in quadrat</span></span>
+<span id="cb30-4"><a href="restoration-ecology-of-temperature-grasslands.html#cb30-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(plot, quadrat_observer) <span class="sc">%&gt;%</span>                  <span class="co"># split into groups for each quadrat/plot </span></span>
+<span id="cb30-5"><a href="restoration-ecology-of-temperature-grasslands.html#cb30-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">rel_abund =</span> n_occurence<span class="sc">/</span><span class="fu">sum</span>(n_occurence)) <span class="sc">%&gt;%</span>  <span class="co"># calculate relative abundance for each species within group</span></span>
+<span id="cb30-6"><a href="restoration-ecology-of-temperature-grasslands.html#cb30-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>percent_cover) <span class="sc">%&gt;%</span>                            <span class="co"># get rid of unneeded column </span></span>
+<span id="cb30-7"><a href="restoration-ecology-of-temperature-grasslands.html#cb30-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(plot <span class="sc">==</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span>                                 <span class="co"># keep only plot</span></span>
+<span id="cb30-8"><a href="restoration-ecology-of-temperature-grasslands.html#cb30-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> quadrat_observer, <span class="at">values_from =</span> rel_abund) <span class="co"># pivot the table</span></span></code></pre></div>
 <pre><code>## # A tibble: 13 x 9
 ## # Groups:   plot [1]
-##     plot species           n_occurence      A1    A2     B1    B2      C1     C2
-##    &lt;dbl&gt; &lt;chr&gt;                   &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;
-##  1     1 "Black eyed Susa~           9  0.818     NA NA     NA    NA      NA    
-##  2     1 "Red Clover"                1  0.0909     1 NA     NA    NA      NA    
-##  3     1 "Plant D"                   1  0.0909    NA NA     NA    NA      NA    
-##  4     1 "Plant C"                   3 NA         NA  0.273 NA    NA      NA    
-##  5     1 "Virginia Wild R~           8 NA         NA  0.727 NA    NA      NA    
-##  6     1 "Black eyed Susa~          22 NA         NA NA      0.88 NA      NA    
-##  7     1 "Partridge Pea"             3 NA         NA NA      0.12 NA      NA    
-##  8     1 "Leaf litter"              21 NA         NA NA     NA     0.875  NA    
-##  9     1 "black eyed susa~           2 NA         NA NA     NA     0.0833 NA    
-## 10     1 "partridge pea"             1 NA         NA NA     NA     0.0417 NA    
-## 11     1 "leaf litter"               4 NA         NA NA     NA    NA       0.286
-## 12     1 "black eyed susa~           7 NA         NA NA     NA    NA       0.5  
-## 13     1 "grass"                     3 NA         NA NA     NA    NA       0.214</code></pre>
+##     plot species             n_occurence      A1    A2     B1    B2      C1     C2
+##    &lt;dbl&gt; &lt;chr&gt;                     &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;
+##  1     1 "Black eyed Susan "           9  0.818     NA NA     NA    NA      NA    
+##  2     1 "Red Clover"                  1  0.0909     1 NA     NA    NA      NA    
+##  3     1 "Plant D"                     1  0.0909    NA NA     NA    NA      NA    
+##  4     1 "Plant C"                     3 NA         NA  0.273 NA    NA      NA    
+##  5     1 "Virginia Wild Rye"           8 NA         NA  0.727 NA    NA      NA    
+##  6     1 "Black eyed Susan "          22 NA         NA NA      0.88 NA      NA    
+##  7     1 "Partridge Pea"               3 NA         NA NA      0.12 NA      NA    
+##  8     1 "Leaf litter"                21 NA         NA NA     NA     0.875  NA    
+##  9     1 "black eyed susan"            2 NA         NA NA     NA     0.0833 NA    
+## 10     1 "partridge pea"               1 NA         NA NA     NA     0.0417 NA    
+## 11     1 "leaf litter"                 4 NA         NA NA     NA    NA       0.286
+## 12     1 "black eyed susan"            7 NA         NA NA     NA    NA       0.5  
+## 13     1 "grass"                       3 NA         NA NA     NA    NA       0.214</code></pre>
 <p>well, that’s not ideal, looks like we ant to make everything lower case so all the black-eyed Susan fields read the same. We also need to strip white space</p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="restoration-ecology-of-temperature-grasslands.html#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Plot 1</span></span>
-<span id="cb26-2"><a href="restoration-ecology-of-temperature-grasslands.html#cb26-2" aria-hidden="true" tabindex="-1"></a>quadrat <span class="sc">%&gt;%</span></span>
-<span id="cb26-3"><a href="restoration-ecology-of-temperature-grasslands.html#cb26-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">species =</span> <span class="fu">tolower</span>(species),                      <span class="co"># make all lower case</span></span>
-<span id="cb26-4"><a href="restoration-ecology-of-temperature-grasslands.html#cb26-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">species =</span> <span class="fu">str_trim</span>(species, <span class="at">side =</span> <span class="st">"both"</span>)) <span class="sc">%&gt;%</span>  <span class="co"># strip whitespace</span></span>
-<span id="cb26-5"><a href="restoration-ecology-of-temperature-grasslands.html#cb26-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(n_occurence <span class="sc">&gt;</span> <span class="dv">0</span> <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(n_occurence)) <span class="sc">%&gt;%</span>       <span class="co"># keep only species that were observed in quadrat</span></span>
-<span id="cb26-6"><a href="restoration-ecology-of-temperature-grasslands.html#cb26-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(plot, quadrat_observer) <span class="sc">%&gt;%</span>                    <span class="co"># split into groups for each quadrat/plot </span></span>
-<span id="cb26-7"><a href="restoration-ecology-of-temperature-grasslands.html#cb26-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">rel_abund =</span> <span class="fu">round</span>(n_occurence<span class="sc">/</span><span class="fu">sum</span>(n_occurence)<span class="sc">*</span><span class="dv">100</span>, <span class="at">digits =</span> <span class="dv">1</span>)) <span class="sc">%&gt;%</span>  <span class="co"># calculate relative abundance for each species within group</span></span>
-<span id="cb26-8"><a href="restoration-ecology-of-temperature-grasslands.html#cb26-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb26-9"><a href="restoration-ecology-of-temperature-grasslands.html#cb26-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(plot <span class="sc">==</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span>                                   <span class="co"># keep only plot 1</span></span>
-<span id="cb26-10"><a href="restoration-ecology-of-temperature-grasslands.html#cb26-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>percent_cover, <span class="sc">-</span>plot, <span class="sc">-</span>n_occurence) <span class="sc">%&gt;%</span>         <span class="co"># get rid of unneeded column </span></span>
-<span id="cb26-11"><a href="restoration-ecology-of-temperature-grasslands.html#cb26-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> quadrat_observer, <span class="at">values_from =</span> rel_abund) <span class="sc">%&gt;%</span> <span class="co"># pivot the table</span></span>
-<span id="cb26-12"><a href="restoration-ecology-of-temperature-grasslands.html#cb26-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">replace</span>(<span class="fu">is.na</span>(.), <span class="dv">0</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="restoration-ecology-of-temperature-grasslands.html#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Plot 1</span></span>
+<span id="cb32-2"><a href="restoration-ecology-of-temperature-grasslands.html#cb32-2" aria-hidden="true" tabindex="-1"></a>quadrat <span class="sc">%&gt;%</span></span>
+<span id="cb32-3"><a href="restoration-ecology-of-temperature-grasslands.html#cb32-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">species =</span> <span class="fu">tolower</span>(species),                      <span class="co"># make all lower case</span></span>
+<span id="cb32-4"><a href="restoration-ecology-of-temperature-grasslands.html#cb32-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">species =</span> <span class="fu">str_trim</span>(species, <span class="at">side =</span> <span class="st">"both"</span>)) <span class="sc">%&gt;%</span>  <span class="co"># strip whitespace</span></span>
+<span id="cb32-5"><a href="restoration-ecology-of-temperature-grasslands.html#cb32-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(n_occurence <span class="sc">&gt;</span> <span class="dv">0</span> <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(n_occurence)) <span class="sc">%&gt;%</span>       <span class="co"># keep only species that were observed in quadrat</span></span>
+<span id="cb32-6"><a href="restoration-ecology-of-temperature-grasslands.html#cb32-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(plot, quadrat_observer) <span class="sc">%&gt;%</span>                    <span class="co"># split into groups for each quadrat/plot </span></span>
+<span id="cb32-7"><a href="restoration-ecology-of-temperature-grasslands.html#cb32-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">rel_abund =</span> <span class="fu">round</span>(n_occurence<span class="sc">/</span><span class="fu">sum</span>(n_occurence)<span class="sc">*</span><span class="dv">100</span>, <span class="at">digits =</span> <span class="dv">1</span>)) <span class="sc">%&gt;%</span>  <span class="co"># calculate relative abundance for each species within group</span></span>
+<span id="cb32-8"><a href="restoration-ecology-of-temperature-grasslands.html#cb32-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb32-9"><a href="restoration-ecology-of-temperature-grasslands.html#cb32-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(plot <span class="sc">==</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span>                                   <span class="co"># keep only plot 1</span></span>
+<span id="cb32-10"><a href="restoration-ecology-of-temperature-grasslands.html#cb32-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>percent_cover, <span class="sc">-</span>plot, <span class="sc">-</span>n_occurence) <span class="sc">%&gt;%</span>         <span class="co"># get rid of unneeded column </span></span>
+<span id="cb32-11"><a href="restoration-ecology-of-temperature-grasslands.html#cb32-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> quadrat_observer, <span class="at">values_from =</span> rel_abund) <span class="sc">%&gt;%</span> <span class="co"># pivot the table</span></span>
+<span id="cb32-12"><a href="restoration-ecology-of-temperature-grasslands.html#cb32-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">replace</span>(<span class="fu">is.na</span>(.), <span class="dv">0</span>)</span></code></pre></div>
 <pre><code>## # A tibble: 8 x 7
 ##   species              A1    A2    B1    B2    C1    C2
 ##   &lt;chr&gt;             &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
@@ -1011,18 +1009,18 @@ Generate a few questions we can answer using this data set and the specific step
 ## 7 leaf litter         0       0   0       0  87.5  28.6
 ## 8 grass               0       0   0       0   0    21.4</code></pre>
 <p>Then we can do the same for plot 2</p>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="restoration-ecology-of-temperature-grasslands.html#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Plot 3</span></span>
-<span id="cb28-2"><a href="restoration-ecology-of-temperature-grasslands.html#cb28-2" aria-hidden="true" tabindex="-1"></a>quadrat <span class="sc">%&gt;%</span></span>
-<span id="cb28-3"><a href="restoration-ecology-of-temperature-grasslands.html#cb28-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">species =</span> <span class="fu">tolower</span>(species),                      <span class="co"># make all lower case</span></span>
-<span id="cb28-4"><a href="restoration-ecology-of-temperature-grasslands.html#cb28-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">species =</span> <span class="fu">str_trim</span>(species, <span class="at">side =</span> <span class="st">"both"</span>)) <span class="sc">%&gt;%</span>  <span class="co"># strip whitespace</span></span>
-<span id="cb28-5"><a href="restoration-ecology-of-temperature-grasslands.html#cb28-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(n_occurence <span class="sc">&gt;</span> <span class="dv">0</span> <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(n_occurence)) <span class="sc">%&gt;%</span>       <span class="co"># keep only species that were observed in quadrat</span></span>
-<span id="cb28-6"><a href="restoration-ecology-of-temperature-grasslands.html#cb28-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(plot, quadrat_observer) <span class="sc">%&gt;%</span>                    <span class="co"># split into groups for each quadrat/plot </span></span>
-<span id="cb28-7"><a href="restoration-ecology-of-temperature-grasslands.html#cb28-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">rel_abund =</span> <span class="fu">round</span>(n_occurence<span class="sc">/</span><span class="fu">sum</span>(n_occurence)<span class="sc">*</span><span class="dv">100</span>, <span class="at">digits =</span> <span class="dv">1</span>)) <span class="sc">%&gt;%</span>  <span class="co"># calculate relative abundance for each species within group</span></span>
-<span id="cb28-8"><a href="restoration-ecology-of-temperature-grasslands.html#cb28-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb28-9"><a href="restoration-ecology-of-temperature-grasslands.html#cb28-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(plot <span class="sc">==</span> <span class="dv">3</span>) <span class="sc">%&gt;%</span>                                   <span class="co"># keep only plot 3</span></span>
-<span id="cb28-10"><a href="restoration-ecology-of-temperature-grasslands.html#cb28-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>percent_cover, <span class="sc">-</span>plot, <span class="sc">-</span>n_occurence) <span class="sc">%&gt;%</span>         <span class="co"># get rid of unneeded column </span></span>
-<span id="cb28-11"><a href="restoration-ecology-of-temperature-grasslands.html#cb28-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> quadrat_observer, <span class="at">values_from =</span> rel_abund) <span class="sc">%&gt;%</span> <span class="co"># pivot the table</span></span>
-<span id="cb28-12"><a href="restoration-ecology-of-temperature-grasslands.html#cb28-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">replace</span>(<span class="fu">is.na</span>(.), <span class="dv">0</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="restoration-ecology-of-temperature-grasslands.html#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Plot 3</span></span>
+<span id="cb34-2"><a href="restoration-ecology-of-temperature-grasslands.html#cb34-2" aria-hidden="true" tabindex="-1"></a>quadrat <span class="sc">%&gt;%</span></span>
+<span id="cb34-3"><a href="restoration-ecology-of-temperature-grasslands.html#cb34-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">species =</span> <span class="fu">tolower</span>(species),                      <span class="co"># make all lower case</span></span>
+<span id="cb34-4"><a href="restoration-ecology-of-temperature-grasslands.html#cb34-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">species =</span> <span class="fu">str_trim</span>(species, <span class="at">side =</span> <span class="st">"both"</span>)) <span class="sc">%&gt;%</span>  <span class="co"># strip whitespace</span></span>
+<span id="cb34-5"><a href="restoration-ecology-of-temperature-grasslands.html#cb34-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(n_occurence <span class="sc">&gt;</span> <span class="dv">0</span> <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(n_occurence)) <span class="sc">%&gt;%</span>       <span class="co"># keep only species that were observed in quadrat</span></span>
+<span id="cb34-6"><a href="restoration-ecology-of-temperature-grasslands.html#cb34-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(plot, quadrat_observer) <span class="sc">%&gt;%</span>                    <span class="co"># split into groups for each quadrat/plot </span></span>
+<span id="cb34-7"><a href="restoration-ecology-of-temperature-grasslands.html#cb34-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">rel_abund =</span> <span class="fu">round</span>(n_occurence<span class="sc">/</span><span class="fu">sum</span>(n_occurence)<span class="sc">*</span><span class="dv">100</span>, <span class="at">digits =</span> <span class="dv">1</span>)) <span class="sc">%&gt;%</span>  <span class="co"># calculate relative abundance for each species within group</span></span>
+<span id="cb34-8"><a href="restoration-ecology-of-temperature-grasslands.html#cb34-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb34-9"><a href="restoration-ecology-of-temperature-grasslands.html#cb34-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(plot <span class="sc">==</span> <span class="dv">3</span>) <span class="sc">%&gt;%</span>                                   <span class="co"># keep only plot 3</span></span>
+<span id="cb34-10"><a href="restoration-ecology-of-temperature-grasslands.html#cb34-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>percent_cover, <span class="sc">-</span>plot, <span class="sc">-</span>n_occurence) <span class="sc">%&gt;%</span>         <span class="co"># get rid of unneeded column </span></span>
+<span id="cb34-11"><a href="restoration-ecology-of-temperature-grasslands.html#cb34-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> quadrat_observer, <span class="at">values_from =</span> rel_abund) <span class="sc">%&gt;%</span> <span class="co"># pivot the table</span></span>
+<span id="cb34-12"><a href="restoration-ecology-of-temperature-grasslands.html#cb34-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">replace</span>(<span class="fu">is.na</span>(.), <span class="dv">0</span>)</span></code></pre></div>
 <pre><code>## # A tibble: 8 x 7
 ##   species             A1    A2    B1    B2    C1    C2
 ##   &lt;chr&gt;            &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
@@ -1035,13 +1033,13 @@ Generate a few questions we can answer using this data set and the specific step
 ## 7 wild carrot        0     0       0     0   1.7  14.3
 ## 8 leaf litter        0     0       0     0   0     9.5</code></pre>
 <p><strong>Total observed individuals per quadrat</strong></p>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="restoration-ecology-of-temperature-grasslands.html#cb30-1" aria-hidden="true" tabindex="-1"></a>quadrat <span class="sc">%&gt;%</span></span>
-<span id="cb30-2"><a href="restoration-ecology-of-temperature-grasslands.html#cb30-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(n_occurence <span class="sc">&gt;</span> <span class="dv">0</span> <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(n_occurence)) <span class="sc">%&gt;%</span>     <span class="co"># keep only species that were observed in quadrat</span></span>
-<span id="cb30-3"><a href="restoration-ecology-of-temperature-grasslands.html#cb30-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(plot, quadrat_observer) <span class="sc">%&gt;%</span>                  <span class="co"># split into groups for each quadrat/plot </span></span>
-<span id="cb30-4"><a href="restoration-ecology-of-temperature-grasslands.html#cb30-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">total_ind =</span> <span class="fu">sum</span>(n_occurence)) <span class="sc">%&gt;%</span></span>
-<span id="cb30-5"><a href="restoration-ecology-of-temperature-grasslands.html#cb30-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(plot) <span class="sc">%&gt;%</span></span>
-<span id="cb30-6"><a href="restoration-ecology-of-temperature-grasslands.html#cb30-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">mean =</span> <span class="fu">mean</span>(total_ind),</span>
-<span id="cb30-7"><a href="restoration-ecology-of-temperature-grasslands.html#cb30-7" aria-hidden="true" tabindex="-1"></a>            <span class="at">std =</span> <span class="fu">sd</span>(total_ind))</span></code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="restoration-ecology-of-temperature-grasslands.html#cb36-1" aria-hidden="true" tabindex="-1"></a>quadrat <span class="sc">%&gt;%</span></span>
+<span id="cb36-2"><a href="restoration-ecology-of-temperature-grasslands.html#cb36-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(n_occurence <span class="sc">&gt;</span> <span class="dv">0</span> <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(n_occurence)) <span class="sc">%&gt;%</span>     <span class="co"># keep only species that were observed in quadrat</span></span>
+<span id="cb36-3"><a href="restoration-ecology-of-temperature-grasslands.html#cb36-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(plot, quadrat_observer) <span class="sc">%&gt;%</span>                  <span class="co"># split into groups for each quadrat/plot </span></span>
+<span id="cb36-4"><a href="restoration-ecology-of-temperature-grasslands.html#cb36-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">total_ind =</span> <span class="fu">sum</span>(n_occurence)) <span class="sc">%&gt;%</span></span>
+<span id="cb36-5"><a href="restoration-ecology-of-temperature-grasslands.html#cb36-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(plot) <span class="sc">%&gt;%</span></span>
+<span id="cb36-6"><a href="restoration-ecology-of-temperature-grasslands.html#cb36-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">mean =</span> <span class="fu">mean</span>(total_ind),</span>
+<span id="cb36-7"><a href="restoration-ecology-of-temperature-grasslands.html#cb36-7" aria-hidden="true" tabindex="-1"></a>            <span class="at">std =</span> <span class="fu">sd</span>(total_ind))</span></code></pre></div>
 <pre><code>## # A tibble: 2 x 3
 ##    plot  mean   std
 ##   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
@@ -1049,16 +1047,16 @@ Generate a few questions we can answer using this data set and the specific step
 ## 2     3  39.2 17.4</code></pre>
 <p><strong>Diversity indices</strong></p>
 <p>To calculate diversity indices you will need to install an additional package called <code>vegan</code>, once you’ve done that you will need to load it using the <code>library()</code> function before you can use those functions. Use your textbook to look up how these different diversity indices differ from each other in terms of how they are calculated.</p>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="restoration-ecology-of-temperature-grasslands.html#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("vegan")</span></span>
-<span id="cb32-2"><a href="restoration-ecology-of-temperature-grasslands.html#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(vegan)</span>
-<span id="cb32-3"><a href="restoration-ecology-of-temperature-grasslands.html#cb32-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb32-4"><a href="restoration-ecology-of-temperature-grasslands.html#cb32-4" aria-hidden="true" tabindex="-1"></a>quadrat <span class="sc">%&gt;%</span></span>
-<span id="cb32-5"><a href="restoration-ecology-of-temperature-grasslands.html#cb32-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(n_occurence <span class="sc">&gt;</span> <span class="dv">0</span> <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(n_occurence)) <span class="sc">%&gt;%</span>              <span class="co"># keep only species that were observed in quadrat</span></span>
-<span id="cb32-6"><a href="restoration-ecology-of-temperature-grasslands.html#cb32-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(plot, quadrat_observer) <span class="sc">%&gt;%</span>                           <span class="co"># split into groups for each quadrat/plot </span></span>
-<span id="cb32-7"><a href="restoration-ecology-of-temperature-grasslands.html#cb32-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">sobs =</span> <span class="fu">specnumber</span>(n_occurence),</span>
-<span id="cb32-8"><a href="restoration-ecology-of-temperature-grasslands.html#cb32-8" aria-hidden="true" tabindex="-1"></a>            <span class="at">shannon =</span> <span class="fu">diversity</span>(n_occurence, <span class="at">index =</span> <span class="st">"shannon"</span>), <span class="co"># calculate diversity indeces using vegan functions</span></span>
-<span id="cb32-9"><a href="restoration-ecology-of-temperature-grasslands.html#cb32-9" aria-hidden="true" tabindex="-1"></a>            <span class="at">simpson =</span> <span class="fu">diversity</span>(n_occurence, <span class="at">index =</span> <span class="st">"simpson"</span>),</span>
-<span id="cb32-10"><a href="restoration-ecology-of-temperature-grasslands.html#cb32-10" aria-hidden="true" tabindex="-1"></a>            <span class="at">total_obs =</span> <span class="fu">sum</span>(n_occurence))</span></code></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="restoration-ecology-of-temperature-grasslands.html#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("vegan")</span></span>
+<span id="cb38-2"><a href="restoration-ecology-of-temperature-grasslands.html#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(vegan)</span>
+<span id="cb38-3"><a href="restoration-ecology-of-temperature-grasslands.html#cb38-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-4"><a href="restoration-ecology-of-temperature-grasslands.html#cb38-4" aria-hidden="true" tabindex="-1"></a>quadrat <span class="sc">%&gt;%</span></span>
+<span id="cb38-5"><a href="restoration-ecology-of-temperature-grasslands.html#cb38-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(n_occurence <span class="sc">&gt;</span> <span class="dv">0</span> <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(n_occurence)) <span class="sc">%&gt;%</span>              <span class="co"># keep only species that were observed in quadrat</span></span>
+<span id="cb38-6"><a href="restoration-ecology-of-temperature-grasslands.html#cb38-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(plot, quadrat_observer) <span class="sc">%&gt;%</span>                           <span class="co"># split into groups for each quadrat/plot </span></span>
+<span id="cb38-7"><a href="restoration-ecology-of-temperature-grasslands.html#cb38-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">sobs =</span> <span class="fu">specnumber</span>(n_occurence),</span>
+<span id="cb38-8"><a href="restoration-ecology-of-temperature-grasslands.html#cb38-8" aria-hidden="true" tabindex="-1"></a>            <span class="at">shannon =</span> <span class="fu">diversity</span>(n_occurence, <span class="at">index =</span> <span class="st">"shannon"</span>), <span class="co"># calculate diversity indeces using vegan functions</span></span>
+<span id="cb38-9"><a href="restoration-ecology-of-temperature-grasslands.html#cb38-9" aria-hidden="true" tabindex="-1"></a>            <span class="at">simpson =</span> <span class="fu">diversity</span>(n_occurence, <span class="at">index =</span> <span class="st">"simpson"</span>),</span>
+<span id="cb38-10"><a href="restoration-ecology-of-temperature-grasslands.html#cb38-10" aria-hidden="true" tabindex="-1"></a>            <span class="at">total_obs =</span> <span class="fu">sum</span>(n_occurence))</span></code></pre></div>
 <pre><code>## # A tibble: 12 x 6
 ## # Groups:   plot [2]
 ##     plot quadrat_observer  sobs shannon simpson total_obs
@@ -1076,19 +1074,19 @@ Generate a few questions we can answer using this data set and the specific step
 ## 11     3 C1                   2  0.0859  0.0333        59
 ## 12     3 C2                   3  0.709   0.390         21</code></pre>
 <p>We can of course also calculate the mean values per plot.</p>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="restoration-ecology-of-temperature-grasslands.html#cb34-1" aria-hidden="true" tabindex="-1"></a>quadrat <span class="sc">%&gt;%</span></span>
-<span id="cb34-2"><a href="restoration-ecology-of-temperature-grasslands.html#cb34-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(n_occurence <span class="sc">&gt;</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span>                                    <span class="co"># keep only species that were observed in quadrat</span></span>
-<span id="cb34-3"><a href="restoration-ecology-of-temperature-grasslands.html#cb34-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(plot, quadrat_observer) <span class="sc">%&gt;%</span>                           <span class="co"># split into groups for each quadrat/plot </span></span>
-<span id="cb34-4"><a href="restoration-ecology-of-temperature-grasslands.html#cb34-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">sobs =</span> <span class="fu">specnumber</span>(n_occurence),</span>
-<span id="cb34-5"><a href="restoration-ecology-of-temperature-grasslands.html#cb34-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">shannon =</span> <span class="fu">diversity</span>(n_occurence, <span class="at">index =</span> <span class="st">"shannon"</span>), <span class="co"># calculate diversity indeces using vegan functions</span></span>
-<span id="cb34-6"><a href="restoration-ecology-of-temperature-grasslands.html#cb34-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">simpson =</span> <span class="fu">diversity</span>(n_occurence, <span class="at">index =</span> <span class="st">"simpson"</span>),</span>
-<span id="cb34-7"><a href="restoration-ecology-of-temperature-grasslands.html#cb34-7" aria-hidden="true" tabindex="-1"></a>            <span class="at">total_obs =</span> <span class="fu">sum</span>(n_occurence)) <span class="sc">%&gt;%</span></span>
-<span id="cb34-8"><a href="restoration-ecology-of-temperature-grasslands.html#cb34-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb34-9"><a href="restoration-ecology-of-temperature-grasslands.html#cb34-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(plot) <span class="sc">%&gt;%</span></span>
-<span id="cb34-10"><a href="restoration-ecology-of-temperature-grasslands.html#cb34-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">mean_sobs =</span> <span class="fu">mean</span>(sobs),</span>
-<span id="cb34-11"><a href="restoration-ecology-of-temperature-grasslands.html#cb34-11" aria-hidden="true" tabindex="-1"></a>            <span class="at">mean_shannon =</span> <span class="fu">mean</span>(shannon),</span>
-<span id="cb34-12"><a href="restoration-ecology-of-temperature-grasslands.html#cb34-12" aria-hidden="true" tabindex="-1"></a>            <span class="at">mean_simpson =</span> <span class="fu">mean</span>(simpson),</span>
-<span id="cb34-13"><a href="restoration-ecology-of-temperature-grasslands.html#cb34-13" aria-hidden="true" tabindex="-1"></a>            <span class="at">mean_total_obs =</span> <span class="fu">mean</span>(total_obs))</span></code></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="restoration-ecology-of-temperature-grasslands.html#cb40-1" aria-hidden="true" tabindex="-1"></a>quadrat <span class="sc">%&gt;%</span></span>
+<span id="cb40-2"><a href="restoration-ecology-of-temperature-grasslands.html#cb40-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(n_occurence <span class="sc">&gt;</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span>                                    <span class="co"># keep only species that were observed in quadrat</span></span>
+<span id="cb40-3"><a href="restoration-ecology-of-temperature-grasslands.html#cb40-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(plot, quadrat_observer) <span class="sc">%&gt;%</span>                           <span class="co"># split into groups for each quadrat/plot </span></span>
+<span id="cb40-4"><a href="restoration-ecology-of-temperature-grasslands.html#cb40-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">sobs =</span> <span class="fu">specnumber</span>(n_occurence),</span>
+<span id="cb40-5"><a href="restoration-ecology-of-temperature-grasslands.html#cb40-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">shannon =</span> <span class="fu">diversity</span>(n_occurence, <span class="at">index =</span> <span class="st">"shannon"</span>), <span class="co"># calculate diversity indeces using vegan functions</span></span>
+<span id="cb40-6"><a href="restoration-ecology-of-temperature-grasslands.html#cb40-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">simpson =</span> <span class="fu">diversity</span>(n_occurence, <span class="at">index =</span> <span class="st">"simpson"</span>),</span>
+<span id="cb40-7"><a href="restoration-ecology-of-temperature-grasslands.html#cb40-7" aria-hidden="true" tabindex="-1"></a>            <span class="at">total_obs =</span> <span class="fu">sum</span>(n_occurence)) <span class="sc">%&gt;%</span></span>
+<span id="cb40-8"><a href="restoration-ecology-of-temperature-grasslands.html#cb40-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb40-9"><a href="restoration-ecology-of-temperature-grasslands.html#cb40-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(plot) <span class="sc">%&gt;%</span></span>
+<span id="cb40-10"><a href="restoration-ecology-of-temperature-grasslands.html#cb40-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">mean_sobs =</span> <span class="fu">mean</span>(sobs),</span>
+<span id="cb40-11"><a href="restoration-ecology-of-temperature-grasslands.html#cb40-11" aria-hidden="true" tabindex="-1"></a>            <span class="at">mean_shannon =</span> <span class="fu">mean</span>(shannon),</span>
+<span id="cb40-12"><a href="restoration-ecology-of-temperature-grasslands.html#cb40-12" aria-hidden="true" tabindex="-1"></a>            <span class="at">mean_simpson =</span> <span class="fu">mean</span>(simpson),</span>
+<span id="cb40-13"><a href="restoration-ecology-of-temperature-grasslands.html#cb40-13" aria-hidden="true" tabindex="-1"></a>            <span class="at">mean_total_obs =</span> <span class="fu">mean</span>(total_obs))</span></code></pre></div>
 <pre><code>## # A tibble: 2 x 5
 ##    plot mean_sobs mean_shannon mean_simpson mean_total_obs
 ##   &lt;dbl&gt;     &lt;dbl&gt;        &lt;dbl&gt;        &lt;dbl&gt;          &lt;dbl&gt;
