@@ -354,7 +354,7 @@ Our second method to survey the vegetation was using 0.5 x 0.5m quadrats. For al
 
 `r msmbstyle::question(label = "ques:w-24", text = "Compare and contrast the methods of using a walk-through versus quadrats, consider pros and cons of both of them, what metrics can be calculated, along with implicit assumptions that are made.")`
 
-`r msmbstyle::question(label = "ques:w-25", text = "Argue for which plot you woul expect to see a higher degree of variability among quadrats.")`
+`r msmbstyle::question(label = "ques:w-25", text = "Argue for which plot you would expect to see a higher degree of variability among quadrats.")`
 
 Let's pull in those results.
 
@@ -371,6 +371,159 @@ quadrat <- read_delim("data/survey_quadrat.tsv", delim = "\t") %>%
 
 `r msmbstyle::solution_begin()`
 
+**Calculate species richness of each quadrat, compare mean per plot**
 
+```{r}
+
+quadrat %>%
+  filter(n_occurence > 0 & !is.na(n_occurence)) %>% # keep only species that were observed in quadrat
+  group_by(plot, quadrat_observer) %>%           # split into groups for each quadrat/plot
+  summarize(richness = n()) %>%                  # count species observed
+  ungroup() %>%
+  group_by(plot) %>%                             # split into groups for each plot
+  summarize(mean_richness_plot = mean(richness), # calculate mean richness
+            std_richness_plot = sd(richness))    # calculate standard deviation
+
+```
+
+**Total abundance of individuals in each quadrat, mean per plot**
+
+```{r}
+
+quadrat %>%
+  filter(n_occurence > 0 & !is.na(n_occurence)) %>% # keep only species that were observed in quadrat
+  group_by(plot, quadrat_observer) %>%              # split into groups for each quadrat/plot
+  summarize(total_indv_obs = sum(n_occurence)) %>%  # count species observed
+  ungroup() %>%
+  group_by(plot) %>%                                # split into groups for each plot
+  summarize(mean_abund_plot = mean(total_indv_obs), # calculate mean richness
+            std_abund_plot = sd(total_indv_obs))    # calculate standard deviation
+
+```
+
+**Most common plant in each quadrat, number of individual per most common plant**
+
+```{r}
+
+quadrat %>%
+  filter(n_occurence > 0 & !is.na(n_occurence)) %>% # keep only species that were observed in quadrat
+  group_by(plot, quadrat_observer) %>%     # split into groups for each quadrat/plot 
+  slice_max(order_by = n_occurence, n = 1) # keep only row with highest number of occurence
+
+```
+
+**relative abundance per species per quadrat**
+
+```{r}
+
+## Plot 1
+quadrat %>%
+  filter(n_occurence > 0 & !is.na(n_occurence)) %>%     # keep only species that were observed in quadrat
+  group_by(plot, quadrat_observer) %>%                  # split into groups for each quadrat/plot 
+  mutate(rel_abund = n_occurence/sum(n_occurence)) %>%  # calculate relative abundance for each species within group
+  select(-percent_cover) %>%                            # get rid of unneeded column 
+  filter(plot == 1) %>%                                 # keep only plot
+  pivot_wider(names_from = quadrat_observer, values_from = rel_abund) # pivot the table
+
+```
+
+well, that's not ideal, looks like we ant to make everything lower case so all the black-eyed Susan fields read the same. We also need to strip white space
+
+```{r}
+
+## Plot 1
+quadrat %>%
+  mutate(species = tolower(species),                      # make all lower case
+         species = str_trim(species, side = "both")) %>%  # strip whitespace
+  filter(n_occurence > 0 & !is.na(n_occurence)) %>%       # keep only species that were observed in quadrat
+  group_by(plot, quadrat_observer) %>%                    # split into groups for each quadrat/plot 
+  mutate(rel_abund = round(n_occurence/sum(n_occurence)*100, digits = 1)) %>%  # calculate relative abundance for each species within group
+  ungroup() %>%
+  filter(plot == 1) %>%                                   # keep only plot 1
+  select(-percent_cover, -plot, -n_occurence) %>%         # get rid of unneeded column 
+  pivot_wider(names_from = quadrat_observer, values_from = rel_abund) %>% # pivot the table
+  replace(is.na(.), 0)
+
+```
+
+Then we can do the same for plot 2
+
+```{r}
+
+## Plot 3
+quadrat %>%
+  mutate(species = tolower(species),                      # make all lower case
+         species = str_trim(species, side = "both")) %>%  # strip whitespace
+  filter(n_occurence > 0 & !is.na(n_occurence)) %>%       # keep only species that were observed in quadrat
+  group_by(plot, quadrat_observer) %>%                    # split into groups for each quadrat/plot 
+  mutate(rel_abund = round(n_occurence/sum(n_occurence)*100, digits = 1)) %>%  # calculate relative abundance for each species within group
+  ungroup() %>%
+  filter(plot == 3) %>%                                   # keep only plot 3
+  select(-percent_cover, -plot, -n_occurence) %>%         # get rid of unneeded column 
+  pivot_wider(names_from = quadrat_observer, values_from = rel_abund) %>% # pivot the table
+  replace(is.na(.), 0)
+
+```
+
+
+**Total observed individuals per quadrat**
+
+```{r}
+
+quadrat %>%
+  filter(n_occurence > 0 & !is.na(n_occurence)) %>%     # keep only species that were observed in quadrat
+  group_by(plot, quadrat_observer) %>%                  # split into groups for each quadrat/plot 
+  summarize(total_ind = sum(n_occurence)) %>%
+  group_by(plot) %>%
+  summarize(mean = mean(total_ind),
+            std = sd(total_ind))
+
+```
+
+**Diversity indices**
+
+To calculate diversity indices you will need to install an additional package called `vegan`, once you've done that you will need to load it using the `library()` function before you can use those functions. Use your textbook to look up how these different diversity indices differ from each other in terms of how they are calculated.
+
+
+```{r}
+
+# install.packages("vegan")
+library(vegan)
+
+quadrat %>%
+  filter(n_occurence > 0 & !is.na(n_occurence)) %>%              # keep only species that were observed in quadrat
+  group_by(plot, quadrat_observer) %>%                           # split into groups for each quadrat/plot 
+  summarize(sobs = specnumber(n_occurence),
+            shannon = diversity(n_occurence, index = "shannon"), # calculate diversity indeces using vegan functions
+            simpson = diversity(n_occurence, index = "simpson"),
+            total_obs = sum(n_occurence))
+
+```
+
+We can of course also calculate the mean values per plot.
+
+```{r}
+
+quadrat %>%
+  filter(n_occurence > 0) %>%                                    # keep only species that were observed in quadrat
+  group_by(plot, quadrat_observer) %>%                           # split into groups for each quadrat/plot 
+  summarize(sobs = specnumber(n_occurence),
+            shannon = diversity(n_occurence, index = "shannon"), # calculate diversity indeces using vegan functions
+            simpson = diversity(n_occurence, index = "simpson"),
+            total_obs = sum(n_occurence)) %>%
+  ungroup() %>%
+  group_by(plot) %>%
+  summarize(mean_sobs = mean(sobs),
+            mean_shannon = mean(shannon),
+            mean_simpson = mean(simpson),
+            mean_total_obs = mean(total_obs))
+
+```
 
 `r msmbstyle::solution_end()`
+
+`r msmbstyle::question(label = "ques:w-28", text = "Compare and contrast plots 1 and 3 using at least two of the metrics that we came up with.")`
+
+
+`r msmbstyle::question(label = "ques:w-29", text = "Summarize your findings by briefly comapre the two sites by relating site descriptions (i.e. what the whole plot looked like), the soil measurements we made, and the results of the walkthrough and quadat surveys.")`
+
