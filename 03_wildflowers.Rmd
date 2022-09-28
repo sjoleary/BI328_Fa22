@@ -35,7 +35,6 @@ options(htmltools.dir.version = FALSE)
 
 ```
 
-
 # Restoration Ecology of Temperature Grasslands
 
 **Learning Objectives**
@@ -74,9 +73,7 @@ Before lab you should have used this description of [North American Prairie Spec
 
 `r msmbstyle::question(label = "ques:w-1", text = "Briefly outline the main driver(s) of loss of grasslands and describe how this impacts wildlife.")`
 
-
 `r msmbstyle::question(label = "ques:w-2", text = "Create a list of abiotic factors that influence what species are found in grasslands at a local scale. Organize them into larger categories of individual factors, and include metrics or how you might measure them.")`
-
 
 ## Study Design
 
@@ -149,7 +146,6 @@ Before lab you should have used this description of [North American Prairie Spec
 We measured the soil compaction at each plot using a Dickey-John Soil Compaction Tester to measure the depth to 300 psi at each of the four midpoints of plot edges.
 
 `r msmbstyle::question(label = "ques:w-5", text = "Consider why we measured four points instead of e.g. just picking the middle of the plot.")`
-
 
 Let's take a look at our data. First, let's read in a tab-delimited text file containing the results for each plot to create an object that holds a dataframe.
 
@@ -229,7 +225,6 @@ water_holding %>%
 
 ```
 
-
 ```{r echo=FALSE}
 
 kable(
@@ -242,8 +237,6 @@ kable(
 )
 
 ```
-
-
 
 `r msmbstyle::solution_end()`
 
@@ -264,7 +257,6 @@ water_holding %>%
 
 ```
 
-
 ```{r echo=FALSE}
 
 kable(
@@ -280,7 +272,6 @@ water_holding %>%
 )
 
 ```
-
 
 `r msmbstyle::solution_end()`
 
@@ -446,7 +437,7 @@ quadrat %>%
 
 ```
 
-Then we can do the same for plot 2
+Then we can do the same for plot 3
 
 ```{r}
 
@@ -465,7 +456,6 @@ quadrat %>%
 
 ```
 
-
 **Total observed individuals per quadrat**
 
 ```{r}
@@ -483,7 +473,6 @@ quadrat %>%
 **Diversity indices**
 
 To calculate diversity indices you will need to install an additional package called `vegan`, once you've done that you will need to load it using the `library()` function before you can use those functions. Use your textbook to look up how these different diversity indices differ from each other in terms of how they are calculated.
-
 
 ```{r}
 
@@ -524,6 +513,4 @@ quadrat %>%
 
 `r msmbstyle::question(label = "ques:w-28", text = "Compare and contrast plots 1 and 3 using at least two of the metrics that we came up with.")`
 
-
 `r msmbstyle::question(label = "ques:w-29", text = "Summarize your findings by briefly comapre the two sites by relating site descriptions (i.e. what the whole plot looked like), the soil measurements we made, and the results of the walkthrough and quadat surveys.")`
-

@@ -1,5 +1,10 @@
 tab:unnamed-chunk-15
 tab:unnamed-chunk-17
+fig:unnamed-chunk-51
+tab:unnamed-chunk-56
+tab:unnamed-chunk-59
+tab:unnamed-chunk-60
+fig:unnamed-chunk-64
 installing-rrstudio
 install-set-up-r-and-rstudio-on-your-computer
 windows
@@ -35,3 +40,14 @@ soil-water-holding-capacity
 plant-survey
 walk-through
 quadrat-survey
+iucn-redlist-quantifying-species-risk-levels
+iucn-redlist
+iucn-redlist-categories
+valueing-biodiversity
+threats-drivers-of-loss-to-biodiversity
+local-and-global-comparisons-of-conservation-status-and-threats-to-biodiversity
+querying-the-database
+comparing-threat-status-of-a-group-of-species
+comparison-of-distribution-of-habitats-for-different-conservations-status-groups.
+comparison-of-conservation-status-for-different-geographic-scales-and-regions
+comparison-of-drivers-of-biodiversity-loss
