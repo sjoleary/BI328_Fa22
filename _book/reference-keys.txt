@@ -51,3 +51,8 @@ comparing-threat-status-of-a-group-of-species
 comparison-of-distribution-of-habitats-for-different-conservations-status-groups.
 comparison-of-conservation-status-for-different-geographic-scales-and-regions
 comparison-of-drivers-of-biodiversity-loss
+fig:unnamed-chunk-21
+tab:unnamed-chunk-26
+tab:unnamed-chunk-29
+tab:unnamed-chunk-30
+fig:unnamed-chunk-34
