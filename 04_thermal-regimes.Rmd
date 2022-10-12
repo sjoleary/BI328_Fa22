@@ -1,0 +1,459 @@
+---
+title: "BI 328 Conservation Biology"
+author: "Labmanual Fall 2022"
+date: "`r Sys.Date()`"
+knit: "bookdown::preview_chapter"
+output:
+  msmbstyle::msmb_html_book:
+    highlight: tango
+    toc: TRUE
+    toc_depth: 1
+    split_by: chapter
+    margin_references: FALSE
+    css: msmb.css
+bibliography: labmanual.bib
+link-citations: yes
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r include=FALSE}
+
+
+library(msmbstyle)
+
+# invalidate cache when the tufte version changes
+knitr::opts_chunk$set(tidy = FALSE, 
+                      message = FALSE,
+                      error = FALSE,
+                      warning = FALSE,
+                      cache.extra = packageVersion('msmbstyle'))
+
+
+options(htmltools.dir.version = FALSE)
+
+```
+
+# Thermal Regimes of Streams
+
+**Learning Objectives**
+
+After completing this activity you should be able to
+
+* Describe the thermal regime of a stream using a wide range of metrics to describe magnitude, frequency, duration, rate of change, timing, and variability of temperature.
+* Use an example to explain how temperature variability impacts an ecosystem due to physiological reactions at an organismal level
+* Distinguish between continuous/categorical (qualitative/quantitative) data
+* Use data visualizations to better understand a data set and identify patterns.
+* Use ggplot to create line plots to visualize quantitative trends over time.
+* Use descriptive statistics to summarize, organize, and compare basic features of a data set across time periods (and sites).
+* Use `group_by()` and `summarize()` to calculate summary statistics.
+* Choose an appropriate metric to answer a specific biological/ecological question.
+
+For each of our modules we will have a project-folder with an `Rproject`, `*.Rmd`-files, and sub-directories for data, scripts, and results as described in our `Rproject` Tutorial. You should create a directory on your Desktop or Documents folder on your laptop (name it something like `BI328`) as a home directory for all of our project folders this semester.
+
+Download the [ThermalRegimes](https://drive.google.com/drive/folders/1p1xmqYx5964pSyStLZJ-isiWSAnyQL9g?usp=sharing) project folder. Once you have downloaded it, unzip the project directory into your `BI328` directory. You can open the `Rproj` for this module either by double clicking on it which will launch `Rstudio` or by opening `Rstudio` and then using `File > Open Project` or by clicking on the `Rproject` icon in the top right of your program window and selecting `Open Project`.
+
+Once you have opened a project you should see the project name in the top right corner^[Pro tip: If you run into issues where an Rmarkdown won't render or file paths aren't working (especially if things were working previously) one of your first steps should be to double check that the correct `Rproj` is loaded.].
+
+You should have a `ThermalRegimes.Rmd` in your project directory. Use that file to work through this lab - you will hand in your rendered ("knitted") `html`-file as your homework assignment. So, first thing in the `YAML` header, change the author to your name. You will use this `Rmarkdown` file to record your answers.
+
+We will need to install an additional package before we get started.
+
+```{r eval=FALSE}
+
+install.packages("lubridate")
+
+```
+
+Before we get started load the `R packages` we will need to run our analysis^[Remember, anytime you close `Rstudio` or quite an `R session` you need to reload your libraries, even if you you already have objects in your environment from the previous session].
+
+```{r}
+
+# load libraries
+library(tidyverse)
+library(lubridate)
+library(knitr)
+
+# load custom ggplot themes
+source("scr/ggplot.R")
+
+```
+
+## Headwater Streams
+
+We are going to spend the next few labs exploring various aspects of headwater streams. Before lab you should have used this [description](https://extension.unh.edu/resource/headwater-streams) to get a broad overview.
+
+`r msmbstyle::question(label = "ques:therm-1", text = "Use the information from the brochure to list 4-5 key characteristics for each of the four major categories. Consider how dynamic each system is, whether you think it is a more/less homogenous habitat, how dynamic it is, what the main water source is, differences in terms of stream biota (plants and animals), and what sets is apart from the other types.")`
+
+1. Mountain Streams
+  + 
+  + 
+  +
+  +
+2. Valley Streams
+  + 
+  + 
+  +
+  +
+3. Spring-fed Brooks
+  + 
+  +
+  +
+  +
+4. Warm Rocky Streams
+  + 
+  +
+  +
+  +
+
+`r msmbstyle::question(label = "ques:therm-2", text = "Headwater streams provide rich habitats for a wide range of species. Use the concepts of temporal and spatial turnover to explain why they support such species-rich biological communities (5-10 sentences).")`
+
+Like most ecosystems, headwater streams are expected to be impacted by climate change. You will find a more in depth description of the points made in the brief introduction you read in this [Amendment to the NH Wildlife Action Plan](https://extension.unh.edu/sites/default/files/migrated_unmanaged_files/Resource004598_Rep6559.pdf).
+
+`r msmbstyle::question(label = "ques:therm-3", text = "Briefly outline two central challenges, describing both the change in environmental conditions, how you expect this to affect the biological community, and what strategies can be used to help minimize this impact.")`
+
+1. Challenge One:
+
+[Outline challenge, impact on abiotic/biotic components of ecosystem, strategies]
+
+
+2. Challenge Two:
+
+[Outline challenge, impact on abiotic/biotic components of ecosystem, strategies]
+
+
+## Identify Metrics to characterize the thermal regime of streams
+
+`r msmbstyle::question(label = "ques:therm-4", text = "Stream biodiversity is closely linked to temperature through thermally-mediated ecological processes at all hierarchical levels. For each levels describe 2-3 factors that could be impacted by temperature.")`
+
+1. At an organismal level, temperature ...
+2. At the population level, temperature ...
+3. At the community level, temperature ...
+
+Arguably, temperature is one of the primary determinants of aquatic ecosystems. The **water temperature** is a single value that describes the state at a specific point in time in space and is generally measured in degrees Celsius. By contrast, the **thermal regime** of a stream consists of a time series describing the water temperature over time in a single locations, frequently this data set will comprise the annual regular sequence of water temperature at specific locations that are continuously monitored. 
+
+Let's take a look at some real data from Back Mountain Brook (`BMB`).
+
+
+### Exploring temperature data sets
+
+Let's take a look at some real data from Back Mountain Brook (BMB) which is a headwater stream in southern New Hampshire.
+
+```{r}
+
+BMB <- read_delim("data/BMB_water.txt", delim = "\t",
+                   col_types = 'cnn')
+
+```
+
+
+`r msmbstyle::question(label = "ques:therm-5", text = "Take a quick look at the data frame you just read into R. The data you are looking at is what is generally described as raw data. These are the individual measurements that have not been summarized, processed, or analyzed in any way. Scroll through the individual rows amd briefly describe what information you can glean.")`
+
+* what variables do you have? 
+* what is being measured? 
+* what are units being used?
+* what is the resolution of your data?
+* what is the time frame?
+* what is the spatial extent?
+
+Currently, all of our date and time information is in a single column, we are going to split that information into individual columns.
+
+```{r}
+
+BMB <- BMB %>%
+  mutate(Date_Time = parse_date_time(Date_Time, orders = "mdyHM"),
+         Date = as_date(Date_Time),
+         Day = day(Date_Time),
+         Month = month(Date_Time),
+         Year = year(Date_Time),
+         Hour = hour(Date_Time))
+
+```
+
+Variables can be classified as either continuous, discrete, or categorical. **Categorical** variables have finite number of discrete groups that may or may not have a logical order. Similarly, **discrete** variables are numeric, with a countable number of values between any two given values. By contrast, **continuous** variables are variables with an infinite number of values between any two given values.
+
+`r msmbstyle::question(label = "ques:therm-6", text = "Take another look at the dataframe and determine what category each variable falls under.")`
+
+* 
+* 
+
+We defined a thermal regime as the regular pattern of the change in water temperature over time in a single location. Just by looking at the `r nrow(BMB)` lines of data it can be very difficult to describe the temperature regime for this stream. Data visualizations can help us better understand the underlying data. We can use **Exploratory plots** to better understand the data and discover hidden patterns in a data set. Once we have completed our analysis and understand the data, we will generate **Explanatory plots** to clearly communicate our insights with others.
+
+Let's start by making a **heatplot** which uses color to code for the magnitude of individual values. This will allow us to visualize every single data point in the data set.
+
+```{r fig.cap="Hourly water temperature for Back Mountain Brook (2014-2020).", fig.width=9, fig.height=12}
+
+ggplot(BMB, aes(y = Hour, x = Day, fill = Water_Temp)) +
+  geom_tile() +
+  facet_grid(Year ~ Month) +
+  scale_fill_viridis_c(option = "inferno") +
+  scale_y_reverse() +
+  theme(legend.position = "bottom")
+
+```
+
+`r msmbstyle::question(label = "ques:therm-7", text = "Our heatplot consists of individual panels of months in columns and years in rows. For each panel you can determine the temperature for every hour (y-axis) for each day (x-axis) by comparing the color of that tile to the scale at the bottom. Use the heatplot to identify major patterns in the data.")`
+
+* How does temperature change over time?
+* Are patterns consistent over a day? month? year?
+* Are there any outliers to the general patterns?
+
+### Descriptive statistics to summarizing temperature data
+
+The heatplot helps us get a better overview of the data set compared to scrolling through all the rows of raw data, but it is still a lot of data points to be considering. Generally, we need to summarize the **raw data** using **descriptive** or **summary statistics**^[Descriptive statistics describe and quantify the basic features of a data set with the goal of being able to summarize, simplify, compare, and organize the contents.]. 
+
+`r msmbstyle::question(label = "ques:therm-8", text = "Start a list of metrics you could use to describe stream temperature of Back Mountain Brook. Try to be as specific as possible. Once you run out of ideas, compare notes with a few classmates around you and compile a single list of metrics. Discuss whether you can group them into categories based on what you have measured.")`
+
+We have previously used `R` to calculate fundamental descriptive statistics like the mean, standard deviation, minimum, and maximum temperature values using the functions `group_by()` and `summarize()`. 
+
+* `group_by()` allows you specify one or more variables (columns) to group you data by. For example, if you want to calculate the annual mean temperature, you would group by year. Once you do this, `R` will treat each group as independent; you can think of this having taken your data frame and creating subsets of your data where each subset would be the temperature measurements of an entire year.
+* `summarize()` allows you to specify a metric that you want to calculate. For example, we can use the function `mean()` to calcualte the mean.
+
+Let's start by calculating the annual mean temperature:
+
+```{r}
+
+annual_mean <- BMB %>%
+  group_by(Year) %>%
+  summarize(mean = mean(Water_Temp))
+
+```
+
+Let's take a look at what that new data set looks like:
+
+```{r}
+
+kable(
+  annual_mean,
+  digits = 2,
+  caption = "Mean annual temperature Back Mountain Brook"
+)
+
+```
+
+We can use the same syntax to calculate the standard deviation, minimum and maximum temperatures.
+
+```{r}
+
+annual_stats <- BMB %>%
+  group_by(Year) %>%
+  summarize(mean = mean(Water_Temp),
+            std = sd(Water_Temp),
+            min = min(Water_Temp),
+            max = max(Water_Temp))
+
+```
+
+Let's take a look at that new data set^[Remember, a good description starts with a summary of the general patterns and then points out notable details. Note, a description does not interpret results, that usually occurs in the discussion.].
+
+```{r}
+
+kable(
+  annual_stats,
+  digits = 2,
+  caption = "Yearly mean, standard deviation, minimum and maximum temperature for Back Mountain Brook."
+)
+
+```
+
+`r msmbstyle::question(label = "ques:therm-9", text = "Give a brief description of the summary statistics you just generated.")`
+
+By calculating descriptive stats at the annual level, you have collapsed all the temperature values for a single year into one number. This means that we are losing a lot of information.
+
+`r msmbstyle::question(label = "ques:therm-10", text = "Use your new-found R skills to calculate monthly mean values. Consider that your data set contains more than one of each month when you group your data.")`
+
+`r msmbstyle::solution_begin()`
+
+```{r}
+
+monthly_stats <- BMB %>%
+  group_by(Year, Month) %>%
+  summarize(mean = mean(Water_Temp),
+            std = sd(Water_Temp),
+            min = min(Water_Temp),
+            max = max(Water_Temp))
+
+```
+
+`r msmbstyle::solution_end()`
+
+Take a look at your summary stats. With the annual stats it was pretty straightforward to to compare values in a table - now you have a lot more values to look at. This is where a visualization might come in handy.
+
+
+### Visualizing the thermal regime of a stream
+
+`r msmbstyle::question(label = "ques:therm-11", text = "Consider how you might plot the monthly means to make it easier to discern the general pattern. Sketch out on a piece of paper what you think the figure will look like.")`
+
+* what should be on your x-axis?
+* what will be on your y-axis?
+* how many plots do you want?
+
+
+Let's learn how to use `R` to generate a few exploratory plots to visualize trends in our monthly means.
+
+```{r}
+
+ggplot(monthly_stats, aes(x = Month, y = mean)) +   # specify which object to plot, what should be on x and y axis
+  geom_point() +                                    # plot each value as a point
+  theme_standard
+
+
+```
+
+We can add a line that shows the general trend.
+
+```{r}
+
+ggplot(monthly_stats, aes(x = Month, y = mean)) +   # specify which object to plot, what should be on x and y axis
+  geom_point() +
+  geom_smooth() +                                   # add a trendline
+  theme_standard
+
+```
+
+We can also create individual line plots for every year.
+
+```{r}
+
+ggplot(monthly_stats, aes(x = Month, y = mean)) +   # specify which object to plot, what should be on x and y axis
+  geom_line() +
+  geom_point() +
+  facet_wrap(. ~ Year) +                           # create individual plots per year
+  theme_facet
+
+```
+
+`r msmbstyle::question(label = "ques:therm-12", text = "Practice your new found data analysis skills by generating a dataset of daily mean, minimum, and maximum temperatures.")`
+
+
+
+`r msmbstyle::question(label = "ques:therm-13", text = "Practice your new found plot making skills by creating and additional 3-4 plots based on the various summary statistics you have calculated.")`
+
+
+
+`r msmbstyle::question(label = "ques:therm-14", text = "Pick two of the plots you have generated that you think best visualize the thermal regime of Back Mountain Brook and write a brief description of the data being shown, then discuss your results from both plots to describe the thermal regime of Back Mountain Brook.")`
+
+
+`r msmbstyle::question(label = "ques:therm-15", text = "Discuss with your lab mate whether we have fully characterized the thermal regime of our stream or if you can think of additional metrics that might be useful.")`
+
+
+### A wide range of metrics are used to describe the thermal regime of a stream
+
+We can group metrics describing the thermal regime of a stream into six categories: **Magnitude**, **Frequency**, **Duration**, **Rate of change**, **Timing**, and **Variability**. 
+
+`r msmbstyle::question(label = "ques:therm-16", text = "Take the list of metrics and work your class mates to define each category and assign metrics to each category in the table below.")`
+
+Now that we've thought more about individual facets of thermal regimes, let's revisit the idea that stream biodiversity is closely linked to temperature through thermally-mediated ecological processes at all hierarchical levels.
+
+`r msmbstyle::question(label = "ques:therm-17", text = "For each of the ecological facets below identify a metric describing the thermal regime that would impact it and add it to your table accordingly.")`
+
+* presence/absence of a species during certain time periods/locations
+* mortality
+* migration events
+* reproductive timing
+* individual stress
+* competitive advantage
+* metabolic demand
+* shifts in timing/developmental stage of emergence
+* life history transitions
+* growth rate
+* egg development
+* disease susceptibility
+* emergence timing
+
+| Category       | Definition | Example metrics | Biological/Ecological importance |
+-----------------|------------|-----------------|----------------------------------|
+| Magnitude      |            |                 |                                  |
+| Frequency      |            |                 |                                  |
+| Duration       |            |                 |                                  |
+| Rate of change |            |                 |                                  |
+| Timing         |            |                 |                                  |
+| Variability    |            |                 |                                  |
+
+
+## Temporal variability of a thermal landscape impacts the ecoystem due to physiological reactions at an organismal level
+
+In preparation for today's lab you read [Wilbur, Nathan M., et al. "Characterizing physical habitat preferences and thermal refuge occupancy of brook trout (Salvelinus fontinalis) and Atlantic salmon (Salmo salar) at high river temperatures." River Research and Applications 36.5 (2020): 769-783.](https://onlinelibrary.wiley.com/doi/full/10.1002/rra.3570).
+
+`r msmbstyle::question(label = "ques:therm-18", text = "Give a quick summary of the paper by stating the central question/hypothesis, how the question was answered (methods), key results, and key conclusions/applications.")`
+
+1. Central Question:
+
+* 
+*
+
+2. What data was collected and why? What was measured? What was it supposed to tell the scientists?
+
+*
+*
+
+3. What where the key results?
+
+*
+*
+*
+
+4. What were the major conclusions? Is there a specific application? What can we do with the information we now have?
+
+*
+*
+*
+
+This paper focuses on brook trout and Atlantic salmong which are considered a cold-water adapted species. In the paper, the scientists were looking at thermal anaomoalies ("cold spots") that can provide thermal refugia for brook trout during temperature anomalies. Similarly, headwater streams are important thermal refugia for salmonids which will migrate upstream during the warmer months.
+
+A frequently cited reason for the importance mof conserving and managing headwater streams is that they provide important climate refugia for cold-water adapted species as increasing temperatures exceed the thermal tolerance during certain times of the year.
+
+`r msmbstyle::question(label = "ques:therm-19", text = "Outline how you could use our data set to determine whether our headwater stream continues to serve as a thermal refuge for brook trout. Be specific in terms of which metric you want to use and why. Write out the individual steps you would need to take in order to calculate that metric for our data set, don't worry about whether or not you can turn that process into code.")`
+
+
+We will come up with the needed code to assess habitat suitability using the metric you have chosen and generate an appropriate summary.
+
+`r msmbstyle::question(label = "ques:therm-20", text = "Briefly describe your results and then discuss whether or not you think Back Mountain Brook is a suitable thermal refuge for brook trout to migrate to during warmer months.")`
+
+
+## Spatial variability within a thermal landscape allows aquatic organisms to maximize growth and survival
+
+In addition to the temporal aspect, the **thermal landscape** (or **thermalscape**) adds a spatial component to characterize a spatially continuous temperature surface at a larger spatial scale. Back Mountain Brook is just one of many headwater streams in the Francestown/New Boston area that are all part of the same watershed.
+
+`r msmbstyle::question(label = "ques:therm-21", text = "Briefly discuss whether or not you think that a nearby headwater stream would have the same thermal regime to Back Mountain Brook, describe parameters that might result in them exhibiting different patterns and how different you think those patterns might be.")`
+
+
+`r msmbstyle::question(label = "ques:therm-22", text = "Below is a code chunk that will pull in a data set of Scataquog Brook which is a nearby headwater stream. Assume that you've been given a limited amount of resources to preserve habitat to support local brook trout populations. Go through the steps listed below to compare the thermal regimes of the two streams to assist in deciding how to prioritize your funds.")`
+
+1. Read in the data set, briefly compare it to the `BMB` data set in terms of time frame covered and resolution, and argue whether or not you think that this is an appropriate data set to use for a comparison.
+
+```{r}
+
+SQB <- read_delim("data/SQB_water.txt", delim = "\t",
+                   col_types = 'cnn') %>%
+  mutate(Date_Time = parse_date_time(Date_Time, orders = "mdyHM"),
+         Date = as_date(Date_Time),
+         Day = day(Date_Time),
+         Month = month(Date_Time),
+         Year = year(Date_Time),
+         Hour = hour(Date_Time))
+
+```
+
+2. Calculate a series of descriptive statistics at different temporal resolutions (annual, monthly, daily) as you did for `BMB` and create at least two visualization to compare the thermal regimes of the two headwater streams.
+
+
+
+3. Compare and contrast the descriptive statistics and visualization for the two headwater streams.
+
+
+
+4. Use the same metric/method you chose above to specifically focus on habitat suitability for brook trout to create a `SQB` data set and describe your results.
+
+
+
+5. Compare and contrast this metric for the two headwater streams to support your decision on which headwater stream to priortize for habitat conservation.
+
+
+
+
+
+
+
+
+

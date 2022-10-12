@@ -56,3 +56,16 @@ tab:unnamed-chunk-26
 tab:unnamed-chunk-29
 tab:unnamed-chunk-30
 fig:unnamed-chunk-34
+thermal-regimes-streams
+headwater-streams
+fig:unnamed-chunk-6
+tab:unnamed-chunk-8
+tab:unnamed-chunk-10
+thermal-regimes-of-streams
+identify-metrics-to-characterize-the-thermal-regime-of-streams
+exploring-temperature-data-sets
+descriptive-statistics-to-summarizing-temperature-data
+visualizing-the-thermal-regime-of-a-stream
+a-wide-range-of-metrics-are-used-to-describe-the-thermal-regime-of-a-stream
+temporal-variability-of-a-thermal-landscape-impacts-the-ecoystem-due-to-physiological-reactions-at-an-organismal-level
+spatial-variability-within-a-thermal-landscape-allows-aquatic-organisms-to-maximize-growth-and-survival
