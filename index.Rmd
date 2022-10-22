@@ -66,7 +66,3 @@ I will generally post a quick debrief in our slack channel after lab.
 *No late or incomplete homework will be accepted or receive credit.*
 
 
-### Due Wednesday, 9/28, 12pm {-}
-
-Complete Chapter 3: Restoration Ecology of Temperate Grasslands. Remember, you should go back over all your answers and make sure that you have completed all the answers and actions to various prompts. If you jotted down a few key thoughts during lab, make sure that you finalize those drafts. You should follow the instructions (short demo video) posted on Canvas to make sure that you knit your final `rmarkdown` to produce an `html` file that you can upload through Canvas.
-

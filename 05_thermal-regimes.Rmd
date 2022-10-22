@@ -86,25 +86,9 @@ We are going to spend the next few labs exploring various aspects of headwater s
 `r msmbstyle::question(label = "ques:therm-1", text = "Use the information from the brochure to list 4-5 key characteristics for each of the four major categories. Consider how dynamic each system is, whether you think it is a more/less homogenous habitat, how dynamic it is, what the main water source is, differences in terms of stream biota (plants and animals), and what sets is apart from the other types.")`
 
 1. Mountain Streams
-  + 
-  + 
-  +
-  +
 2. Valley Streams
-  + 
-  + 
-  +
-  +
 3. Spring-fed Brooks
-  + 
-  +
-  +
-  +
 4. Warm Rocky Streams
-  + 
-  +
-  +
-  +
 
 `r msmbstyle::question(label = "ques:therm-2", text = "Headwater streams provide rich habitats for a wide range of species. Use the concepts of temporal and spatial turnover to explain why they support such species-rich biological communities (5-10 sentences).")`
 
@@ -112,23 +96,30 @@ Like most ecosystems, headwater streams are expected to be impacted by climate c
 
 `r msmbstyle::question(label = "ques:therm-3", text = "Briefly outline two central challenges, describing both the change in environmental conditions, how you expect this to affect the biological community, and what strategies can be used to help minimize this impact.")`
 
+`r msmbstyle::solution_begin(header = "Pointers", toggle = FALSE)`
+
 1. Challenge One:
-
-[Outline challenge, impact on abiotic/biotic components of ecosystem, strategies]
-
-
+    + Outline challenge
+    + impact on abiotic/biotic components of ecosystem
+    + strategies to overcome
 2. Challenge Two:
+    + Outline challenge
+    + impact on abiotic/biotic components of ecosystem
+    + strategies to overcome
 
-[Outline challenge, impact on abiotic/biotic components of ecosystem, strategies]
-
+`r msmbstyle::solution_end()`
 
 ## Identify Metrics to characterize the thermal regime of streams
 
 `r msmbstyle::question(label = "ques:therm-4", text = "Stream biodiversity is closely linked to temperature through thermally-mediated ecological processes at all hierarchical levels. For each levels describe 2-3 factors that could be impacted by temperature.")`
 
-1. At an organismal level, temperature ...
-2. At the population level, temperature ...
-3. At the community level, temperature ...
+`r msmbstyle::solution_begin(header = "Pointers", toggle = FALSE)`
+
+1. At an organismal level, temperature [*2-3 factors potentially impacted by temperature*]
+2. At the population level, temperature [*2-3 factors potentially impacted by temperature*]
+3. At the community level, temperature [*2-3 factors potentially impacted by temperature*]
+
+`r msmbstyle::solution_end()`
 
 Arguably, temperature is one of the primary determinants of aquatic ecosystems. The **water temperature** is a single value that describes the state at a specific point in time in space and is generally measured in degrees Celsius. By contrast, the **thermal regime** of a stream consists of a time series describing the water temperature over time in a single locations, frequently this data set will comprise the annual regular sequence of water temperature at specific locations that are continuously monitored. 
 
@@ -149,12 +140,16 @@ BMB <- read_delim("data/BMB_water.txt", delim = "\t",
 
 `r msmbstyle::question(label = "ques:therm-5", text = "Take a quick look at the data frame you just read into R. The data you are looking at is what is generally described as raw data. These are the individual measurements that have not been summarized, processed, or analyzed in any way. Scroll through the individual rows amd briefly describe what information you can glean.")`
 
+`r msmbstyle::solution_begin(header = "Pointers", toggle = FALSE)`
+
 * what variables do you have? 
 * what is being measured? 
 * what are units being used?
 * what is the resolution of your data?
 * what is the time frame?
 * what is the spatial extent?
+
+`r msmbstyle::solution_end()`
 
 Currently, all of our date and time information is in a single column, we are going to split that information into individual columns.
 
@@ -174,8 +169,13 @@ Variables can be classified as either continuous, discrete, or categorical. **Ca
 
 `r msmbstyle::question(label = "ques:therm-6", text = "Take another look at the dataframe and determine what category each variable falls under.")`
 
-* 
-* 
+`r msmbstyle::solution_begin(header = "Pointers", toggle = FALSE)`
+
+* Categorical: Variable X, ...
+* Continuous: Variable Y, ...
+* Discrete: Variable Z, ...
+
+`r msmbstyle::solution_end()`
 
 We defined a thermal regime as the regular pattern of the change in water temperature over time in a single location. Just by looking at the `r nrow(BMB)` lines of data it can be very difficult to describe the temperature regime for this stream. Data visualizations can help us better understand the underlying data. We can use **Exploratory plots** to better understand the data and discover hidden patterns in a data set. Once we have completed our analysis and understand the data, we will generate **Explanatory plots** to clearly communicate our insights with others.
 
@@ -194,15 +194,32 @@ ggplot(BMB, aes(y = Hour, x = Day, fill = Water_Temp)) +
 
 `r msmbstyle::question(label = "ques:therm-7", text = "Our heatplot consists of individual panels of months in columns and years in rows. For each panel you can determine the temperature for every hour (y-axis) for each day (x-axis) by comparing the color of that tile to the scale at the bottom. Use the heatplot to identify major patterns in the data.")`
 
+`r msmbstyle::solution_begin(header = "Pointers")`
+
 * How does temperature change over time?
 * Are patterns consistent over a day? month? year?
 * Are there any outliers to the general patterns?
+
+`r msmbstyle::solution_end()`
+
 
 ### Descriptive statistics to summarizing temperature data
 
 The heatplot helps us get a better overview of the data set compared to scrolling through all the rows of raw data, but it is still a lot of data points to be considering. Generally, we need to summarize the **raw data** using **descriptive** or **summary statistics**^[Descriptive statistics describe and quantify the basic features of a data set with the goal of being able to summarize, simplify, compare, and organize the contents.]. 
 
 `r msmbstyle::question(label = "ques:therm-8", text = "Start a list of metrics you could use to describe stream temperature of Back Mountain Brook. Try to be as specific as possible. Once you run out of ideas, compare notes with a few classmates around you and compile a single list of metrics. Discuss whether you can group them into categories based on what you have measured.")`
+
+`r msmbstyle::solution_begin(header = "Pointers")`
+
+* Category X:
+    + metric
+    + metric
+* Category Y:
+    + metric
+    + metric
+
+`r msmbstyle::solution_end()`
+
 
 We have previously used `R` to calculate fundamental descriptive statistics like the mean, standard deviation, minimum, and maximum temperature values using the functions `group_by()` and `summarize()`. 
 
@@ -221,7 +238,7 @@ annual_mean <- BMB %>%
 
 Let's take a look at what that new data set looks like:
 
-```{r}
+```{r echo=FALSE}
 
 kable(
   annual_mean,
@@ -246,7 +263,7 @@ annual_stats <- BMB %>%
 
 Let's take a look at that new data set^[Remember, a good description starts with a summary of the general patterns and then points out notable details. Note, a description does not interpret results, that usually occurs in the discussion.].
 
-```{r}
+```{r echo=FALSE}
 
 kable(
   annual_stats,
@@ -258,6 +275,19 @@ kable(
 
 `r msmbstyle::question(label = "ques:therm-9", text = "Give a brief description of the summary statistics you just generated.")`
 
+`r msmbstyle::solution_begin(header = "Pointers")`
+
+When you are asked to give a brief description, this should involve a several sentences (exactly how many will depend on how complex the data is you are describing). The key is to be clear and specific, but not get lost in unnecessary details. You can follow a simple, standard outline - the key is to start with a statement about what is being described/summarized with that data set, then point out the general pattern(s), followed by notable highlights.
+
+* What is being summarized/compared/described?^[For example: *From 2014 - 2020 the yearly mean temperature ranged from 5.85 to 8.0°C in Rand Brook, with minimum temperatures around 0°C and maximum temperatures ranging from 15.8 - 25.82°C. With the exception of 2014 standard deviation is around 6-7°C.*] As appropriate state time periods and/or locations analyzed, metrics/units used to measure. This statement will frequently also "bleed over" into stating general patterns
+* What is the general pattern?^[For example: *There is no consistent trend of yearly mean temperatures increasing or decreasing over time*] Go for general trends (ignore some of the small details our outlier values), remember: "no pattern" is also a pattern.
+* Are the notable details to be highlighted?^[For example: *Maximum values are generally between 19 and 22°C, though notably in 2018 and 2019 values >24°C were recorded.* this is interesting - even though there is no real trend in yearly means, clearly there are outlier years, especially in the context of our question of cold-water refugia the warmer years are of interest... so we point it out here for a later discussion]. This could include outlier values, components that are unexpected. Generally you would consider what your question is to determine what is relevant and you would keep in mind what your discussion points are going to be, even though at this point you should not be giving an interpretation of your data.
+* Is there something that should be pointed out to make sure that results are not presented in a misleading way? ^[For example: *Values for 2014 contain only a data from October - December, and 2020 only contains data until the beginning of August*. Pointing this out let's the reader know that those values are difficult to compare to the other years... frankly the 2014 data should probably be excluded.]
+
+Remember: For a description you should not be interpreting the data, e.g. by giving an explanation of how those patterns are being produced.
+
+`r msmbstyle::solution_end()`
+
 By calculating descriptive stats at the annual level, you have collapsed all the temperature values for a single year into one number. This means that we are losing a lot of information.
 
 `r msmbstyle::question(label = "ques:therm-10", text = "Use your new-found R skills to calculate monthly mean values. Consider that your data set contains more than one of each month when you group your data.")`
@@ -267,7 +297,7 @@ By calculating descriptive stats at the annual level, you have collapsed all the
 ```{r}
 
 monthly_stats <- BMB %>%
-  group_by(Year, Month) %>%
+  group_by(Year, Month) %>%             # summarizing just by month would create summary stats across all years for each month
   summarize(mean = mean(Water_Temp),
             std = sd(Water_Temp),
             min = min(Water_Temp),
@@ -284,64 +314,244 @@ Take a look at your summary stats. With the annual stats it was pretty straightf
 
 `r msmbstyle::question(label = "ques:therm-11", text = "Consider how you might plot the monthly means to make it easier to discern the general pattern. Sketch out on a piece of paper what you think the figure will look like.")`
 
+`r msmbstyle::solution_begin(header = "Pointers", toggle = FALSE)`
+
 * what should be on your x-axis?
 * what will be on your y-axis?
 * how many plots do you want?
 
+`r msmbstyle::solution_end()`
 
-Let's learn how to use `R` to generate a few exploratory plots to visualize trends in our monthly means.
 
-```{r}
+Let's learn how to use `R` to generate a few exploratory plots to visualize trends in our monthly means^[The comments (`R` ignores anything that comes after a `#` which allows us to add comments to our code, this is a helpful process not only for other people trying to understand your code but future-you will also thank you when they try to remember what current-you was ~~plotting~~ thinking)].
+
+```{r fig.cap="Mean monthly temperatures for Back Mountain Brook (2014-2020)."}
 
 ggplot(monthly_stats, aes(x = Month, y = mean)) +   # specify which object to plot, what should be on x and y axis
   geom_point() +                                    # plot each value as a point
-  theme_standard
-
+  scale_x_continuous(breaks=seq(1, 12, by = 1)) +   # plot values 1 - 12 (months) on x-axis
+  theme_standard                                    # custom theme
 
 ```
 
 We can add a line that shows the general trend.
 
-```{r}
+```{r fig.cap="Mean monthly temperatures for Back Mountain Brook (2014-2020). Blue line indicates trendline, grey area is 95% confidence interval"}
 
 ggplot(monthly_stats, aes(x = Month, y = mean)) +   # specify which object to plot, what should be on x and y axis
-  geom_point() +
+  geom_point() +                                    # plot each value as a point
   geom_smooth() +                                   # add a trendline
+  scale_x_continuous(breaks=seq(1, 12, by = 1)) +   # plot values 1 - 12 (months) on x-axis
   theme_standard
 
 ```
 
 We can also create individual line plots for every year.
 
-```{r}
+```{r fig.cap="Mean monthly temperatures for Back Mountain Brook from 2014-2020."}
 
 ggplot(monthly_stats, aes(x = Month, y = mean)) +   # specify which object to plot, what should be on x and y axis
-  geom_line() +
-  geom_point() +
-  facet_wrap(. ~ Year) +                           # create individual plots per year
+  geom_line() +                                     # connect values with a line
+  geom_point() +                                    # plot each value as a point
+  facet_wrap(. ~ Year) +                            # create individual plots per year
+  scale_x_continuous(breaks=seq(1, 12, by = 1)) +   # plot values 1 - 12 (months) on x-axis
   theme_facet
 
 ```
 
+Note how each plot is plotting the same information, but the different visualizations highlight different patterns. For example the first two plots make it easy to compare how similar mean temperatures is (or is not) for each month, while the last plot focuses on the regular pattern of change over time across years. This makes it easier to compare the shape of the plot for each year.
+
 `r msmbstyle::question(label = "ques:therm-12", text = "Practice your new found data analysis skills by generating a dataset of daily mean, minimum, and maximum temperatures.")`
 
+`r msmbstyle::solution_begin()`
+
+The key to accomplishing this is in how you group the data. Grouping it just by `day` will create a data set mean temperatures across all "first days of the month" (across all months and years). This is not what we are looking for - we want each day of the year. The column `Date` is going to be much more helpful.
+
+```{r}
+
+daily_stats <- BMB %>%
+  group_by(Date) %>%
+  summarize(mean = mean(Water_Temp),
+            std = sd(Water_Temp),
+            min = min(Water_Temp),
+            max = max(Water_Temp))
+
+```
+
+If you look at that data set, you see that now you only have the column for each day. This makes it straightforward to compare values for each day, but it would be difficult to group it for monthly or annual comparisons of distribution of values.
+
+```{r}
+
+head(daily_stats)
+
+```
+
+If you want to be able to do this, one option would be to include `Year` and `Month` as grouping values. You would still want to use `Date` instead of `Day` so that it is easier to plot values over time.
+
+```{r}
+
+daily_stats <- BMB %>%
+  group_by(Year, Month, Date) %>%
+  summarize(mean = mean(Water_Temp),
+            std = sd(Water_Temp),
+            min = min(Water_Temp),
+            max = max(Water_Temp))
+
+```
+
+The other option would be to group by `Date` and then just extract the information on Day, Month, and Year the same way we did when we initially read in the data set.
+
+```{r}
+
+daily_stats <- BMB %>%
+  group_by(Date) %>%
+  summarize(mean = mean(Water_Temp),
+            std = sd(Water_Temp),
+            min = min(Water_Temp),
+            max = max(Water_Temp)) %>%
+  mutate(Day = day(Date),
+         Month = month(Date),
+         Year = year(Date))
+
+```
+
+`r msmbstyle::solution_end()`
 
 
 `r msmbstyle::question(label = "ques:therm-13", text = "Practice your new found plot making skills by creating and additional 3-4 plots based on the various summary statistics you have calculated.")`
 
+`r msmbstyle::solution_begin(header = "Suggestions")`
+
+A straightforward plot would be to look at the temperature change over time using mean, minimum, and/or maximum values.
+
+```{r fig.cap="Mean daily temperature Back Mountain Brook (2014-2020)."}
+
+ggplot(daily_stats, aes(x = Date, y = mean)) +
+  geom_point() +
+  scale_y_continuous(limits = c(-4, 28),             # define min/max for y-axis
+                     breaks=seq(-4, 28, by = 2)) +   # define increments
+  theme_standard
+  
+```
+
+The advantage of coding your visualizations is that you can re-use code and just have to change one or two values to plot a different facet of the data. In the example above I added a line of code that sets the limits (min/max value) for the y-axis and then use the same range for the max plot which makes them easier to compare because they y-axes are identical.
+
+```{r fig.cap="Maximum daily temperature Back Mountain Brook (2014-2020)."}
+
+ggplot(daily_stats, aes(x = Date, y = max)) +
+  geom_point() +
+  scale_y_continuous(limits = c(-4, 28),             # define min/max for y-axis
+                     breaks=seq(-4, 28, by = 2)) +   # define increments
+  theme_standard
+  
+```
+
+This highlights the ranges and the general pattern of change over time (hot months, cold months, months with the most change). Another way to compare the daily values would be the distribution of daily means for each month using boxplots which are commonly used to compare distributions.
+
+To do this we need to make sure that our Month and Year columns are categorical values. We can use the same function `lubridate::month` that we used previously to exact the month from a date but by setting `label = TRUE` we get the Month abbreviation instead of a number.
+
+```{r fig.cap="Distribution of mean daily temperature for each month by year."}
+
+daily_stats <- daily_stats %>%
+  mutate(Month = month(Date, label = TRUE),
+         Year = as.character(Year))
+
+ggplot(daily_stats, aes(x = Month, y = mean, color = Year)) +
+  geom_boxplot() +
+  theme_standard
+
+```
+
+An alternative to this plot would be a faceted plot, where we create individual plots per month with the distribution for each year. That makes comparisons for each month a little bit easier while our first plot emphasizes change over time^[Note that I've added a line of code to rotate the x-axis labels to make it easier to read]. 
+
+```{r fig.cap="Distribution of mean daily temperature for each month by year."}
+
+ggplot(daily_stats, aes(x = Year, y = mean)) +
+  geom_boxplot() +
+  facet_wrap(~ Month) +
+  theme_standard +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) # turn x-axis labels 90 degrees
+  
+
+```
+
+Another suggested plot was to look at monthly mean temperature in a way that makes it easy to compare those values across years using barplots.
+
+```{r fig.cap="Comparison of mean monthly temperatures 2014-2020."}
+
+ggplot(monthly_stats, aes(x = Year, y = mean)) +
+  geom_bar(stat = "identity") +
+  facet_wrap(~ Month) +
+  theme_standard
+
+```
+
+Another version of this is what is called a lollipop plot, which uses a lot less ink but conveys the same information.
+
+```{r fig.cap="Comparison of mean monthly temperatures 2014-2020."}
+
+ggplot(monthly_stats, aes(x = Year, y = mean)) +
+  geom_segment( aes(x= Year, xend = Year, y = 0, yend = mean), color="black") +  # create line instead of bar
+  geom_point() +                                                                 # place point at value
+  facet_wrap(~ Month) +                                                          # create individual plot per month
+  theme_facet +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))            # turn x-axis labels 90 degrees
+
+```
+
+Finally, we had a suggestion to look at how variability of temperature changes over the year using the standard deviation. One way to do this would be to look at the distribution within months using boxplots.
+
+```{r fig.cap="Distribution of standard deviation of daily temperatures for each month."}
+
+ggplot(daily_stats, aes(x = Month, y = std)) +
+  geom_boxplot() +
+  theme_standard
+
+```
+
+Splitting this up by year takes the emphasis away from the broad-scale pattern and allows us to identify individual years where variability is higher compared to others.
+
+```{r fig.cap="Distribution of standard deviation of daily temperatures for each month by year."}
+
+ggplot(daily_stats, aes(x = Month, y = std)) +
+  geom_boxplot() +
+  facet_wrap(~ Year) +
+  theme_standard +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))            # turn x-axis labels 90 degrees
+
+```
+
+`r msmbstyle::solution_end()`
 
 
 `r msmbstyle::question(label = "ques:therm-14", text = "Pick two of the plots you have generated that you think best visualize the thermal regime of Back Mountain Brook and write a brief description of the data being shown, then discuss your results from both plots to describe the thermal regime of Back Mountain Brook.")`
 
+`r msmbstyle::solution_begin(header = "Pointers")`
 
-`r msmbstyle::question(label = "ques:therm-15", text = "Discuss with your lab mate whether we have fully characterized the thermal regime of our stream or if you can think of additional metrics that might be useful.")`
+* Description figure 1: 5-7 sentences answering the following questions -
+  + What is being summarized/compared/described?
+  + What is the general pattern?
+  + Are the notable details to be highlighted?
+  + Is there something that should be pointed out to make sure that results are not presented in a misleading way?
+  
+* Description figure 2: 5-7 sentences answering the following questions -
+  + What is being summarized/compared/described?
+  + What is the general pattern?
+  + Are the notable details to be highlighted?
+  + Is there something that should be pointed out to make sure that results are not presented in a misleading way?
+  
+* Discussion of figure 1 and 2: Interpret the patterns you see, explain what factors could be driving temperatures to produce the patterns and notable details you highlighted. Make a connection between the information of the two plots.
+
+`r msmbstyle::solution_end()`
+
+`r msmbstyle::question(label = "ques:therm-15", text = "Discuss with your lab mate whether we have fully characterized the thermal regime of our stream or if you can think of additional metrics that might be useful. You do not need to add a written summary of your conversation.")`
 
 
 ### A wide range of metrics are used to describe the thermal regime of a stream
 
 We can group metrics describing the thermal regime of a stream into six categories: **Magnitude**, **Frequency**, **Duration**, **Rate of change**, **Timing**, and **Variability**. 
 
-`r msmbstyle::question(label = "ques:therm-16", text = "Take the list of metrics and work your class mates to define each category and assign metrics to each category in the table below.")`
+`r msmbstyle::question(label = "ques:therm-16", text = "Take the list of metrics given to you on the whiteboard and work your class mates to define each category and assign metrics to each category in the table below.")`
 
 Now that we've thought more about individual facets of thermal regimes, let's revisit the idea that stream biodiversity is closely linked to temperature through thermally-mediated ecological processes at all hierarchical levels.
 
@@ -377,39 +587,68 @@ In preparation for today's lab you read [Wilbur, Nathan M., et al. "Characterizi
 
 `r msmbstyle::question(label = "ques:therm-18", text = "Give a quick summary of the paper by stating the central question/hypothesis, how the question was answered (methods), key results, and key conclusions/applications.")`
 
-1. Central Question:
+`r msmbstyle::solution_begin(header = "Pointers")`
 
-* 
-*
-
+1. Central Question
 2. What data was collected and why? What was measured? What was it supposed to tell the scientists?
-
-*
-*
-
 3. What where the key results?
-
-*
-*
-*
-
 4. What were the major conclusions? Is there a specific application? What can we do with the information we now have?
 
-*
-*
-*
+`r msmbstyle::solution_end()`
 
-This paper focuses on brook trout and Atlantic salmong which are considered a cold-water adapted species. In the paper, the scientists were looking at thermal anaomoalies ("cold spots") that can provide thermal refugia for brook trout during temperature anomalies. Similarly, headwater streams are important thermal refugia for salmonids which will migrate upstream during the warmer months.
+This paper focuses on brook trout and Atlantic salmon which are considered a cold-water adapted species. In the paper, the scientists were looking at thermal anomalies ("cold spots") that can provide thermal refugia^[1 refugium, multiple refugia] for brook trout during temperature anomalies. Similarly, headwater streams are important thermal refugia for salmonids which will migrate upstream during the warmer months.
 
-A frequently cited reason for the importance mof conserving and managing headwater streams is that they provide important climate refugia for cold-water adapted species as increasing temperatures exceed the thermal tolerance during certain times of the year.
+A frequently cited reason for the importance of conserving and managing headwater streams is that they provide important climate refugia for cold-water adapted species as increasing temperatures exceed the thermal tolerance during certain times of the year.
 
 `r msmbstyle::question(label = "ques:therm-19", text = "Outline how you could use our data set to determine whether our headwater stream continues to serve as a thermal refuge for brook trout. Be specific in terms of which metric you want to use and why. Write out the individual steps you would need to take in order to calculate that metric for our data set, don't worry about whether or not you can turn that process into code.")`
 
-
 We will come up with the needed code to assess habitat suitability using the metric you have chosen and generate an appropriate summary.
+
+`r msmbstyle::solution_begin(header = "Pointers")`
+
+The metric we decided to use is **degree days**, which is the number of days above or below a certain threshold during a specified time period.
+
+You answer to this question should include 5-7 sentences explaining what degree days are, why they are appropriate metrics give then biological facet we are interested in and how we are going to calculate them^[One distinction to make is that we did not take into account if these days are consecutive or not]. Be specific in your answer, e.g. why we picked the threshold, how degree days are identified.
+
+This is the code we used to calculate the data
+
+```{r}
+
+crit_thresh <- BMB %>%                    # use data with hourly data
+  filter(Water_Temp > 20) %>%             # retain only values > 20
+  distinct(Date, .keep_all = TRUE) %>%    # retain only one entry per day (even if temp was above threshold at multiple measured points)
+  count(Year)                             # for each year count the number of days where temperature was above specified threshold
+
+```
+
+Let's take a quick look at our results
+
+```{r echo=FALSE}
+
+kable(
+  crit_thresh,
+  caption = "Number of days in a year where temperature above 20C were observed. Years with no degree days were observed are not included in this table."
+)
+
+```
+
+When you describe your results, keep in mind that years in which no degree days were recorded are not included in the table, so you should think of those as having a 0 value (not as missing).
+
+`r msmbstyle::solution_end()`
+
 
 `r msmbstyle::question(label = "ques:therm-20", text = "Briefly describe your results and then discuss whether or not you think Back Mountain Brook is a suitable thermal refuge for brook trout to migrate to during warmer months.")`
 
+`r msmbstyle::solution_begin(header = "Pointers")`
+
+* Description Table 1: 4-6 sentences answering the following questions -
+  + What is being summarized/compared/described?
+  + What is the general pattern?
+  + Are the notable details to be highlighted?
+  + Is there something that should be pointed out to make sure that results are not presented in a misleading way?
+* Discussion: State your conclusion and your arguments that support it.
+
+`r msmbstyle::solution_end()`
 
 ## Spatial variability within a thermal landscape allows aquatic organisms to maximize growth and survival
 
@@ -417,10 +656,17 @@ In addition to the temporal aspect, the **thermal landscape** (or **thermalscape
 
 `r msmbstyle::question(label = "ques:therm-21", text = "Briefly discuss whether or not you think that a nearby headwater stream would have the same thermal regime to Back Mountain Brook, describe parameters that might result in them exhibiting different patterns and how different you think those patterns might be.")`
 
+`r msmbstyle::solution_begin(header = "Pointers")`
+
+* Nearby streams should have ... thermal regimes
+* Factors that could cause differences at small spatial scale include [come up with 2-3 factors based on your general knowledge and the reading assignment for each factor give us a "why"].
+* Depending on geographic proximity and factors laid out above I would expect them to be [qualify how different they might be, be specific - different patterns altogether? maybe different peak temperatures? more different in sumer? winter?]
+
+`r msmbstyle::solution_end()`
 
 `r msmbstyle::question(label = "ques:therm-22", text = "Below is a code chunk that will pull in a data set of Scataquog Brook which is a nearby headwater stream. Assume that you've been given a limited amount of resources to preserve habitat to support local brook trout populations. Go through the steps listed below to compare the thermal regimes of the two streams to assist in deciding how to prioritize your funds.")`
 
-1. Read in the data set, briefly compare it to the `BMB` data set in terms of time frame covered and resolution, and argue whether or not you think that this is an appropriate data set to use for a comparison.
+1. Read in the data set, briefly compare it to the `BMB` data set in terms of time frame covered and resolution, and argue whether or not you think that this is an appropriate data set to use for a comparison (3-4 sentences, make sure you support your argument).
 
 ```{r}
 
@@ -435,25 +681,83 @@ SQB <- read_delim("data/SQB_water.txt", delim = "\t",
 
 ```
 
-2. Calculate a series of descriptive statistics at different temporal resolutions (annual, monthly, daily) as you did for `BMB` and create at least two visualization to compare the thermal regimes of the two headwater streams.
+2. Calculate a series of descriptive statistics at different temporal resolutions (annual, monthly, daily) as you did for `BMB` and create at least two visualization to compare the thermal regimes of the two headwater streams^[Remember, the easiest way to do this is to insert a new code chunk and just cut and paste the code from aboce and change `BMB` to `SQB`].
 
+```{r}
+
+
+
+```
 
 
 3. Compare and contrast the descriptive statistics and visualization for the two headwater streams.
 
+`r msmbstyle::solution_begin(header = "Pointers")`
 
+This is the format you used to describe your Back Mountain Brook figures. Use that as your starting point.  
+
+* Description figure 1: 5-7 sentences answering the following questions -
+  + What is being summarized/compared/described?
+  + What is the general pattern?
+  + Are the notable details to be highlighted?
+  + Is there something that should be pointed out to make sure that results are not presented in a misleading way?
+  
+* Description figure 2: 5-7 sentences answering the following questions -
+  + What is being summarized/compared/described?
+  + What is the general pattern?
+  + Are the notable details to be highlighted?
+  + Is there something that should be pointed out to make sure that results are not presented in a misleading way?
+  
+Add what you wrote above and then edit it to include the analogous description for the Scataquog data set. Make sure you state if it has the same general pattern (or not)^[consider that it might share a pattern during parts of the year or it could have the same pattern but the values are shifted] and do the same for the notable highlights. If those are different for the Scataquog then make sure to not only state "they're different" make sure that you point out what the notable highlights for this new data set are.
+
+Finish your compare and contrast with a summary statement about how similar/different they are.
+
+`r msmbstyle::solution_end()`
 
 4. Use the same metric/method you chose above to specifically focus on habitat suitability for brook trout to create a `SQB` data set and describe your results.
 
+`r msmbstyle::solution_begin()`
+
+You can reuse the code from above and just change `BMB` to``SQB`.
+
+```{r}
+
+crit_thresh <- SQB %>%                    # use data with hourly data
+  filter(Water_Temp > 20) %>%             # retain only values > 20
+  distinct(Date, .keep_all = TRUE) %>%    # retain only one entry per day (even if temp was above threshold at multiple measured points)
+  count(Year)                             # for each year count the number of days where temperature was above specified threshold
+
+```
+
+Let's take a look at the results
+
+```{r}
+
+kable(
+  crit_thresh,
+  caption = "Number of days with recorded temperatures > 20 for Scataqug Brook. The data set does not include data for 2012-2013"
+)
+
+```
 
 
-5. Compare and contrast this metric for the two headwater streams to support your decision on which headwater stream to priortize for habitat conservation.
+`r msmbstyle::solution_end()`
 
+5. Compare and contrast this metric for the two headwater streams to support your decision on which headwater stream to prioritize for habitat conservation.
 
+`r msmbstyle::solution_begin(header = "Pointers")`
 
+Remember, this was your format when you described the results for Back Mountain Brook.
 
+* Description Table 1: 4-6 sentences answering the following questions -
+  + What is being summarized/compared/described?
+  + What is the general pattern?
+  + Are the notable details to be highlighted?
+  + Is there something that should be pointed out to make sure that results are not presented in a misleading way?
+* Discussion: State your conclusion and your arguments that support it.
 
+Again make this your starting point. Add it down here, then edit it to add the information you just learned about the Scataquog^[Again, keep in mind that years with no observations are not included in the table. In addition, the data set does not include data for 2012 or 2013.]. Point out similar patterns and highlight where they differ, e.g. are number of days in the same range? Wildly different? are outlier years the same for each data set?
 
+Make sure that you finish your compare & contrast of the data sets with a clear conclusion about which stream you would prioritize for conservation.
 
-
-
+`r msmbstyle::solution_end()`
