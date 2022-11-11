@@ -1,0 +1,211 @@
+---
+title: "BI 328 Conservation Biology"
+author: "Labmanual Fall 2022"
+date: "`r Sys.Date()`"
+knit: "bookdown::preview_chapter"
+output:
+  msmbstyle::msmb_html_book:
+    highlight: tango
+    toc: TRUE
+    toc_depth: 1
+    split_by: chapter
+    margin_references: FALSE
+    css: msmb.css
+bibliography: labmanual.bib
+link-citations: yes
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r include=FALSE}
+
+
+library(msmbstyle)
+
+# invalidate cache when the tufte version changes
+knitr::opts_chunk$set(tidy = FALSE, 
+                      message = FALSE,
+                      error = FALSE,
+                      warning = FALSE,
+                      cache.extra = packageVersion('msmbstyle'))
+
+
+options(htmltools.dir.version = FALSE)
+
+```
+
+# Stream Health Assessment using Macroinvertebrate Bioindices
+
+**Learning Objectives**
+
+After completing this activity you should be able to
+
+* Use a dichotomous key and visual cues to identify aquatic macroinvertebrates to the level of order and family.
+* Define what a bioindicator species is and describe the key characteristics for good bioindicators.
+* Outline how macroinvertebrates are used for biomonitoring of ecosystem health.
+* Explain how to calculate two commonly used macroinvertebrate bioindices used to assess stream health and apply them to a data set.
+
+Download the [macroinverts](https://drive.google.com/drive/folders/1VGPwL25CwqWPI9j5dnaWWu25zrN1wqjQ?usp=share_link) project folder. Once you have downloaded it, unzip the project directory into your `BI328` directory. You can open the `Rproj` for this module either by double clicking on it which will launch `Rstudio` or by opening `Rstudio` and then using `File > Open Project` or by clicking on the `Rproject` icon in the top right of your program window and selecting `Open Project`.
+
+Once you have opened a project you should see the project name in the top right corner^[Pro tip: If you run into issues where an Rmarkdown won't render or file paths aren't working (especially if things were working previously) one of your first steps should be to double check that the correct `Rproj` is loaded.].
+
+You should have a file called `macroinverts.Rmd` in your project directory. Use that file to work through this lab - you will hand in your rendered ("knitted") `html`-file as your homework assignment. So, first thing in the `YAML` header, change the author to your name. You will use this `Rmarkdown` file to record your answers.
+
+Before we get started load the `R packages` we will need to run our analysis^[Remember, anytime you close `Rstudio` or quite an `R session` you need to reload your libraries, even if you you already have objects in your environment from the previous session].
+
+```{r}
+
+# load libraries
+library(tidyverse)
+library(knitr)
+
+# load custom ggplot themes
+source("scr/ggplot.R")
+
+```
+
+## Ecological Indicators and bioindicators.
+
+`r msmbstyle::question(label = "ques:macro-1", text = "In our discussion of the strategic value of species diversity, we briefly touched on the concept of indicator species. Briefly outline what an indicator species is and how it differs from a flagship and an umbrella species (which are both classified as surrogate species), two groups that also carry significant stratgic value for conservation efforts. Use specific examples as needed and consider whether a species could fall into all three categories.")`
+
+**Ecological indicators** are used as proxies to identify and communicate the impact of human activities on ecosystem to policy-makers. Effective indicators share certain characteristics that allow us to monitor change.
+
+Overall they must be …
+
+1. sensitive enough to detect important changes but not too sensitive to avoid picking up natural variation. This means they need to be able to detect changes at the appropriate temporal & spatial scale without being overwhelmed by variability.
+2. based on well understood & generally accepted conceptual models of the system to which they are applied.
+3. based on reliable data that is available to assess trends/collected in straightforward process and for which monitoring systems are in place.
+4. easily understood by policy-makers.
+
+**Bioindicators** are a subset of ecological indicators. Here, species assemblage and population abundance are used to measure ecosystem health and habitat quality. Frequently, they are used as a proxy for environmental contamination and pollution. 
+
+Aquatic invertebrates are frequently used as bioindicators to assess the level of pollution of streams or other freshwater habitats due to their varying degree of sensitivity to a polluted environment along with further characteristics.
+
+* they spend up to one year in the stream (long life cycle reflects water quality of time period)
+* little mobility (indicate localized conditions)
+* generally abundant
+* easy sampling/identification of major taxonomic groups
+* differential sensitivity among taxonomic groups to sedimentation, habitat loss, chemical pollution due to different tolerance ranges for physical and chemical parameters.
+
+`r msmbstyle::question(label = "ques:macro-2", text = "Based on these characteristics, argue whether you think aquatic invertebrates could be an effective ecological indicator. Your answer should explicitely state which ecosystem(s) they could be applied to and what change in the ecosystem they could be used to monitor and how they fit the four general characteristics of good ecological indicators. Your answer should be 7-10 sentences.")`
+
+`r msmbstyle::question(label = "ques:macro-3", text = "Discuss the benefits and drawbacks of using macroinvertebrates/bioindicators compare to measuring physical and chemical parameters directly. Your answer should be 5-7 sentences.")`
+
+
+## Macroinvertebrates
+
+Macroinvertebrates (or "macros" for short) are animals without a backbone (invertebrates) that are large enough to be seen with the naked eye (hence, macro).
+
+Macroinvertebrates are in large part comprise of include aquatic insects (e.g. maflies, stone flies, caddisflies, midges, beetles) but also include non-insect orders and classes such as snails, works, some freshwater clams and mussels, as well as crayfish.
+
+Most of the macroinvertebrates that we sampled are aquatic insects which have complex life cycles with some development stages being completed in the water while the adults generally live on land.
+
+* Dobsonflies, Caddisflies, and beetles are taxonomic groups with complete metamorphosis that complete four stages of development: egg, larva, pupa, and adult.
+* Dragonflies, mayflies, and stoneflies are taxonomic groups with incomplete metamorphosis with three stages of development: egg, nymph, and adult.
+
+`r msmbstyle::question(label = "ques:macro-4", text = "Argue which developmental stages you do and do not expect to have in our samples.")`
+
+Macroinvertebrates play an important role in food webs as secondary consumers as they link primary producers (algae) to the higher trophic levels. They also play a role in shredding and eating decaying leaf litter thus assisting in the decomposition process that makes nutrients available to primary producers.
+
+
+## Data collection
+
+We sampled to local headwater streams and used several methods including kicks, sweeps, and visual walk-throughs to collect a representative sample of macorinvertebrates for each location. We picked them in the field^[The other option is to just preserve all the material collected in the nets in ethanol and pick in the lab] and preserved them in 70 - 90% EthOH.
+
+Work with a lab buddy using the following resources to identify the macroinvertebrates we collected for each location to at least order and family.
+
+* [macroinvertebrates.org](https://www.macroinvertebrates.org/key/)
+* Main DEP identification key^[this uses images from macroinvertebrates.org but lists additional characteristics and is can be simpler to use than clicking your way through a key) and can be downloaded from our Canavas site or google drive]
+* [Digital dichotomous key](http://cfb.unh.edu/StreamKey/html/begin.html)
+
+Enter each specimen you identify in the appropriate google spreadsheet. Then sort the identified macros into falcon tubes with Ethanol labeled with sample location and date as well as order and family. 
+
+Look up the tolerance level for each family in [this table](http://lakes.chebucto.org/ZOOBENTH/BENTHOS/tolerance.html#family) and add that information to the spreadsheet.
+
+
+## Data Analysis
+
+Let's read in our two data sets:
+
+```{r eval=FALSE}
+
+RB <- read_delim("data/rand-brook.tsv", delim = "\t")
+
+SHB <- read_delim("data/schoolhouse-brook.tsv", delim = "\t")
+
+```
+
+First, we will want to look at the number of individuals in each taxonomic group and calculate their relative abundances and compare species richness and diversity across the two locations.
+
+`r msmbstyle::question(label = "ques:macro-5", text = "Calculate species richness and relative abundances for both locations  and briefly describe your results.")`
+
+`r msmbstyle::solution_begin(header = "Pointers")`
+
+Recall, that you will want to start by stating the general trends and patterns first in a way that somebody who does not necessarily have your tables in front of them has a good idea of what is being compared and what the major pattern is. Then point out notable highlights.
+
+* are there dominant species? is there an even distribution?
+* are all species in both locations?
+* are there notable differences among locations?
+
+Your answer should be 5-7 sentences.
+
+`r msmbstyle::solution_end()`
+
+We are going to use to **bioindices** to assess stream health. An index is a measure that allows us to track overall trends of something - in this case stream health. It is a way to take something very complex like stream health which is comprised of physical, biological, and chemical aspects and compare them with one easily to estimate metric. Instead of measuring each individual parameter individually we are assessing the compounding impacts on a component of the biological community. We can do this because different taxonomic groups have different tolerance levels to survive under stressful conditions. Here, we will use tolerance values assigned to an entire taxonomic group (order or family), however, we should keep in mind that the tolerance of species within that group might vary.
+
+The first first index is the **EPT index**. Three major orders with low tolerance to pollution are **E**phemeroptera (mayflies), **P**lectoptera (stoneflies), **T**hrichoptera (caddisflies) are sensitive to pollutants in their environment. In short, the EPT index quantifies the percentage of sensitive taxa to total taxa found.
+
+`r msmbstyle::question(label = "ques:macro-6", text = "Explain whether a higher or lower EPT index is indicative of better stream health.")`
+
+`r msmbstyle::question(label = "ques:macro-7", text = "Calculate the EPT index for each stream by determining the total number of EPT individuals and dividing that number by the total number of individuals in the data set and describe your results.")`
+
+`r msmbstyle::solution_begin(header = "Pointers")`
+
+Recall, that you will want to start by stating the general trends and patterns first in a way that somebody who does not necessarily have your tables in front of them has a good idea of what is being compared and what the major pattern is. Then point out notable highlights. Make sure you are specific. Higher and lower are qualitative descriptions but there is a big difference if the EPT index is higher in one location by 1% or 10%!
+
+Your answer should be 3-5 sentences.
+
+`r msmbstyle::solution_end()`
+
+The second Index we will use is the **Hilsenhoff Biotic Index**. It functions the same way as the EPT index where we distinguish between different tolerance levels for different taxonomic groups and then estimate the overall tolerance of the community weighted by the relative abundance of each group.
+
+* taxonomic groups are assigned a number from 0 - 10 pertaining to known sensitivity to organic pollutants (0 most sensitive, 10 most tolerant)
+* the number of individuals per group is multiplied by the tolerance number for that group.
+* the sum of all group tolerance values is divided by the total number of specimen in that sample.
+
+Different ranges of the HBI value are indicative of stream health:
+
+*  Excellent (0 - 3.75): organic pollution unlikely
+* Very Good (3.76 - 4.25): possible slight organic pollution
+* Good (4.26 - 5): some organic pollution probable
+* Fail (5 - 5.75): fairly substantial pollution likely
+* Fairly Poor (5.76 - 6.50): substantial pollution likely
+* Poor (6.51 - 7.25): very very substantial pollution likely
+* Very Poor (7.26 - 10): severe organic pollution likely
+
+`r msmbstyle::question(label = "ques:macro-8", text = "Calculate the Hilsenhoff Biotic index for each stream and describe your results.")`
+
+`r msmbstyle::solution_begin(header = "Pointers")`
+
+Recall, that you will want to start by stating the general trends and patterns first in a way that somebody who does not necessarily have your tables in front of them has a good idea of what is being compared and what the major pattern is. Then point out notable highlights. Make sure you are specific. Higher and lower are qualitative descriptions but there is a big difference if the EPT index is higher in one location by 1% or 10%!
+
+Your answer should be 3-5 sentences.
+
+`r msmbstyle::solution_end()`
+
+
+`r msmbstyle::question(label = "ques:macro-9", text = "Interpret and discuss your results (species composition, bioindices) in an assessment of the stream health of our two headwater streams.")`
+
+`r msmbstyle::solution_begin(header = "Pointers")`
+
+Start your discussion with one sentence summarizing what you did and why^[e.g. *Here, we collected a representative sample of macroinverts from two headwater streams to ...*] and summarize your results in 2-3 sentences. Then interpret what that means in terms of stream health. Consider expected differences^[Schoolhouse Brook is a first order stream, Rand Brook is a second order stream, i.e. other streams flow into it] or if you found unexpected differences what that means^[They are within very close vicinity of each other]. From having observed the habitat, did you expect high or low stream health? Why? Explain why you think you got the results that you did.
+
+Your answer should be 8-12 sentences.
+
+`r msmbstyle::solution_end()`
+
+
+
+
+
+
