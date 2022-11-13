@@ -13,14 +13,8 @@
 
 <meta name="author" content="Labmanual Fall 2022" />
 
-<meta name="date" content="2022-11-09" />
+<meta name="date" content="2022-11-12" />
 
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-  TeX: { equationNumbers: { autoNumber: "AMS" } }
-});
-</script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <meta name="description" content="6 Stream Health Assessment using Macroinvertebrate Bioindices | BI 328 Conservation Biology">
 
@@ -184,23 +178,23 @@ function reset_tooltip(id) {
 <li>Explain how to calculate two commonly used macroinvertebrate bioindices used to assess stream health and apply them to a data set.</li>
 </ul>
 <p>Download the <a href="https://drive.google.com/drive/folders/1VGPwL25CwqWPI9j5dnaWWu25zrN1wqjQ?usp=share_link">macroinverts</a> project folder. Once you have downloaded it, unzip the project directory into your <code>BI328</code> directory. You can open the <code>Rproj</code> for this module either by double clicking on it which will launch <code>Rstudio</code> or by opening <code>Rstudio</code> and then using <code>File &gt; Open Project</code> or by clicking on the <code>Rproject</code> icon in the top right of your program window and selecting <code>Open Project</code>.</p>
-<p>Once you have opened a project you should see the project name in the top right corner<label for="tufte-sn-41" class="margin-toggle sidenote-number">41</label><input type="checkbox" id="tufte-sn-41" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">41</span> Pro tip: If you run into issues where an Rmarkdown won’t render or file paths aren’t working (especially if things were working previously) one of your first steps should be to double check that the correct <code>Rproj</code> is loaded.</span>.</p>
+<p>Once you have opened a project you should see the project name in the top right corner<label for="tufte-sn-1" class="margin-toggle sidenote-number">1</label><input type="checkbox" id="tufte-sn-1" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">1</span> Pro tip: If you run into issues where an Rmarkdown won’t render or file paths aren’t working (especially if things were working previously) one of your first steps should be to double check that the correct <code>Rproj</code> is loaded.</span>.</p>
 <p>You should have a file called <code>macroinverts.Rmd</code> in your project directory. Use that file to work through this lab - you will hand in your rendered (“knitted”) <code>html</code>-file as your homework assignment. So, first thing in the <code>YAML</code> header, change the author to your name. You will use this <code>Rmarkdown</code> file to record your answers.</p>
-<p>Before we get started load the <code>R packages</code> we will need to run our analysis<label for="tufte-sn-42" class="margin-toggle sidenote-number">42</label><input type="checkbox" id="tufte-sn-42" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">42</span> Remember, anytime you close <code>Rstudio</code> or quite an <code>R session</code> you need to reload your libraries, even if you you already have objects in your environment from the previous session</span>.</p>
-<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="stream-health-assessment-using-macroinvertebrate-bioindices.html#cb115-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load libraries</span></span>
-<span id="cb115-2"><a href="stream-health-assessment-using-macroinvertebrate-bioindices.html#cb115-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb115-3"><a href="stream-health-assessment-using-macroinvertebrate-bioindices.html#cb115-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)</span>
-<span id="cb115-4"><a href="stream-health-assessment-using-macroinvertebrate-bioindices.html#cb115-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(googlesheets4)</span>
-<span id="cb115-5"><a href="stream-health-assessment-using-macroinvertebrate-bioindices.html#cb115-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb115-6"><a href="stream-health-assessment-using-macroinvertebrate-bioindices.html#cb115-6" aria-hidden="true" tabindex="-1"></a><span class="co"># load custom ggplot themes</span></span>
-<span id="cb115-7"><a href="stream-health-assessment-using-macroinvertebrate-bioindices.html#cb115-7" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"scr/ggplot.R"</span>)</span></code></pre></div>
+<p>Before we get started load the <code>R packages</code> we will need to run our analysis<label for="tufte-sn-2" class="margin-toggle sidenote-number">2</label><input type="checkbox" id="tufte-sn-2" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">2</span> Remember, anytime you close <code>Rstudio</code> or quite an <code>R session</code> you need to reload your libraries, even if you you already have objects in your environment from the previous session</span>.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="stream-health-assessment-using-macroinvertebrate-bioindices.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load libraries</span></span>
+<span id="cb1-2"><a href="stream-health-assessment-using-macroinvertebrate-bioindices.html#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-3"><a href="stream-health-assessment-using-macroinvertebrate-bioindices.html#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)</span>
+<span id="cb1-4"><a href="stream-health-assessment-using-macroinvertebrate-bioindices.html#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(janitor)</span>
+<span id="cb1-5"><a href="stream-health-assessment-using-macroinvertebrate-bioindices.html#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="stream-health-assessment-using-macroinvertebrate-bioindices.html#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># load custom ggplot themes</span></span>
+<span id="cb1-7"><a href="stream-health-assessment-using-macroinvertebrate-bioindices.html#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"scr/ggplot.R"</span>)</span></code></pre></div>
 <div id="ecological-indicators-and-bioindicators." class="section level2" number="6.1">
 <h2>
 <span class="header-section-number">6.1</span> Ecological Indicators and bioindicators.<div class="tooltip"><button class="internal-link-btn" onclick="copy_link('ecological-indicators-and-bioindicators.')" onmouseout="reset_tooltip('ecological-indicators-and-bioindicators.-tooltip')"><span class="tooltiptext" id="ecological-indicators-and-bioindicators.-tooltip">Copy link</span><i class="fa fa-link"></i></button></div>
 </h2>
 <div id="ques:macro-1" class="question">
 <p class="question-begin">
-► Question 68
+► Question 1
 </p>
 <div class="question-body">
 <p>
@@ -230,7 +224,7 @@ In our discussion of the strategic value of species diversity, we briefly touche
 </ul>
 <div id="ques:macro-2" class="question">
 <p class="question-begin">
-► Question 69
+► Question 2
 </p>
 <div class="question-body">
 <p>
@@ -243,7 +237,7 @@ Based on these characteristics, argue whether you think aquatic invertebrates co
 </div>
 <div id="ques:macro-3" class="question">
 <p class="question-begin">
-► Question 70
+► Question 3
 </p>
 <div class="question-body">
 <p>
@@ -268,7 +262,7 @@ Discuss the benefits and drawbacks of using macroinvertebrates/bioindicators com
 </ul>
 <div id="ques:macro-4" class="question">
 <p class="question-begin">
-► Question 71
+► Question 4
 </p>
 <div class="question-body">
 <p>
@@ -285,11 +279,11 @@ Argue which developmental stages you do and do not expect to have in our samples
 <h2>
 <span class="header-section-number">6.3</span> Data collection<div class="tooltip"><button class="internal-link-btn" onclick="copy_link('data-collection')" onmouseout="reset_tooltip('data-collection-tooltip')"><span class="tooltiptext" id="data-collection-tooltip">Copy link</span><i class="fa fa-link"></i></button></div>
 </h2>
-<p>We sampled to local headwater streams and used several methods including kicks, sweeps, and visual walk-throughs to collect a representative sample of macorinvertebrates for each location. We picked them in the field<label for="tufte-sn-43" class="margin-toggle sidenote-number">43</label><input type="checkbox" id="tufte-sn-43" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">43</span> The other option is to just preserve all the material collected in the nets in ethanol and pick in the lab</span> and preserved them in 70 - 90% EthOH.</p>
+<p>We sampled to local headwater streams and used several methods including kicks, sweeps, and visual walk-throughs to collect a representative sample of macorinvertebrates for each location. We picked them in the field<label for="tufte-sn-3" class="margin-toggle sidenote-number">3</label><input type="checkbox" id="tufte-sn-3" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">3</span> The other option is to just preserve all the material collected in the nets in ethanol and pick in the lab</span> and preserved them in 70 - 90% EthOH.</p>
 <p>Work with a lab buddy using the following resources to identify the macroinvertebrates we collected for each location to at least order and family.</p>
 <ul>
 <li><a href="https://www.macroinvertebrates.org/key/">macroinvertebrates.org</a></li>
-<li>Main DEP identification key<label for="tufte-sn-44" class="margin-toggle sidenote-number">44</label><input type="checkbox" id="tufte-sn-44" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">44</span> this uses images from macroinvertebrates.org but lists additional characteristics and is can be simpler to use than clicking your way through a key) and can be downloaded from our Canavas site or google drive</span>
+<li>Main DEP identification key<label for="tufte-sn-4" class="margin-toggle sidenote-number">4</label><input type="checkbox" id="tufte-sn-4" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">4</span> this uses images from macroinvertebrates.org but lists additional characteristics and is can be simpler to use than clicking your way through a key) and can be downloaded from our Canavas site or google drive</span>
 </li>
 <li><a href="http://cfb.unh.edu/StreamKey/html/begin.html">Digital dichotomous key</a></li>
 </ul>
@@ -301,33 +295,474 @@ Argue which developmental stages you do and do not expect to have in our samples
 <span class="header-section-number">6.4</span> Data Analysis<div class="tooltip"><button class="internal-link-btn" onclick="copy_link('data-analysis')" onmouseout="reset_tooltip('data-analysis-tooltip')"><span class="tooltiptext" id="data-analysis-tooltip">Copy link</span><i class="fa fa-link"></i></button></div>
 </h2>
 <p>Let’s read in our two data sets:</p>
-<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="stream-health-assessment-using-macroinvertebrate-bioindices.html#cb116-1" aria-hidden="true" tabindex="-1"></a>RB <span class="ot">&lt;-</span> <span class="fu">read_delim</span>(<span class="st">"data/rand-brook.tsv"</span>, <span class="at">delim =</span> <span class="st">"</span><span class="sc">\t</span><span class="st">"</span>)</span>
-<span id="cb116-2"><a href="stream-health-assessment-using-macroinvertebrate-bioindices.html#cb116-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb116-3"><a href="stream-health-assessment-using-macroinvertebrate-bioindices.html#cb116-3" aria-hidden="true" tabindex="-1"></a>SHB <span class="ot">&lt;-</span> <span class="fu">read_delim</span>(<span class="st">"data/schoolhouse-brook.tsv"</span>, <span class="at">delim =</span> <span class="st">"</span><span class="sc">\t</span><span class="st">"</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="stream-health-assessment-using-macroinvertebrate-bioindices.html#cb2-1" aria-hidden="true" tabindex="-1"></a>RB <span class="ot">&lt;-</span> <span class="fu">read_delim</span>(<span class="st">"data/macroinverts_rand-brook_2022-10-19.tsv"</span>, <span class="at">delim =</span> <span class="st">"</span><span class="sc">\t</span><span class="st">"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb2-2"><a href="stream-health-assessment-using-macroinvertebrate-bioindices.html#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">clean_names</span>()</span>
+<span id="cb2-3"><a href="stream-health-assessment-using-macroinvertebrate-bioindices.html#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="stream-health-assessment-using-macroinvertebrate-bioindices.html#cb2-4" aria-hidden="true" tabindex="-1"></a>SHB <span class="ot">&lt;-</span> <span class="fu">read_delim</span>(<span class="st">"data/macroinverts_schoolhouse-brook_2022-11-02.tsv"</span>, <span class="at">delim =</span> <span class="st">"</span><span class="sc">\t</span><span class="st">"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb2-5"><a href="stream-health-assessment-using-macroinvertebrate-bioindices.html#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">clean_names</span>()</span></code></pre></div>
+<p>Because we have information on sample data and location in the data sets, we can combine them into a single data set to make a comparative analysis more straightforward.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="stream-health-assessment-using-macroinvertebrate-bioindices.html#cb3-1" aria-hidden="true" tabindex="-1"></a>macros <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(RB, SHB)</span></code></pre></div>
 <p>First, we will want to look at the number of individuals in each taxonomic group and calculate their relative abundances and compare species richness and diversity across the two locations.</p>
 <div id="ques:macro-5" class="question">
 <p class="question-begin">
-► Question 72
+► Question 5
 </p>
 <div class="question-body">
 <p>
-Calculate species richness and relative abundances for both locations and briefly describe your results.
+Calculate richness and relative abundances for both locations by order, family, and genus and briefly describe your results.
 </p>
 <p class="question-end">
 <span class="fa fa-square-o solution-icon"></span>
 </p>
 </div>
 </div>
+<p>We can figure out the richness by determining the number of different orders, family, and genera in each location and relative abundance by counting the number of observations for each group and then dividing that by the total number of individuals observed.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="stream-health-assessment-using-macroinvertebrate-bioindices.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(</span>
+<span id="cb4-2"><a href="stream-health-assessment-using-macroinvertebrate-bioindices.html#cb4-2" aria-hidden="true" tabindex="-1"></a>  macros <span class="sc">%&gt;%</span></span>
+<span id="cb4-3"><a href="stream-health-assessment-using-macroinvertebrate-bioindices.html#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(location, order) <span class="sc">%&gt;%</span></span>
+<span id="cb4-4"><a href="stream-health-assessment-using-macroinvertebrate-bioindices.html#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">count</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb4-5"><a href="stream-health-assessment-using-macroinvertebrate-bioindices.html#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb4-6"><a href="stream-health-assessment-using-macroinvertebrate-bioindices.html#cb4-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(location) <span class="sc">%&gt;%</span></span>
+<span id="cb4-7"><a href="stream-health-assessment-using-macroinvertebrate-bioindices.html#cb4-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">rel_abund =</span> <span class="fu">round</span>(n<span class="sc">/</span><span class="fu">sum</span>(n)<span class="sc">*</span><span class="dv">100</span>, <span class="at">digits =</span> <span class="dv">1</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb4-8"><a href="stream-health-assessment-using-macroinvertebrate-bioindices.html#cb4-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(<span class="sc">-</span>n) <span class="sc">%&gt;%</span></span>
+<span id="cb4-9"><a href="stream-health-assessment-using-macroinvertebrate-bioindices.html#cb4-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> location, <span class="at">values_from =</span> rel_abund) <span class="sc">%&gt;%</span></span>
+<span id="cb4-10"><a href="stream-health-assessment-using-macroinvertebrate-bioindices.html#cb4-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">replace</span>(<span class="fu">is.na</span>(.), <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb4-11"><a href="stream-health-assessment-using-macroinvertebrate-bioindices.html#cb4-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">arrange</span>(order)</span>
+<span id="cb4-12"><a href="stream-health-assessment-using-macroinvertebrate-bioindices.html#cb4-12" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<table>
+<thead><tr class="header">
+<th align="left">order</th>
+<th align="right">Rand Brook</th>
+<th align="right">Schoolhouse Brook</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left">Coleoptera</td>
+<td align="right">7.4</td>
+<td align="right">2.4</td>
+</tr>
+<tr class="even">
+<td align="left">Diptera</td>
+<td align="right">18.5</td>
+<td align="right">7.1</td>
+</tr>
+<tr class="odd">
+<td align="left">Ephemeroptera</td>
+<td align="right">7.4</td>
+<td align="right">26.2</td>
+</tr>
+<tr class="even">
+<td align="left">Megaloptera</td>
+<td align="right">33.3</td>
+<td align="right">0.0</td>
+</tr>
+<tr class="odd">
+<td align="left">Odonata</td>
+<td align="right">14.8</td>
+<td align="right">4.8</td>
+</tr>
+<tr class="even">
+<td align="left">Plecoptera</td>
+<td align="right">7.4</td>
+<td align="right">26.2</td>
+</tr>
+<tr class="odd">
+<td align="left">Trichoptera</td>
+<td align="right">11.1</td>
+<td align="right">33.3</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="stream-health-assessment-using-macroinvertebrate-bioindices.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(</span>
+<span id="cb5-2"><a href="stream-health-assessment-using-macroinvertebrate-bioindices.html#cb5-2" aria-hidden="true" tabindex="-1"></a>  macros <span class="sc">%&gt;%</span></span>
+<span id="cb5-3"><a href="stream-health-assessment-using-macroinvertebrate-bioindices.html#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(location, order, family) <span class="sc">%&gt;%</span></span>
+<span id="cb5-4"><a href="stream-health-assessment-using-macroinvertebrate-bioindices.html#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">count</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb5-5"><a href="stream-health-assessment-using-macroinvertebrate-bioindices.html#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb5-6"><a href="stream-health-assessment-using-macroinvertebrate-bioindices.html#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(location) <span class="sc">%&gt;%</span></span>
+<span id="cb5-7"><a href="stream-health-assessment-using-macroinvertebrate-bioindices.html#cb5-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">rel_abund =</span> <span class="fu">round</span>(n<span class="sc">/</span><span class="fu">sum</span>(n)<span class="sc">*</span><span class="dv">100</span>, <span class="at">digits =</span> <span class="dv">1</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb5-8"><a href="stream-health-assessment-using-macroinvertebrate-bioindices.html#cb5-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(<span class="sc">-</span>n) <span class="sc">%&gt;%</span></span>
+<span id="cb5-9"><a href="stream-health-assessment-using-macroinvertebrate-bioindices.html#cb5-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> location, <span class="at">values_from =</span> rel_abund) <span class="sc">%&gt;%</span></span>
+<span id="cb5-10"><a href="stream-health-assessment-using-macroinvertebrate-bioindices.html#cb5-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">replace</span>(<span class="fu">is.na</span>(.), <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb5-11"><a href="stream-health-assessment-using-macroinvertebrate-bioindices.html#cb5-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">arrange</span>(order, family)</span>
+<span id="cb5-12"><a href="stream-health-assessment-using-macroinvertebrate-bioindices.html#cb5-12" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<table>
+<thead><tr class="header">
+<th align="left">order</th>
+<th align="left">family</th>
+<th align="right">Rand Brook</th>
+<th align="right">Schoolhouse Brook</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left">Coleoptera</td>
+<td align="left">Hydrophilidae</td>
+<td align="right">3.7</td>
+<td align="right">2.4</td>
+</tr>
+<tr class="even">
+<td align="left">Coleoptera</td>
+<td align="left">Ptilodactylidae</td>
+<td align="right">3.7</td>
+<td align="right">0.0</td>
+</tr>
+<tr class="odd">
+<td align="left">Diptera</td>
+<td align="left">Limoniidae</td>
+<td align="right">3.7</td>
+<td align="right">4.8</td>
+</tr>
+<tr class="even">
+<td align="left">Diptera</td>
+<td align="left">Tipulidae</td>
+<td align="right">0.0</td>
+<td align="right">2.4</td>
+</tr>
+<tr class="odd">
+<td align="left">Diptera</td>
+<td align="left">Tipulidae</td>
+<td align="right">14.8</td>
+<td align="right">0.0</td>
+</tr>
+<tr class="even">
+<td align="left">Ephemeroptera</td>
+<td align="left">Ephemerellidae</td>
+<td align="right">0.0</td>
+<td align="right">7.1</td>
+</tr>
+<tr class="odd">
+<td align="left">Ephemeroptera</td>
+<td align="left">Heptageniidae</td>
+<td align="right">7.4</td>
+<td align="right">16.7</td>
+</tr>
+<tr class="even">
+<td align="left">Ephemeroptera</td>
+<td align="left">Leptophlebiidae</td>
+<td align="right">0.0</td>
+<td align="right">2.4</td>
+</tr>
+<tr class="odd">
+<td align="left">Megaloptera</td>
+<td align="left">Corydalidae</td>
+<td align="right">29.6</td>
+<td align="right">0.0</td>
+</tr>
+<tr class="even">
+<td align="left">Megaloptera</td>
+<td align="left">Sialidae</td>
+<td align="right">3.7</td>
+<td align="right">0.0</td>
+</tr>
+<tr class="odd">
+<td align="left">Odonata</td>
+<td align="left">Aeshnidae</td>
+<td align="right">11.1</td>
+<td align="right">0.0</td>
+</tr>
+<tr class="even">
+<td align="left">Odonata</td>
+<td align="left">Calopterygidae</td>
+<td align="right">3.7</td>
+<td align="right">0.0</td>
+</tr>
+<tr class="odd">
+<td align="left">Odonata</td>
+<td align="left">Gomphidae</td>
+<td align="right">0.0</td>
+<td align="right">4.8</td>
+</tr>
+<tr class="even">
+<td align="left">Plecoptera</td>
+<td align="left">Capniidae</td>
+<td align="right">0.0</td>
+<td align="right">2.4</td>
+</tr>
+<tr class="odd">
+<td align="left">Plecoptera</td>
+<td align="left">Chloroperlidae</td>
+<td align="right">0.0</td>
+<td align="right">11.9</td>
+</tr>
+<tr class="even">
+<td align="left">Plecoptera</td>
+<td align="left">Peltoperlidae</td>
+<td align="right">0.0</td>
+<td align="right">2.4</td>
+</tr>
+<tr class="odd">
+<td align="left">Plecoptera</td>
+<td align="left">Perlidae</td>
+<td align="right">0.0</td>
+<td align="right">9.5</td>
+</tr>
+<tr class="even">
+<td align="left">Plecoptera</td>
+<td align="left">Perlodidae</td>
+<td align="right">7.4</td>
+<td align="right">0.0</td>
+</tr>
+<tr class="odd">
+<td align="left">Trichoptera</td>
+<td align="left">Brachycentridae</td>
+<td align="right">0.0</td>
+<td align="right">2.4</td>
+</tr>
+<tr class="even">
+<td align="left">Trichoptera</td>
+<td align="left">Dipseudopsidae</td>
+<td align="right">11.1</td>
+<td align="right">2.4</td>
+</tr>
+<tr class="odd">
+<td align="left">Trichoptera</td>
+<td align="left">Hydropsychidae</td>
+<td align="right">0.0</td>
+<td align="right">19.0</td>
+</tr>
+<tr class="even">
+<td align="left">Trichoptera</td>
+<td align="left">Philopotamidae</td>
+<td align="right">0.0</td>
+<td align="right">9.5</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="stream-health-assessment-using-macroinvertebrate-bioindices.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(</span>
+<span id="cb6-2"><a href="stream-health-assessment-using-macroinvertebrate-bioindices.html#cb6-2" aria-hidden="true" tabindex="-1"></a>  macros <span class="sc">%&gt;%</span></span>
+<span id="cb6-3"><a href="stream-health-assessment-using-macroinvertebrate-bioindices.html#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(location, order, family, genus) <span class="sc">%&gt;%</span></span>
+<span id="cb6-4"><a href="stream-health-assessment-using-macroinvertebrate-bioindices.html#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">count</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb6-5"><a href="stream-health-assessment-using-macroinvertebrate-bioindices.html#cb6-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb6-6"><a href="stream-health-assessment-using-macroinvertebrate-bioindices.html#cb6-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(location) <span class="sc">%&gt;%</span></span>
+<span id="cb6-7"><a href="stream-health-assessment-using-macroinvertebrate-bioindices.html#cb6-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">rel_abund =</span> <span class="fu">round</span>(n<span class="sc">/</span><span class="fu">sum</span>(n)<span class="sc">*</span><span class="dv">100</span>, <span class="at">digits =</span> <span class="dv">1</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb6-8"><a href="stream-health-assessment-using-macroinvertebrate-bioindices.html#cb6-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(<span class="sc">-</span>n) <span class="sc">%&gt;%</span></span>
+<span id="cb6-9"><a href="stream-health-assessment-using-macroinvertebrate-bioindices.html#cb6-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> location, <span class="at">values_from =</span> rel_abund) <span class="sc">%&gt;%</span></span>
+<span id="cb6-10"><a href="stream-health-assessment-using-macroinvertebrate-bioindices.html#cb6-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">replace</span>(<span class="fu">is.na</span>(.), <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb6-11"><a href="stream-health-assessment-using-macroinvertebrate-bioindices.html#cb6-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">arrange</span>(order, family, genus)</span>
+<span id="cb6-12"><a href="stream-health-assessment-using-macroinvertebrate-bioindices.html#cb6-12" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<table>
+<colgroup>
+<col width="18%">
+<col width="21%">
+<col width="21%">
+<col width="14%">
+<col width="24%">
+</colgroup>
+<thead><tr class="header">
+<th align="left">order</th>
+<th align="left">family</th>
+<th align="left">genus</th>
+<th align="right">Rand Brook</th>
+<th align="right">Schoolhouse Brook</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left">Coleoptera</td>
+<td align="left">Hydrophilidae</td>
+<td align="left">Berosus</td>
+<td align="right">0.0</td>
+<td align="right">2.4</td>
+</tr>
+<tr class="even">
+<td align="left">Coleoptera</td>
+<td align="left">Hydrophilidae</td>
+<td align="left">Tropisternus</td>
+<td align="right">3.7</td>
+<td align="right">0.0</td>
+</tr>
+<tr class="odd">
+<td align="left">Coleoptera</td>
+<td align="left">Ptilodactylidae</td>
+<td align="left">Anchytarsus</td>
+<td align="right">3.7</td>
+<td align="right">0.0</td>
+</tr>
+<tr class="even">
+<td align="left">Diptera</td>
+<td align="left">Limoniidae</td>
+<td align="left">Hexatoma</td>
+<td align="right">3.7</td>
+<td align="right">4.8</td>
+</tr>
+<tr class="odd">
+<td align="left">Diptera</td>
+<td align="left">Tipulidae</td>
+<td align="left">Tipula</td>
+<td align="right">0.0</td>
+<td align="right">2.4</td>
+</tr>
+<tr class="even">
+<td align="left">Diptera</td>
+<td align="left">Tipulidae</td>
+<td align="left">Tipula</td>
+<td align="right">14.8</td>
+<td align="right">0.0</td>
+</tr>
+<tr class="odd">
+<td align="left">Ephemeroptera</td>
+<td align="left">Ephemerellidae</td>
+<td align="left">Ephemerella</td>
+<td align="right">0.0</td>
+<td align="right">7.1</td>
+</tr>
+<tr class="even">
+<td align="left">Ephemeroptera</td>
+<td align="left">Heptageniidae</td>
+<td align="left">Heptagenia</td>
+<td align="right">3.7</td>
+<td align="right">7.1</td>
+</tr>
+<tr class="odd">
+<td align="left">Ephemeroptera</td>
+<td align="left">Heptageniidae</td>
+<td align="left">Leucrocuta</td>
+<td align="right">3.7</td>
+<td align="right">0.0</td>
+</tr>
+<tr class="even">
+<td align="left">Ephemeroptera</td>
+<td align="left">Heptageniidae</td>
+<td align="left">Maccaffertium</td>
+<td align="right">0.0</td>
+<td align="right">9.5</td>
+</tr>
+<tr class="odd">
+<td align="left">Ephemeroptera</td>
+<td align="left">Leptophlebiidae</td>
+<td align="left">Neoleptophlebia</td>
+<td align="right">0.0</td>
+<td align="right">2.4</td>
+</tr>
+<tr class="even">
+<td align="left">Megaloptera</td>
+<td align="left">Corydalidae</td>
+<td align="left">Nigronia</td>
+<td align="right">29.6</td>
+<td align="right">0.0</td>
+</tr>
+<tr class="odd">
+<td align="left">Megaloptera</td>
+<td align="left">Sialidae</td>
+<td align="left">Sialis</td>
+<td align="right">3.7</td>
+<td align="right">0.0</td>
+</tr>
+<tr class="even">
+<td align="left">Odonata</td>
+<td align="left">Aeshnidae</td>
+<td align="left">Boyeria</td>
+<td align="right">11.1</td>
+<td align="right">0.0</td>
+</tr>
+<tr class="odd">
+<td align="left">Odonata</td>
+<td align="left">Calopterygidae</td>
+<td align="left">Calopteryx</td>
+<td align="right">3.7</td>
+<td align="right">0.0</td>
+</tr>
+<tr class="even">
+<td align="left">Odonata</td>
+<td align="left">Gomphidae</td>
+<td align="left">Lanthus</td>
+<td align="right">0.0</td>
+<td align="right">2.4</td>
+</tr>
+<tr class="odd">
+<td align="left">Odonata</td>
+<td align="left">Gomphidae</td>
+<td align="left">Ophiogompus</td>
+<td align="right">0.0</td>
+<td align="right">2.4</td>
+</tr>
+<tr class="even">
+<td align="left">Plecoptera</td>
+<td align="left">Capniidae</td>
+<td align="left">Allocapnia</td>
+<td align="right">0.0</td>
+<td align="right">2.4</td>
+</tr>
+<tr class="odd">
+<td align="left">Plecoptera</td>
+<td align="left">Chloroperlidae</td>
+<td align="left">Alloperla</td>
+<td align="right">0.0</td>
+<td align="right">11.9</td>
+</tr>
+<tr class="even">
+<td align="left">Plecoptera</td>
+<td align="left">Peltoperlidae</td>
+<td align="left">Tallaperla</td>
+<td align="right">0.0</td>
+<td align="right">2.4</td>
+</tr>
+<tr class="odd">
+<td align="left">Plecoptera</td>
+<td align="left">Perlidae</td>
+<td align="left">Acroneuria</td>
+<td align="right">0.0</td>
+<td align="right">2.4</td>
+</tr>
+<tr class="even">
+<td align="left">Plecoptera</td>
+<td align="left">Perlidae</td>
+<td align="left">Agnetina</td>
+<td align="right">0.0</td>
+<td align="right">7.1</td>
+</tr>
+<tr class="odd">
+<td align="left">Plecoptera</td>
+<td align="left">Perlodidae</td>
+<td align="left">Clioperla</td>
+<td align="right">7.4</td>
+<td align="right">0.0</td>
+</tr>
+<tr class="even">
+<td align="left">Trichoptera</td>
+<td align="left">Brachycentridae</td>
+<td align="left">Micrasema</td>
+<td align="right">0.0</td>
+<td align="right">2.4</td>
+</tr>
+<tr class="odd">
+<td align="left">Trichoptera</td>
+<td align="left">Dipseudopsidae</td>
+<td align="left">Phylocentropus</td>
+<td align="right">0.0</td>
+<td align="right">2.4</td>
+</tr>
+<tr class="even">
+<td align="left">Trichoptera</td>
+<td align="left">Dipseudopsidae</td>
+<td align="left">Phylocentropus</td>
+<td align="right">11.1</td>
+<td align="right">0.0</td>
+</tr>
+<tr class="odd">
+<td align="left">Trichoptera</td>
+<td align="left">Hydropsychidae</td>
+<td align="left">Hydropsyche</td>
+<td align="right">0.0</td>
+<td align="right">19.0</td>
+</tr>
+<tr class="even">
+<td align="left">Trichoptera</td>
+<td align="left">Philopotamidae</td>
+<td align="left">Dolophilodes</td>
+<td align="right">0.0</td>
+<td align="right">9.5</td>
+</tr>
+</tbody>
+</table>
 <div class="msmb-solution">
 <p class="solution-begin">
-Pointers<span id="sol-start-27" class="fa fa-plus-square solution-icon clickable" onclick="toggle_visibility('sol-body-27', 'sol-start-27')"></span>
+Pointers<span id="sol-start-1" class="fa fa-plus-square solution-icon clickable" onclick="toggle_visibility('sol-body-1', 'sol-start-1')"></span>
 </p>
-<div id="sol-body-27" class="solution-body" style="display: none;">
+<div id="sol-body-1" class="solution-body" style="display: none;">
 <p>Recall, that you will want to start by stating the general trends and patterns first in a way that somebody who does not necessarily have your tables in front of them has a good idea of what is being compared and what the major pattern is. Then point out notable highlights.</p>
 <ul>
-<li>are there dominant species? is there an even distribution?</li>
-<li>are all species in both locations?</li>
-<li>are there notable differences among locations?</li>
+<li>are there dominant species? is there an even distribution? in both locations? only one?</li>
+<li>are all taxonomic groups in both locations? how much overlap is there? does this differ depending on the taxonomic resolution you are looking at?</li>
+<li>are there notable differences among locations? e.g. taxonomic group occurs in both locations but is really common in one location and more rare in another.</li>
 </ul>
 <p>Your answer should be 5-7 sentences.</p>
 <p class="solution-end">
@@ -336,10 +771,10 @@ Pointers<span id="sol-start-27" class="fa fa-plus-square solution-icon clickable
 </div>
 </div>
 <p>We are going to use to <strong>bioindices</strong> to assess stream health. An index is a measure that allows us to track overall trends of something - in this case stream health. It is a way to take something very complex like stream health which is comprised of physical, biological, and chemical aspects and compare them with one easily to estimate metric. Instead of measuring each individual parameter individually we are assessing the compounding impacts on a component of the biological community. We can do this because different taxonomic groups have different tolerance levels to survive under stressful conditions. Here, we will use tolerance values assigned to an entire taxonomic group (order or family), however, we should keep in mind that the tolerance of species within that group might vary.</p>
-<p>The first first index is the <strong>EPT index</strong>. Three major orders with low tolerance to pollution are <strong>E</strong>phemeroptera (mayflies), <strong>P</strong>lectoptera (stoneflies), <strong>T</strong>hrichoptera (caddisflies) are sensitive to pollutants in their environment. In short, the EPT index quantifies the percentage of sensitive taxa to total taxa found.</p>
+<p>The first first index is the <strong>EPT index</strong>. Three major orders with low tolerance to pollution are <strong>E</strong>phemeroptera (mayflies), <strong>P</strong>lectoptera (stoneflies), <strong>T</strong>hrichoptera (caddisflies) are sensitive to pollutants in their environment. In short, the EPT index quantifies the percentage of sensitive taxa to total taxa found<label for="tufte-sn-5" class="margin-toggle sidenote-number">5</label><input type="checkbox" id="tufte-sn-5" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">5</span> Our goal was to get a representative sample of the stream, however we did not identify all the specimen we brought back. We picked our critters in the field. For Schoolhouse Brook we were mostly getting specimen from the same habitat, whereas in Rand Brook we did get some different habitats and that might have resulted in some pre-sorting of specimen in the different containers we brought back. This means that there might be some bias in the species composition of our currently identified specimen.</span>.</p>
 <div id="ques:macro-6" class="question">
 <p class="question-begin">
-► Question 73
+► Question 6
 </p>
 <div class="question-body">
 <p>
@@ -352,7 +787,7 @@ Explain whether a higher or lower EPT index is indicative of better stream healt
 </div>
 <div id="ques:macro-7" class="question">
 <p class="question-begin">
-► Question 74
+► Question 7
 </p>
 <div class="question-body">
 <p>
@@ -363,13 +798,49 @@ Calculate the EPT index for each stream by determining the total number of EPT i
 </p>
 </div>
 </div>
+<p>We are going to use <code>mutate()</code> to add a new column that will classify specimen as EPT taxa or non-EPT taxa, then we can calculate the relative abundance.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="stream-health-assessment-using-macroinvertebrate-bioindices.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>( </span>
+<span id="cb7-2"><a href="stream-health-assessment-using-macroinvertebrate-bioindices.html#cb7-2" aria-hidden="true" tabindex="-1"></a>macros <span class="sc">%&gt;%</span></span>
+<span id="cb7-3"><a href="stream-health-assessment-using-macroinvertebrate-bioindices.html#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">EPT =</span> <span class="fu">ifelse</span>(order <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Ephemeroptera"</span>, <span class="st">"Plecoptera"</span>, <span class="st">"Trichoptera"</span>), <span class="st">"EPT"</span>, <span class="st">"non-EPT"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb7-4"><a href="stream-health-assessment-using-macroinvertebrate-bioindices.html#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(location, EPT) <span class="sc">%&gt;%</span></span>
+<span id="cb7-5"><a href="stream-health-assessment-using-macroinvertebrate-bioindices.html#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb7-6"><a href="stream-health-assessment-using-macroinvertebrate-bioindices.html#cb7-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb7-7"><a href="stream-health-assessment-using-macroinvertebrate-bioindices.html#cb7-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(EPT) <span class="sc">%&gt;%</span></span>
+<span id="cb7-8"><a href="stream-health-assessment-using-macroinvertebrate-bioindices.html#cb7-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">EPT_index =</span> n<span class="sc">/</span>(<span class="fu">sum</span>(n))) <span class="sc">%&gt;%</span></span>
+<span id="cb7-9"><a href="stream-health-assessment-using-macroinvertebrate-bioindices.html#cb7-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(EPT <span class="sc">==</span> <span class="st">"EPT"</span>),</span>
+<span id="cb7-10"><a href="stream-health-assessment-using-macroinvertebrate-bioindices.html#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="at">caption =</span> <span class="st">"EPT index for Schoolhouse and Rand Brook."</span></span>
+<span id="cb7-11"><a href="stream-health-assessment-using-macroinvertebrate-bioindices.html#cb7-11" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<p><!--
+<caption>--><span class="marginnote shownote"><span id="tab:unnamed-chunk-6">Table 6.1: </span>EPT index for Schoolhouse and Rand Brook.</span><!--</caption>--></p>
+<table>
+<thead><tr class="header">
+<th align="left">location</th>
+<th align="left">EPT</th>
+<th align="right">n</th>
+<th align="right">EPT_index</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left">Rand Brook</td>
+<td align="left">EPT</td>
+<td align="right">7</td>
+<td align="right">0.1627907</td>
+</tr>
+<tr class="even">
+<td align="left">Schoolhouse Brook</td>
+<td align="left">EPT</td>
+<td align="right">36</td>
+<td align="right">0.8372093</td>
+</tr>
+</tbody>
+</table>
 <div class="msmb-solution">
 <p class="solution-begin">
-Pointers<span id="sol-start-28" class="fa fa-plus-square solution-icon clickable" onclick="toggle_visibility('sol-body-28', 'sol-start-28')"></span>
+Pointers<span id="sol-start-2" class="fa fa-plus-square solution-icon clickable" onclick="toggle_visibility('sol-body-2', 'sol-start-2')"></span>
 </p>
-<div id="sol-body-28" class="solution-body" style="display: none;">
+<div id="sol-body-2" class="solution-body" style="display: none;">
 <p>Recall, that you will want to start by stating the general trends and patterns first in a way that somebody who does not necessarily have your tables in front of them has a good idea of what is being compared and what the major pattern is. Then point out notable highlights. Make sure you are specific. Higher and lower are qualitative descriptions but there is a big difference if the EPT index is higher in one location by 1% or 10%!</p>
-<p>Your answer should be 3-5 sentences.</p>
+<p>Your answer should be 2-3 sentences.</p>
 <p class="solution-end">
 <span class="fa fa-square-o solution-icon"></span>
 </p>
@@ -393,7 +864,7 @@ Pointers<span id="sol-start-28" class="fa fa-plus-square solution-icon clickable
 </ul>
 <div id="ques:macro-8" class="question">
 <p class="question-begin">
-► Question 75
+► Question 8
 </p>
 <div class="question-body">
 <p>
@@ -404,13 +875,41 @@ Calculate the Hilsenhoff Biotic index for each stream and describe your results.
 </p>
 </div>
 </div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="stream-health-assessment-using-macroinvertebrate-bioindices.html#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(</span>
+<span id="cb8-2"><a href="stream-health-assessment-using-macroinvertebrate-bioindices.html#cb8-2" aria-hidden="true" tabindex="-1"></a>  macros <span class="sc">%&gt;%</span></span>
+<span id="cb8-3"><a href="stream-health-assessment-using-macroinvertebrate-bioindices.html#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(location,family, pollution_tolerance) <span class="sc">%&gt;%</span></span>
+<span id="cb8-4"><a href="stream-health-assessment-using-macroinvertebrate-bioindices.html#cb8-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">count</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb8-5"><a href="stream-health-assessment-using-macroinvertebrate-bioindices.html#cb8-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">weighted_abund =</span> n<span class="sc">*</span>pollution_tolerance) <span class="sc">%&gt;%</span></span>
+<span id="cb8-6"><a href="stream-health-assessment-using-macroinvertebrate-bioindices.html#cb8-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb8-7"><a href="stream-health-assessment-using-macroinvertebrate-bioindices.html#cb8-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(location) <span class="sc">%&gt;%</span></span>
+<span id="cb8-8"><a href="stream-health-assessment-using-macroinvertebrate-bioindices.html#cb8-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">HSI =</span> <span class="fu">sum</span>(weighted_abund)<span class="sc">/</span><span class="fu">sum</span>(n)),</span>
+<span id="cb8-9"><a href="stream-health-assessment-using-macroinvertebrate-bioindices.html#cb8-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">digits =</span> <span class="dv">2</span>,</span>
+<span id="cb8-10"><a href="stream-health-assessment-using-macroinvertebrate-bioindices.html#cb8-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">caption =</span> <span class="st">"Hilsenhoff Biotic Index (HSI) for Schoolhouse and Rand Brook."</span>)</span></code></pre></div>
+<p><!--
+<caption>--><span class="marginnote shownote"><span id="tab:unnamed-chunk-7">Table 6.2: </span>Hilsenhoff Biotic Index (HSI) for Schoolhouse and Rand Brook.</span><!--</caption>--></p>
+<table>
+<thead><tr class="header">
+<th align="left">location</th>
+<th align="right">HSI</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left">Rand Brook</td>
+<td align="right">3.63</td>
+</tr>
+<tr class="even">
+<td align="left">Schoolhouse Brook</td>
+<td align="right">2.50</td>
+</tr>
+</tbody>
+</table>
 <div class="msmb-solution">
 <p class="solution-begin">
-Pointers<span id="sol-start-29" class="fa fa-plus-square solution-icon clickable" onclick="toggle_visibility('sol-body-29', 'sol-start-29')"></span>
+Pointers<span id="sol-start-3" class="fa fa-plus-square solution-icon clickable" onclick="toggle_visibility('sol-body-3', 'sol-start-3')"></span>
 </p>
-<div id="sol-body-29" class="solution-body" style="display: none;">
+<div id="sol-body-3" class="solution-body" style="display: none;">
 <p>Recall, that you will want to start by stating the general trends and patterns first in a way that somebody who does not necessarily have your tables in front of them has a good idea of what is being compared and what the major pattern is. Then point out notable highlights. Make sure you are specific. Higher and lower are qualitative descriptions but there is a big difference if the EPT index is higher in one location by 1% or 10%!</p>
-<p>Your answer should be 3-5 sentences.</p>
+<p>Your answer should be 2-3 sentences.</p>
 <p class="solution-end">
 <span class="fa fa-square-o solution-icon"></span>
 </p>
@@ -418,7 +917,7 @@ Pointers<span id="sol-start-29" class="fa fa-plus-square solution-icon clickable
 </div>
 <div id="ques:macro-9" class="question">
 <p class="question-begin">
-► Question 76
+► Question 9
 </p>
 <div class="question-body">
 <p>
@@ -431,10 +930,10 @@ Interpret and discuss your results (species composition, bioindices) in an asses
 </div>
 <div class="msmb-solution">
 <p class="solution-begin">
-Pointers<span id="sol-start-30" class="fa fa-plus-square solution-icon clickable" onclick="toggle_visibility('sol-body-30', 'sol-start-30')"></span>
+Pointers<span id="sol-start-4" class="fa fa-plus-square solution-icon clickable" onclick="toggle_visibility('sol-body-4', 'sol-start-4')"></span>
 </p>
-<div id="sol-body-30" class="solution-body" style="display: none;">
-<p>Start your discussion with one sentence summarizing what you did and why<label for="tufte-sn-45" class="margin-toggle sidenote-number">45</label><input type="checkbox" id="tufte-sn-45" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">45</span> e.g. <em>Here, we collected a representative sample of macroinverts from two headwater streams to …</em></span> and summarize your results in 2-3 sentences. Then interpret what that means in terms of stream health. Consider expected differences<label for="tufte-sn-46" class="margin-toggle sidenote-number">46</label><input type="checkbox" id="tufte-sn-46" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">46</span> Schoolhouse Brook is a first order stream, Rand Brook is a second order stream, i.e. other streams flow into it</span> or if you found unexpected differences what that means<label for="tufte-sn-47" class="margin-toggle sidenote-number">47</label><input type="checkbox" id="tufte-sn-47" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">47</span> They are within very close vicinity of each other</span>. From having observed the habitat, did you expect high or low stream health? Why? Explain why you think you got the results that you did.</p>
+<div id="sol-body-4" class="solution-body" style="display: none;">
+<p>Start your discussion with one sentence summarizing what you did and why<label for="tufte-sn-6" class="margin-toggle sidenote-number">6</label><input type="checkbox" id="tufte-sn-6" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">6</span> e.g. <em>Here, we collected a representative sample of macroinverts from two headwater streams to …</em></span> and summarize your results in 2-3 sentences; make sure to highlight if anything was unexpected between the different analysis (species composition, EPT index, HSI) or if they all point toward the same thing. Then interpret what that means in terms of stream health. Consider expected differences<label for="tufte-sn-7" class="margin-toggle sidenote-number">7</label><input type="checkbox" id="tufte-sn-7" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">7</span> Schoolhouse Brook is a first order stream, Rand Brook is a second order stream, i.e. other streams flow into it</span> or if you found unexpected differences what that means<label for="tufte-sn-8" class="margin-toggle sidenote-number">8</label><input type="checkbox" id="tufte-sn-8" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">8</span> They are within very close vicinity of each other</span>. From having observed the habitat, did you expect high or low stream health? Why? Explain why you think you got the results that you did.</p>
 <p>Your answer should be 8-12 sentences.</p>
 <p class="solution-end">
 <span class="fa fa-square-o solution-icon"></span>
@@ -449,7 +948,7 @@ Pointers<span id="sol-start-30" class="fa fa-plus-square solution-icon clickable
 <a href="references.html"><button class="btn btn-default">Next</button></a>
 </p>
 <p class="build-date">Page built: 
-2022-11-09
+2022-11-12
  using 
 R version 4.1.2 (2021-11-01)
 </p>
