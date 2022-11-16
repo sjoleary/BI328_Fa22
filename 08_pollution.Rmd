@@ -36,18 +36,32 @@ options(htmltools.dir.version = FALSE)
 
 # Trees vs Albedo
 
-You will need to install a few R packages to be able to visualize your data.
+You will need to install a few R packages to be able to visualize your data. Remember you only need to do this once, ideally just run it directly in the console.
+
+```{r eval=FALSE}
 
 
+install.packages("remotes")
+install.packages("glue")
+install.packages("plyr")
+
+library(remotes)
+remotes::install_github("ropensci/osmdata")
 
 
+```
 
+Now let's load our packages.
 
 ```{r}
 
 # load libraries
+library(osmdata)
+library(plyr)
 library(tidyverse)
 library(knitr)
+library(glue)
+library(lubridate)
 library(janitor)
 
 # load custom ggplot themes
@@ -82,7 +96,228 @@ source("scr/ggplot.R")
 
 ### Data Analysis
 
+Pull in the pollution data (the CSV files should be the only ones in the `pollution` directory for this to work properly).
 
+```{r}
+
+# set data path
+path <- "data/pollution"
+
+# list with all txt files in data directory
+list.filenames <- list.files(path = path)
+
+# empty list to load files into
+list.data <- list()
+
+# loop to read in data files
+for (i in list.filenames){
+  
+  file <- as.character(glue("{path}/{i}"))
+  
+  list.data[[i]] <- read_delim(file,
+                             delim = ",",  skip = 1)
+  
+}
+
+pollution <- ldply(list.data, data.frame) %>%   # combine into single data frame
+  clean_names()                            # clean up columns
+
+
+write_delim(pollution, "data/pollution_raw.txt", delim = "\t")
+
+```
+
+Take a look at that data frame - we will need to clean it up so that we only have the information we want and only include data points for which we have lat/long information. We also want to add the locations for each data set, we can do this based on the name of the file we imported.
+
+```{r}
+
+pollution <- pollution %>%
+  select(id, latitude, longitude, date, time, temperature, humidity, pm2_5) %>%
+  filter(latitude > 0 & longitude > 0 & date > 0) %>%
+  separate(date, into = c("year", "month", "day"), sep = c(4, 6)) %>%
+  separate(time, into = c("hr", "min", "sec"), sep = c(2, 4)) %>%
+  filter(!min == "+0") %>%
+  mutate(longitude = -1*longitude) %>%
+  filter(year == "2022" & month %in% c("10") & day %in% c("18", "19", "25")) %>%
+  mutate(id = case_when(id %in% c("CE30034.CSV", "CE30035.CSV", "CE30042.CSV") ~ "Bakersville Elem",
+                        id %in% c("D2A0478.CSV", "D2A0480.CSV", "D2A0481.CSV", "D2A0482.CSV") ~ "Roy Park",
+                        id %in% c("E390128.CSV", "E390129.CSV", "E390130.CSV") ~ "Veteran's Park")) %>%
+  filter(!is.na(id))
+
+```
+
+We can get the summary statistics for each day and location using `group_by()` and `summarize()`.
+
+```{r}
+
+pollution %>% 
+  group_by(day, id) %>%
+  summarize(mean = mean(pm2_5),
+            max = max(pm2_5),
+            min = min(pm2_5))
+
+```
+
+And we can compare those distributions using boxplots.
+
+```{r}
+
+ggplot(pollution, aes(x = day, y = pm2_5, fill = id)) +
+  geom_boxplot()
+
+```
+
+And we should test if our differences are significant. Let's start by running and ANOVA to see if there is significant heterogeneity in the data set.
+
+Our null hypothesis is "there is no difference", we will test to see if there is significant difference among locations, among days, and among the interaction of day and location.
+
+```{r}
+
+# run anova, with interaction term
+anova <- aov(pm2_5 ~ id * day, pollution)
+
+summary(anova)
+
+```
+
+Now we should run an Tukey Honest Significant Difference test to look at pairwise comparisons among days, locations, and day/location interactions. Tukey's HSD adjusts for multiple comparisons being made.
+
+```{r}
+
+# run post-hoc Tukey HSD adjust for multiple comparisons
+TukeyHSD(anova)
+
+```
+
+All the pairwise comparisons are different from each other with the exception of Veteran's and Roy Park on the 18th.
+
+We are also interested in a spatial component, i.e. were there hotspots. Too look at this we should plot our points on a map.
+
+First we need to pull down street information - we can do this using OpenStreetMaps.
+
+```{r}
+
+# get lat/long 
+min_lat <- min(pollution$latitude)
+max_lat <- max(pollution$latitude)
+
+min_long <- min(pollution$longitude)
+max_long <- max(pollution$longitude)
+
+
+# pull major street features
+big_streets <- opq(bbox = c(min_long-0.05, min_lat-0.05, max_long+0.05, max_lat+0.05)) %>%
+  add_osm_feature(key = "highway", 
+                  value = c("motorway", "primary", "motorway_link", "primary_link")) %>%
+  osmdata_sf()
+
+# pull medium sized streets
+med_streets <- opq(bbox = c(min_long-0.05, min_lat-0.05, max_long+0.05, max_lat+0.05)) %>%
+  add_osm_feature(key = "highway", 
+                  value = c("secondary", "tertiary", "secondary_link", "tertiary_link")) %>%
+  osmdata_sf()
+
+# pull small streets
+small_streets <- opq(bbox = c(min_long-0.05, min_lat-0.05, max_long+0.05, max_lat+0.05)) %>%
+  add_osm_feature(key = "highway", 
+                  value = c("residential", "living_street",
+                            "unclassified",
+                            "service", "footway")) %>%
+  osmdata_sf()
+
+# pull rivers
+rivers <- opq(bbox = c(min_long-0.05, min_lat-0.05, max_long+0.05, max_lat+0.05)) %>%
+  add_osm_feature(key = "waterway", value = "river") %>%
+  osmdata_sf()
+
+# pull railways
+railway <- opq(bbox = c(min_long-0.05, min_lat-0.05, max_long+0.05, max_lat+0.05)) %>%
+  add_osm_feature(key = "railway", value="rail") %>%
+  osmdata_sf()
+
+
+```
+
+We can plot all of these using ggplot:
+
+```{r}
+
+# compile plot
+ggplot() +
+  geom_sf(data = rivers$osm_lines,
+          inherit.aes = FALSE,
+          color = "steelblue",
+          size = .8,
+          alpha = .3) +
+  geom_sf(data = railway$osm_lines,
+          inherit.aes = FALSE,
+          color = "black",
+          size = .2,
+          linetype="dotdash",
+          alpha = .5) +
+  geom_sf(data = med_streets$osm_lines,
+          inherit.aes = FALSE,
+          color = "black",
+          size = .3,
+          alpha = .5) +
+  geom_sf(data = small_streets$osm_lines,
+          inherit.aes = FALSE,
+          color = "#666666",
+          size = .2,
+          alpha = .3) +
+  geom_sf(data = big_streets$osm_lines,
+          inherit.aes = FALSE,
+          color = "black",
+          size = .5,
+          alpha = .6) +
+  coord_sf(xlim = c(min_long-0.0025, max_long+0.0025), 
+           ylim = c(min_lat-0.001, max_lat+0.001),
+           expand = FALSE)
+
+```
+
+Based off of this, we can plot our pollution data on top as an additional layer and color code each data point based on the level of PM2.5, we can also split it in to additional panels.
+
+```{r}
+
+# compile plot
+ggplot(data = pollution) +
+  geom_sf(data = rivers$osm_lines,
+          inherit.aes = FALSE,
+          color = "steelblue",
+          size = .8,
+          alpha = .6) +
+  geom_sf(data = railway$osm_lines,
+          inherit.aes = FALSE,
+          color = "black",
+          size = .2,
+          linetype="dotdash",
+          alpha = .5) +
+  geom_sf(data = med_streets$osm_lines,
+          inherit.aes = FALSE,
+          color = "black",
+          size = .3,
+          alpha = .5) +
+  geom_sf(data = small_streets$osm_lines,
+          inherit.aes = FALSE,
+          color = "#666666",
+          size = .2,
+          alpha = .3) +
+  geom_sf(data = big_streets$osm_lines,
+          inherit.aes = FALSE,
+          color = "black",
+          size = .5,
+          alpha = .6) +
+  coord_sf(xlim = c(min_long-0.0025, max_long+0.0025), 
+           ylim = c(min_lat-0.001, max_lat+0.001),
+           expand = FALSE) +
+  geom_point(data = pollution, aes(x = longitude, y = latitude, color = pm2_5), size = .5, alpha = .5) +
+  facet_grid(day ~ id) +
+  scale_color_viridis_c() +
+  labs(title = "location") +
+  theme_void()
+
+```
 
 
 ## Author Contributions
