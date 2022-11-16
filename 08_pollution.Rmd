@@ -1,0 +1,110 @@
+---
+title: "BI 328 Conservation Biology"
+author: "Labmanual Fall 2022"
+date: "`r Sys.Date()`"
+knit: "bookdown::preview_chapter"
+output:
+  msmbstyle::msmb_html_book:
+    highlight: tango
+    toc: TRUE
+    toc_depth: 1
+    split_by: chapter
+    margin_references: FALSE
+    css: msmb.css
+bibliography: labmanual.bib
+link-citations: yes
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r include=FALSE}
+
+
+library(msmbstyle)
+
+# invalidate cache when the tufte version changes
+knitr::opts_chunk$set(tidy = FALSE, 
+                      message = FALSE,
+                      error = FALSE,
+                      warning = FALSE,
+                      cache.extra = packageVersion('msmbstyle'))
+
+
+options(htmltools.dir.version = FALSE)
+
+```
+
+# Trees vs Albedo
+
+You will need to install a few R packages to be able to visualize your data.
+
+
+
+
+
+
+```{r}
+
+# load libraries
+library(tidyverse)
+library(knitr)
+library(janitor)
+
+# load custom ggplot themes
+source("scr/ggplot.R")
+
+```
+
+## Central Question
+
+[Make changes requested in your google doc and add here]
+
+
+## Hypothesis
+
+[Make changes requested in your google doc and add here]
+
+
+## Objectives
+
+[Make changes requested in your google doc and add here]
+
+
+## Methods
+
+### Study Design
+
+[Make changes requested in your google doc and add here]
+
+### Data Collection and Processing
+
+[Make changes requested in your google doc and add here]
+
+### Data Analysis
+
+
+
+
+## Author Contributions
+
+Typical categories include: Conceive study, design study, project/task management, data collection, data management, data analysis, visualizations, write/design manuscript/poster draft, revise & edit draft.
+
+Write about 5-7 sentences about how you contributed to this project and what you learned about the process from the wibbly-wobbly method of just diving right in and designing your own study this semester.
+
+
+## If I (we) were to design this study all over again ...
+
+Find at least three points for improvement/lessons learned about the study design itself (separate from what you learned about the process). Discuss this with your team members but you should write your own revisions in about 7-10 sentences.
+
+
+## Further work: Next steps and new questions based on our pilot study ...
+
+Discuss with your team mates to identify new questions you have identified, how you might expand and refine the study (beyond just re-designing the pilot study), assume that you are not limited by the constraints of lab time within a course.
+
+
+
+
+
+
+
+
