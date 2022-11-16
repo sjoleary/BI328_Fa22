@@ -48,9 +48,6 @@ library(tidyverse)
 library(knitr)
 library(janitor)
 
-# load custom ggplot themes
-source("scr/ggplot.R")
-
 ```
 
 ## Central Question
@@ -80,8 +77,26 @@ source("scr/ggplot.R")
 
 ### Data Analysis
 
+Let's start by pulling in your data
 
+```{r}
 
+albedo <- read_delim("data/albed_temps.csv", delim = ",") %>%
+  clean_names() %>%
+  separate(location, into = c("location", "sunshine"), sep = 1)
+
+```
+
+We need to calculate the difference between material temperature and airport temperature
+
+```{r}
+
+albedo <- albedo %>%
+  mutate(temp_diff = surface_temp_c - airport_air_temp_c)
+
+```
+
+Now we can look at the relationship 
 
 ## Author Contributions
 

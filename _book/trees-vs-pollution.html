@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta property="og:title" content="8 Trees vs Pollution | BI 328 Conservation Biology" />
+<meta property="og:type" content="book" />
+
+
+
+
+<meta name="author" content="Labmanual Fall 2022" />
+
+<meta name="date" content="2022-11-16" />
+
+
+<meta name="description" content="8 Trees vs Pollution | BI 328 Conservation Biology">
+
+<title>8 Trees vs Pollution | BI 328 Conservation Biology</title>
+
+<link href="libs/tufte-css/tufte.css" rel="stylesheet" />
+<link href="libs/tufte-css/envisioned.css" rel="stylesheet" />
+<link href="libs/msmb-css/msmb.css" rel="stylesheet" />
+
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  background-color: #f8f8f8; }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ef2929; } /* Alert */
+code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #c4a000; } /* Attribute */
+code span.bn { color: #0000cf; } /* BaseN */
+code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4e9a06; } /* Char */
+code span.cn { color: #000000; } /* Constant */
+code span.co { color: #8f5902; font-style: italic; } /* Comment */
+code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code span.dt { color: #204a87; } /* DataType */
+code span.dv { color: #0000cf; } /* DecVal */
+code span.er { color: #a40000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #0000cf; } /* Float */
+code span.fu { color: #000000; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code span.ot { color: #8f5902; } /* Other */
+code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code span.sc { color: #000000; } /* SpecialChar */
+code span.ss { color: #4e9a06; } /* SpecialString */
+code span.st { color: #4e9a06; } /* String */
+code span.va { color: #000000; } /* Variable */
+code span.vs { color: #4e9a06; } /* VerbatimString */
+code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+
+<link rel="stylesheet" href="msmb.css" type="text/css" />
+<script>
+function toggle_visibility(id1, id2) {
+var e = document.getElementById(id1);
+var f = document.getElementById(id2);
+
+e.style.display = ((e.style.display!='none') ? 'none' : 'block');
+
+if(f.classList.contains('fa-plus-square')) {
+    f.classList.add('fa-minus-square')
+    f.classList.remove('fa-plus-square')
+} else {
+    f.classList.add('fa-plus-square')
+    f.classList.remove('fa-minus-square')
+}
+
+}
+</script>
+<script>
+function copy_link(id) {
+  var dummy = document.createElement('input'),
+  text = window.location.href.split(/[?#]/)[0] + '#' + id;
+  document.body.appendChild(dummy);
+  dummy.value = text;
+  dummy.select();
+  document.execCommand('copy');
+  document.body.removeChild(dummy);
+  
+  var tooltip = document.getElementById(id + '-tooltip');
+  tooltip.innerHTML = 'Copied!';
+}
+
+function reset_tooltip(id) {
+  var tooltip = document.getElementById(id);
+  tooltip.innerHTML = 'Copy link';
+}
+</script>
+
+</head>
+
+<body>
+
+
+
+<div class="row">
+<div class="col-sm-12">
+<div id="TOC">
+<ul class="navbar">
+<li class="msmb"><p class="title">BI 328 Conservation Biology<p><p class="author">Labmanual Fall 2022</p>
+<li class="dropdown" style="float:right">
+<a href="javascript:void(0)" class="dropbtn">&#x25BE; Chapters</a>
+<div class="dropdown-content">
+<a href="index.html" id="toc-overview">Overview</a>
+<a href="installing-rrstudio.html" id="toc-installing-rrstudio"><span class="toc-section-number">1</span> Installing R/Rstudio</a>
+<a href="project-management-and-rmarkdown-basics.html" id="toc-project-management-and-rmarkdown-basics"><span class="toc-section-number">2</span> Project management and Rmarkdown Basics</a>
+<a href="restoration-ecology-of-temperature-grasslands.html" id="toc-restoration-ecology-of-temperature-grasslands"><span class="toc-section-number">3</span> Restoration Ecology of Temperature Grasslands</a>
+<a href="iucn-redlist-quantifying-species-risk-levels.html" id="toc-iucn-redlist-quantifying-species-risk-levels"><span class="toc-section-number">4</span> IUCN Redlist: Quantifying species Risk Levels</a>
+<a href="thermal-regimes-of-streams.html" id="toc-thermal-regimes-of-streams"><span class="toc-section-number">5</span> Thermal Regimes of Streams</a>
+<a href="stream-health-assessment-using-macroinvertebrate-bioindices.html" id="toc-stream-health-assessment-using-macroinvertebrate-bioindices"><span class="toc-section-number">6</span> Stream Health Assessment using Macroinvertebrate Bioindices</a>
+<a href="trees-vs-albedo.html" id="toc-trees-vs-albedo"><span class="toc-section-number">7</span> Trees vs Albedo</a>
+<a id="active-page" href="trees-vs-pollution.html" id="toc-trees-vs-pollution"><span class="toc-section-number">8</span> Trees vs Pollution</a><ul class="toc-sections">
+<li class="toc"><a href="#central-question-1"> Central Question</a></li>
+<li class="toc"><a href="#hypothesis-1"> Hypothesis</a></li>
+<li class="toc"><a href="#objectives-1"> Objectives</a></li>
+<li class="toc"><a href="#methods-1"> Methods</a></li>
+<li class="toc"><a href="#author-contributions-1"> Author Contributions</a></li>
+<li class="toc"><a href="#if-i-we-were-to-design-this-study-all-over-again-1"> If I (we) were to design this study all over again …</a></li>
+<li class="toc"><a href="#further-work-next-steps-and-new-questions-based-on-our-pilot-study-1"> Further work: Next steps and new questions based on our pilot study …</a></li>
+</ul>
+<a href="references.html" id="toc-references">References</a>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="row">
+<div class="col-sm-12">
+<div id="trees-vs-pollution" class="section level1" number="8">
+<h1>
+<span class="header-section-number">8</span> Trees vs Pollution</h1>
+<p>You will need to install a few R packages to be able to visualize your data. Remember you only need to do this once, ideally just run it directly in the console.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="trees-vs-pollution.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"remotes"</span>)</span>
+<span id="cb1-2"><a href="trees-vs-pollution.html#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"glue"</span>)</span>
+<span id="cb1-3"><a href="trees-vs-pollution.html#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"plyr"</span>)</span>
+<span id="cb1-4"><a href="trees-vs-pollution.html#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="trees-vs-pollution.html#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(remotes)</span>
+<span id="cb1-6"><a href="trees-vs-pollution.html#cb1-6" aria-hidden="true" tabindex="-1"></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">"ropensci/osmdata"</span>)</span></code></pre></div>
+<p>Now let’s load our packages.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="trees-vs-pollution.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load libraries</span></span>
+<span id="cb2-2"><a href="trees-vs-pollution.html#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(osmdata)</span>
+<span id="cb2-3"><a href="trees-vs-pollution.html#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(plyr)</span>
+<span id="cb2-4"><a href="trees-vs-pollution.html#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb2-5"><a href="trees-vs-pollution.html#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)</span>
+<span id="cb2-6"><a href="trees-vs-pollution.html#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(glue)</span>
+<span id="cb2-7"><a href="trees-vs-pollution.html#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
+<span id="cb2-8"><a href="trees-vs-pollution.html#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(janitor)</span></code></pre></div>
+<div id="central-question-1" class="section level2" number="8.1">
+<h2>
+<span class="header-section-number">8.1</span> Central Question<div class="tooltip"><button class="internal-link-btn" onclick="copy_link('central-question-1')" onmouseout="reset_tooltip('central-question-1-tooltip')"><span class="tooltiptext" id="central-question-1-tooltip">Copy link</span><i class="fa fa-link"></i></button></div>
+</h2>
+<p>[Make changes requested in your google doc and add here]</p>
+</div>
+<div id="hypothesis-1" class="section level2" number="8.2">
+<h2>
+<span class="header-section-number">8.2</span> Hypothesis<div class="tooltip"><button class="internal-link-btn" onclick="copy_link('hypothesis-1')" onmouseout="reset_tooltip('hypothesis-1-tooltip')"><span class="tooltiptext" id="hypothesis-1-tooltip">Copy link</span><i class="fa fa-link"></i></button></div>
+</h2>
+<p>[Make changes requested in your google doc and add here]</p>
+</div>
+<div id="objectives-1" class="section level2" number="8.3">
+<h2>
+<span class="header-section-number">8.3</span> Objectives<div class="tooltip"><button class="internal-link-btn" onclick="copy_link('objectives-1')" onmouseout="reset_tooltip('objectives-1-tooltip')"><span class="tooltiptext" id="objectives-1-tooltip">Copy link</span><i class="fa fa-link"></i></button></div>
+</h2>
+<p>[Make changes requested in your google doc and add here]</p>
+</div>
+<div id="methods-1" class="section level2" number="8.4">
+<h2>
+<span class="header-section-number">8.4</span> Methods<div class="tooltip"><button class="internal-link-btn" onclick="copy_link('methods-1')" onmouseout="reset_tooltip('methods-1-tooltip')"><span class="tooltiptext" id="methods-1-tooltip">Copy link</span><i class="fa fa-link"></i></button></div>
+</h2>
+<div id="study-design-2" class="section level3" number="8.4.1">
+<h3>
+<span class="header-section-number">8.4.1</span> Study Design<div class="tooltip"><button class="internal-link-btn" onclick="copy_link('study-design-2')" onmouseout="reset_tooltip('study-design-2-tooltip')"><span class="tooltiptext" id="study-design-2-tooltip">Copy link</span><i class="fa fa-link"></i></button></div>
+</h3>
+<p>[Make changes requested in your google doc and add here]</p>
+</div>
+<div id="data-collection-and-processing-1" class="section level3" number="8.4.2">
+<h3>
+<span class="header-section-number">8.4.2</span> Data Collection and Processing<div class="tooltip"><button class="internal-link-btn" onclick="copy_link('data-collection-and-processing-1')" onmouseout="reset_tooltip('data-collection-and-processing-1-tooltip')"><span class="tooltiptext" id="data-collection-and-processing-1-tooltip">Copy link</span><i class="fa fa-link"></i></button></div>
+</h3>
+<p>[Make changes requested in your google doc and add here]</p>
+</div>
+<div id="data-analysis-2" class="section level3" number="8.4.3">
+<h3>
+<span class="header-section-number">8.4.3</span> Data Analysis<div class="tooltip"><button class="internal-link-btn" onclick="copy_link('data-analysis-2')" onmouseout="reset_tooltip('data-analysis-2-tooltip')"><span class="tooltiptext" id="data-analysis-2-tooltip">Copy link</span><i class="fa fa-link"></i></button></div>
+</h3>
+<p>Pull in the pollution data (the CSV files should be the only ones in the <code>pollution</code> directory for this to work properly).</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="trees-vs-pollution.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># set data path</span></span>
+<span id="cb3-2"><a href="trees-vs-pollution.html#cb3-2" aria-hidden="true" tabindex="-1"></a>path <span class="ot">&lt;-</span> <span class="st">"data/pollution"</span></span>
+<span id="cb3-3"><a href="trees-vs-pollution.html#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="trees-vs-pollution.html#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># list with all txt files in data directory</span></span>
+<span id="cb3-5"><a href="trees-vs-pollution.html#cb3-5" aria-hidden="true" tabindex="-1"></a>list.filenames <span class="ot">&lt;-</span> <span class="fu">list.files</span>(<span class="at">path =</span> path)</span>
+<span id="cb3-6"><a href="trees-vs-pollution.html#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="trees-vs-pollution.html#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co"># empty list to load files into</span></span>
+<span id="cb3-8"><a href="trees-vs-pollution.html#cb3-8" aria-hidden="true" tabindex="-1"></a>list.data <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
+<span id="cb3-9"><a href="trees-vs-pollution.html#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-10"><a href="trees-vs-pollution.html#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="co"># loop to read in data files</span></span>
+<span id="cb3-11"><a href="trees-vs-pollution.html#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> list.filenames){</span>
+<span id="cb3-12"><a href="trees-vs-pollution.html#cb3-12" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb3-13"><a href="trees-vs-pollution.html#cb3-13" aria-hidden="true" tabindex="-1"></a>  file <span class="ot">&lt;-</span> <span class="fu">as.character</span>(<span class="fu">glue</span>(<span class="st">"{path}/{i}"</span>))</span>
+<span id="cb3-14"><a href="trees-vs-pollution.html#cb3-14" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb3-15"><a href="trees-vs-pollution.html#cb3-15" aria-hidden="true" tabindex="-1"></a>  list.data[[i]] <span class="ot">&lt;-</span> <span class="fu">read_delim</span>(file,</span>
+<span id="cb3-16"><a href="trees-vs-pollution.html#cb3-16" aria-hidden="true" tabindex="-1"></a>                             <span class="at">delim =</span> <span class="st">","</span>,  <span class="at">skip =</span> <span class="dv">1</span>)</span>
+<span id="cb3-17"><a href="trees-vs-pollution.html#cb3-17" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb3-18"><a href="trees-vs-pollution.html#cb3-18" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb3-19"><a href="trees-vs-pollution.html#cb3-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-20"><a href="trees-vs-pollution.html#cb3-20" aria-hidden="true" tabindex="-1"></a>pollution <span class="ot">&lt;-</span> <span class="fu">ldply</span>(list.data, data.frame) <span class="sc">%&gt;%</span>   <span class="co"># combine into single data frame</span></span>
+<span id="cb3-21"><a href="trees-vs-pollution.html#cb3-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">clean_names</span>()                            <span class="co"># clean up columns</span></span>
+<span id="cb3-22"><a href="trees-vs-pollution.html#cb3-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-23"><a href="trees-vs-pollution.html#cb3-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-24"><a href="trees-vs-pollution.html#cb3-24" aria-hidden="true" tabindex="-1"></a><span class="fu">write_delim</span>(pollution, <span class="st">"data/pollution_raw.txt"</span>, <span class="at">delim =</span> <span class="st">"</span><span class="sc">\t</span><span class="st">"</span>)</span></code></pre></div>
+<p>Take a look at that data frame - we will need to clean it up so that we only have the information we want and only include data points for which we have lat/long information. We also want to add the locations for each data set, we can do this based on the name of the file we imported.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="trees-vs-pollution.html#cb4-1" aria-hidden="true" tabindex="-1"></a>pollution <span class="ot">&lt;-</span> pollution <span class="sc">%&gt;%</span></span>
+<span id="cb4-2"><a href="trees-vs-pollution.html#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(id, latitude, longitude, date, time, temperature, humidity, pm2_5) <span class="sc">%&gt;%</span></span>
+<span id="cb4-3"><a href="trees-vs-pollution.html#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(latitude <span class="sc">&gt;</span> <span class="dv">0</span> <span class="sc">&amp;</span> longitude <span class="sc">&gt;</span> <span class="dv">0</span> <span class="sc">&amp;</span> date <span class="sc">&gt;</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb4-4"><a href="trees-vs-pollution.html#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">separate</span>(date, <span class="at">into =</span> <span class="fu">c</span>(<span class="st">"year"</span>, <span class="st">"month"</span>, <span class="st">"day"</span>), <span class="at">sep =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">6</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb4-5"><a href="trees-vs-pollution.html#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">separate</span>(time, <span class="at">into =</span> <span class="fu">c</span>(<span class="st">"hr"</span>, <span class="st">"min"</span>, <span class="st">"sec"</span>), <span class="at">sep =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb4-6"><a href="trees-vs-pollution.html#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span>min <span class="sc">==</span> <span class="st">"+0"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb4-7"><a href="trees-vs-pollution.html#cb4-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">longitude =</span> <span class="sc">-</span><span class="dv">1</span><span class="sc">*</span>longitude) <span class="sc">%&gt;%</span></span>
+<span id="cb4-8"><a href="trees-vs-pollution.html#cb4-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(year <span class="sc">==</span> <span class="st">"2022"</span> <span class="sc">&amp;</span> month <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"10"</span>) <span class="sc">&amp;</span> day <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"18"</span>, <span class="st">"19"</span>, <span class="st">"25"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb4-9"><a href="trees-vs-pollution.html#cb4-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">id =</span> <span class="fu">case_when</span>(id <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"CE30034.CSV"</span>, <span class="st">"CE30035.CSV"</span>, <span class="st">"CE30042.CSV"</span>) <span class="sc">~</span> <span class="st">"Bakersville Elem"</span>,</span>
+<span id="cb4-10"><a href="trees-vs-pollution.html#cb4-10" aria-hidden="true" tabindex="-1"></a>                        id <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"D2A0478.CSV"</span>, <span class="st">"D2A0480.CSV"</span>, <span class="st">"D2A0481.CSV"</span>, <span class="st">"D2A0482.CSV"</span>) <span class="sc">~</span> <span class="st">"Roy Park"</span>,</span>
+<span id="cb4-11"><a href="trees-vs-pollution.html#cb4-11" aria-hidden="true" tabindex="-1"></a>                        id <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"E390128.CSV"</span>, <span class="st">"E390129.CSV"</span>, <span class="st">"E390130.CSV"</span>) <span class="sc">~</span> <span class="st">"Veteran's Park"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb4-12"><a href="trees-vs-pollution.html#cb4-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(id))</span></code></pre></div>
+<p>We can get the summary statistics for each day and location using <code>group_by()</code> and <code>summarize()</code>.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="trees-vs-pollution.html#cb5-1" aria-hidden="true" tabindex="-1"></a>pollution <span class="sc">%&gt;%</span> </span>
+<span id="cb5-2"><a href="trees-vs-pollution.html#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(day, id) <span class="sc">%&gt;%</span></span>
+<span id="cb5-3"><a href="trees-vs-pollution.html#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">mean =</span> <span class="fu">mean</span>(pm2_5),</span>
+<span id="cb5-4"><a href="trees-vs-pollution.html#cb5-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">max =</span> <span class="fu">max</span>(pm2_5),</span>
+<span id="cb5-5"><a href="trees-vs-pollution.html#cb5-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">min =</span> <span class="fu">min</span>(pm2_5))</span></code></pre></div>
+<pre><code>## # A tibble: 9 x 5
+## # Groups:   day [3]
+##   day   id                mean   max   min
+##   &lt;chr&gt; &lt;chr&gt;            &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+## 1 18    Bakersville Elem  4.28  5.63  3.56
+## 2 18    Roy Park          4.58  5.82  3.93
+## 3 18    Veteran's Park    4.69 11.7   4.1 
+## 4 19    Bakersville Elem  2.23  3.29  1.66
+## 5 19    Roy Park          1.89  3.57  1.36
+## 6 19    Veteran's Park    2.74 29.0   1.9 
+## 7 25    Bakersville Elem  8.74 25.5   4.66
+## 8 25    Roy Park          6.41 29.5   5.01
+## 9 25    Veteran's Park    5.09  9.36  3.68</code></pre>
+<p>And we can compare those distributions using boxplots.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="trees-vs-pollution.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(pollution, <span class="fu">aes</span>(<span class="at">x =</span> day, <span class="at">y =</span> pm2_5, <span class="at">fill =</span> id)) <span class="sc">+</span></span>
+<span id="cb7-2"><a href="trees-vs-pollution.html#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-7-1.png" width="672"></p>
+<p>And we should test if our differences are significant. Let’s start by running and ANOVA to see if there is significant heterogeneity in the data set.</p>
+<p>Our null hypothesis is “there is no difference”, we will test to see if there is significant difference among locations, among days, and among the interaction of day and location.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="trees-vs-pollution.html#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># run anova, with interaction term</span></span>
+<span id="cb8-2"><a href="trees-vs-pollution.html#cb8-2" aria-hidden="true" tabindex="-1"></a>anova <span class="ot">&lt;-</span> <span class="fu">aov</span>(pm2_5 <span class="sc">~</span> id <span class="sc">*</span> day, pollution)</span>
+<span id="cb8-3"><a href="trees-vs-pollution.html#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="trees-vs-pollution.html#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(anova)</span></code></pre></div>
+<pre><code>##                Df Sum Sq Mean Sq F value Pr(&gt;F)    
+## id              2   1526     763   227.2 &lt;2e-16 ***
+## day             2  58309   29155  8679.9 &lt;2e-16 ***
+## id:day          4   7958    1989   592.3 &lt;2e-16 ***
+## Residuals   13729  46114       3                   
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+<p>Now we should run an Tukey Honest Significant Difference test to look at pairwise comparisons among days, locations, and day/location interactions. Tukey’s HSD adjusts for multiple comparisons being made.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="trees-vs-pollution.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># run post-hoc Tukey HSD adjust for multiple comparisons</span></span>
+<span id="cb10-2"><a href="trees-vs-pollution.html#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">TukeyHSD</span>(anova)</span></code></pre></div>
+<pre><code>##   Tukey multiple comparisons of means
+##     95% family-wise confidence level
+## 
+## Fit: aov(formula = pm2_5 ~ id * day, data = pollution)
+## 
+## $id
+##                                       diff        lwr        upr p adj
+## Roy Park-Bakersville Elem       -0.3962500 -0.4785620 -0.3139380     0
+## Veteran's Park-Bakersville Elem -0.9035295 -1.0055208 -0.8015382     0
+## Veteran's Park-Roy Park         -0.5072795 -0.6156245 -0.3989345     0
+## 
+## $day
+##            diff       lwr       upr p adj
+## 19-18 -2.220447 -2.311979 -2.128914     0
+## 25-18  2.824741  2.737110  2.912372     0
+## 25-19  5.045187  4.954342  5.136032     0
+## 
+## $`id:day`
+##                                               diff        lwr        upr
+## Roy Park:18-Bakersville Elem:18          0.2994537  0.1137592  0.4851483
+## Veteran's Park:18-Bakersville Elem:18    0.4135696  0.1833605  0.6437787
+## Bakersville Elem:19-Bakersville Elem:18 -2.0475092 -2.2160167 -1.8790017
+## Roy Park:19-Bakersville Elem:18         -2.3915302 -2.5988670 -2.1841935
+## Veteran's Park:19-Bakersville Elem:18   -1.5411128 -1.7741835 -1.3080422
+## Bakersville Elem:25-Bakersville Elem:18  4.4662490  4.2979745  4.6345234
+## Roy Park:25-Bakersville Elem:18          2.1352026  1.9590585  2.3113467
+## Veteran's Park:25-Bakersville Elem:18    0.8156400  0.5804594  1.0508207
+## Veteran's Park:18-Roy Park:18            0.1141159 -0.1305274  0.3587591
+## Bakersville Elem:19-Roy Park:18         -2.3469629 -2.5347098 -2.1592161
+## Roy Park:19-Roy Park:18                 -2.6909840 -2.9142386 -2.4677293
+## Veteran's Park:19-Roy Park:18           -1.8405665 -2.0879044 -1.5932287
+## Bakersville Elem:25-Roy Park:18          4.1667952  3.9792576  4.3543329
+## Roy Park:25-Roy Park:18                  1.8357489  1.6411189  2.0303788
+## Veteran's Park:25-Roy Park:18            0.5161863  0.2668592  0.7655135
+## Bakersville Elem:19-Veteran's Park:18   -2.4610788 -2.6929466 -2.2292111
+## Roy Park:19-Veteran's Park:18           -2.8050999 -3.0665504 -2.5436493
+## Veteran's Park:19-Veteran's Park:18     -1.9546824 -2.2369762 -1.6723886
+## Bakersville Elem:25-Veteran's Park:18    4.0526793  3.8209810  4.2843777
+## Roy Park:25-Veteran's Park:18            1.7216330  1.4841575  1.9591084
+## Veteran's Park:25-Veteran's Park:18      0.4020704  0.1180321  0.6861088
+## Roy Park:19-Bakersville Elem:19         -0.3440210 -0.5531979 -0.1348442
+## Veteran's Park:19-Bakersville Elem:19    0.5063964  0.2716873  0.7411055
+## Bakersville Elem:25-Bakersville Elem:19  6.5137582  6.3432217  6.6842947
+## Roy Park:25-Bakersville Elem:19          4.1827118  4.0044054  4.3610181
+## Veteran's Park:25-Bakersville Elem:19    2.8631493  2.6263448  3.0999537
+## Veteran's Park:19-Roy Park:19            0.8504174  0.5864437  1.1143911
+## Bakersville Elem:25-Roy Park:19          6.8577792  6.6487901  7.0667683
+## Roy Park:25-Roy Park:19                  4.5267328  4.3113566  4.7421090
+## Veteran's Park:25-Roy Park:19            3.2071703  2.9413318  3.4730088
+## Bakersville Elem:25-Veteran's Park:19    6.0073618  5.7728200  6.2419036
+## Roy Park:25-Veteran's Park:19            3.6763154  3.4360649  3.9165659
+## Veteran's Park:25-Veteran's Park:19      2.3567529  2.0703903  2.6431154
+## Roy Park:25-Bakersville Elem:25         -2.3310464 -2.5091325 -2.1529603
+## Veteran's Park:25-Bakersville Elem:25   -3.6506089 -3.8872476 -3.4139703
+## Veteran's Park:25-Roy Park:25           -1.3195625 -1.5618605 -1.0772646
+##                                             p adj
+## Roy Park:18-Bakersville Elem:18         0.0000202
+## Veteran's Park:18-Bakersville Elem:18   0.0000009
+## Bakersville Elem:19-Bakersville Elem:18 0.0000000
+## Roy Park:19-Bakersville Elem:18         0.0000000
+## Veteran's Park:19-Bakersville Elem:18   0.0000000
+## Bakersville Elem:25-Bakersville Elem:18 0.0000000
+## Roy Park:25-Bakersville Elem:18         0.0000000
+## Veteran's Park:25-Bakersville Elem:18   0.0000000
+## Veteran's Park:18-Roy Park:18           0.8794484
+## Bakersville Elem:19-Roy Park:18         0.0000000
+## Roy Park:19-Roy Park:18                 0.0000000
+## Veteran's Park:19-Roy Park:18           0.0000000
+## Bakersville Elem:25-Roy Park:18         0.0000000
+## Roy Park:25-Roy Park:18                 0.0000000
+## Veteran's Park:25-Roy Park:18           0.0000000
+## Bakersville Elem:19-Veteran's Park:18   0.0000000
+## Roy Park:19-Veteran's Park:18           0.0000000
+## Veteran's Park:19-Veteran's Park:18     0.0000000
+## Bakersville Elem:25-Veteran's Park:18   0.0000000
+## Roy Park:25-Veteran's Park:18           0.0000000
+## Veteran's Park:25-Veteran's Park:18     0.0003873
+## Roy Park:19-Bakersville Elem:19         0.0000121
+## Veteran's Park:19-Bakersville Elem:19   0.0000000
+## Bakersville Elem:25-Bakersville Elem:19 0.0000000
+## Roy Park:25-Bakersville Elem:19         0.0000000
+## Veteran's Park:25-Bakersville Elem:19   0.0000000
+## Veteran's Park:19-Roy Park:19           0.0000000
+## Bakersville Elem:25-Roy Park:19         0.0000000
+## Roy Park:25-Roy Park:19                 0.0000000
+## Veteran's Park:25-Roy Park:19           0.0000000
+## Bakersville Elem:25-Veteran's Park:19   0.0000000
+## Roy Park:25-Veteran's Park:19           0.0000000
+## Veteran's Park:25-Veteran's Park:19     0.0000000
+## Roy Park:25-Bakersville Elem:25         0.0000000
+## Veteran's Park:25-Bakersville Elem:25   0.0000000
+## Veteran's Park:25-Roy Park:25           0.0000000</code></pre>
+<p>All the pairwise comparisons are different from each other with the exception of Veteran’s and Roy Park on the 18th.</p>
+<p>We are also interested in a spatial component, i.e. were there hotspots. Too look at this we should plot our points on a map.</p>
+<p>First we need to pull down street information - we can do this using OpenStreetMaps.</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="trees-vs-pollution.html#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># get lat/long </span></span>
+<span id="cb12-2"><a href="trees-vs-pollution.html#cb12-2" aria-hidden="true" tabindex="-1"></a>min_lat <span class="ot">&lt;-</span> <span class="fu">min</span>(pollution<span class="sc">$</span>latitude)</span>
+<span id="cb12-3"><a href="trees-vs-pollution.html#cb12-3" aria-hidden="true" tabindex="-1"></a>max_lat <span class="ot">&lt;-</span> <span class="fu">max</span>(pollution<span class="sc">$</span>latitude)</span>
+<span id="cb12-4"><a href="trees-vs-pollution.html#cb12-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-5"><a href="trees-vs-pollution.html#cb12-5" aria-hidden="true" tabindex="-1"></a>min_long <span class="ot">&lt;-</span> <span class="fu">min</span>(pollution<span class="sc">$</span>longitude)</span>
+<span id="cb12-6"><a href="trees-vs-pollution.html#cb12-6" aria-hidden="true" tabindex="-1"></a>max_long <span class="ot">&lt;-</span> <span class="fu">max</span>(pollution<span class="sc">$</span>longitude)</span>
+<span id="cb12-7"><a href="trees-vs-pollution.html#cb12-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-8"><a href="trees-vs-pollution.html#cb12-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-9"><a href="trees-vs-pollution.html#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="co"># pull major street features</span></span>
+<span id="cb12-10"><a href="trees-vs-pollution.html#cb12-10" aria-hidden="true" tabindex="-1"></a>big_streets <span class="ot">&lt;-</span> <span class="fu">opq</span>(<span class="at">bbox =</span> <span class="fu">c</span>(min_long<span class="fl">-0.05</span>, min_lat<span class="fl">-0.05</span>, max_long<span class="fl">+0.05</span>, max_lat<span class="fl">+0.05</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb12-11"><a href="trees-vs-pollution.html#cb12-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_osm_feature</span>(<span class="at">key =</span> <span class="st">"highway"</span>, </span>
+<span id="cb12-12"><a href="trees-vs-pollution.html#cb12-12" aria-hidden="true" tabindex="-1"></a>                  <span class="at">value =</span> <span class="fu">c</span>(<span class="st">"motorway"</span>, <span class="st">"primary"</span>, <span class="st">"motorway_link"</span>, <span class="st">"primary_link"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb12-13"><a href="trees-vs-pollution.html#cb12-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">osmdata_sf</span>()</span>
+<span id="cb12-14"><a href="trees-vs-pollution.html#cb12-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-15"><a href="trees-vs-pollution.html#cb12-15" aria-hidden="true" tabindex="-1"></a><span class="co"># pull medium sized streets</span></span>
+<span id="cb12-16"><a href="trees-vs-pollution.html#cb12-16" aria-hidden="true" tabindex="-1"></a>med_streets <span class="ot">&lt;-</span> <span class="fu">opq</span>(<span class="at">bbox =</span> <span class="fu">c</span>(min_long<span class="fl">-0.05</span>, min_lat<span class="fl">-0.05</span>, max_long<span class="fl">+0.05</span>, max_lat<span class="fl">+0.05</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb12-17"><a href="trees-vs-pollution.html#cb12-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_osm_feature</span>(<span class="at">key =</span> <span class="st">"highway"</span>, </span>
+<span id="cb12-18"><a href="trees-vs-pollution.html#cb12-18" aria-hidden="true" tabindex="-1"></a>                  <span class="at">value =</span> <span class="fu">c</span>(<span class="st">"secondary"</span>, <span class="st">"tertiary"</span>, <span class="st">"secondary_link"</span>, <span class="st">"tertiary_link"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb12-19"><a href="trees-vs-pollution.html#cb12-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">osmdata_sf</span>()</span>
+<span id="cb12-20"><a href="trees-vs-pollution.html#cb12-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-21"><a href="trees-vs-pollution.html#cb12-21" aria-hidden="true" tabindex="-1"></a><span class="co"># pull small streets</span></span>
+<span id="cb12-22"><a href="trees-vs-pollution.html#cb12-22" aria-hidden="true" tabindex="-1"></a>small_streets <span class="ot">&lt;-</span> <span class="fu">opq</span>(<span class="at">bbox =</span> <span class="fu">c</span>(min_long<span class="fl">-0.05</span>, min_lat<span class="fl">-0.05</span>, max_long<span class="fl">+0.05</span>, max_lat<span class="fl">+0.05</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb12-23"><a href="trees-vs-pollution.html#cb12-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_osm_feature</span>(<span class="at">key =</span> <span class="st">"highway"</span>, </span>
+<span id="cb12-24"><a href="trees-vs-pollution.html#cb12-24" aria-hidden="true" tabindex="-1"></a>                  <span class="at">value =</span> <span class="fu">c</span>(<span class="st">"residential"</span>, <span class="st">"living_street"</span>,</span>
+<span id="cb12-25"><a href="trees-vs-pollution.html#cb12-25" aria-hidden="true" tabindex="-1"></a>                            <span class="st">"unclassified"</span>,</span>
+<span id="cb12-26"><a href="trees-vs-pollution.html#cb12-26" aria-hidden="true" tabindex="-1"></a>                            <span class="st">"service"</span>, <span class="st">"footway"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb12-27"><a href="trees-vs-pollution.html#cb12-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">osmdata_sf</span>()</span>
+<span id="cb12-28"><a href="trees-vs-pollution.html#cb12-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-29"><a href="trees-vs-pollution.html#cb12-29" aria-hidden="true" tabindex="-1"></a><span class="co"># pull rivers</span></span>
+<span id="cb12-30"><a href="trees-vs-pollution.html#cb12-30" aria-hidden="true" tabindex="-1"></a>rivers <span class="ot">&lt;-</span> <span class="fu">opq</span>(<span class="at">bbox =</span> <span class="fu">c</span>(min_long<span class="fl">-0.05</span>, min_lat<span class="fl">-0.05</span>, max_long<span class="fl">+0.05</span>, max_lat<span class="fl">+0.05</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb12-31"><a href="trees-vs-pollution.html#cb12-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_osm_feature</span>(<span class="at">key =</span> <span class="st">"waterway"</span>, <span class="at">value =</span> <span class="st">"river"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb12-32"><a href="trees-vs-pollution.html#cb12-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">osmdata_sf</span>()</span>
+<span id="cb12-33"><a href="trees-vs-pollution.html#cb12-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-34"><a href="trees-vs-pollution.html#cb12-34" aria-hidden="true" tabindex="-1"></a><span class="co"># pull railways</span></span>
+<span id="cb12-35"><a href="trees-vs-pollution.html#cb12-35" aria-hidden="true" tabindex="-1"></a>railway <span class="ot">&lt;-</span> <span class="fu">opq</span>(<span class="at">bbox =</span> <span class="fu">c</span>(min_long<span class="fl">-0.05</span>, min_lat<span class="fl">-0.05</span>, max_long<span class="fl">+0.05</span>, max_lat<span class="fl">+0.05</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb12-36"><a href="trees-vs-pollution.html#cb12-36" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_osm_feature</span>(<span class="at">key =</span> <span class="st">"railway"</span>, <span class="at">value=</span><span class="st">"rail"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb12-37"><a href="trees-vs-pollution.html#cb12-37" aria-hidden="true" tabindex="-1"></a>  <span class="fu">osmdata_sf</span>()</span></code></pre></div>
+<p>We can plot all of these using ggplot:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="trees-vs-pollution.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># compile plot</span></span>
+<span id="cb13-2"><a href="trees-vs-pollution.html#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb13-3"><a href="trees-vs-pollution.html#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> rivers<span class="sc">$</span>osm_lines,</span>
+<span id="cb13-4"><a href="trees-vs-pollution.html#cb13-4" aria-hidden="true" tabindex="-1"></a>          <span class="at">inherit.aes =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb13-5"><a href="trees-vs-pollution.html#cb13-5" aria-hidden="true" tabindex="-1"></a>          <span class="at">color =</span> <span class="st">"steelblue"</span>,</span>
+<span id="cb13-6"><a href="trees-vs-pollution.html#cb13-6" aria-hidden="true" tabindex="-1"></a>          <span class="at">size =</span> .<span class="dv">8</span>,</span>
+<span id="cb13-7"><a href="trees-vs-pollution.html#cb13-7" aria-hidden="true" tabindex="-1"></a>          <span class="at">alpha =</span> .<span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb13-8"><a href="trees-vs-pollution.html#cb13-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> railway<span class="sc">$</span>osm_lines,</span>
+<span id="cb13-9"><a href="trees-vs-pollution.html#cb13-9" aria-hidden="true" tabindex="-1"></a>          <span class="at">inherit.aes =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb13-10"><a href="trees-vs-pollution.html#cb13-10" aria-hidden="true" tabindex="-1"></a>          <span class="at">color =</span> <span class="st">"black"</span>,</span>
+<span id="cb13-11"><a href="trees-vs-pollution.html#cb13-11" aria-hidden="true" tabindex="-1"></a>          <span class="at">size =</span> .<span class="dv">2</span>,</span>
+<span id="cb13-12"><a href="trees-vs-pollution.html#cb13-12" aria-hidden="true" tabindex="-1"></a>          <span class="at">linetype=</span><span class="st">"dotdash"</span>,</span>
+<span id="cb13-13"><a href="trees-vs-pollution.html#cb13-13" aria-hidden="true" tabindex="-1"></a>          <span class="at">alpha =</span> .<span class="dv">5</span>) <span class="sc">+</span></span>
+<span id="cb13-14"><a href="trees-vs-pollution.html#cb13-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> med_streets<span class="sc">$</span>osm_lines,</span>
+<span id="cb13-15"><a href="trees-vs-pollution.html#cb13-15" aria-hidden="true" tabindex="-1"></a>          <span class="at">inherit.aes =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb13-16"><a href="trees-vs-pollution.html#cb13-16" aria-hidden="true" tabindex="-1"></a>          <span class="at">color =</span> <span class="st">"black"</span>,</span>
+<span id="cb13-17"><a href="trees-vs-pollution.html#cb13-17" aria-hidden="true" tabindex="-1"></a>          <span class="at">size =</span> .<span class="dv">3</span>,</span>
+<span id="cb13-18"><a href="trees-vs-pollution.html#cb13-18" aria-hidden="true" tabindex="-1"></a>          <span class="at">alpha =</span> .<span class="dv">5</span>) <span class="sc">+</span></span>
+<span id="cb13-19"><a href="trees-vs-pollution.html#cb13-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> small_streets<span class="sc">$</span>osm_lines,</span>
+<span id="cb13-20"><a href="trees-vs-pollution.html#cb13-20" aria-hidden="true" tabindex="-1"></a>          <span class="at">inherit.aes =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb13-21"><a href="trees-vs-pollution.html#cb13-21" aria-hidden="true" tabindex="-1"></a>          <span class="at">color =</span> <span class="st">"#666666"</span>,</span>
+<span id="cb13-22"><a href="trees-vs-pollution.html#cb13-22" aria-hidden="true" tabindex="-1"></a>          <span class="at">size =</span> .<span class="dv">2</span>,</span>
+<span id="cb13-23"><a href="trees-vs-pollution.html#cb13-23" aria-hidden="true" tabindex="-1"></a>          <span class="at">alpha =</span> .<span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb13-24"><a href="trees-vs-pollution.html#cb13-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> big_streets<span class="sc">$</span>osm_lines,</span>
+<span id="cb13-25"><a href="trees-vs-pollution.html#cb13-25" aria-hidden="true" tabindex="-1"></a>          <span class="at">inherit.aes =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb13-26"><a href="trees-vs-pollution.html#cb13-26" aria-hidden="true" tabindex="-1"></a>          <span class="at">color =</span> <span class="st">"black"</span>,</span>
+<span id="cb13-27"><a href="trees-vs-pollution.html#cb13-27" aria-hidden="true" tabindex="-1"></a>          <span class="at">size =</span> .<span class="dv">5</span>,</span>
+<span id="cb13-28"><a href="trees-vs-pollution.html#cb13-28" aria-hidden="true" tabindex="-1"></a>          <span class="at">alpha =</span> .<span class="dv">6</span>) <span class="sc">+</span></span>
+<span id="cb13-29"><a href="trees-vs-pollution.html#cb13-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_sf</span>(<span class="at">xlim =</span> <span class="fu">c</span>(min_long<span class="fl">-0.0025</span>, max_long<span class="fl">+0.0025</span>), </span>
+<span id="cb13-30"><a href="trees-vs-pollution.html#cb13-30" aria-hidden="true" tabindex="-1"></a>           <span class="at">ylim =</span> <span class="fu">c</span>(min_lat<span class="fl">-0.001</span>, max_lat<span class="fl">+0.001</span>),</span>
+<span id="cb13-31"><a href="trees-vs-pollution.html#cb13-31" aria-hidden="true" tabindex="-1"></a>           <span class="at">expand =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-11-1.png" width="672"></p>
+<p>Based off of this, we can plot our pollution data on top as an additional layer and color code each data point based on the level of PM2.5, we can also split it in to additional panels.</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="trees-vs-pollution.html#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># compile plot</span></span>
+<span id="cb14-2"><a href="trees-vs-pollution.html#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> pollution) <span class="sc">+</span></span>
+<span id="cb14-3"><a href="trees-vs-pollution.html#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> rivers<span class="sc">$</span>osm_lines,</span>
+<span id="cb14-4"><a href="trees-vs-pollution.html#cb14-4" aria-hidden="true" tabindex="-1"></a>          <span class="at">inherit.aes =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb14-5"><a href="trees-vs-pollution.html#cb14-5" aria-hidden="true" tabindex="-1"></a>          <span class="at">color =</span> <span class="st">"steelblue"</span>,</span>
+<span id="cb14-6"><a href="trees-vs-pollution.html#cb14-6" aria-hidden="true" tabindex="-1"></a>          <span class="at">size =</span> .<span class="dv">8</span>,</span>
+<span id="cb14-7"><a href="trees-vs-pollution.html#cb14-7" aria-hidden="true" tabindex="-1"></a>          <span class="at">alpha =</span> .<span class="dv">6</span>) <span class="sc">+</span></span>
+<span id="cb14-8"><a href="trees-vs-pollution.html#cb14-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> railway<span class="sc">$</span>osm_lines,</span>
+<span id="cb14-9"><a href="trees-vs-pollution.html#cb14-9" aria-hidden="true" tabindex="-1"></a>          <span class="at">inherit.aes =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb14-10"><a href="trees-vs-pollution.html#cb14-10" aria-hidden="true" tabindex="-1"></a>          <span class="at">color =</span> <span class="st">"black"</span>,</span>
+<span id="cb14-11"><a href="trees-vs-pollution.html#cb14-11" aria-hidden="true" tabindex="-1"></a>          <span class="at">size =</span> .<span class="dv">2</span>,</span>
+<span id="cb14-12"><a href="trees-vs-pollution.html#cb14-12" aria-hidden="true" tabindex="-1"></a>          <span class="at">linetype=</span><span class="st">"dotdash"</span>,</span>
+<span id="cb14-13"><a href="trees-vs-pollution.html#cb14-13" aria-hidden="true" tabindex="-1"></a>          <span class="at">alpha =</span> .<span class="dv">5</span>) <span class="sc">+</span></span>
+<span id="cb14-14"><a href="trees-vs-pollution.html#cb14-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> med_streets<span class="sc">$</span>osm_lines,</span>
+<span id="cb14-15"><a href="trees-vs-pollution.html#cb14-15" aria-hidden="true" tabindex="-1"></a>          <span class="at">inherit.aes =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb14-16"><a href="trees-vs-pollution.html#cb14-16" aria-hidden="true" tabindex="-1"></a>          <span class="at">color =</span> <span class="st">"black"</span>,</span>
+<span id="cb14-17"><a href="trees-vs-pollution.html#cb14-17" aria-hidden="true" tabindex="-1"></a>          <span class="at">size =</span> .<span class="dv">3</span>,</span>
+<span id="cb14-18"><a href="trees-vs-pollution.html#cb14-18" aria-hidden="true" tabindex="-1"></a>          <span class="at">alpha =</span> .<span class="dv">5</span>) <span class="sc">+</span></span>
+<span id="cb14-19"><a href="trees-vs-pollution.html#cb14-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> small_streets<span class="sc">$</span>osm_lines,</span>
+<span id="cb14-20"><a href="trees-vs-pollution.html#cb14-20" aria-hidden="true" tabindex="-1"></a>          <span class="at">inherit.aes =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb14-21"><a href="trees-vs-pollution.html#cb14-21" aria-hidden="true" tabindex="-1"></a>          <span class="at">color =</span> <span class="st">"#666666"</span>,</span>
+<span id="cb14-22"><a href="trees-vs-pollution.html#cb14-22" aria-hidden="true" tabindex="-1"></a>          <span class="at">size =</span> .<span class="dv">2</span>,</span>
+<span id="cb14-23"><a href="trees-vs-pollution.html#cb14-23" aria-hidden="true" tabindex="-1"></a>          <span class="at">alpha =</span> .<span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb14-24"><a href="trees-vs-pollution.html#cb14-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> big_streets<span class="sc">$</span>osm_lines,</span>
+<span id="cb14-25"><a href="trees-vs-pollution.html#cb14-25" aria-hidden="true" tabindex="-1"></a>          <span class="at">inherit.aes =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb14-26"><a href="trees-vs-pollution.html#cb14-26" aria-hidden="true" tabindex="-1"></a>          <span class="at">color =</span> <span class="st">"black"</span>,</span>
+<span id="cb14-27"><a href="trees-vs-pollution.html#cb14-27" aria-hidden="true" tabindex="-1"></a>          <span class="at">size =</span> .<span class="dv">5</span>,</span>
+<span id="cb14-28"><a href="trees-vs-pollution.html#cb14-28" aria-hidden="true" tabindex="-1"></a>          <span class="at">alpha =</span> .<span class="dv">6</span>) <span class="sc">+</span></span>
+<span id="cb14-29"><a href="trees-vs-pollution.html#cb14-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_sf</span>(<span class="at">xlim =</span> <span class="fu">c</span>(min_long<span class="fl">-0.0025</span>, max_long<span class="fl">+0.0025</span>), </span>
+<span id="cb14-30"><a href="trees-vs-pollution.html#cb14-30" aria-hidden="true" tabindex="-1"></a>           <span class="at">ylim =</span> <span class="fu">c</span>(min_lat<span class="fl">-0.001</span>, max_lat<span class="fl">+0.001</span>),</span>
+<span id="cb14-31"><a href="trees-vs-pollution.html#cb14-31" aria-hidden="true" tabindex="-1"></a>           <span class="at">expand =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb14-32"><a href="trees-vs-pollution.html#cb14-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">data =</span> pollution, <span class="fu">aes</span>(<span class="at">x =</span> longitude, <span class="at">y =</span> latitude, <span class="at">color =</span> pm2_5), <span class="at">size =</span> .<span class="dv">5</span>, <span class="at">alpha =</span> .<span class="dv">5</span>) <span class="sc">+</span></span>
+<span id="cb14-33"><a href="trees-vs-pollution.html#cb14-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_grid</span>(day <span class="sc">~</span> id) <span class="sc">+</span></span>
+<span id="cb14-34"><a href="trees-vs-pollution.html#cb14-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_viridis_c</span>() <span class="sc">+</span></span>
+<span id="cb14-35"><a href="trees-vs-pollution.html#cb14-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"location"</span>) <span class="sc">+</span></span>
+<span id="cb14-36"><a href="trees-vs-pollution.html#cb14-36" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_void</span>()</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-12-1.png" width="672"></p>
+</div>
+</div>
+<div id="author-contributions-1" class="section level2" number="8.5">
+<h2>
+<span class="header-section-number">8.5</span> Author Contributions<div class="tooltip"><button class="internal-link-btn" onclick="copy_link('author-contributions-1')" onmouseout="reset_tooltip('author-contributions-1-tooltip')"><span class="tooltiptext" id="author-contributions-1-tooltip">Copy link</span><i class="fa fa-link"></i></button></div>
+</h2>
+<p>Typical categories include: Conceive study, design study, project/task management, data collection, data management, data analysis, visualizations, write/design manuscript/poster draft, revise &amp; edit draft.</p>
+<p>Write about 5-7 sentences about how you contributed to this project and what you learned about the process from the wibbly-wobbly method of just diving right in and designing your own study this semester.</p>
+</div>
+<div id="if-i-we-were-to-design-this-study-all-over-again-1" class="section level2" number="8.6">
+<h2>
+<span class="header-section-number">8.6</span> If I (we) were to design this study all over again …<div class="tooltip"><button class="internal-link-btn" onclick="copy_link('if-i-we-were-to-design-this-study-all-over-again-1')" onmouseout="reset_tooltip('if-i-we-were-to-design-this-study-all-over-again-1-tooltip')"><span class="tooltiptext" id="if-i-we-were-to-design-this-study-all-over-again-1-tooltip">Copy link</span><i class="fa fa-link"></i></button></div>
+</h2>
+<p>Find at least three points for improvement/lessons learned about the study design itself (separate from what you learned about the process). Discuss this with your team members but you should write your own revisions in about 7-10 sentences.</p>
+</div>
+<div id="further-work-next-steps-and-new-questions-based-on-our-pilot-study-1" class="section level2" number="8.7">
+<h2>
+<span class="header-section-number">8.7</span> Further work: Next steps and new questions based on our pilot study …<div class="tooltip"><button class="internal-link-btn" onclick="copy_link('further-work-next-steps-and-new-questions-based-on-our-pilot-study-1')" onmouseout="reset_tooltip('further-work-next-steps-and-new-questions-based-on-our-pilot-study-1-tooltip')"><span class="tooltiptext" id="further-work-next-steps-and-new-questions-based-on-our-pilot-study-1-tooltip">Copy link</span><i class="fa fa-link"></i></button></div>
+</h2>
+<p>Discuss with your team mates to identify new questions you have identified, how you might expand and refine the study (beyond just re-designing the pilot study), assume that you are not limited by the constraints of lab time within a course.</p>
+
+</div>
+</div>
+<p style="text-align: center;">
+<a href="trees-vs-albedo.html"><button class="btn btn-default">Previous</button></a>
+<a href="references.html"><button class="btn btn-default">Next</button></a>
+</p>
+<p class="build-date">Page built: 
+2022-11-16
+ using 
+R version 4.1.2 (2021-11-01)
+</p>
+</div>
+</div>
+
+
+
+</body>
+</html>

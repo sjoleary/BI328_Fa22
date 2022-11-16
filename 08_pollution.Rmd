@@ -34,7 +34,7 @@ options(htmltools.dir.version = FALSE)
 
 ```
 
-# Trees vs Albedo
+# Trees vs Pollution
 
 You will need to install a few R packages to be able to visualize your data. Remember you only need to do this once, ideally just run it directly in the console.
 
@@ -64,8 +64,6 @@ library(glue)
 library(lubridate)
 library(janitor)
 
-# load custom ggplot themes
-source("scr/ggplot.R")
 
 ```
 
