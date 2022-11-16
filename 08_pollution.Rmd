@@ -40,14 +40,12 @@ You will need to install a few R packages to be able to visualize your data. Rem
 
 ```{r eval=FALSE}
 
-
 install.packages("remotes")
 install.packages("glue")
 install.packages("plyr")
 
 library(remotes)
 remotes::install_github("ropensci/osmdata")
-
 
 ```
 
@@ -69,32 +67,60 @@ library(janitor)
 
 ## Central Question
 
-[Make changes requested in your google doc and add here]
+How does traffic density and tree coverage impact pollution?
 
 
 ## Hypothesis
 
-[Make changes requested in your google doc and add here]
+1. Areas with higher traffic density will have greater levels of pm 2.5, than lower traffic areas. 
+2. Areas with higher tree coverage will have lower levels of pm 2.5, than lower tree coverage areas. 
+
 
 
 ## Objectives
 
-[Make changes requested in your google doc and add here]
+* Objective 1: Collect PM2.5 data for locations with varying traffic levels to determine impact of PM2.5
+* Objective 2: Collect PM2.5 data for locations with varying tree coverage to determine impact of PM2.5
 
 
 ## Methods
 
 ### Study Design
 
-[Make changes requested in your google doc and add here]
+**Bakersville Elementary School**: High Traffic, Low Tree Coverage 
+20 Elm St, Manchester, NH 03101
+This location is within an urban area in downtown Manchester NH. This area is considered to have high traffic density compared to other areas in Manchester, specifically around 3:00. There is low amounts of tree coverage due to the extensive roadways and structures. Key characteristics of this include a bridge crossing the Merrimack River, an elementary school and a hospital. 
+
+**Veterans Memorial Park**: Moderate Traffic, Moderate Tree Coverage
+723 Elm St, Manchester, NH 03101
+This location is located within an urban area in downtown Manchester, New Hampshire. It is located in an area with moderate traffic, characterized by many traffic lights aiding the build up of standstill traffic. Due to the expansion of buildings and structures in this city environment, there is a moderate tree coverage level as the trees that are found in this area are ones that have been anthropogenically grown and placed there in the making of the park. 
+
+**Roy Park**: Low Traffic, High Tree Coverage
+Manchester, NH 03102.
+This location was surrounded by dense suburban tree coverage, and situated deep into a neighborhood. The route that we walked took us through the neighborhood, down a busy street, through another neighborhood, through a forested street, then to the park. The park itself is surrounded on three sides by suburban forest, and has many tall trees surrounding it.
+
 
 ### Data Collection and Processing
 
-[Make changes requested in your google doc and add here]
+We calculated tree coverage for our 3 locations. We did this by having a satellite photo of equal scale of each location. We split the photo into a grid, with each box having an area of 625m2. We drew the route on the photo, then assigned each box that the route intersected an average tree coverage percentage (25, 50, 75, 100). We then calculated the approx total area surrounding the route we walked (adding up the area of each box intersected by the route), the approximate average percentage of tree coverage. We then multiplied the total area by the average tree coverage percentage to get the average area of tree coverage.
 
-### Data Analysis
+We used the traffic density tool on Google maps to determine the difference in traffic levels between each location.
 
-Pull in the pollution data (the CSV files should be the only ones in the `pollution` directory for this to work properly).
+Throughout October, before all the leaves fell from the trees, 3 different groups went to Roy Park, Bakersfield Elementary, and Veterans Memorial Park. The data was collected on different days but at the same time. Data collected was ambient temperature, PPM, humidity, time, and GPS location. We collected data within an hour from each other, all on the same days (10/18, 10/19, 10/26). We walked the planned route in the general area of the park and through it in order to get appropriate data for the area.
+
+
+### Tree Coverage
+
+* Roy Park Route Coverage: 27%, 23,625 sqm, Total Area: 87,500 sq m
+* Veterans Park Route Coverage: 20%, 11,625 sqm, Total Area: 58,125 sq m
+* Baker Elementary Route Coverage: 15%, 9187 sqm Total Area: 61,250 sq m
+
+### Traffic levels
+
+
+### Comparison of Pollution levels
+
+Pull in the pollution data^[the CSV files should be the only ones in the `pollution` directory for this to work properly].
 
 ```{r}
 
@@ -322,22 +348,17 @@ ggplot(data = pollution) +
 
 Typical categories include: Conceive study, design study, project/task management, data collection, data management, data analysis, visualizations, write/design manuscript/poster draft, revise & edit draft.
 
-Write about 5-7 sentences about how you contributed to this project and what you learned about the process from the wibbly-wobbly method of just diving right in and designing your own study this semester.
+`r msmbstyle::question(label = "ques:poll-1", text = "Write about 5-7 sentences about how you contributed to this project and what you learned about the process from the wibbly-wobbly method of just diving right in and designing your own study this semester.")`
 
 
 ## If I (we) were to design this study all over again ...
 
-Find at least three points for improvement/lessons learned about the study design itself (separate from what you learned about the process). Discuss this with your team members but you should write your own revisions in about 7-10 sentences.
+`r msmbstyle::question(label = "ques:poll-2", text = "Find at least three points for improvement/lessons learned about the study design itself (separate from what you learned about the process). Discuss this with your team members but you should write your own revisions in about 7-10 sentences.")`
 
 
 ## Further work: Next steps and new questions based on our pilot study ...
 
-Discuss with your team mates to identify new questions you have identified, how you might expand and refine the study (beyond just re-designing the pilot study), assume that you are not limited by the constraints of lab time within a course.
-
-
-
-
-
+`r msmbstyle::question(label = "ques:poll-3", text = "Discuss with your team mates to identify new questions you have identified, how you might expand and refine the study (beyond just re-designing the pilot study), assume that you are not limited by the constraints of lab time within a course.")`
 
 
 

@@ -157,6 +157,7 @@ function reset_tooltip(id) {
 <li class="toc"><a href="#hypothesis"> Hypothesis</a></li>
 <li class="toc"><a href="#objectives"> Objectives</a></li>
 <li class="toc"><a href="#methods"> Methods</a></li>
+<li class="toc"><a href="#data-analysis-1"> Data Analysis</a></li>
 <li class="toc"><a href="#author-contributions"> Author Contributions</a></li>
 <li class="toc"><a href="#if-i-we-were-to-design-this-study-all-over-again"> If I (we) were to design this study all over again …</a></li>
 <li class="toc"><a href="#further-work-next-steps-and-new-questions-based-on-our-pilot-study"> Further work: Next steps and new questions based on our pilot study …</a></li>
@@ -182,19 +183,28 @@ function reset_tooltip(id) {
 <h2>
 <span class="header-section-number">7.1</span> Central Question<div class="tooltip"><button class="internal-link-btn" onclick="copy_link('central-question')" onmouseout="reset_tooltip('central-question-tooltip')"><span class="tooltiptext" id="central-question-tooltip">Copy link</span><i class="fa fa-link"></i></button></div>
 </h2>
-<p>[Make changes requested in your google doc and add here]</p>
+<p>How does tree canopy presence and building material’s albedo influence the surface temperature of buildings made of those different materials?</p>
 </div>
 <div id="hypothesis" class="section level2" number="7.2">
 <h2>
 <span class="header-section-number">7.2</span> Hypothesis<div class="tooltip"><button class="internal-link-btn" onclick="copy_link('hypothesis')" onmouseout="reset_tooltip('hypothesis-tooltip')"><span class="tooltiptext" id="hypothesis-tooltip">Copy link</span><i class="fa fa-link"></i></button></div>
 </h2>
-<p>[Make changes requested in your google doc and add here]</p>
+<ol style="list-style-type: decimal">
+<li>As the albedo of a material increases, the surface temperature decreases since it is reflecting more of the light.</li>
+<li>Shading provided by trees will result in lower surface temperatures compared to the same material exposed to the sun.</li>
+<li>The relationship between the ambient air temperature and the difference between surface temperatures for the sunny and shady sides of the material will increase with the air temperature.</li>
+</ol>
 </div>
 <div id="objectives" class="section level2" number="7.3">
 <h2>
 <span class="header-section-number">7.3</span> Objectives<div class="tooltip"><button class="internal-link-btn" onclick="copy_link('objectives')" onmouseout="reset_tooltip('objectives-tooltip')"><span class="tooltiptext" id="objectives-tooltip">Copy link</span><i class="fa fa-link"></i></button></div>
 </h2>
-<p>[Make changes requested in your google doc and add here]</p>
+<p><strong>Objective 1: Albedo</strong></p>
+<p>Albedo represents how reflective a surface is. This would impact the temperature of the material as more reflective surfaces are reflecting more energy. Measuring this will allow us to compare how shade impacts temperature as well as difference in temperature between different materials, and why they are occurring. We are creating 2 Albedo charts for each material type, one in the shade and one in the light. We recorded each of these 2 charts at 3 different times for each of the buildings for a total of 6 charts for each building. This repetition is to get information across a variety of temperatures.</p>
+<p><strong>Objective 2: Surface Temperature in reference to shade</strong></p>
+<p>The second objective is finding the relationship between the surface temperature of a material and whether that material is in shade or sun. This will allow us to determine if tree shading mitigates the increase in temperature and to what extent this relationship remains as the temperature reaches the extreme in either direction (hot or cold).</p>
+<p><strong>Objective 3: Ambient Temperature</strong></p>
+<p>Our third objective focuses on ambient temperature which we have received from the Manchester-Boston Airport. From each day of data collection we will determine the difference in temperature between shady and sunny sides of different building materials. Once we determine the difference in temperature we will compare it to the ambient temperature of that day. This will help us determine whether there is an association between ambient temperature and difference in surface temperature between shady and sunny sections.</p>
 </div>
 <div id="methods" class="section level2" number="7.4">
 <h2>
@@ -204,70 +214,118 @@ function reset_tooltip(id) {
 <h3>
 <span class="header-section-number">7.4.1</span> Study Design<div class="tooltip"><button class="internal-link-btn" onclick="copy_link('study-design-1')" onmouseout="reset_tooltip('study-design-1-tooltip')"><span class="tooltiptext" id="study-design-1-tooltip">Copy link</span><i class="fa fa-link"></i></button></div>
 </h3>
-<p>[Make changes requested in your google doc and add here]</p>
+<ul>
+<li>Four different locations, 2 on campus and 2 off campus, Each location has a different building material</li>
+<li>Measured at 2pm on a sunny day. Looking for 3 days (80’s, 70’s, 60’s)</li>
+</ul>
 </div>
 <div id="data-collection-and-processing" class="section level3" number="7.4.2">
 <h3>
 <span class="header-section-number">7.4.2</span> Data Collection and Processing<div class="tooltip"><button class="internal-link-btn" onclick="copy_link('data-collection-and-processing')" onmouseout="reset_tooltip('data-collection-and-processing-tooltip')"><span class="tooltiptext" id="data-collection-and-processing-tooltip">Copy link</span><i class="fa fa-link"></i></button></div>
 </h3>
-<p>[Make changes requested in your google doc and add here]</p>
+<p>Measure air temperature at each location
+Take albedo of area of building directly in the sunlight
+Take surface temperature of building directly in the sunlight
+Take albedo of area of building in shade of tree
+Take surface temperature of area of building in shade of tree</p>
 </div>
-<div id="data-analysis-1" class="section level3" number="7.4.3">
-<h3>
-<span class="header-section-number">7.4.3</span> Data Analysis<div class="tooltip"><button class="internal-link-btn" onclick="copy_link('data-analysis-1')" onmouseout="reset_tooltip('data-analysis-1-tooltip')"><span class="tooltiptext" id="data-analysis-1-tooltip">Copy link</span><i class="fa fa-link"></i></button></div>
-</h3>
+</div>
+<div id="data-analysis-1" class="section level2" number="7.5">
+<h2>
+<span class="header-section-number">7.5</span> Data Analysis<div class="tooltip"><button class="internal-link-btn" onclick="copy_link('data-analysis-1')" onmouseout="reset_tooltip('data-analysis-1-tooltip')"><span class="tooltiptext" id="data-analysis-1-tooltip">Copy link</span><i class="fa fa-link"></i></button></div>
+</h2>
 <p>Let’s start by pulling in your data</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="trees-vs-albedo.html#cb2-1" aria-hidden="true" tabindex="-1"></a>albedo <span class="ot">&lt;-</span> <span class="fu">read_delim</span>(<span class="st">"data/albed_temps.csv"</span>, <span class="at">delim =</span> <span class="st">","</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb2-2"><a href="trees-vs-albedo.html#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">clean_names</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb2-3"><a href="trees-vs-albedo.html#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">separate</span>(location, <span class="at">into =</span> <span class="fu">c</span>(<span class="st">"location"</span>, <span class="st">"sunshine"</span>), <span class="at">sep =</span> <span class="dv">1</span>)</span></code></pre></div>
-<p>We need to calculate the difference between material temperature and airport temperature</p>
+<span id="cb2-3"><a href="trees-vs-albedo.html#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">separate</span>(location, <span class="at">into =</span> <span class="fu">c</span>(<span class="st">"material"</span>, <span class="st">"sunshine"</span>), <span class="at">sep =</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb2-4"><a href="trees-vs-albedo.html#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">material =</span> <span class="fu">case_when</span>(material <span class="sc">==</span> <span class="st">"1"</span> <span class="sc">~</span> <span class="st">"brick"</span>,</span>
+<span id="cb2-5"><a href="trees-vs-albedo.html#cb2-5" aria-hidden="true" tabindex="-1"></a>                              material <span class="sc">==</span> <span class="st">"2"</span> <span class="sc">~</span> <span class="st">"vinyl"</span>,</span>
+<span id="cb2-6"><a href="trees-vs-albedo.html#cb2-6" aria-hidden="true" tabindex="-1"></a>                              material <span class="sc">==</span> <span class="st">"3"</span> <span class="sc">~</span> <span class="st">"concrete"</span>,</span>
+<span id="cb2-7"><a href="trees-vs-albedo.html#cb2-7" aria-hidden="true" tabindex="-1"></a>                              material <span class="sc">==</span> <span class="st">"4"</span> <span class="sc">~</span> <span class="st">"steel"</span>),</span>
+<span id="cb2-8"><a href="trees-vs-albedo.html#cb2-8" aria-hidden="true" tabindex="-1"></a>         <span class="at">sunshine =</span> <span class="fu">ifelse</span>(sunshine <span class="sc">==</span> <span class="st">"A"</span>, <span class="st">"sun"</span>, <span class="st">"shade"</span>))</span></code></pre></div>
+<p>We need to calculate the difference between material temperature and airport temperature:</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="trees-vs-albedo.html#cb3-1" aria-hidden="true" tabindex="-1"></a>albedo <span class="ot">&lt;-</span> albedo <span class="sc">%&gt;%</span></span>
 <span id="cb3-2"><a href="trees-vs-albedo.html#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">temp_diff =</span> surface_temp_c <span class="sc">-</span> airport_air_temp_c)</span></code></pre></div>
-<p>Now we can look at the relationship</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="trees-vs-albedo.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(albedo, <span class="fu">aes</span>(<span class="at">x =</span> airport_air_temp_c, <span class="at">y =</span> temp_diff, <span class="at">shape =</span> sunshine, <span class="at">color =</span> sunshine)) <span class="sc">+</span></span>
-<span id="cb4-2"><a href="trees-vs-albedo.html#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
-<span id="cb4-3"><a href="trees-vs-albedo.html#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">0</span>) <span class="sc">+</span></span>
-<span id="cb4-4"><a href="trees-vs-albedo.html#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_grid</span>(. <span class="sc">~</span> location)</span></code></pre></div>
+<p>Now we can look at the relationship between temperature difference, ambient temperature and shady vs sunny for each of the materials used.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="trees-vs-albedo.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(albedo, <span class="fu">aes</span>(<span class="at">x =</span> airport_air_temp_c, <span class="at">y =</span> temp_diff, </span>
+<span id="cb4-2"><a href="trees-vs-albedo.html#cb4-2" aria-hidden="true" tabindex="-1"></a>                   <span class="at">shape =</span> sunshine, <span class="at">color =</span> sunshine)) <span class="sc">+</span></span>
+<span id="cb4-3"><a href="trees-vs-albedo.html#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb4-4"><a href="trees-vs-albedo.html#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">0</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>) <span class="sc">+</span></span>
+<span id="cb4-5"><a href="trees-vs-albedo.html#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_grid</span>(. <span class="sc">~</span> material)</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-5-1.png" width="672"></p>
-<p>Let’s look at albedo for each location/sunshine</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="trees-vs-albedo.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(albedo, <span class="fu">aes</span>(<span class="at">x =</span> location, <span class="at">y =</span> albedo_broad, <span class="at">shape =</span> date_time, <span class="at">color =</span> sunshine)) <span class="sc">+</span></span>
+<p>Let’s look at albedo for each material and whether it differs when it measured in the sun or not.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="trees-vs-albedo.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(albedo, <span class="fu">aes</span>(<span class="at">x =</span> material, <span class="at">y =</span> albedo_broad, <span class="at">shape =</span> date_time, <span class="at">color =</span> sunshine)) <span class="sc">+</span></span>
 <span id="cb5-2"><a href="trees-vs-albedo.html#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>)</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-6-1.png" width="672"></p>
-<p>We are going to use the mean albedo for the sunny days as our albedo</p>
+<p>We are going to use the mean albedo measured in the sun for each day to compare.</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="trees-vs-albedo.html#cb6-1" aria-hidden="true" tabindex="-1"></a>mean_albedo <span class="ot">&lt;-</span> albedo <span class="sc">%&gt;%</span></span>
-<span id="cb6-2"><a href="trees-vs-albedo.html#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(location, sunshine) <span class="sc">%&gt;%</span></span>
+<span id="cb6-2"><a href="trees-vs-albedo.html#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(material, sunshine) <span class="sc">%&gt;%</span></span>
 <span id="cb6-3"><a href="trees-vs-albedo.html#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">albedo =</span> <span class="fu">mean</span>(albedo_broad)) <span class="sc">%&gt;%</span></span>
-<span id="cb6-4"><a href="trees-vs-albedo.html#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(sunshine <span class="sc">==</span> <span class="st">"A"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb6-5"><a href="trees-vs-albedo.html#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(location, albedo)</span>
+<span id="cb6-4"><a href="trees-vs-albedo.html#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(sunshine <span class="sc">==</span> <span class="st">"sun"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb6-5"><a href="trees-vs-albedo.html#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(material, albedo)</span>
 <span id="cb6-6"><a href="trees-vs-albedo.html#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-7"><a href="trees-vs-albedo.html#cb6-7" aria-hidden="true" tabindex="-1"></a>albedo <span class="ot">&lt;-</span> albedo <span class="sc">%&gt;%</span></span>
 <span id="cb6-8"><a href="trees-vs-albedo.html#cb6-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(mean_albedo)</span></code></pre></div>
 <p>Now we can plot albedo vs temp difference</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="trees-vs-albedo.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(albedo, <span class="fu">aes</span>(<span class="at">x =</span> albedo, <span class="at">y =</span> temp_diff, <span class="at">color =</span> location)) <span class="sc">+</span></span>
-<span id="cb7-2"><a href="trees-vs-albedo.html#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
-<span id="cb7-3"><a href="trees-vs-albedo.html#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
-<span id="cb7-4"><a href="trees-vs-albedo.html#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_grid</span>(. <span class="sc">~</span> sunshine)</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="trees-vs-albedo.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(albedo, <span class="fu">aes</span>(<span class="at">x =</span> albedo, <span class="at">y =</span> temp_diff, <span class="at">color =</span> material)) <span class="sc">+</span></span>
+<span id="cb7-2"><a href="trees-vs-albedo.html#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb7-3"><a href="trees-vs-albedo.html#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_grid</span>(. <span class="sc">~</span> sunshine)</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-8-1.png" width="672"></p>
 </div>
-</div>
-<div id="author-contributions" class="section level2" number="7.5">
+<div id="author-contributions" class="section level2" number="7.6">
 <h2>
-<span class="header-section-number">7.5</span> Author Contributions<div class="tooltip"><button class="internal-link-btn" onclick="copy_link('author-contributions')" onmouseout="reset_tooltip('author-contributions-tooltip')"><span class="tooltiptext" id="author-contributions-tooltip">Copy link</span><i class="fa fa-link"></i></button></div>
+<span class="header-section-number">7.6</span> Author Contributions<div class="tooltip"><button class="internal-link-btn" onclick="copy_link('author-contributions')" onmouseout="reset_tooltip('author-contributions-tooltip')"><span class="tooltiptext" id="author-contributions-tooltip">Copy link</span><i class="fa fa-link"></i></button></div>
 </h2>
 <p>Typical categories include: Conceive study, design study, project/task management, data collection, data management, data analysis, visualizations, write/design manuscript/poster draft, revise &amp; edit draft.</p>
-<p>Write about 5-7 sentences about how you contributed to this project and what you learned about the process from the wibbly-wobbly method of just diving right in and designing your own study this semester.</p>
+<div id="ques:albedp-1" class="question">
+<p class="question-begin">
+► Question 1
+</p>
+<div class="question-body">
+<p>
+Write about 5-7 sentences about how you contributed to this project and what you learned about the process from the wibbly-wobbly method of just diving right in and designing your own study this semester.
+</p>
+<p class="question-end">
+<span class="fa fa-square-o solution-icon"></span>
+</p>
 </div>
-<div id="if-i-we-were-to-design-this-study-all-over-again" class="section level2" number="7.6">
-<h2>
-<span class="header-section-number">7.6</span> If I (we) were to design this study all over again …<div class="tooltip"><button class="internal-link-btn" onclick="copy_link('if-i-we-were-to-design-this-study-all-over-again')" onmouseout="reset_tooltip('if-i-we-were-to-design-this-study-all-over-again-tooltip')"><span class="tooltiptext" id="if-i-we-were-to-design-this-study-all-over-again-tooltip">Copy link</span><i class="fa fa-link"></i></button></div>
-</h2>
-<p>Find at least three points for improvement/lessons learned about the study design itself (separate from what you learned about the process). Discuss this with your team members but you should write your own revisions in about 7-10 sentences.</p>
 </div>
-<div id="further-work-next-steps-and-new-questions-based-on-our-pilot-study" class="section level2" number="7.7">
+</div>
+<div id="if-i-we-were-to-design-this-study-all-over-again" class="section level2" number="7.7">
 <h2>
-<span class="header-section-number">7.7</span> Further work: Next steps and new questions based on our pilot study …<div class="tooltip"><button class="internal-link-btn" onclick="copy_link('further-work-next-steps-and-new-questions-based-on-our-pilot-study')" onmouseout="reset_tooltip('further-work-next-steps-and-new-questions-based-on-our-pilot-study-tooltip')"><span class="tooltiptext" id="further-work-next-steps-and-new-questions-based-on-our-pilot-study-tooltip">Copy link</span><i class="fa fa-link"></i></button></div>
+<span class="header-section-number">7.7</span> If I (we) were to design this study all over again …<div class="tooltip"><button class="internal-link-btn" onclick="copy_link('if-i-we-were-to-design-this-study-all-over-again')" onmouseout="reset_tooltip('if-i-we-were-to-design-this-study-all-over-again-tooltip')"><span class="tooltiptext" id="if-i-we-were-to-design-this-study-all-over-again-tooltip">Copy link</span><i class="fa fa-link"></i></button></div>
 </h2>
-<p>Discuss with your team mates to identify new questions you have identified, how you might expand and refine the study (beyond just re-designing the pilot study), assume that you are not limited by the constraints of lab time within a course.</p>
+<div id="ques:albedo-2" class="question">
+<p class="question-begin">
+► Question 2
+</p>
+<div class="question-body">
+<p>
+Find at least three points for improvement/lessons learned about the study design itself (separate from what you learned about the process). Discuss this with your team members but you should write your own revisions in about 7-10 sentences.
+</p>
+<p class="question-end">
+<span class="fa fa-square-o solution-icon"></span>
+</p>
+</div>
+</div>
+</div>
+<div id="further-work-next-steps-and-new-questions-based-on-our-pilot-study" class="section level2" number="7.8">
+<h2>
+<span class="header-section-number">7.8</span> Further work: Next steps and new questions based on our pilot study …<div class="tooltip"><button class="internal-link-btn" onclick="copy_link('further-work-next-steps-and-new-questions-based-on-our-pilot-study')" onmouseout="reset_tooltip('further-work-next-steps-and-new-questions-based-on-our-pilot-study-tooltip')"><span class="tooltiptext" id="further-work-next-steps-and-new-questions-based-on-our-pilot-study-tooltip">Copy link</span><i class="fa fa-link"></i></button></div>
+</h2>
+<div id="ques:albedo-3" class="question">
+<p class="question-begin">
+► Question 3
+</p>
+<div class="question-body">
+<p>
+Discuss with your team mates to identify new questions you have identified, how you might expand and refine the study (beyond just re-designing the pilot study), assume that you are not limited by the constraints of lab time within a course.
+</p>
+<p class="question-end">
+<span class="fa fa-square-o solution-icon"></span>
+</p>
+</div>
+</div>
 
 </div>
 </div>

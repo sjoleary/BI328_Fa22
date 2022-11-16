@@ -194,19 +194,25 @@ function reset_tooltip(id) {
 <h2>
 <span class="header-section-number">8.1</span> Central Question<div class="tooltip"><button class="internal-link-btn" onclick="copy_link('central-question-1')" onmouseout="reset_tooltip('central-question-1-tooltip')"><span class="tooltiptext" id="central-question-1-tooltip">Copy link</span><i class="fa fa-link"></i></button></div>
 </h2>
-<p>[Make changes requested in your google doc and add here]</p>
+<p>How does traffic density and tree coverage impact pollution?</p>
 </div>
 <div id="hypothesis-1" class="section level2" number="8.2">
 <h2>
 <span class="header-section-number">8.2</span> Hypothesis<div class="tooltip"><button class="internal-link-btn" onclick="copy_link('hypothesis-1')" onmouseout="reset_tooltip('hypothesis-1-tooltip')"><span class="tooltiptext" id="hypothesis-1-tooltip">Copy link</span><i class="fa fa-link"></i></button></div>
 </h2>
-<p>[Make changes requested in your google doc and add here]</p>
+<ol style="list-style-type: decimal">
+<li>Areas with higher traffic density will have greater levels of pm 2.5, than lower traffic areas.</li>
+<li>Areas with higher tree coverage will have lower levels of pm 2.5, than lower tree coverage areas.</li>
+</ol>
 </div>
 <div id="objectives-1" class="section level2" number="8.3">
 <h2>
 <span class="header-section-number">8.3</span> Objectives<div class="tooltip"><button class="internal-link-btn" onclick="copy_link('objectives-1')" onmouseout="reset_tooltip('objectives-1-tooltip')"><span class="tooltiptext" id="objectives-1-tooltip">Copy link</span><i class="fa fa-link"></i></button></div>
 </h2>
-<p>[Make changes requested in your google doc and add here]</p>
+<ul>
+<li>Objective 1: Collect PM2.5 data for locations with varying traffic levels to determine impact of PM2.5</li>
+<li>Objective 2: Collect PM2.5 data for locations with varying tree coverage to determine impact of PM2.5</li>
+</ul>
 </div>
 <div id="methods-1" class="section level2" number="8.4">
 <h2>
@@ -216,19 +222,44 @@ function reset_tooltip(id) {
 <h3>
 <span class="header-section-number">8.4.1</span> Study Design<div class="tooltip"><button class="internal-link-btn" onclick="copy_link('study-design-2')" onmouseout="reset_tooltip('study-design-2-tooltip')"><span class="tooltiptext" id="study-design-2-tooltip">Copy link</span><i class="fa fa-link"></i></button></div>
 </h3>
-<p>[Make changes requested in your google doc and add here]</p>
+<p><strong>Bakersville Elementary School</strong>: High Traffic, Low Tree Coverage
+20 Elm St, Manchester, NH 03101
+This location is within an urban area in downtown Manchester NH. This area is considered to have high traffic density compared to other areas in Manchester, specifically around 3:00. There is low amounts of tree coverage due to the extensive roadways and structures. Key characteristics of this include a bridge crossing the Merrimack River, an elementary school and a hospital.</p>
+<p><strong>Veterans Memorial Park</strong>: Moderate Traffic, Moderate Tree Coverage
+723 Elm St, Manchester, NH 03101
+This location is located within an urban area in downtown Manchester, New Hampshire. It is located in an area with moderate traffic, characterized by many traffic lights aiding the build up of standstill traffic. Due to the expansion of buildings and structures in this city environment, there is a moderate tree coverage level as the trees that are found in this area are ones that have been anthropogenically grown and placed there in the making of the park.</p>
+<p><strong>Roy Park</strong>: Low Traffic, High Tree Coverage
+Manchester, NH 03102.
+This location was surrounded by dense suburban tree coverage, and situated deep into a neighborhood. The route that we walked took us through the neighborhood, down a busy street, through another neighborhood, through a forested street, then to the park. The park itself is surrounded on three sides by suburban forest, and has many tall trees surrounding it.</p>
 </div>
 <div id="data-collection-and-processing-1" class="section level3" number="8.4.2">
 <h3>
 <span class="header-section-number">8.4.2</span> Data Collection and Processing<div class="tooltip"><button class="internal-link-btn" onclick="copy_link('data-collection-and-processing-1')" onmouseout="reset_tooltip('data-collection-and-processing-1-tooltip')"><span class="tooltiptext" id="data-collection-and-processing-1-tooltip">Copy link</span><i class="fa fa-link"></i></button></div>
 </h3>
-<p>[Make changes requested in your google doc and add here]</p>
+<p>We calculated tree coverage for our 3 locations. We did this by having a satellite photo of equal scale of each location. We split the photo into a grid, with each box having an area of 625m2. We drew the route on the photo, then assigned each box that the route intersected an average tree coverage percentage (25, 50, 75, 100). We then calculated the approx total area surrounding the route we walked (adding up the area of each box intersected by the route), the approximate average percentage of tree coverage. We then multiplied the total area by the average tree coverage percentage to get the average area of tree coverage.</p>
+<p>We used the traffic density tool on Google maps to determine the difference in traffic levels between each location.</p>
+<p>Throughout October, before all the leaves fell from the trees, 3 different groups went to Roy Park, Bakersfield Elementary, and Veterans Memorial Park. The data was collected on different days but at the same time. Data collected was ambient temperature, PPM, humidity, time, and GPS location. We collected data within an hour from each other, all on the same days (10/18, 10/19, 10/26). We walked the planned route in the general area of the park and through it in order to get appropriate data for the area.</p>
 </div>
-<div id="data-analysis-2" class="section level3" number="8.4.3">
+<div id="tree-coverage" class="section level3" number="8.4.3">
 <h3>
-<span class="header-section-number">8.4.3</span> Data Analysis<div class="tooltip"><button class="internal-link-btn" onclick="copy_link('data-analysis-2')" onmouseout="reset_tooltip('data-analysis-2-tooltip')"><span class="tooltiptext" id="data-analysis-2-tooltip">Copy link</span><i class="fa fa-link"></i></button></div>
+<span class="header-section-number">8.4.3</span> Tree Coverage<div class="tooltip"><button class="internal-link-btn" onclick="copy_link('tree-coverage')" onmouseout="reset_tooltip('tree-coverage-tooltip')"><span class="tooltiptext" id="tree-coverage-tooltip">Copy link</span><i class="fa fa-link"></i></button></div>
 </h3>
-<p>Pull in the pollution data (the CSV files should be the only ones in the <code>pollution</code> directory for this to work properly).</p>
+<ul>
+<li>Roy Park Route Coverage: 27%, 23,625 sqm, Total Area: 87,500 sq m</li>
+<li>Veterans Park Route Coverage: 20%, 11,625 sqm, Total Area: 58,125 sq m</li>
+<li>Baker Elementary Route Coverage: 15%, 9187 sqm Total Area: 61,250 sq m</li>
+</ul>
+</div>
+<div id="traffic-levels" class="section level3" number="8.4.4">
+<h3>
+<span class="header-section-number">8.4.4</span> Traffic levels<div class="tooltip"><button class="internal-link-btn" onclick="copy_link('traffic-levels')" onmouseout="reset_tooltip('traffic-levels-tooltip')"><span class="tooltiptext" id="traffic-levels-tooltip">Copy link</span><i class="fa fa-link"></i></button></div>
+</h3>
+</div>
+<div id="comparison-of-pollution-levels" class="section level3" number="8.4.5">
+<h3>
+<span class="header-section-number">8.4.5</span> Comparison of Pollution levels<div class="tooltip"><button class="internal-link-btn" onclick="copy_link('comparison-of-pollution-levels')" onmouseout="reset_tooltip('comparison-of-pollution-levels-tooltip')"><span class="tooltiptext" id="comparison-of-pollution-levels-tooltip">Copy link</span><i class="fa fa-link"></i></button></div>
+</h3>
+<p>Pull in the pollution data<label for="tufte-sn-1" class="margin-toggle sidenote-number">1</label><input type="checkbox" id="tufte-sn-1" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">1</span> the CSV files should be the only ones in the <code>pollution</code> directory for this to work properly</span>.</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="trees-vs-pollution.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># set data path</span></span>
 <span id="cb3-2"><a href="trees-vs-pollution.html#cb3-2" aria-hidden="true" tabindex="-1"></a>path <span class="ot">&lt;-</span> <span class="st">"data/pollution"</span></span>
 <span id="cb3-3"><a href="trees-vs-pollution.html#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -515,19 +546,55 @@ function reset_tooltip(id) {
 <span class="header-section-number">8.5</span> Author Contributions<div class="tooltip"><button class="internal-link-btn" onclick="copy_link('author-contributions-1')" onmouseout="reset_tooltip('author-contributions-1-tooltip')"><span class="tooltiptext" id="author-contributions-1-tooltip">Copy link</span><i class="fa fa-link"></i></button></div>
 </h2>
 <p>Typical categories include: Conceive study, design study, project/task management, data collection, data management, data analysis, visualizations, write/design manuscript/poster draft, revise &amp; edit draft.</p>
-<p>Write about 5-7 sentences about how you contributed to this project and what you learned about the process from the wibbly-wobbly method of just diving right in and designing your own study this semester.</p>
+<div id="ques:poll-1" class="question">
+<p class="question-begin">
+► Question 1
+</p>
+<div class="question-body">
+<p>
+Write about 5-7 sentences about how you contributed to this project and what you learned about the process from the wibbly-wobbly method of just diving right in and designing your own study this semester.
+</p>
+<p class="question-end">
+<span class="fa fa-square-o solution-icon"></span>
+</p>
+</div>
+</div>
 </div>
 <div id="if-i-we-were-to-design-this-study-all-over-again-1" class="section level2" number="8.6">
 <h2>
 <span class="header-section-number">8.6</span> If I (we) were to design this study all over again …<div class="tooltip"><button class="internal-link-btn" onclick="copy_link('if-i-we-were-to-design-this-study-all-over-again-1')" onmouseout="reset_tooltip('if-i-we-were-to-design-this-study-all-over-again-1-tooltip')"><span class="tooltiptext" id="if-i-we-were-to-design-this-study-all-over-again-1-tooltip">Copy link</span><i class="fa fa-link"></i></button></div>
 </h2>
-<p>Find at least three points for improvement/lessons learned about the study design itself (separate from what you learned about the process). Discuss this with your team members but you should write your own revisions in about 7-10 sentences.</p>
+<div id="ques:poll-2" class="question">
+<p class="question-begin">
+► Question 2
+</p>
+<div class="question-body">
+<p>
+Find at least three points for improvement/lessons learned about the study design itself (separate from what you learned about the process). Discuss this with your team members but you should write your own revisions in about 7-10 sentences.
+</p>
+<p class="question-end">
+<span class="fa fa-square-o solution-icon"></span>
+</p>
+</div>
+</div>
 </div>
 <div id="further-work-next-steps-and-new-questions-based-on-our-pilot-study-1" class="section level2" number="8.7">
 <h2>
 <span class="header-section-number">8.7</span> Further work: Next steps and new questions based on our pilot study …<div class="tooltip"><button class="internal-link-btn" onclick="copy_link('further-work-next-steps-and-new-questions-based-on-our-pilot-study-1')" onmouseout="reset_tooltip('further-work-next-steps-and-new-questions-based-on-our-pilot-study-1-tooltip')"><span class="tooltiptext" id="further-work-next-steps-and-new-questions-based-on-our-pilot-study-1-tooltip">Copy link</span><i class="fa fa-link"></i></button></div>
 </h2>
-<p>Discuss with your team mates to identify new questions you have identified, how you might expand and refine the study (beyond just re-designing the pilot study), assume that you are not limited by the constraints of lab time within a course.</p>
+<div id="ques:poll-3" class="question">
+<p class="question-begin">
+► Question 3
+</p>
+<div class="question-body">
+<p>
+Discuss with your team mates to identify new questions you have identified, how you might expand and refine the study (beyond just re-designing the pilot study), assume that you are not limited by the constraints of lab time within a course.
+</p>
+<p class="question-end">
+<span class="fa fa-square-o solution-icon"></span>
+</p>
+</div>
+</div>
 
 </div>
 </div>
