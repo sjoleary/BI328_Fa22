@@ -161,7 +161,7 @@ function reset_tooltip(id) {
 <li class="toc"><a href="#if-i-we-were-to-design-this-study-all-over-again"> If I (we) were to design this study all over again …</a></li>
 <li class="toc"><a href="#further-work-next-steps-and-new-questions-based-on-our-pilot-study"> Further work: Next steps and new questions based on our pilot study …</a></li>
 </ul>
-<a href="trees-vs-albedo-1.html" id="toc-trees-vs-albedo-1"><span class="toc-section-number">8</span> Trees vs Albedo</a>
+<a href="trees-vs-pollution.html" id="toc-trees-vs-pollution"><span class="toc-section-number">8</span> Trees vs Pollution</a>
 <a href="references.html" id="toc-references">References</a>
 </div>
 </li>
@@ -177,10 +177,7 @@ function reset_tooltip(id) {
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="trees-vs-albedo.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load libraries</span></span>
 <span id="cb1-2"><a href="trees-vs-albedo.html#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb1-3"><a href="trees-vs-albedo.html#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)</span>
-<span id="cb1-4"><a href="trees-vs-albedo.html#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(janitor)</span>
-<span id="cb1-5"><a href="trees-vs-albedo.html#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-6"><a href="trees-vs-albedo.html#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># load custom ggplot themes</span></span>
-<span id="cb1-7"><a href="trees-vs-albedo.html#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"scr/ggplot.R"</span>)</span></code></pre></div>
+<span id="cb1-4"><a href="trees-vs-albedo.html#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(janitor)</span></code></pre></div>
 <div id="central-question" class="section level2" number="7.1">
 <h2>
 <span class="header-section-number">7.1</span> Central Question<div class="tooltip"><button class="internal-link-btn" onclick="copy_link('central-question')" onmouseout="reset_tooltip('central-question-tooltip')"><span class="tooltiptext" id="central-question-tooltip">Copy link</span><i class="fa fa-link"></i></button></div>
@@ -219,6 +216,38 @@ function reset_tooltip(id) {
 <h3>
 <span class="header-section-number">7.4.3</span> Data Analysis<div class="tooltip"><button class="internal-link-btn" onclick="copy_link('data-analysis-1')" onmouseout="reset_tooltip('data-analysis-1-tooltip')"><span class="tooltiptext" id="data-analysis-1-tooltip">Copy link</span><i class="fa fa-link"></i></button></div>
 </h3>
+<p>Let’s start by pulling in your data</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="trees-vs-albedo.html#cb2-1" aria-hidden="true" tabindex="-1"></a>albedo <span class="ot">&lt;-</span> <span class="fu">read_delim</span>(<span class="st">"data/albed_temps.csv"</span>, <span class="at">delim =</span> <span class="st">","</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb2-2"><a href="trees-vs-albedo.html#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">clean_names</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb2-3"><a href="trees-vs-albedo.html#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">separate</span>(location, <span class="at">into =</span> <span class="fu">c</span>(<span class="st">"location"</span>, <span class="st">"sunshine"</span>), <span class="at">sep =</span> <span class="dv">1</span>)</span></code></pre></div>
+<p>We need to calculate the difference between material temperature and airport temperature</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="trees-vs-albedo.html#cb3-1" aria-hidden="true" tabindex="-1"></a>albedo <span class="ot">&lt;-</span> albedo <span class="sc">%&gt;%</span></span>
+<span id="cb3-2"><a href="trees-vs-albedo.html#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">temp_diff =</span> surface_temp_c <span class="sc">-</span> airport_air_temp_c)</span></code></pre></div>
+<p>Now we can look at the relationship</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="trees-vs-albedo.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(albedo, <span class="fu">aes</span>(<span class="at">x =</span> airport_air_temp_c, <span class="at">y =</span> temp_diff, <span class="at">shape =</span> sunshine, <span class="at">color =</span> sunshine)) <span class="sc">+</span></span>
+<span id="cb4-2"><a href="trees-vs-albedo.html#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb4-3"><a href="trees-vs-albedo.html#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">0</span>) <span class="sc">+</span></span>
+<span id="cb4-4"><a href="trees-vs-albedo.html#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_grid</span>(. <span class="sc">~</span> location)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-5-1.png" width="672"></p>
+<p>Let’s look at albedo for each location/sunshine</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="trees-vs-albedo.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(albedo, <span class="fu">aes</span>(<span class="at">x =</span> location, <span class="at">y =</span> albedo_broad, <span class="at">shape =</span> date_time, <span class="at">color =</span> sunshine)) <span class="sc">+</span></span>
+<span id="cb5-2"><a href="trees-vs-albedo.html#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-6-1.png" width="672"></p>
+<p>We are going to use the mean albedo for the sunny days as our albedo</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="trees-vs-albedo.html#cb6-1" aria-hidden="true" tabindex="-1"></a>mean_albedo <span class="ot">&lt;-</span> albedo <span class="sc">%&gt;%</span></span>
+<span id="cb6-2"><a href="trees-vs-albedo.html#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(location, sunshine) <span class="sc">%&gt;%</span></span>
+<span id="cb6-3"><a href="trees-vs-albedo.html#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">albedo =</span> <span class="fu">mean</span>(albedo_broad)) <span class="sc">%&gt;%</span></span>
+<span id="cb6-4"><a href="trees-vs-albedo.html#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(sunshine <span class="sc">==</span> <span class="st">"A"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb6-5"><a href="trees-vs-albedo.html#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(location, albedo)</span>
+<span id="cb6-6"><a href="trees-vs-albedo.html#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-7"><a href="trees-vs-albedo.html#cb6-7" aria-hidden="true" tabindex="-1"></a>albedo <span class="ot">&lt;-</span> albedo <span class="sc">%&gt;%</span></span>
+<span id="cb6-8"><a href="trees-vs-albedo.html#cb6-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(mean_albedo)</span></code></pre></div>
+<p>Now we can plot albedo vs temp difference</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="trees-vs-albedo.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(albedo, <span class="fu">aes</span>(<span class="at">x =</span> albedo, <span class="at">y =</span> temp_diff, <span class="at">color =</span> location)) <span class="sc">+</span></span>
+<span id="cb7-2"><a href="trees-vs-albedo.html#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
+<span id="cb7-3"><a href="trees-vs-albedo.html#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb7-4"><a href="trees-vs-albedo.html#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_grid</span>(. <span class="sc">~</span> sunshine)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-8-1.png" width="672"></p>
 </div>
 </div>
 <div id="author-contributions" class="section level2" number="7.5">
@@ -244,7 +273,7 @@ function reset_tooltip(id) {
 </div>
 <p style="text-align: center;">
 <a href="stream-health-assessment-using-macroinvertebrate-bioindices.html"><button class="btn btn-default">Previous</button></a>
-<a href="trees-vs-albedo-1.html"><button class="btn btn-default">Next</button></a>
+<a href="trees-vs-pollution.html"><button class="btn btn-default">Next</button></a>
 </p>
 <p class="build-date">Page built: 
 2022-11-16

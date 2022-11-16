@@ -98,6 +98,54 @@ albedo <- albedo %>%
 
 Now we can look at the relationship 
 
+```{r}
+
+ggplot(albedo, aes(x = airport_air_temp_c, y = temp_diff, shape = sunshine, color = sunshine)) +
+  geom_point(size = 3) +
+  geom_hline(yintercept = 0) +
+  facet_grid(. ~ location)
+  
+
+```
+
+Let's look at albedo for each location/sunshine
+
+```{r}
+
+ggplot(albedo, aes(x = location, y = albedo_broad, shape = date_time, color = sunshine)) +
+  geom_point(size = 3)
+
+```
+
+We are going to use the mean albedo for the sunny days as our albedo
+
+```{r}
+
+mean_albedo <- albedo %>%
+  group_by(location, sunshine) %>%
+  summarize(albedo = mean(albedo_broad)) %>%
+  filter(sunshine == "A") %>%
+  select(location, albedo)
+
+albedo <- albedo %>%
+  left_join(mean_albedo)
+
+```
+
+Now we can plot albedo vs temp difference
+
+```{r}
+
+ggplot(albedo, aes(x = albedo, y = temp_diff, color = location)) +
+  geom_boxplot() +
+  geom_point(size = 3) +
+  facet_grid(. ~ sunshine)
+  
+
+```
+
+
+
 ## Author Contributions
 
 Typical categories include: Conceive study, design study, project/task management, data collection, data management, data analysis, visualizations, write/design manuscript/poster draft, revise & edit draft.
