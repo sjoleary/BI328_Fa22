@@ -52,30 +52,50 @@ library(janitor)
 
 ## Central Question
 
-[Make changes requested in your google doc and add here]
+How does tree canopy presence and building material’s albedo influence the surface temperature of buildings made of those different materials?
 
 
 ## Hypothesis
 
-[Make changes requested in your google doc and add here]
+1. As the albedo of a material increases, the surface temperature decreases since it is reflecting more of the light. 
+2. Shading provided by trees will result in lower surface temperatures compared to the same material exposed to the sun. 
+3. The relationship between the ambient air temperature and the difference between surface temperatures for the sunny and shady sides of the material will increase with the air temperature.
 
 
 ## Objectives
 
-[Make changes requested in your google doc and add here]
+**Objective 1: Albedo**
+
+Albedo represents how reflective a surface is. This would impact the temperature of the material as more reflective surfaces are reflecting more energy. Measuring this will allow us to compare how shade impacts temperature as well as difference in temperature between different materials, and why they are occurring. We are creating 2 Albedo charts for each material type, one in the shade and one in the light. We recorded each of these 2 charts at 3 different times for each of the buildings for a total of 6 charts for each building. This repetition is to get information across a variety of  temperatures.
+
+**Objective 2: Surface Temperature in reference to shade**
+
+The second objective is finding the relationship between the surface temperature of a material and whether that material is in shade or sun. This will allow us to determine if tree shading mitigates the increase in temperature and to what extent this relationship remains as the temperature reaches the extreme in either direction (hot or cold). 
+
+**Objective 3: Ambient Temperature** 
+
+Our third objective focuses on ambient temperature which we have received from the Manchester-Boston Airport. From each day of data collection we will determine the difference in temperature between shady and sunny sides of different building materials. Once we determine the difference in temperature we will compare it to the ambient temperature of that day. This will help us determine whether there is an association between ambient temperature and difference in surface temperature between shady and sunny sections.
+
 
 
 ## Methods
 
 ### Study Design
 
-[Make changes requested in your google doc and add here]
+* Four different locations, 2 on campus and 2 off campus, Each location has a different building material
+* Measured at 2pm on a sunny day. Looking for 3 days (80’s, 70’s, 60’s)
+
 
 ### Data Collection and Processing
 
-[Make changes requested in your google doc and add here]
+Measure air temperature at each location 
+Take albedo of area of building directly in the sunlight
+Take surface temperature of building directly in the sunlight
+Take albedo of area of building in shade of tree
+Take surface temperature of area of building in shade of tree
 
-### Data Analysis
+
+## Data Analysis
 
 Let's start by pulling in your data
 
@@ -83,11 +103,16 @@ Let's start by pulling in your data
 
 albedo <- read_delim("data/albed_temps.csv", delim = ",") %>%
   clean_names() %>%
-  separate(location, into = c("location", "sunshine"), sep = 1)
+  separate(location, into = c("material", "sunshine"), sep = 1) %>%
+  mutate(material = case_when(material == "1" ~ "brick",
+                              material == "2" ~ "vinyl",
+                              material == "3" ~ "concrete",
+                              material == "4" ~ "steel"),
+         sunshine = ifelse(sunshine == "A", "sun", "shade"))
 
 ```
 
-We need to calculate the difference between material temperature and airport temperature
+We need to calculate the difference between material temperature and airport temperature:
 
 ```{r}
 
@@ -96,36 +121,36 @@ albedo <- albedo %>%
 
 ```
 
-Now we can look at the relationship 
+Now we can look at the relationship between temperature difference, ambient temperature and shady vs sunny for each of the materials used.
 
 ```{r}
 
-ggplot(albedo, aes(x = airport_air_temp_c, y = temp_diff, shape = sunshine, color = sunshine)) +
+ggplot(albedo, aes(x = airport_air_temp_c, y = temp_diff, 
+                   shape = sunshine, color = sunshine)) +
   geom_point(size = 3) +
-  geom_hline(yintercept = 0) +
-  facet_grid(. ~ location)
-  
+  geom_hline(yintercept = 0, linetype = "dashed") +
+  facet_grid(. ~ material)
 
 ```
 
-Let's look at albedo for each location/sunshine
+Let's look at albedo for each material and whether it differs when it measured in the sun or not. 
 
 ```{r}
 
-ggplot(albedo, aes(x = location, y = albedo_broad, shape = date_time, color = sunshine)) +
+ggplot(albedo, aes(x = material, y = albedo_broad, shape = date_time, color = sunshine)) +
   geom_point(size = 3)
 
 ```
 
-We are going to use the mean albedo for the sunny days as our albedo
+We are going to use the mean albedo measured in the sun for each day to compare.
 
 ```{r}
 
 mean_albedo <- albedo %>%
-  group_by(location, sunshine) %>%
+  group_by(material, sunshine) %>%
   summarize(albedo = mean(albedo_broad)) %>%
-  filter(sunshine == "A") %>%
-  select(location, albedo)
+  filter(sunshine == "sun") %>%
+  select(material, albedo)
 
 albedo <- albedo %>%
   left_join(mean_albedo)
@@ -136,32 +161,28 @@ Now we can plot albedo vs temp difference
 
 ```{r}
 
-ggplot(albedo, aes(x = albedo, y = temp_diff, color = location)) +
-  geom_boxplot() +
+ggplot(albedo, aes(x = albedo, y = temp_diff, color = material)) +
   geom_point(size = 3) +
   facet_grid(. ~ sunshine)
-  
 
 ```
-
 
 
 ## Author Contributions
 
 Typical categories include: Conceive study, design study, project/task management, data collection, data management, data analysis, visualizations, write/design manuscript/poster draft, revise & edit draft.
 
-Write about 5-7 sentences about how you contributed to this project and what you learned about the process from the wibbly-wobbly method of just diving right in and designing your own study this semester.
+`r msmbstyle::question(label = "ques:albedp-1", text = "Write about 5-7 sentences about how you contributed to this project and what you learned about the process from the wibbly-wobbly method of just diving right in and designing your own study this semester.")`
 
 
 ## If I (we) were to design this study all over again ...
 
-Find at least three points for improvement/lessons learned about the study design itself (separate from what you learned about the process). Discuss this with your team members but you should write your own revisions in about 7-10 sentences.
+`r msmbstyle::question(label = "ques:albedo-2", text = "Find at least three points for improvement/lessons learned about the study design itself (separate from what you learned about the process). Discuss this with your team members but you should write your own revisions in about 7-10 sentences.")`
 
 
 ## Further work: Next steps and new questions based on our pilot study ...
 
-Discuss with your team mates to identify new questions you have identified, how you might expand and refine the study (beyond just re-designing the pilot study), assume that you are not limited by the constraints of lab time within a course.
-
+`r msmbstyle::question(label = "ques:albedo-3", text = "Discuss with your team mates to identify new questions you have identified, how you might expand and refine the study (beyond just re-designing the pilot study), assume that you are not limited by the constraints of lab time within a course.")`
 
 
 
