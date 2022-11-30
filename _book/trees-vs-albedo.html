@@ -5,20 +5,26 @@
 <meta charset="utf-8" />
 <meta name="generator" content="pandoc" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta property="og:title" content="7 Trees vs Albedo | BI 328 Conservation Biology" />
+<meta property="og:title" content="7 Trees vs Albedo | Lab Manual Conservation Biology Fall 2020" />
 <meta property="og:type" content="book" />
 
 
 
 
-<meta name="author" content="Labmanual Fall 2022" />
+<meta name="author" content="Shannon J. O’Leary" />
 
-<meta name="date" content="2022-11-16" />
+<meta name="date" content="2022-11-30" />
 
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: { equationNumbers: { autoNumber: "AMS" } }
+});
+</script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<meta name="description" content="7 Trees vs Albedo | BI 328 Conservation Biology">
+<meta name="description" content="7 Trees vs Albedo | Lab Manual Conservation Biology Fall 2020">
 
-<title>7 Trees vs Albedo | BI 328 Conservation Biology</title>
+<title>7 Trees vs Albedo | Lab Manual Conservation Biology Fall 2020</title>
 
 <link href="libs/tufte-css/tufte.css" rel="stylesheet" />
 <link href="libs/tufte-css/envisioned.css" rel="stylesheet" />
@@ -163,6 +169,7 @@ function reset_tooltip(id) {
 <li class="toc"><a href="#further-work-next-steps-and-new-questions-based-on-our-pilot-study"> Further work: Next steps and new questions based on our pilot study …</a></li>
 </ul>
 <a href="trees-vs-pollution.html" id="toc-trees-vs-pollution"><span class="toc-section-number">8</span> Trees vs Pollution</a>
+<a href="population-modeling.html" id="toc-population-modeling"><span class="toc-section-number">9</span> Population modeling</a>
 <a href="references.html" id="toc-references">References</a>
 </div>
 </li>
@@ -175,10 +182,10 @@ function reset_tooltip(id) {
 <div id="trees-vs-albedo" class="section level1" number="7">
 <h1>
 <span class="header-section-number">7</span> Trees vs Albedo</h1>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="trees-vs-albedo.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load libraries</span></span>
-<span id="cb1-2"><a href="trees-vs-albedo.html#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-3"><a href="trees-vs-albedo.html#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)</span>
-<span id="cb1-4"><a href="trees-vs-albedo.html#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(janitor)</span></code></pre></div>
+<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb123-1"><a href="trees-vs-albedo.html#cb123-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load libraries</span></span>
+<span id="cb123-2"><a href="trees-vs-albedo.html#cb123-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb123-3"><a href="trees-vs-albedo.html#cb123-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)</span>
+<span id="cb123-4"><a href="trees-vs-albedo.html#cb123-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(janitor)</span></code></pre></div>
 <div id="central-question" class="section level2" number="7.1">
 <h2>
 <span class="header-section-number">7.1</span> Central Question<div class="tooltip"><button class="internal-link-btn" onclick="copy_link('central-question')" onmouseout="reset_tooltip('central-question-tooltip')"><span class="tooltiptext" id="central-question-tooltip">Copy link</span><i class="fa fa-link"></i></button></div>
@@ -235,42 +242,42 @@ Take surface temperature of area of building in shade of tree</p>
 <span class="header-section-number">7.5</span> Data Analysis<div class="tooltip"><button class="internal-link-btn" onclick="copy_link('data-analysis-1')" onmouseout="reset_tooltip('data-analysis-1-tooltip')"><span class="tooltiptext" id="data-analysis-1-tooltip">Copy link</span><i class="fa fa-link"></i></button></div>
 </h2>
 <p>Let’s start by pulling in your data</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="trees-vs-albedo.html#cb2-1" aria-hidden="true" tabindex="-1"></a>albedo <span class="ot">&lt;-</span> <span class="fu">read_delim</span>(<span class="st">"data/albed_temps.csv"</span>, <span class="at">delim =</span> <span class="st">","</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb2-2"><a href="trees-vs-albedo.html#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">clean_names</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb2-3"><a href="trees-vs-albedo.html#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">separate</span>(location, <span class="at">into =</span> <span class="fu">c</span>(<span class="st">"material"</span>, <span class="st">"sunshine"</span>), <span class="at">sep =</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb2-4"><a href="trees-vs-albedo.html#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">material =</span> <span class="fu">case_when</span>(material <span class="sc">==</span> <span class="st">"1"</span> <span class="sc">~</span> <span class="st">"brick"</span>,</span>
-<span id="cb2-5"><a href="trees-vs-albedo.html#cb2-5" aria-hidden="true" tabindex="-1"></a>                              material <span class="sc">==</span> <span class="st">"2"</span> <span class="sc">~</span> <span class="st">"vinyl"</span>,</span>
-<span id="cb2-6"><a href="trees-vs-albedo.html#cb2-6" aria-hidden="true" tabindex="-1"></a>                              material <span class="sc">==</span> <span class="st">"3"</span> <span class="sc">~</span> <span class="st">"concrete"</span>,</span>
-<span id="cb2-7"><a href="trees-vs-albedo.html#cb2-7" aria-hidden="true" tabindex="-1"></a>                              material <span class="sc">==</span> <span class="st">"4"</span> <span class="sc">~</span> <span class="st">"steel"</span>),</span>
-<span id="cb2-8"><a href="trees-vs-albedo.html#cb2-8" aria-hidden="true" tabindex="-1"></a>         <span class="at">sunshine =</span> <span class="fu">ifelse</span>(sunshine <span class="sc">==</span> <span class="st">"A"</span>, <span class="st">"sun"</span>, <span class="st">"shade"</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="trees-vs-albedo.html#cb124-1" aria-hidden="true" tabindex="-1"></a>albedo <span class="ot">&lt;-</span> <span class="fu">read_delim</span>(<span class="st">"data/albed_temps.csv"</span>, <span class="at">delim =</span> <span class="st">","</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb124-2"><a href="trees-vs-albedo.html#cb124-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">clean_names</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb124-3"><a href="trees-vs-albedo.html#cb124-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">separate</span>(location, <span class="at">into =</span> <span class="fu">c</span>(<span class="st">"material"</span>, <span class="st">"sunshine"</span>), <span class="at">sep =</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb124-4"><a href="trees-vs-albedo.html#cb124-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">material =</span> <span class="fu">case_when</span>(material <span class="sc">==</span> <span class="st">"1"</span> <span class="sc">~</span> <span class="st">"brick"</span>,</span>
+<span id="cb124-5"><a href="trees-vs-albedo.html#cb124-5" aria-hidden="true" tabindex="-1"></a>                              material <span class="sc">==</span> <span class="st">"2"</span> <span class="sc">~</span> <span class="st">"vinyl"</span>,</span>
+<span id="cb124-6"><a href="trees-vs-albedo.html#cb124-6" aria-hidden="true" tabindex="-1"></a>                              material <span class="sc">==</span> <span class="st">"3"</span> <span class="sc">~</span> <span class="st">"concrete"</span>,</span>
+<span id="cb124-7"><a href="trees-vs-albedo.html#cb124-7" aria-hidden="true" tabindex="-1"></a>                              material <span class="sc">==</span> <span class="st">"4"</span> <span class="sc">~</span> <span class="st">"steel"</span>),</span>
+<span id="cb124-8"><a href="trees-vs-albedo.html#cb124-8" aria-hidden="true" tabindex="-1"></a>         <span class="at">sunshine =</span> <span class="fu">ifelse</span>(sunshine <span class="sc">==</span> <span class="st">"A"</span>, <span class="st">"sun"</span>, <span class="st">"shade"</span>))</span></code></pre></div>
 <p>We need to calculate the difference between material temperature and airport temperature:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="trees-vs-albedo.html#cb3-1" aria-hidden="true" tabindex="-1"></a>albedo <span class="ot">&lt;-</span> albedo <span class="sc">%&gt;%</span></span>
-<span id="cb3-2"><a href="trees-vs-albedo.html#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">temp_diff =</span> surface_temp_c <span class="sc">-</span> airport_air_temp_c)</span></code></pre></div>
+<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb125-1"><a href="trees-vs-albedo.html#cb125-1" aria-hidden="true" tabindex="-1"></a>albedo <span class="ot">&lt;-</span> albedo <span class="sc">%&gt;%</span></span>
+<span id="cb125-2"><a href="trees-vs-albedo.html#cb125-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">temp_diff =</span> surface_temp_c <span class="sc">-</span> airport_air_temp_c)</span></code></pre></div>
 <p>Now we can look at the relationship between temperature difference, ambient temperature and shady vs sunny for each of the materials used.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="trees-vs-albedo.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(albedo, <span class="fu">aes</span>(<span class="at">x =</span> airport_air_temp_c, <span class="at">y =</span> temp_diff, </span>
-<span id="cb4-2"><a href="trees-vs-albedo.html#cb4-2" aria-hidden="true" tabindex="-1"></a>                   <span class="at">shape =</span> sunshine, <span class="at">color =</span> sunshine)) <span class="sc">+</span></span>
-<span id="cb4-3"><a href="trees-vs-albedo.html#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
-<span id="cb4-4"><a href="trees-vs-albedo.html#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">0</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>) <span class="sc">+</span></span>
-<span id="cb4-5"><a href="trees-vs-albedo.html#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_grid</span>(. <span class="sc">~</span> material)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-5-1.png" width="672"></p>
+<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb126-1"><a href="trees-vs-albedo.html#cb126-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(albedo, <span class="fu">aes</span>(<span class="at">x =</span> airport_air_temp_c, <span class="at">y =</span> temp_diff, </span>
+<span id="cb126-2"><a href="trees-vs-albedo.html#cb126-2" aria-hidden="true" tabindex="-1"></a>                   <span class="at">shape =</span> sunshine, <span class="at">color =</span> sunshine)) <span class="sc">+</span></span>
+<span id="cb126-3"><a href="trees-vs-albedo.html#cb126-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb126-4"><a href="trees-vs-albedo.html#cb126-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">0</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>) <span class="sc">+</span></span>
+<span id="cb126-5"><a href="trees-vs-albedo.html#cb126-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_grid</span>(. <span class="sc">~</span> material)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-108-1.png" width="672"></p>
 <p>Let’s look at albedo for each material and whether it differs when it measured in the sun or not.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="trees-vs-albedo.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(albedo, <span class="fu">aes</span>(<span class="at">x =</span> material, <span class="at">y =</span> albedo_broad, <span class="at">shape =</span> date_time, <span class="at">color =</span> sunshine)) <span class="sc">+</span></span>
-<span id="cb5-2"><a href="trees-vs-albedo.html#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-6-1.png" width="672"></p>
+<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb127-1"><a href="trees-vs-albedo.html#cb127-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(albedo, <span class="fu">aes</span>(<span class="at">x =</span> material, <span class="at">y =</span> albedo_broad, <span class="at">shape =</span> date_time, <span class="at">color =</span> sunshine)) <span class="sc">+</span></span>
+<span id="cb127-2"><a href="trees-vs-albedo.html#cb127-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-109-1.png" width="672"></p>
 <p>We are going to use the mean albedo measured in the sun for each day to compare.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="trees-vs-albedo.html#cb6-1" aria-hidden="true" tabindex="-1"></a>mean_albedo <span class="ot">&lt;-</span> albedo <span class="sc">%&gt;%</span></span>
-<span id="cb6-2"><a href="trees-vs-albedo.html#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(material, sunshine) <span class="sc">%&gt;%</span></span>
-<span id="cb6-3"><a href="trees-vs-albedo.html#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">albedo =</span> <span class="fu">mean</span>(albedo_broad)) <span class="sc">%&gt;%</span></span>
-<span id="cb6-4"><a href="trees-vs-albedo.html#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(sunshine <span class="sc">==</span> <span class="st">"sun"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb6-5"><a href="trees-vs-albedo.html#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(material, albedo)</span>
-<span id="cb6-6"><a href="trees-vs-albedo.html#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-7"><a href="trees-vs-albedo.html#cb6-7" aria-hidden="true" tabindex="-1"></a>albedo <span class="ot">&lt;-</span> albedo <span class="sc">%&gt;%</span></span>
-<span id="cb6-8"><a href="trees-vs-albedo.html#cb6-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(mean_albedo)</span></code></pre></div>
+<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="trees-vs-albedo.html#cb128-1" aria-hidden="true" tabindex="-1"></a>mean_albedo <span class="ot">&lt;-</span> albedo <span class="sc">%&gt;%</span></span>
+<span id="cb128-2"><a href="trees-vs-albedo.html#cb128-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(material, sunshine) <span class="sc">%&gt;%</span></span>
+<span id="cb128-3"><a href="trees-vs-albedo.html#cb128-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">albedo =</span> <span class="fu">mean</span>(albedo_broad)) <span class="sc">%&gt;%</span></span>
+<span id="cb128-4"><a href="trees-vs-albedo.html#cb128-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(sunshine <span class="sc">==</span> <span class="st">"sun"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb128-5"><a href="trees-vs-albedo.html#cb128-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(material, albedo)</span>
+<span id="cb128-6"><a href="trees-vs-albedo.html#cb128-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb128-7"><a href="trees-vs-albedo.html#cb128-7" aria-hidden="true" tabindex="-1"></a>albedo <span class="ot">&lt;-</span> albedo <span class="sc">%&gt;%</span></span>
+<span id="cb128-8"><a href="trees-vs-albedo.html#cb128-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(mean_albedo)</span></code></pre></div>
 <p>Now we can plot albedo vs temp difference</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="trees-vs-albedo.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(albedo, <span class="fu">aes</span>(<span class="at">x =</span> albedo, <span class="at">y =</span> temp_diff, <span class="at">color =</span> material)) <span class="sc">+</span></span>
-<span id="cb7-2"><a href="trees-vs-albedo.html#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
-<span id="cb7-3"><a href="trees-vs-albedo.html#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_grid</span>(. <span class="sc">~</span> sunshine)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-8-1.png" width="672"></p>
+<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb129-1"><a href="trees-vs-albedo.html#cb129-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(albedo, <span class="fu">aes</span>(<span class="at">x =</span> albedo, <span class="at">y =</span> temp_diff, <span class="at">color =</span> material)) <span class="sc">+</span></span>
+<span id="cb129-2"><a href="trees-vs-albedo.html#cb129-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb129-3"><a href="trees-vs-albedo.html#cb129-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_grid</span>(. <span class="sc">~</span> sunshine)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-111-1.png" width="672"></p>
 </div>
 <div id="author-contributions" class="section level2" number="7.6">
 <h2>
@@ -279,7 +286,7 @@ Take surface temperature of area of building in shade of tree</p>
 <p>Typical categories include: Conceive study, design study, project/task management, data collection, data management, data analysis, visualizations, write/design manuscript/poster draft, revise &amp; edit draft.</p>
 <div id="ques:albedp-1" class="question">
 <p class="question-begin">
-► Question 1
+► Question 77
 </p>
 <div class="question-body">
 <p>
@@ -297,7 +304,7 @@ Write about 5-7 sentences about how you contributed to this project and what you
 </h2>
 <div id="ques:albedo-2" class="question">
 <p class="question-begin">
-► Question 2
+► Question 78
 </p>
 <div class="question-body">
 <p>
@@ -315,7 +322,7 @@ Find at least three points for improvement/lessons learned about the study desig
 </h2>
 <div id="ques:albedo-3" class="question">
 <p class="question-begin">
-► Question 3
+► Question 79
 </p>
 <div class="question-body">
 <p>
@@ -334,7 +341,7 @@ Discuss with your team mates to identify new questions you have identified, how 
 <a href="trees-vs-pollution.html"><button class="btn btn-default">Next</button></a>
 </p>
 <p class="build-date">Page built: 
-2022-11-16
+2022-11-30
  using 
 R version 4.1.2 (2021-11-01)
 </p>
