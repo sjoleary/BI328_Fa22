@@ -76,7 +76,6 @@ How does traffic density and tree coverage impact pollution?
 2. Areas with higher tree coverage will have lower levels of pm 2.5, than lower tree coverage areas. 
 
 
-
 ## Objectives
 
 * Objective 1: Collect PM2.5 data for locations with varying traffic levels to determine impact of PM2.5
@@ -186,8 +185,14 @@ And we can compare those distributions using boxplots.
 
 ```{r}
 
+
+pollution <- pollution %>%
+  mutate(id = ordered(id, levels = c("Bakersville Elem", "Veteran's Park", "Roy Park")))
+
 ggplot(pollution, aes(x = day, y = pm2_5, fill = id)) +
-  geom_boxplot()
+  geom_boxplot() +
+  scale_fill_manual(values = c("#f06262", "#f79d37", "#519f28")) +
+  theme_standard
 
 ```
 
@@ -341,6 +346,181 @@ ggplot(data = pollution) +
   labs(title = "location") +
   theme_void()
 
+```
+
+We probably want to create plots for each location, that way we can "zoom" in and show just that relevant area.
+
+We can start with Roy Park
+
+```{r}
+
+Roy <- pollution %>%
+  filter(id == "Roy Park") %>%
+  filter(latitude > 42.986)
+
+# get lat/long 
+min_lat <- min(Roy$latitude)
+max_lat <- max(Roy$latitude)
+
+min_long <- min(Roy$longitude)
+max_long <- max(Roy$longitude)
+
+# compile plot
+ggplot(data = Roy) +
+  geom_sf(data = rivers$osm_lines,
+          inherit.aes = FALSE,
+          color = "steelblue",
+          size = .8,
+          alpha = .6) +
+  geom_sf(data = railway$osm_lines,
+          inherit.aes = FALSE,
+          color = "black",
+          size = .2,
+          linetype="dotdash",
+          alpha = .5) +
+  geom_sf(data = med_streets$osm_lines,
+          inherit.aes = FALSE,
+          color = "black",
+          size = .3,
+          alpha = .5) +
+  geom_sf(data = small_streets$osm_lines,
+          inherit.aes = FALSE,
+          color = "black",
+          size = .2,
+          alpha = .3) +
+  geom_sf(data = big_streets$osm_lines,
+          inherit.aes = FALSE,
+          color = "black",
+          size = .5,
+          alpha = .6) +
+  coord_sf(xlim = c(min_long-0.001, max_long+0.001), 
+           ylim = c(min_lat-0.001, max_lat+0.001),
+           expand = FALSE) +
+  geom_point(data = Roy, aes(x = longitude, y = latitude, color = pm2_5), size = 4, alpha = .5) +
+  facet_grid(day ~ .) +
+  scale_color_viridis_c(limits = c(0, 30), option = "D") +
+  theme_bw() + 
+  theme(panel.border = element_blank(), 
+        panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank(), 
+        axis.line = element_line(colour = "black"),
+        axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+
+```
+
+Now, let's do the same with Bakersville Elementary
+
+```{r}
+
+Baker <- pollution %>%
+  filter(id == "Bakersville Elem") 
+
+# get lat/long 
+min_lat <- min(Baker$latitude)
+max_lat <- max(Baker$latitude)
+
+min_long <- min(Baker$longitude)
+max_long <- max(Baker$longitude)
+
+# compile plot
+ggplot(data = Baker) +
+  geom_sf(data = rivers$osm_lines,
+          inherit.aes = FALSE,
+          color = "steelblue",
+          size = .8,
+          alpha = .6) +
+  geom_sf(data = railway$osm_lines,
+          inherit.aes = FALSE,
+          color = "black",
+          size = .2,
+          linetype="dotdash",
+          alpha = .5) +
+  geom_sf(data = med_streets$osm_lines,
+          inherit.aes = FALSE,
+          color = "black",
+          size = .3,
+          alpha = .5) +
+  geom_sf(data = small_streets$osm_lines,
+          inherit.aes = FALSE,
+          color = "black",
+          size = .2,
+          alpha = .3) +
+  geom_sf(data = big_streets$osm_lines,
+          inherit.aes = FALSE,
+          color = "black",
+          size = .5,
+          alpha = .6) +
+  coord_sf(xlim = c(min_long-0.001, max_long+0.001), 
+           ylim = c(min_lat-0.001, max_lat+0.001),
+           expand = FALSE) +
+  geom_point(data = Baker, aes(x = longitude, y = latitude, color = pm2_5), size = 4, alpha = .5) +
+  facet_grid(day ~ .) +
+  scale_color_viridis_c(limits = c(0, 30), option = "D") +
+  theme_bw() + 
+  theme(panel.border = element_blank(), 
+        panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank(), 
+        axis.line = element_line(colour = "black"),
+        axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+
+```
+
+And finally Veteran's Park: 
+
+```{r}
+
+Vet <- pollution %>%
+  filter(id == "Veteran's Park") 
+
+# get lat/long 
+min_lat <- min(Vet$latitude)
+max_lat <- max(Vet$latitude)
+
+min_long <- min(Vet$longitude)
+max_long <- max(Vet$longitude)
+
+# compile plot
+ggplot(data = Vet) +
+  geom_sf(data = rivers$osm_lines,
+          inherit.aes = FALSE,
+          color = "steelblue",
+          size = .8,
+          alpha = .6) +
+  geom_sf(data = railway$osm_lines,
+          inherit.aes = FALSE,
+          color = "black",
+          size = .2,
+          linetype="dotdash",
+          alpha = .5) +
+  geom_sf(data = med_streets$osm_lines,
+          inherit.aes = FALSE,
+          color = "black",
+          size = .3,
+          alpha = .5) +
+  geom_sf(data = small_streets$osm_lines,
+          inherit.aes = FALSE,
+          color = "black",
+          size = .2,
+          alpha = .3) +
+  geom_sf(data = big_streets$osm_lines,
+          inherit.aes = FALSE,
+          color = "black",
+          size = .5,
+          alpha = .6) +
+  coord_sf(xlim = c(min_long-0.001, max_long+0.001), 
+           ylim = c(min_lat-0.001, max_lat+0.001),
+           expand = FALSE) +
+  geom_point(data = Vet, aes(x = longitude, y = latitude, color = pm2_5), size = .5, alpha = .5) +
+  facet_grid(day ~ .) +
+  geom_point(data = Roy, aes(x = longitude, y = latitude, color = pm2_5), size = 4, alpha = .5) +
+  facet_grid(day ~ .) +
+  scale_color_viridis_c(limits = c(0, 30), option = "D") +
+  theme_bw() + 
+  theme(panel.border = element_blank(), 
+        panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank(), 
+        axis.line = element_line(colour = "black"),
+        axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
 ```
 
 

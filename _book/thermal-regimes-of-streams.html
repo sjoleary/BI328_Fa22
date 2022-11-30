@@ -421,9 +421,9 @@ Our heatplot consists of individual panels of months in columns and years in row
 </div>
 <div class="msmb-solution">
 <p class="solution-begin">
-Pointers<span id="sol-start-72" class="fa fa-plus-square solution-icon clickable" onclick="toggle_visibility('sol-body-72', 'sol-start-72')"></span>
+Pointers<span id="sol-start-102" class="fa fa-plus-square solution-icon clickable" onclick="toggle_visibility('sol-body-102', 'sol-start-102')"></span>
 </p>
-<div id="sol-body-72" class="solution-body" style="display: none;">
+<div id="sol-body-102" class="solution-body" style="display: none;">
 <ul>
 <li>How does temperature change over time?</li>
 <li>Are patterns consistent over a day? month? year?</li>
@@ -455,9 +455,9 @@ Start a list of metrics you could use to describe stream temperature of Back Mou
 </div>
 <div class="msmb-solution">
 <p class="solution-begin">
-Pointers<span id="sol-start-73" class="fa fa-plus-square solution-icon clickable" onclick="toggle_visibility('sol-body-73', 'sol-start-73')"></span>
+Pointers<span id="sol-start-103" class="fa fa-plus-square solution-icon clickable" onclick="toggle_visibility('sol-body-103', 'sol-start-103')"></span>
 </p>
-<div id="sol-body-73" class="solution-body" style="display: none;">
+<div id="sol-body-103" class="solution-body" style="display: none;">
 <ul>
 <li>Category X:
 <ul>
@@ -612,9 +612,9 @@ Give a brief description of the summary statistics you just generated.
 </div>
 <div class="msmb-solution">
 <p class="solution-begin">
-Pointers<span id="sol-start-74" class="fa fa-plus-square solution-icon clickable" onclick="toggle_visibility('sol-body-74', 'sol-start-74')"></span>
+Pointers<span id="sol-start-104" class="fa fa-plus-square solution-icon clickable" onclick="toggle_visibility('sol-body-104', 'sol-start-104')"></span>
 </p>
-<div id="sol-body-74" class="solution-body" style="display: none;">
+<div id="sol-body-104" class="solution-body" style="display: none;">
 <p>When you are asked to give a brief description, this should involve a several sentences (exactly how many will depend on how complex the data is you are describing). The key is to be clear and specific, but not get lost in unnecessary details. You can follow a simple, standard outline - the key is to start with a statement about what is being described/summarized with that data set, then point out the general pattern(s), followed by notable highlights.</p>
 <ul>
 <li>What is being summarized/compared/described?<label for="tufte-sn-30" class="margin-toggle sidenote-number">30</label><input type="checkbox" id="tufte-sn-30" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">30</span> For example: <em>From 2014 - 2020 the yearly mean temperature ranged from 5.85 to 8.0°C in Rand Brook, with minimum temperatures around 0°C and maximum temperatures ranging from 15.8 - 25.82°C. With the exception of 2014 standard deviation is around 6-7°C.</em></span> As appropriate state time periods and/or locations analyzed, metrics/units used to measure. This statement will frequently also “bleed over” into stating general patterns</li>
@@ -645,9 +645,9 @@ Use your new-found R skills to calculate monthly mean values. Consider that your
 </div>
 <div class="msmb-solution">
 <p class="solution-begin">
-► Solution<span id="sol-start-75" class="fa fa-plus-square solution-icon clickable" onclick="toggle_visibility('sol-body-75', 'sol-start-75')"></span>
+► Solution<span id="sol-start-105" class="fa fa-plus-square solution-icon clickable" onclick="toggle_visibility('sol-body-105', 'sol-start-105')"></span>
 </p>
-<div id="sol-body-75" class="solution-body" style="display: none;">
+<div id="sol-body-105" class="solution-body" style="display: none;">
 <div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="thermal-regimes-of-streams.html#cb94-1" aria-hidden="true" tabindex="-1"></a>monthly_stats <span class="ot">&lt;-</span> BMB <span class="sc">%&gt;%</span></span>
 <span id="cb94-2"><a href="thermal-regimes-of-streams.html#cb94-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Year, Month) <span class="sc">%&gt;%</span>             <span class="co"># summarizing just by month would create summary stats across all years for each month</span></span>
 <span id="cb94-3"><a href="thermal-regimes-of-streams.html#cb94-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">mean =</span> <span class="fu">mean</span>(Water_Temp),</span>
@@ -748,9 +748,9 @@ Practice your new found data analysis skills by generating a dataset of daily me
 </div>
 <div class="msmb-solution">
 <p class="solution-begin">
-► Solution<span id="sol-start-77" class="fa fa-plus-square solution-icon clickable" onclick="toggle_visibility('sol-body-77', 'sol-start-77')"></span>
+► Solution<span id="sol-start-107" class="fa fa-plus-square solution-icon clickable" onclick="toggle_visibility('sol-body-107', 'sol-start-107')"></span>
 </p>
-<div id="sol-body-77" class="solution-body" style="display: none;">
+<div id="sol-body-107" class="solution-body" style="display: none;">
 <p>The key to accomplishing this is in how you group the data. Grouping it just by <code>day</code> will create a data set mean temperatures across all “first days of the month” (across all months and years). This is not what we are looking for - we want each day of the year. The column <code>Date</code> is going to be much more helpful.</p>
 <div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="thermal-regimes-of-streams.html#cb98-1" aria-hidden="true" tabindex="-1"></a>daily_stats <span class="ot">&lt;-</span> BMB <span class="sc">%&gt;%</span></span>
 <span id="cb98-2"><a href="thermal-regimes-of-streams.html#cb98-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Date) <span class="sc">%&gt;%</span></span>
@@ -806,9 +806,9 @@ Practice your new found plot making skills by creating and additional 3-4 plots 
 </div>
 <div class="msmb-solution">
 <p class="solution-begin">
-Suggestions<span id="sol-start-78" class="fa fa-plus-square solution-icon clickable" onclick="toggle_visibility('sol-body-78', 'sol-start-78')"></span>
+Suggestions<span id="sol-start-108" class="fa fa-plus-square solution-icon clickable" onclick="toggle_visibility('sol-body-108', 'sol-start-108')"></span>
 </p>
-<div id="sol-body-78" class="solution-body" style="display: none;">
+<div id="sol-body-108" class="solution-body" style="display: none;">
 <p>A straightforward plot would be to look at the temperature change over time using mean, minimum, and/or maximum values.</p>
 <div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="thermal-regimes-of-streams.html#cb103-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(daily_stats, <span class="fu">aes</span>(<span class="at">x =</span> Date, <span class="at">y =</span> mean)) <span class="sc">+</span></span>
 <span id="cb103-2"><a href="thermal-regimes-of-streams.html#cb103-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
@@ -934,9 +934,9 @@ Pick two of the plots you have generated that you think best visualize the therm
 </div>
 <div class="msmb-solution">
 <p class="solution-begin">
-Pointers<span id="sol-start-79" class="fa fa-plus-square solution-icon clickable" onclick="toggle_visibility('sol-body-79', 'sol-start-79')"></span>
+Pointers<span id="sol-start-109" class="fa fa-plus-square solution-icon clickable" onclick="toggle_visibility('sol-body-109', 'sol-start-109')"></span>
 </p>
-<div id="sol-body-79" class="solution-body" style="display: none;">
+<div id="sol-body-109" class="solution-body" style="display: none;">
 <ul>
 <li>Description figure 1: 5-7 sentences answering the following questions -
 <ul>
@@ -1096,9 +1096,9 @@ Give a quick summary of the paper by stating the central question/hypothesis, ho
 </div>
 <div class="msmb-solution">
 <p class="solution-begin">
-Pointers<span id="sol-start-80" class="fa fa-plus-square solution-icon clickable" onclick="toggle_visibility('sol-body-80', 'sol-start-80')"></span>
+Pointers<span id="sol-start-110" class="fa fa-plus-square solution-icon clickable" onclick="toggle_visibility('sol-body-110', 'sol-start-110')"></span>
 </p>
-<div id="sol-body-80" class="solution-body" style="display: none;">
+<div id="sol-body-110" class="solution-body" style="display: none;">
 <ol style="list-style-type: decimal">
 <li>Central Question</li>
 <li>What data was collected and why? What was measured? What was it supposed to tell the scientists?</li>
@@ -1128,9 +1128,9 @@ Outline how you could use our data set to determine whether our headwater stream
 <p>We will come up with the needed code to assess habitat suitability using the metric you have chosen and generate an appropriate summary.</p>
 <div class="msmb-solution">
 <p class="solution-begin">
-Pointers<span id="sol-start-81" class="fa fa-plus-square solution-icon clickable" onclick="toggle_visibility('sol-body-81', 'sol-start-81')"></span>
+Pointers<span id="sol-start-111" class="fa fa-plus-square solution-icon clickable" onclick="toggle_visibility('sol-body-111', 'sol-start-111')"></span>
 </p>
-<div id="sol-body-81" class="solution-body" style="display: none;">
+<div id="sol-body-111" class="solution-body" style="display: none;">
 <p>The metric we decided to use is <strong>degree days</strong>, which is the number of days above or below a certain threshold during a specified time period.</p>
 <p>You answer to this question should include 5-7 sentences explaining what degree days are, why they are appropriate metrics give then biological facet we are interested in and how we are going to calculate them<label for="tufte-sn-37" class="margin-toggle sidenote-number">37</label><input type="checkbox" id="tufte-sn-37" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">37</span> One distinction to make is that we did not take into account if these days are consecutive or not</span>. Be specific in your answer, e.g. why we picked the threshold, how degree days are identified.</p>
 <p>This is the code we used to calculate the data</p>
@@ -1186,9 +1186,9 @@ Briefly describe your results and then discuss whether or not you think Back Mou
 </div>
 <div class="msmb-solution">
 <p class="solution-begin">
-Pointers<span id="sol-start-82" class="fa fa-plus-square solution-icon clickable" onclick="toggle_visibility('sol-body-82', 'sol-start-82')"></span>
+Pointers<span id="sol-start-112" class="fa fa-plus-square solution-icon clickable" onclick="toggle_visibility('sol-body-112', 'sol-start-112')"></span>
 </p>
-<div id="sol-body-82" class="solution-body" style="display: none;">
+<div id="sol-body-112" class="solution-body" style="display: none;">
 <ul>
 <li>Description Table 1: 4-6 sentences answering the following questions -
 <ul>
@@ -1226,9 +1226,9 @@ Briefly discuss whether or not you think that a nearby headwater stream would ha
 </div>
 <div class="msmb-solution">
 <p class="solution-begin">
-Pointers<span id="sol-start-83" class="fa fa-plus-square solution-icon clickable" onclick="toggle_visibility('sol-body-83', 'sol-start-83')"></span>
+Pointers<span id="sol-start-113" class="fa fa-plus-square solution-icon clickable" onclick="toggle_visibility('sol-body-113', 'sol-start-113')"></span>
 </p>
-<div id="sol-body-83" class="solution-body" style="display: none;">
+<div id="sol-body-113" class="solution-body" style="display: none;">
 <ul>
 <li>Nearby streams should have … thermal regimes</li>
 <li>Factors that could cause differences at small spatial scale include [come up with 2-3 factors based on your general knowledge and the reading assignment for each factor give us a “why”].</li>
@@ -1269,9 +1269,9 @@ Below is a code chunk that will pull in a data set of Scataquog Brook which is a
 </ol>
 <div class="msmb-solution">
 <p class="solution-begin">
-Pointers<span id="sol-start-84" class="fa fa-plus-square solution-icon clickable" onclick="toggle_visibility('sol-body-84', 'sol-start-84')"></span>
+Pointers<span id="sol-start-114" class="fa fa-plus-square solution-icon clickable" onclick="toggle_visibility('sol-body-114', 'sol-start-114')"></span>
 </p>
-<div id="sol-body-84" class="solution-body" style="display: none;">
+<div id="sol-body-114" class="solution-body" style="display: none;">
 <p>This is the format you used to describe your Back Mountain Brook figures. Use that as your starting point.</p>
 <ul>
 <li>Description figure 1: 5-7 sentences answering the following questions -
@@ -1303,9 +1303,9 @@ Pointers<span id="sol-start-84" class="fa fa-plus-square solution-icon clickable
 </ol>
 <div class="msmb-solution">
 <p class="solution-begin">
-► Solution<span id="sol-start-85" class="fa fa-plus-square solution-icon clickable" onclick="toggle_visibility('sol-body-85', 'sol-start-85')"></span>
+► Solution<span id="sol-start-115" class="fa fa-plus-square solution-icon clickable" onclick="toggle_visibility('sol-body-115', 'sol-start-115')"></span>
 </p>
-<div id="sol-body-85" class="solution-body" style="display: none;">
+<div id="sol-body-115" class="solution-body" style="display: none;">
 <p>You can reuse the code from above and just change <code>BMB</code> to`<code>SQB</code>.</p>
 <div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="thermal-regimes-of-streams.html#cb113-1" aria-hidden="true" tabindex="-1"></a>crit_thresh <span class="ot">&lt;-</span> SQB <span class="sc">%&gt;%</span>                    <span class="co"># use data with hourly data</span></span>
 <span id="cb113-2"><a href="thermal-regimes-of-streams.html#cb113-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Water_Temp <span class="sc">&gt;</span> <span class="dv">20</span>) <span class="sc">%&gt;%</span>             <span class="co"># retain only values &gt; 20</span></span>
@@ -1348,9 +1348,9 @@ Pointers<span id="sol-start-84" class="fa fa-plus-square solution-icon clickable
 </ol>
 <div class="msmb-solution">
 <p class="solution-begin">
-Pointers<span id="sol-start-86" class="fa fa-plus-square solution-icon clickable" onclick="toggle_visibility('sol-body-86', 'sol-start-86')"></span>
+Pointers<span id="sol-start-116" class="fa fa-plus-square solution-icon clickable" onclick="toggle_visibility('sol-body-116', 'sol-start-116')"></span>
 </p>
-<div id="sol-body-86" class="solution-body" style="display: none;">
+<div id="sol-body-116" class="solution-body" style="display: none;">
 <p>Remember, this was your format when you described the results for Back Mountain Brook.</p>
 <ul>
 <li>Description Table 1: 4-6 sentences answering the following questions -

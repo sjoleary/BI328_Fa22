@@ -36,11 +36,6 @@ options(htmltools.dir.version = FALSE)
 
 # Trees vs Albedo
 
-
-
-
-
-
 ```{r}
 
 # load libraries
@@ -77,7 +72,6 @@ The second objective is finding the relationship between the surface temperature
 Our third objective focuses on ambient temperature which we have received from the Manchester-Boston Airport. From each day of data collection we will determine the difference in temperature between shady and sunny sides of different building materials. Once we determine the difference in temperature we will compare it to the ambient temperature of that day. This will help us determine whether there is an association between ambient temperature and difference in surface temperature between shady and sunny sections.
 
 
-
 ## Methods
 
 ### Study Design
@@ -108,7 +102,8 @@ albedo <- read_delim("data/albed_temps.csv", delim = ",") %>%
                               material == "2" ~ "vinyl",
                               material == "3" ~ "concrete",
                               material == "4" ~ "steel"),
-         sunshine = ifelse(sunshine == "A", "sun", "shade"))
+         sunshine = ifelse(sunshine == "A", "sun", "shade"),
+         material = ordered(material, levels = c("steel", "brick", "vinyl", "concrete")))
 
 ```
 
@@ -121,15 +116,20 @@ albedo <- albedo %>%
 
 ```
 
-Now we can look at the relationship between temperature difference, ambient temperature and shady vs sunny for each of the materials used.
+Now we can look at the relationship between temperature difference an ambient temperature and shady vs sunny conditions for each of the materials used.
 
 ```{r}
 
 ggplot(albedo, aes(x = airport_air_temp_c, y = temp_diff, 
-                   shape = sunshine, color = sunshine)) +
-  geom_point(size = 3) +
+                   shape = sunshine, fill = material)) +
+  geom_point(size = 3, color = "black") +
   geom_hline(yintercept = 0, linetype = "dashed") +
-  facet_grid(. ~ material)
+  scale_fill_manual(values = c("#6a726d", "#944d3a", "#d1d7c9", "#efd6a8")) +
+  scale_shape_manual(values = c(21, 22, 23)) +
+  facet_grid(sunshine ~ material) +
+  labs(x = "air temperature", y = "temperature difference air/material") +
+  theme_facet +
+  theme(legend.position = "none")
 
 ```
 
@@ -137,7 +137,7 @@ Let's look at albedo for each material and whether it differs when it measured i
 
 ```{r}
 
-ggplot(albedo, aes(x = material, y = albedo_broad, shape = date_time, color = sunshine)) +
+ggplot(albedo, aes(x = material, y = albedo_broad, color = date_time, shape = sunshine)) +
   geom_point(size = 3)
 
 ```
@@ -155,15 +155,24 @@ mean_albedo <- albedo %>%
 albedo <- albedo %>%
   left_join(mean_albedo)
 
+kable(
+  mean_albedo,
+  digits = 2,
+  caption = "mean albedo for each material"
+)
+
 ```
 
-Now we can plot albedo vs temp difference
+Now we can plot albedo vs temp difference to determine if we see a relationship of increasing temperature difference as the albedo decreases.
 
 ```{r}
 
-ggplot(albedo, aes(x = albedo, y = temp_diff, color = material)) +
-  geom_point(size = 3) +
-  facet_grid(. ~ sunshine)
+ggplot(albedo, aes(x = albedo, y = temp_diff, fill = material)) +
+  geom_point(size = 3, shape = 21) +
+  facet_grid(. ~ sunshine) +
+  scale_fill_manual(values = c("#6a726d", "#944d3a", "#d1d7c9", "#efd6a8")) +
+  labs(x = "albedo", y = "temperature difference air/material") +
+  theme_facet
 
 ```
 
